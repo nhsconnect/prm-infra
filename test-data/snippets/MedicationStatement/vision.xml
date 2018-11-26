@@ -1,0 +1,224 @@
+<ehrComposition>
+    <component>
+        <CompoundStatement>
+            <component>
+                <CompoundStatement>
+                    <component typeCode="COMP" contextConductionInd="true">
+                        <PlanStatement classCode="OBS" moodCode="INT">
+                            <id root="04A8D641-4123-4AFB-9A95-349ED6ADB8CE"/>
+                            <code code="PKyz500" displayName="Happy puppet syndrome"
+                                  codeSystem="2.16.840.1.113883.2.1.6.10">
+                                <qualifier>
+                                    <name code="entity_ty" displayName="Entity Type"/>
+                                    <value code="62" displayName="RECALL"/>
+                                </qualifier>
+                                <qualifier>
+                                    <name code="private" displayName="Private"/>
+                                    <value code="0" displayName="No"/>
+                                </qualifier>
+                                <qualifier>
+                                    <name code="recallsda"
+                                          displayName="Entity Type associated with READCODE"/>
+                                    <value code="0" displayName="0"/>
+                                </qualifier>
+                                <qualifier>
+                                    <name code="protected"
+                                          displayName="Read only recommended"/>
+                                    <value code="0" displayName="0"/>
+                                </qualifier>
+                                <qualifier>
+                                    <name code="status" displayName="Recall Status"/>
+                                    <value code="RCS001" displayName="Outstanding"/>
+                                </qualifier>
+                                <translation code="PKyz500"
+                                             displayName="Happy puppet syndrome"
+                                             codeSystem="2.16.840.1.113883.2.1.6.2"/>
+                            </code>
+                            <text>Recall Status:Outstanding. NOTES: Different recall
+                                aagents.
+                            </text>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                                <center value="20060531"/>
+                            </effectiveTime>
+                            <availabilityTime value="20060426"/>
+                            <Participant typeCode="AUT" contextControlCode="OP">
+                                <time value="20060426"/>
+                                <agentRef classCode="AGNT">
+                                    <id root="749107A2-4975-441F-8EDF-ADFF451FD12D"/>
+                                </agentRef>
+                            </Participant>
+                            <Participant typeCode="PRF" contextControlCode="OP">
+                                <agentRef classCode="AGNT">
+                                    <id root="BCED1E98-3818-4563-9A8A-72539A6C3666"/>
+                                </agentRef>
+                            </Participant>
+                            <Participant typeCode="PPRF" contextControlCode="OP">
+                                <agentRef classCode="AGNT">
+                                    <id root="F237D327-64A3-4DB1-9D03-126B529B3F08"/>
+                                </agentRef>
+                            </Participant>
+                        </PlanStatement>
+                    </component>
+                    <component typeCode="COMP" contextConductionInd="true">
+                        <MedicationStatement classCode="SBADM" moodCode="INT">
+                            <id root="5864F6B7-ACBF-4372-B86C-8F7E41794DCC"/>
+                            <statusCode code="ACTIVE"/>
+                            <effectiveTime>
+                                <low value="20060426"/>
+                            </effectiveTime>
+                            <availabilityTime value="20060426"/>
+                            <consumable typeCode="CSM">
+                                <manufacturedProduct classCode="MANU">
+                                    <manufacturedMaterial classCode="MMAT"
+                                                          determinerCode="KIND">
+                                        <code codeSystem="2.16.840.1.113883.2.1.6.15"
+                                              code="65977020"
+                                              displayName="Paracetamol 500mg capsules">
+                                            <originalText>PARACETAMOL caps 500mg
+                                            </originalText>
+                                            <translation code="322280009"
+                                                         displayName="Paracetamol 500mg capsules"
+                                                         codeSystem="2.16.840.1.113883.2.1.3.2.4.15"/>
+                                            <translation code="di2q.00"
+                                                         codeSystem="2.16.840.1.113883.2.1.6.2"/>
+                                        </code>
+                                    </manufacturedMaterial>
+                                </manufacturedProduct>
+                            </consumable>
+                            <component typeCode="COMP">
+                                <ehrSupplyAuthorise classCode="SPLY" moodCode="INT">
+                                    <id root="87E442D8-A256-4524-98EA-B77ADEB92B63"/>
+                                    <code code="394823007" displayName="NHS Prescription"
+                                          codeSystem="2.16.840.1.113883.2.1.3.2.4.15"/>
+                                    <statusCode code="ACTIVE"/>
+                                    <availabilityTime value="20060426"/>
+                                    <repeatNumber value="5"/>
+                                    <quantity value="80" unit="1">
+                                        <translation value="80">
+                                            <originalText>capsule(s)</originalText>
+                                        </translation>
+                                    </quantity>
+                                </ehrSupplyAuthorise>
+                            </component>
+                            <pertinentInformation typeCode="PERT">
+                                <pertinentMedicationDosage classCode="SBADM" moodCode="RMD">
+                                    <text>TAKE TWO 4 TIMES/DAY</text>
+                                </pertinentMedicationDosage>
+                            </pertinentInformation>
+                            <Participant typeCode="PRF" contextControlCode="OP">
+                                <agentRef classCode="AGNT">
+                                    <id root="62FFDB78-97D1-4D78-97CF-16EC6A7F01E9"/>
+                                </agentRef>
+                            </Participant>
+                        </MedicationStatement>
+                    </component>
+                    <component typeCode="COMP" contextConductionInd="true">
+                        <MedicationStatement classCode="SBADM" moodCode="ORD">
+                            <id root="6B65A77C-D1F9-4A79-A923-D7AE7A3A6712"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                                <low value="20060426"/>
+                            </effectiveTime>
+                            <availabilityTime value="20060426"/>
+                            <consumable typeCode="CSM">
+                                <manufacturedProduct classCode="MANU">
+                                    <manufacturedMaterial classCode="MMAT"
+                                                          determinerCode="KIND">
+                                        <code codeSystem="2.16.840.1.113883.2.1.6.15"
+                                              code="65977020"
+                                              displayName="Paracetamol 500mg capsules">
+                                            <originalText>PARACETAMOL caps 500mg
+                                            </originalText>
+                                            <translation code="322280009"
+                                                         displayName="Paracetamol 500mg capsules"
+                                                         codeSystem="2.16.840.1.113883.2.1.3.2.4.15"/>
+                                            <translation code="di2q.00"
+                                                         codeSystem="2.16.840.1.113883.2.1.6.2"/>
+                                        </code>
+                                    </manufacturedMaterial>
+                                </manufacturedProduct>
+                            </consumable>
+                            <component typeCode="COMP">
+                                <ehrSupplyPrescribe classCode="SPLY" moodCode="RQO">
+                                    <id root="2D0C99A6-2D22-4C58-8E40-7726778873D2"/>
+                                    <code code="394823007" displayName="NHS Prescription"
+                                          codeSystem="2.16.840.1.113883.2.1.3.2.4.15"/>
+                                    <statusCode code="COMPLETE"/>
+                                    <availabilityTime value="20060426"/>
+                                    <quantity value="80" unit="1">
+                                        <translation value="80">
+                                            <originalText>capsule(s)</originalText>
+                                        </translation>
+                                    </quantity>
+                                    <inFulfillmentOf typeCode="FLFS">
+                                        <priorMedicationRef moodCode="INT">
+                                            <id root="87E442D8-A256-4524-98EA-B77ADEB92B63"/>
+                                        </priorMedicationRef>
+                                    </inFulfillmentOf>
+                                </ehrSupplyPrescribe>
+                            </component>
+                            <pertinentInformation typeCode="PERT">
+                                <pertinentMedicationDosage classCode="SBADM" moodCode="RMD">
+                                    <text>TAKE TWO 4 TIMES/DAY</text>
+                                </pertinentMedicationDosage>
+                            </pertinentInformation>
+                        </MedicationStatement>
+                    </component>
+                    <component typeCode="COMP" contextConductionInd="true">
+                        <MedicationStatement classCode="SBADM" moodCode="ORD">
+                            <id root="169D7FE5-E9DA-4B91-92B8-3BA1A4D76809"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                                <low value="20060426"/>
+                            </effectiveTime>
+                            <availabilityTime value="20060426"/>
+                            <consumable typeCode="CSM">
+                                <manufacturedProduct classCode="MANU">
+                                    <manufacturedMaterial classCode="MMAT"
+                                                          determinerCode="KIND">
+                                        <code codeSystem="2.16.840.1.113883.2.1.6.15"
+                                              code="65977020"
+                                              displayName="Paracetamol 500mg capsules">
+                                            <originalText>PARACETAMOL caps 500mg
+                                            </originalText>
+                                            <translation code="322280009"
+                                                         displayName="Paracetamol 500mg capsules"
+                                                         codeSystem="2.16.840.1.113883.2.1.3.2.4.15"/>
+                                            <translation code="di2q.00"
+                                                         codeSystem="2.16.840.1.113883.2.1.6.2"/>
+                                        </code>
+                                    </manufacturedMaterial>
+                                </manufacturedProduct>
+                            </consumable>
+                            <component typeCode="COMP">
+                                <ehrSupplyPrescribe classCode="SPLY" moodCode="RQO">
+                                    <id root="3B72B9D4-C6AC-4F7A-BAB9-7BFAE6FD8FAE"/>
+                                    <code code="394823007" displayName="NHS Prescription"
+                                          codeSystem="2.16.840.1.113883.2.1.3.2.4.15"/>
+                                    <statusCode code="COMPLETE"/>
+                                    <availabilityTime value="20060426"/>
+                                    <quantity value="80" unit="1">
+                                        <translation value="80">
+                                            <originalText>capsule(s)</originalText>
+                                        </translation>
+                                    </quantity>
+                                    <inFulfillmentOf typeCode="FLFS">
+                                        <priorMedicationRef moodCode="INT">
+                                            <id root="87E442D8-A256-4524-98EA-B77ADEB92B63"/>
+                                        </priorMedicationRef>
+                                    </inFulfillmentOf>
+                                </ehrSupplyPrescribe>
+                            </component>
+                            <pertinentInformation typeCode="PERT">
+                                <pertinentMedicationDosage classCode="SBADM" moodCode="RMD">
+                                    <text>TAKE TWO 4 TIMES/DAY</text>
+                                </pertinentMedicationDosage>
+                            </pertinentInformation>
+                        </MedicationStatement>
+                    </component>
+                </CompoundStatement>
+            </component>
+        </CompoundStatement>
+    </component>
+</ehrComposition>

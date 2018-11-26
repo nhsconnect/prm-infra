@@ -1,0 +1,166 @@
+<ehrComposition classCode="COMPOSITION" moodCode="EVN">
+    <component typeCode="COMP">
+        <MedicationStatement classCode="SBADM" moodCode="INT">
+            <id root="CFED8644-4D1C-11E3-A2DD-010000000161"/>
+            <statusCode code="COMPLETE"/>
+            <effectiveTime>
+                <low value="20101209"/>
+                <high value="20110609000000"/>
+            </effectiveTime>
+            <availabilityTime value="20101209"/>
+            <consumable typeCode="CSM">
+                <manufacturedProduct classCode="MANU">
+                    <manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+                        <code code="03618002" codeSystem="2.16.840.1.113883.2.1.6.4"
+                              displayName="Digoxin 500micrograms/2ml solution for infusion ampoules">
+                            <translation code="317905004" codeSystem="2.16.840.1.113883.2.1.3.2.4.15"
+                                         displayName="Digoxin 500micrograms/2ml solution for infusion ampoules"/>
+                        </code>
+                    </manufacturedMaterial>
+                </manufacturedProduct>
+            </consumable>
+            <component typeCode="COMP">
+                <ehrSupplyAuthorise classCode="SPLY" moodCode="INT">
+                    <id root="CFED8643-4D1C-11E3-A2DD-010000000161"/>
+                    <code code="394823007" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="NHS prescription"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                        <low value="20101209"/>
+                        <high value="20110609000000"/>
+                    </effectiveTime>
+                    <availabilityTime value="20101209"/>
+                    <repeatNumber value="4"/>
+                    <quantity value="5" unit="1">
+                        <translation value="5">
+                            <originalText>ampoules</originalText>
+                        </translation>
+                    </quantity>
+                    <pertinentInformation typeCode="PERT">
+                        <pertinentSupplyAnnotation classCode="OBS" moodCode="EVN">
+                            <text>These are some Script Notes. {Batch Number} {Pack Size}</text>
+                        </pertinentSupplyAnnotation>
+                    </pertinentInformation>
+                </ehrSupplyAuthorise>
+            </component>
+            <pertinentInformation typeCode="PERT">
+                <pertinentMedicationDosage classCode="SBADM" moodCode="RMD">
+                    <text>[08:00-1 Amp][12:00-1 Amp][16:00-1 Amp][22:00-1 Amp][00:00-1 Amp]</text>
+                </pertinentMedicationDosage>
+            </pertinentInformation>
+        </MedicationStatement>
+    </component>
+    <component typeCode="COMP">
+        <MedicationStatement classCode="SBADM" moodCode="ORD">
+            <id root="D0585608-4D1C-11E3-A2DD-010000000161"/>
+            <statusCode code="COMPLETE"/>
+            <effectiveTime>
+                <center value="20101209"/>
+            </effectiveTime>
+            <availabilityTime value="20101209"/>
+            <consumable typeCode="CSM">
+                <manufacturedProduct classCode="MANU">
+                    <manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+                        <code code="01077003" codeSystem="2.16.840.1.113883.2.1.6.4" displayName="Codeine 60mg tablets">
+                            <translation code="322504003" codeSystem="2.16.840.1.113883.2.1.3.2.4.15"
+                                         displayName="Codeine 60mg tablets"/>
+                        </code>
+                    </manufacturedMaterial>
+                </manufacturedProduct>
+            </consumable>
+            <component typeCode="COMP">
+                <ehrSupplyAuthorise classCode="SPLY" moodCode="INT">
+                    <id root="D0585607-4D1C-11E3-A2DD-010000000161"/>
+                    <code code="394823007" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="NHS prescription"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                        <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20101209"/>
+                    <repeatNumber value="0"/>
+                    <quantity value="28" unit="1">
+                        <translation value="28">
+                            <originalText>tablets</originalText>
+                        </translation>
+                    </quantity>
+                </ehrSupplyAuthorise>
+            </component>
+            <component typeCode="COMP">
+                <ehrSupplyPrescribe classCode="SPLY" moodCode="RQO">
+                    <id root="D0585606-4D1C-11E3-A2DD-010000000161"/>
+                    <code code="394823007" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="NHS prescription"/>
+                    <statusCode code="COMPLETE"/>
+                    <availabilityTime value="20101209"/>
+                    <quantity value="28" unit="1">
+                        <translation value="28">
+                            <originalText>tablets</originalText>
+                        </translation>
+                    </quantity>
+                    <inFulfillmentOf typeCode="FLFS">
+                        <priorMedicationRef classCode="SBADM" moodCode="INT">
+                            <id root="D0585607-4D1C-11E3-A2DD-010000000161"/>
+                        </priorMedicationRef>
+                    </inFulfillmentOf>
+                    <pertinentInformation typeCode="PERT">
+                        <pertinentSupplyAnnotation classCode="OBS" moodCode="EVN">
+                            <text>These are codeine script notes</text>
+                        </pertinentSupplyAnnotation>
+                    </pertinentInformation>
+                </ehrSupplyPrescribe>
+            </component>
+            <pertinentInformation typeCode="PERT">
+                <pertinentMedicationDosage classCode="SBADM" moodCode="RMD">
+                    <text>take one 4 times/day</text>
+                </pertinentMedicationDosage>
+            </pertinentInformation>
+        </MedicationStatement>
+    </component>
+    <component typeCode="COMP">
+        <MedicationStatement classCode="SBADM" moodCode="ORD">
+            <id root="D0585605-4D1C-11E3-A2DD-010000000161"/>
+            <statusCode code="COMPLETE"/>
+            <effectiveTime>
+                <center value="20101209"/>
+            </effectiveTime>
+            <availabilityTime value="20101209"/>
+            <consumable typeCode="CSM">
+                <manufacturedProduct classCode="MANU">
+                    <manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+                        <code code="03618002" codeSystem="2.16.840.1.113883.2.1.6.4"
+                              displayName="Digoxin 500micrograms/2ml solution for infusion ampoules">
+                            <translation code="317905004" codeSystem="2.16.840.1.113883.2.1.3.2.4.15"
+                                         displayName="Digoxin 500micrograms/2ml solution for infusion ampoules"/>
+                        </code>
+                    </manufacturedMaterial>
+                </manufacturedProduct>
+            </consumable>
+            <component typeCode="COMP">
+                <ehrSupplyPrescribe classCode="SPLY" moodCode="RQO">
+                    <id root="D0585604-4D1C-11E3-A2DD-010000000161"/>
+                    <code code="394823007" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="NHS prescription"/>
+                    <statusCode code="COMPLETE"/>
+                    <availabilityTime value="20101209"/>
+                    <quantity value="5" unit="1">
+                        <translation value="5">
+                            <originalText>ampoules</originalText>
+                        </translation>
+                    </quantity>
+                    <inFulfillmentOf typeCode="FLFS">
+                        <priorMedicationRef classCode="SBADM" moodCode="INT">
+                            <id root="CFED8643-4D1C-11E3-A2DD-010000000161"/>
+                        </priorMedicationRef>
+                    </inFulfillmentOf>
+                    <pertinentInformation typeCode="PERT">
+                        <pertinentSupplyAnnotation classCode="OBS" moodCode="EVN">
+                            <text>These are some Script Notes</text>
+                        </pertinentSupplyAnnotation>
+                    </pertinentInformation>
+                </ehrSupplyPrescribe>
+            </component>
+            <pertinentInformation typeCode="PERT">
+                <pertinentMedicationDosage classCode="SBADM" moodCode="RMD">
+                    <text>[08:00-1 Amp][12:00-1 Amp][16:00-1 Amp][22:00-1 Amp][00:00-1 Amp]</text>
+                </pertinentMedicationDosage>
+            </pertinentInformation>
+        </MedicationStatement>
+    </component>
+</ehrComposition>

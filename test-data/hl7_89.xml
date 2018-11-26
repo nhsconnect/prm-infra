@@ -1,0 +1,3227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RCMR_IN030000UK06 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3">
+  <id root="921B269D-ABA6-47BB-A9CB-EACAFFAA6DCE"/>
+  <creationTime value="20131029135719"/>
+  <versionCode code="V3NPfIT3.1.10"/>
+  <interactionId root="2.16.840.1.113883.2.1.3.2.4.12" extension="RCMR_IN030000UK06"/>
+  <processingCode code="P"/>
+  <processingModeCode code="T"/>
+  <acceptAckCode code="NE"/>
+  <communicationFunctionRcv typeCode="RCV">
+    <device classCode="DEV" determinerCode="INSTANCE">
+      <id root="1.2.826.0.1285.0.2.0.107" extension="UNKNOWN"/>
+    </device>
+  </communicationFunctionRcv>
+  <communicationFunctionSnd typeCode="SND">
+    <device classCode="DEV" determinerCode="INSTANCE">
+      <id root="1.2.826.0.1285.0.2.0.107" extension="50004"/>
+    </device>
+  </communicationFunctionSnd>
+  <ControlActEvent classCode="CACT" moodCode="EVN">
+    <author1 typeCode="AUT">
+      <AgentSystemSDS classCode="AGNT">
+        <agentSystemSDS classCode="DEV" determinerCode="INSTANCE">
+          <id root="1.2.826.0.1285.0.2.0.107" extension="50004"/>
+        </agentSystemSDS>
+      </AgentSystemSDS>
+    </author1>
+    <subject typeCode="SUBJ" contextConductionInd="false">
+      <EhrExtract>
+        <id root="BEB6BB94-4A4C-4F9B-8655-A78DD9348EF3"/>
+        <statusCode code="COMPLETE"/>
+        <availabilityTime value="20131029135719"/>
+        <recordTarget>
+          <patient>
+            <id root="2.16.840.1.113883.2.1.3.2.4.9" extension="ZZZZ 999"/>
+          </patient>
+        </recordTarget>
+        <author>
+          <time value="20131029135719"/>
+          <signatureCode code="S"/>
+          <signatureText representation="TXT">X</signatureText>
+          <AgentOrgSDS classCode="DEV">
+            <agentOrganizationSDS classCode="DEV" determinerCode="INSTANCE">
+              <id root="1.2.826.0.1285.0.2.0.107" extension="EMIS"/>
+            </agentOrganizationSDS>
+          </AgentOrgSDS>
+        </author>
+        <destination typeCode="DST">
+          <AgentOrgSDS classCode="AGNT">
+            <agentOrganizationSDS classCode="ORG" determinerCode="INSTANCE">
+              <id root="1.2.826.0.1285.0.1.10" extension="UNKNOWN"/>
+            </agentOrganizationSDS>
+          </AgentOrgSDS>
+        </destination>
+        <component>
+          <ehrFolder>
+            <id root="E2C2E10B-5740-43FA-A1EE-601C8D1AB5A8"/>
+            <statusCode code="COMPLETE"/>
+            <effectiveTime>
+              <low value="20070508"/>
+              <high value="20131029"/>
+            </effectiveTime>
+            <availabilityTime value="20131029135719"/>
+            <author>
+              <time value="20131029135719"/>
+              <AgentOrgSDS>
+                <agentOrganizationSDS>
+                  <id root="1.2.826.0.1285.0.1.10" extension="50004"/>
+                </agentOrganizationSDS>
+              </AgentOrgSDS>
+            </author>
+            <responsibleParty>
+              <agentDirectory>
+                <part>
+                  <Agent>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                    <id root="2.16.840.1.113883.2.1.4.2" extension="999"/>
+                    <code code="309394004" displayName="General Practitioner Principal">
+                      <originalText>Principal</originalText>
+                    </code>
+                    <agentPerson>
+                      <name>
+                        <family>BODY</family>
+                        <given>ANY</given>
+                        <prefix>Dr</prefix>
+                      </name>
+                    </agentPerson>
+                  </Agent>
+                </part>
+                <part>
+                  <Agent>
+                    <id root="0413BD60-7352-4454-BF27-90C6275EA2E1"/>
+                    <id root="2.16.840.1.113883.2.1.4.2" extension="G9876541"/>
+                    <code code="309394004" displayName="General Practitioner Principal">
+                      <originalText>Principal</originalText>
+                    </code>
+                    <agentPerson>
+                      <name>
+                        <family>Stables</family>
+                        <given>David</given>
+                        <prefix>Dr</prefix>
+                      </name>
+                    </agentPerson>
+                  </Agent>
+                </part>
+                <part>
+                  <Agent>
+                    <id root="041CC523-432E-4B60-86AF-69A927A07B03"/>
+                    <id root="2.16.840.1.113883.2.1.4.2" extension="G3333333"/>
+                    <code code="309394004" displayName="General Practitioner Principal">
+                      <originalText>Principal</originalText>
+                    </code>
+                    <agentPerson>
+                      <name>
+                        <family>Fraser</family>
+                        <given>Stanley</given>
+                        <prefix>Dr</prefix>
+                      </name>
+                    </agentPerson>
+                  </Agent>
+                </part>
+                <part>
+                  <Agent>
+                    <id root="0453CE95-2B3F-4FF9-8976-9D58BEBC541E"/>
+                    <code code="394741009" displayName="Other Health Professional">
+                      <originalText>Assistant</originalText>
+                    </code>
+                    <agentPerson>
+                      <name>
+                        <family>Unknown</family>
+                        <prefix>Doctor</prefix>
+                      </name>
+                    </agentPerson>
+                  </Agent>
+                </part>
+                <part>
+                  <Agent>
+                    <id root="62BB899E-7595-45F9-AC54-A2282DA3930B"/>
+                    <id root="2.16.840.1.113883.2.1.4.2" extension="CQ"/>
+                    <code code="309390008" displayName="Hospital Consultant">
+                      <originalText>Consultant</originalText>
+                    </code>
+                    <agentPerson>
+                      <name>
+                        <family>Waters</family>
+                        <given>A</given>
+                        <prefix>Dr</prefix>
+                      </name>
+                    </agentPerson>
+                  </Agent>
+                </part>
+                <part>
+                  <Agent>
+                    <id root="63D41951-FC15-40A8-A38E-5CDE8BACF49D"/>
+                    <id root="2.16.840.1.113883.2.1.4.2" extension="CK"/>
+                    <code code="309390008" displayName="Hospital Consultant">
+                      <originalText>Consultant</originalText>
+                    </code>
+                    <agentPerson>
+                      <name>
+                        <family>Rowe</family>
+                        <given>R</given>
+                        <prefix>Mr</prefix>
+                      </name>
+                    </agentPerson>
+                  </Agent>
+                </part>
+                <part>
+                  <Agent>
+                    <id root="5F62C25B-8D88-4314-9B8B-14DDDABCC608"/>
+                    <code code="394760002" displayName="GP Practice">
+                      <originalText>G.P.Surgery</originalText>
+                    </code>
+                    <agentOrganization>
+                      <id root="2.16.840.1.113883.2.1.4.3" extension="TESTS"/>
+                      <name>THE SURGERY</name>
+                    </agentOrganization>
+                  </Agent>
+                </part>
+                <part>
+                  <Agent>
+                    <id root="5F68023F-5642-4D53-979A-D3102B1C3F30"/>
+                    <code code="394730007" displayName="HealthCare Related Organisation">
+                      <originalText>Health Authority (trading)</originalText>
+                    </code>
+                    <agentOrganization>
+                      <name>Bradford FHSA</name>
+                    </agentOrganization>
+                  </Agent>
+                </part>
+                <part>
+                  <Agent>
+                    <id root="62BB99C3-461C-4DAF-85E1-64F2B82AAD5B"/>
+                    <code code="394755001" displayName="NHS Trust Site">
+                      <originalText>Hospital</originalText>
+                    </code>
+                    <agentOrganization>
+                      <name>Wharfedale Gen</name>
+                    </agentOrganization>
+                  </Agent>
+                </part>
+                <part>
+                  <Agent>
+                    <id root="63D2D291-2372-4142-A4F8-D109E2DE0E8F"/>
+                    <code code="394755001" displayName="NHS Trust Site">
+                      <originalText>Hospital</originalText>
+                    </code>
+                    <agentOrganization>
+                      <id root="2.16.840.1.113883.2.1.4.3" extension="HG"/>
+                      <name>Seacroft Hospital</name>
+                    </agentOrganization>
+                  </Agent>
+                </part>
+                <part>
+                  <Agent>
+                    <id root="D9844C38-3F8A-4DAB-9064-CC03D687E85F"/>
+                    <id root="2.16.840.1.113883.2.1.4.2" extension="CQ"/>
+                    <code code="309390008" displayName="Hospital Consultant">
+                      <originalText>Consultant</originalText>
+                    </code>
+                    <agentPerson>
+                      <name>
+                        <family>Waters</family>
+                        <given>A</given>
+                        <prefix>Dr</prefix>
+                      </name>
+                    </agentPerson>
+                    <representedOrganization>
+                      <name>Wharfedale Gen</name>
+                    </representedOrganization>
+                  </Agent>
+                </part>
+                <part>
+                  <Agent>
+                    <id root="3572EB28-5E1E-4A43-84C8-79D26CEEE2F5"/>
+                    <id root="2.16.840.1.113883.2.1.4.2" extension="CQ"/>
+                    <code code="309390008" displayName="Hospital Consultant">
+                      <originalText>Consultant</originalText>
+                    </code>
+                    <agentPerson>
+                      <name>
+                        <family>Waters</family>
+                        <given>A</given>
+                        <prefix>Dr</prefix>
+                      </name>
+                    </agentPerson>
+                    <representedOrganization>
+                      <id root="2.16.840.1.113883.2.1.4.3" extension="HG"/>
+                      <name>Seacroft Hospital</name>
+                    </representedOrganization>
+                  </Agent>
+                </part>
+              </agentDirectory>
+            </responsibleParty>
+            <component>
+              <ehrComposition>
+                <id root="8260A3B0-6E68-4230-9BE8-BE41EC7B5B9D"/>
+                <code code="25671000000102" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Surgery Consultation Note">
+                  <originalText>G.P.Surgery</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070508"/>
+                <author>
+                  <time value="20100901120611"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="0413BD60-7352-4454-BF27-90C6275EA2E1"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <CompoundStatement classCode="TOPIC">
+                    <id root="B16B911D-5E79-43F9-873B-686098B38EFE"/>
+                    <code code="Z....00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="UnspecifiedCondtions"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070508"/>
+                    <component>
+                      <CompoundStatement classCode="CATEGORY">
+                        <id root="478A6726-7A0F-4C28-85FF-C1A9268B6113"/>
+                        <code code="15621000000105" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="History">
+                          <originalText>History</originalText>
+                        </code>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20070508"/>
+                        <component>
+                          <CompoundStatement classCode="CATEGORY">
+                            <id root="A0E35133-D56F-4A69-AB7F-828B0FA1E811"/>
+                            <code code="14L..00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="H/O: drug allergy"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070508"/>
+                            <component>
+                              <ObservationStatement>
+                                <id root="8253CD7A-ED60-46D7-A917-35E1BD0EF949"/>
+                                <code code="ALLERGY-EMISDRUGNAME-17305NEMIS" codeSystem="2.16.840.1.113883.2.1.6.3" displayName="Adverse reaction to Amobarbital"/>
+                                <statusCode code="COMPLETE"/>
+                                <effectiveTime>
+                                  <center nullFlavor="NI"/>
+                                </effectiveTime>
+                                <availabilityTime value="20070508"/>
+                                <value xsi:type="CD" code="ALLERGY-EMISDRUGNAME-17305NEMIS" codeSystem="2.16.840.1.113883.2.1.6.3" displayName="Adverse reaction to Amobarbital"/>
+                                <pertinentInformation>
+                                  <sequenceNumber value="+1"/>
+                                  <pertinentAnnotation moodCode="EVN">
+                                    <text>This is the drug allergy by  Ingredient</text>
+                                  </pertinentAnnotation>
+                                </pertinentInformation>
+                              </ObservationStatement>
+                            </component>
+                          </CompoundStatement>
+                        </component>
+                        <component>
+                          <CompoundStatement classCode="CATEGORY">
+                            <id root="860ACE7D-F3CC-4447-905C-112A408443A0"/>
+                            <code code="14L..00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="H/O: drug allergy"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070508"/>
+                            <component>
+                              <ObservationStatement>
+                                <id root="82552AA5-C67B-4CDC-9D2C-6188CFE34685"/>
+                                <code code="ALLERGY-EMISDRUGGROUP-6.3" codeSystem="2.16.840.1.113883.2.1.6.3" displayName="Adverse reaction to Corticosteroids - Systemic"/>
+                                <statusCode code="COMPLETE"/>
+                                <effectiveTime>
+                                  <center nullFlavor="NI"/>
+                                </effectiveTime>
+                                <availabilityTime value="20070508"/>
+                                <value xsi:type="CD" code="ALLERGY-EMISDRUGGROUP-6.3" codeSystem="2.16.840.1.113883.2.1.6.3" displayName="Adverse reaction to Corticosteroids - Systemic"/>
+                                <pertinentInformation>
+                                  <sequenceNumber value="+1"/>
+                                  <pertinentAnnotation moodCode="EVN">
+                                    <text>This is the drug allergy by bnf chapter</text>
+                                  </pertinentAnnotation>
+                                </pertinentInformation>
+                              </ObservationStatement>
+                            </component>
+                          </CompoundStatement>
+                        </component>
+                        <component>
+                          <CompoundStatement classCode="CATEGORY">
+                            <id root="D5EDDAA7-6240-4C4A-932D-20920C5863EF"/>
+                            <code code="SN53.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Allergy, unspecified"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070508"/>
+                            <component>
+                              <ObservationStatement>
+                                <id root="82557AAE-6B7F-4498-9EC7-5754BB545EC8"/>
+                                <code code="ALLERGY-EMISNONDRUGALLERGY-latex" codeSystem="2.16.840.1.113883.2.1.6.3" displayName="Adverse reaction to Latex"/>
+                                <statusCode code="COMPLETE"/>
+                                <effectiveTime>
+                                  <center nullFlavor="NI"/>
+                                </effectiveTime>
+                                <availabilityTime value="20070508"/>
+                              </ObservationStatement>
+                            </component>
+                          </CompoundStatement>
+                        </component>
+                      </CompoundStatement>
+                    </component>
+                    <component>
+                      <CompoundStatement classCode="CATEGORY">
+                        <id root="C2E1C9CA-9DAF-4A34-86C5-C9E10FF39105"/>
+                        <code code="394841004" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Comment">
+                          <originalText>Comment</originalText>
+                        </code>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20070508"/>
+                        <component>
+                          <CompoundStatement classCode="CATEGORY">
+                            <id root="E902B3F6-5E71-4FDA-9A72-BA1C3404CBC2"/>
+                            <code code="14L..00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="H/O: drug allergy"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070508"/>
+                            <component>
+                              <ObservationStatement>
+                                <id root="8255B052-5876-4751-B6D1-70F8F2DC225F"/>
+                                <code code="TJ70000" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Adverse reaction to amylobarbitone"/>
+                                <statusCode code="COMPLETE"/>
+                                <effectiveTime>
+                                  <center nullFlavor="NI"/>
+                                </effectiveTime>
+                                <availabilityTime value="20070508"/>
+                                <value xsi:type="CD" code="ALLERGY-READ2-TJ700" codeSystem="2.16.840.1.113883.2.1.6.3" displayName="Adverse reaction to amylobarbitone"/>
+                                <pertinentInformation>
+                                  <sequenceNumber value="+1"/>
+                                  <pertinentAnnotation moodCode="EVN">
+                                    <text>This is a read coded drug allergy</text>
+                                  </pertinentAnnotation>
+                                </pertinentInformation>
+                              </ObservationStatement>
+                            </component>
+                          </CompoundStatement>
+                        </component>
+                      </CompoundStatement>
+                    </component>
+                    <component>
+                      <CompoundStatement classCode="CATEGORY">
+                        <id root="9BFF37AA-C2F8-456F-BFD8-7FD9FDDFBEEB"/>
+                        <code code="394841004" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Other">
+                          <originalText>Additional</originalText>
+                        </code>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20070508"/>
+                        <component>
+                          <CompoundStatement classCode="CATEGORY">
+                            <id root="661C1838-397A-40B5-A65D-61994014C9BB"/>
+                            <code code="SN53.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Allergy, unspecified"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070508"/>
+                            <component>
+                              <ObservationStatement>
+                                <id root="82557E86-0C42-413C-A0E3-B2F5C084C690"/>
+                                <code code="ALLERGY-EMISNONDRUGALLERGY-wasp" codeSystem="2.16.840.1.113883.2.1.6.3" displayName="Adverse reaction to Wasp"/>
+                                <statusCode code="COMPLETE"/>
+                                <effectiveTime>
+                                  <center nullFlavor="NI"/>
+                                </effectiveTime>
+                                <availabilityTime value="20070508"/>
+                                <pertinentInformation>
+                                  <sequenceNumber value="+1"/>
+                                  <pertinentAnnotation moodCode="EVN">
+                                    <text>This is the non drug allergy</text>
+                                  </pertinentAnnotation>
+                                </pertinentInformation>
+                              </ObservationStatement>
+                            </component>
+                          </CompoundStatement>
+                        </component>
+                        <component>
+                          <CompoundStatement classCode="CATEGORY">
+                            <id root="7D8B0E86-236B-4752-B329-D70906FF7367"/>
+                            <code code="14L..00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="H/O: drug allergy"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070508"/>
+                            <component>
+                              <ObservationStatement>
+                                <id root="8254BF7B-C294-4956-83C9-616BF10797A2"/>
+                                <code code="ALLERGY-EMISDRUGNAME-4307EGTON" codeSystem="2.16.840.1.113883.2.1.6.3" displayName="Adverse reaction to Elastoplast"/>
+                                <statusCode code="COMPLETE"/>
+                                <effectiveTime>
+                                  <center nullFlavor="NI"/>
+                                </effectiveTime>
+                                <availabilityTime value="20070508"/>
+                                <value xsi:type="CD" code="ALLERGY-EMISDRUGNAME-4307EGTON" codeSystem="2.16.840.1.113883.2.1.6.3" displayName="Adverse reaction to Elastoplast"/>
+                                <pertinentInformation>
+                                  <sequenceNumber value="+1"/>
+                                  <pertinentAnnotation moodCode="EVN">
+                                    <text>This is really a drug allergy</text>
+                                  </pertinentAnnotation>
+                                </pertinentInformation>
+                              </ObservationStatement>
+                            </component>
+                          </CompoundStatement>
+                        </component>
+                      </CompoundStatement>
+                    </component>
+                  </CompoundStatement>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="8261C802-EA27-4608-8AC0-32C22C251D2C"/>
+                <code code="25671000000102" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Surgery Consultation Note">
+                  <originalText>G.P.Surgery</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070509"/>
+                <author>
+                  <time value="20100901121257"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="0413BD60-7352-4454-BF27-90C6275EA2E1"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <CompoundStatement classCode="TOPIC">
+                    <id root="AE73B7F9-3644-4CB5-B160-FEA16DF4E6BA"/>
+                    <code code="Z....00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="UnspecifiedCondtions"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                    <component>
+                      <CompoundStatement classCode="CATEGORY">
+                        <id root="4AC07B08-FBE2-47F5-ABB0-9F2637BF860D"/>
+                        <code code="25721000000107" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Template entry">
+                          <originalText>Template entry</originalText>
+                        </code>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20070509"/>
+                        <component>
+                          <ObservationStatement>
+                            <id root="8256A1E0-503B-419C-84A5-747259AF8BC5"/>
+                            <code code="65I1.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="First DTP (triple)+polio vacc."/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070306"/>
+                            <pertinentInformation>
+                              <sequenceNumber value="+1"/>
+                              <pertinentAnnotation moodCode="EVN">
+                                <text>G.P.Surgery (ghjghjhjhjghjhj)</text>
+                              </pertinentAnnotation>
+                            </pertinentInformation>
+                          </ObservationStatement>
+                        </component>
+                        <component>
+                          <ObservationStatement>
+                            <id root="8255B5DE-1CED-4E19-96A9-32070DE25800"/>
+                            <code code="65I2.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Second DTP (triple)+polio vacc"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070406"/>
+                            <pertinentInformation>
+                              <sequenceNumber value="+1"/>
+                              <pertinentAnnotation moodCode="EVN">
+                                <text>G.P.Surgery (kjhjkjhjkjkj)</text>
+                              </pertinentAnnotation>
+                            </pertinentInformation>
+                          </ObservationStatement>
+                        </component>
+                        <component>
+                          <ObservationStatement>
+                            <id root="824425C0-8045-4EC9-9495-EA321634E16B"/>
+                            <code code="65I3.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Third DTP (triple)+polio vacc."/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <pertinentInformation>
+                              <sequenceNumber value="+1"/>
+                              <pertinentAnnotation moodCode="EVN">
+                                <text>G.P.Surgery G.P.Surgery (jhjhjuhj)</text>
+                              </pertinentAnnotation>
+                            </pertinentInformation>
+                          </ObservationStatement>
+                        </component>
+                        <component>
+                          <ObservationStatement>
+                            <id root="82450894-1D9D-4BDC-940F-D03CA311A466"/>
+                            <code code="65K1.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="First DT (double)+polio vacc."/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <pertinentInformation>
+                              <sequenceNumber value="+1"/>
+                              <pertinentAnnotation moodCode="EVN">
+                                <text>G.P.Surgery G.P.Surgery (uuyyyyy)</text>
+                              </pertinentAnnotation>
+                            </pertinentInformation>
+                          </ObservationStatement>
+                        </component>
+                        <component>
+                          <ObservationStatement>
+                            <id root="8245409B-647A-45FB-8FBA-0039846AB1CE"/>
+                            <code code="65K2.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Second DT (double)+polio vacc."/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <pertinentInformation>
+                              <sequenceNumber value="+1"/>
+                              <pertinentAnnotation moodCode="EVN">
+                                <text>G.P.Surgery G.P.Surgery (jjjjjj)</text>
+                              </pertinentAnnotation>
+                            </pertinentInformation>
+                          </ObservationStatement>
+                        </component>
+                        <component>
+                          <ObservationStatement>
+                            <id root="82466FC4-100C-44DC-BC1C-8412094548CE"/>
+                            <code code="65K3.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Third DT (double)+polio vacc."/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <pertinentInformation>
+                              <sequenceNumber value="+1"/>
+                              <pertinentAnnotation moodCode="EVN">
+                                <text>Community Health Clinic Community Health Clinic</text>
+                              </pertinentAnnotation>
+                            </pertinentInformation>
+                          </ObservationStatement>
+                        </component>
+                        <component>
+                          <ObservationStatement>
+                            <id root="823BDE5F-7CDB-4DD2-BDA4-FA7BF502D734"/>
+                            <code code="657A.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="1st haemophilus B vaccination"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <pertinentInformation>
+                              <sequenceNumber value="+1"/>
+                              <pertinentAnnotation moodCode="EVN">
+                                <text>G.P.Surgery G.P.Surgery (yyyyy)</text>
+                              </pertinentAnnotation>
+                            </pertinentInformation>
+                          </ObservationStatement>
+                        </component>
+                        <component>
+                          <ObservationStatement>
+                            <id root="823E288E-542E-4DDB-B4E6-6A40F1310C68"/>
+                            <code code="657B.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="2nd haemophilus B vaccination"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <pertinentInformation>
+                              <sequenceNumber value="+1"/>
+                              <pertinentAnnotation moodCode="EVN">
+                                <text>G.P.Surgery G.P.Surgery (gghhhh)</text>
+                              </pertinentAnnotation>
+                            </pertinentInformation>
+                          </ObservationStatement>
+                        </component>
+                        <component>
+                          <ObservationStatement>
+                            <id root="82402C1B-0FA9-41FF-AB6A-0C25CE555BA6"/>
+                            <code code="657C.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="3rd haemophilus B vaccination"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <pertinentInformation>
+                              <sequenceNumber value="+1"/>
+                              <pertinentAnnotation moodCode="EVN">
+                                <text>G.P.Surgery G.P.Surgery (iiiiii)</text>
+                              </pertinentAnnotation>
+                            </pertinentInformation>
+                          </ObservationStatement>
+                        </component>
+                        <component>
+                          <ObservationStatement>
+                            <id root="82420FB3-8B42-41F4-997D-55B28D44BBD9"/>
+                            <code code="657D.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Booster (single) haemophilus B vaccination"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <pertinentInformation>
+                              <sequenceNumber value="+1"/>
+                              <pertinentAnnotation moodCode="EVN">
+                                <text>G.P.Surgery G.P.Surgery (jjjjjj)</text>
+                              </pertinentAnnotation>
+                            </pertinentInformation>
+                          </ObservationStatement>
+                        </component>
+                        <component>
+                          <ObservationStatement>
+                            <id root="82472247-82C4-4E43-B7CB-C3E67488FDEB"/>
+                            <code code="65M1.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Measles/mumps/rubella vaccn."/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <pertinentInformation>
+                              <sequenceNumber value="+1"/>
+                              <pertinentAnnotation moodCode="EVN">
+                                <text>G.P.Surgery G.P.Surgery (jjjjj)</text>
+                              </pertinentAnnotation>
+                            </pertinentInformation>
+                          </ObservationStatement>
+                        </component>
+                        <component>
+                          <ObservationStatement>
+                            <id root="8242A80B-5B70-45BB-9360-E8A6B25D8855"/>
+                            <code code="65A1.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Measles vaccination"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <pertinentInformation>
+                              <sequenceNumber value="+1"/>
+                              <pertinentAnnotation moodCode="EVN">
+                                <text>G.P.Surgery G.P.Surgery (hhhh)</text>
+                              </pertinentAnnotation>
+                            </pertinentInformation>
+                          </ObservationStatement>
+                        </component>
+                      </CompoundStatement>
+                    </component>
+                  </CompoundStatement>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="826287E2-D310-4DBE-A13E-70EB9BB41DAC"/>
+                <code code="25671000000102" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Surgery Consultation Note">
+                  <originalText>G.P.Surgery</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070509"/>
+                <author>
+                  <time value="20100901121337"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="0413BD60-7352-4454-BF27-90C6275EA2E1"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <CompoundStatement classCode="TOPIC">
+                    <id root="679C8FBA-3B2B-403A-954B-DD776A3E2183"/>
+                    <code code="Z....00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="UnspecifiedCondtions"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                    <component>
+                      <CompoundStatement classCode="CATEGORY">
+                        <id root="B9DD394C-E1C2-4CCD-9B73-CC161C9A2B48"/>
+                        <code code="394841004" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Other">
+                          <originalText>Additional</originalText>
+                        </code>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20070509"/>
+                        <component>
+                          <ObservationStatement>
+                            <id root="8234A1EA-A49F-4B1F-AF26-B9DDAF17CBD6"/>
+                            <code code="652..00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Typhoid vaccination"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <pertinentInformation>
+                              <sequenceNumber value="+1"/>
+                              <pertinentAnnotation moodCode="EVN">
+                                <text>G.P.Surgery This is the typhoid vacc standalone</text>
+                              </pertinentAnnotation>
+                            </pertinentInformation>
+                          </ObservationStatement>
+                        </component>
+                        <component>
+                          <ObservationStatement>
+                            <id root="823518AB-FBA9-4C21-A51A-6488E9F58A89"/>
+                            <code code="653..00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Tuberculosis (BCG) vaccination"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <pertinentInformation>
+                              <sequenceNumber value="+1"/>
+                              <pertinentAnnotation moodCode="EVN">
+                                <text>G.P.Surgery This is the BCG</text>
+                              </pertinentAnnotation>
+                            </pertinentInformation>
+                          </ObservationStatement>
+                        </component>
+                      </CompoundStatement>
+                    </component>
+                  </CompoundStatement>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="82629461-7B66-4FA5-83DE-8ED767DFDAA7"/>
+                <code code="25671000000102" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Surgery Consultation Note">
+                  <originalText>G.P.Surgery</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070509"/>
+                <author>
+                  <time value="20100901122016"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="0413BD60-7352-4454-BF27-90C6275EA2E1"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <CompoundStatement classCode="TOPIC">
+                    <id root="DC1E7FCD-6F35-4E96-98DF-1739A6D6A1F7"/>
+                    <code code="A1...00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Tuberculosis"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                    <component>
+                      <CompoundStatement classCode="CATEGORY">
+                        <id root="33FE8A4D-B222-4749-AB31-168202E8A864"/>
+                        <code code="394841004" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Other">
+                          <originalText>Problem title</originalText>
+                        </code>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20070509"/>
+                        <component>
+                          <ObservationStatement>
+                            <id root="822E8D33-57A5-44B7-8119-D6C93DB36065"/>
+                            <code code="A1...00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Tuberculosis">
+                              <qualifier>
+                                <name code="255217005" displayName="First"/>
+                              </qualifier>
+                            </code>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <pertinentInformation>
+                              <sequenceNumber value="+1"/>
+                              <pertinentAnnotation moodCode="EVN">
+                                <text>This could be the plague</text>
+                              </pertinentAnnotation>
+                            </pertinentInformation>
+                          </ObservationStatement>
+                        </component>
+                      </CompoundStatement>
+                    </component>
+                    <component>
+                      <CompoundStatement classCode="CATEGORY">
+                        <id root="2570A21D-0BC8-47A7-93CE-76CF0F30AFBD"/>
+                        <code code="394841004" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Other">
+                          <originalText>Additional</originalText>
+                        </code>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20070509"/>
+                        <component>
+                          <ObservationStatement>
+                            <id root="823574F6-07EC-430A-9E17-C0D8FCA5C617"/>
+                            <code code="1683.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Tired all the time"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                          </ObservationStatement>
+                        </component>
+                      </CompoundStatement>
+                    </component>
+                  </CompoundStatement>
+                </component>
+                <component>
+                  <LinkSet>
+                    <id root="118F5A28-5121-4868-844E-1A878A5C86C8"/>
+                    <code code="394774009" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Active Problem">
+                      <originalText>Active Problem, significant</originalText>
+                      <qualifier>
+                        <name code="386134007" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Significant"/>
+                      </qualifier>
+                    </code>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <low value="20070509"/>
+                    </effectiveTime>
+                    <availabilityTime value="20100901122016"/>
+                    <component>
+                      <statementRef classCode="SBADM" moodCode="EVN">
+                        <id root="823059DE-8C96-449A-AA8D-5E96284136F4"/>
+                      </statementRef>
+                    </component>
+                    <conditionNamed inversionInd="true">
+                      <namedStatementRef classCode="OBS" moodCode="EVN">
+                        <id root="822E8D33-57A5-44B7-8119-D6C93DB36065"/>
+                      </namedStatementRef>
+                    </conditionNamed>
+                  </LinkSet>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="82638349-B085-4190-A552-E6624C189B93"/>
+                <code code="25671000000102" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Surgery Consultation Note">
+                  <originalText>G.P.Surgery</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070509"/>
+                <author>
+                  <time value="20100901122246"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="0413BD60-7352-4454-BF27-90C6275EA2E1"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <CompoundStatement classCode="TOPIC">
+                    <id root="92274289-E333-4737-986B-7D328AB9D8EB"/>
+                    <code code="A08..11" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Gastric flu"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                    <component>
+                      <CompoundStatement classCode="CATEGORY">
+                        <id root="761A9D24-65F8-4A16-8148-D9FF8270A31E"/>
+                        <code code="394841004" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Other">
+                          <originalText>Problem title</originalText>
+                        </code>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20070509"/>
+                        <component>
+                          <ObservationStatement>
+                            <id root="82495408-17AA-4762-B07E-3391BF538F86"/>
+                            <code code="A08..11" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Gastric flu">
+                              <qualifier>
+                                <name code="255217005" displayName="First"/>
+                              </qualifier>
+                            </code>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                          </ObservationStatement>
+                        </component>
+                      </CompoundStatement>
+                    </component>
+                  </CompoundStatement>
+                </component>
+                <component>
+                  <LinkSet>
+                    <id root="8CE21268-B0D5-444A-95BF-574EC3FF5E6E"/>
+                    <code code="394774009" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Active Problem">
+                      <originalText>Active Problem, significant</originalText>
+                      <qualifier>
+                        <name code="386134007" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Significant"/>
+                      </qualifier>
+                    </code>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <low value="20070509"/>
+                    </effectiveTime>
+                    <availabilityTime value="20100901122246"/>
+                    <component>
+                      <statementRef classCode="OBS" moodCode="EVN">
+                        <id root="6CDA1509-C175-4555-BC72-975F0DB230B3"/>
+                      </statementRef>
+                    </component>
+                    <conditionNamed inversionInd="true">
+                      <namedStatementRef classCode="OBS" moodCode="EVN">
+                        <id root="82495408-17AA-4762-B07E-3391BF538F86"/>
+                      </namedStatementRef>
+                    </conditionNamed>
+                  </LinkSet>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="82640D4E-7BD8-4AD7-9BCE-5D9CDB94051C"/>
+                <code code="25671000000102" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Surgery Consultation Note">
+                  <originalText>G.P.Surgery</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070509"/>
+                <author>
+                  <time value="20100901122933"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="0413BD60-7352-4454-BF27-90C6275EA2E1"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <CompoundStatement classCode="TOPIC">
+                    <id root="31B64CCE-7739-473D-8C80-61C52E87F465"/>
+                    <code code="A1...00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Tuberculosis"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                    <component>
+                      <CompoundStatement classCode="CATEGORY">
+                        <id root="B1C15C7E-061E-4E34-B0B6-C68FCD19CE0A"/>
+                        <code code="394841004" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Other">
+                          <originalText>Problem title</originalText>
+                        </code>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20070509"/>
+                        <component>
+                          <ObservationStatement>
+                            <id root="8253C5B6-AA6D-4F21-8C52-7D50C14E3A3C"/>
+                            <code code="A1...00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Tuberculosis">
+                              <qualifier>
+                                <name code="303350001" displayName="Ongoing">
+                                  <originalText>Review</originalText>
+                                </name>
+                              </qualifier>
+                            </code>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                          </ObservationStatement>
+                        </component>
+                      </CompoundStatement>
+                    </component>
+                    <component>
+                      <CompoundStatement classCode="CATEGORY">
+                        <id root="71184356-21CE-4A30-A64A-67AE6343EC87"/>
+                        <code code="394841004" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Other">
+                          <originalText>Medication</originalText>
+                        </code>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20070509"/>
+                        <component>
+                          <MedicationStatement moodCode="INT">
+                            <id root="B34A9737-BF77-4DAF-9C44-9002F39C1346"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <consumable>
+                              <manufacturedProduct>
+                                <manufacturedMaterial determinerCode="KIND">
+                                  <code code="CAIN4674" codeSystem="2.16.840.1.113883.2.1.6.9" displayName="Capreomycin  Injection  1 million units/vial">
+                                    <translation code="324455006" codeSystem="2.16.840.1.113883.2.1.3.2.4.15"/>
+                                  </code>
+                                  <quantity value="1" unit="1">
+                                    <translation value="1">
+                                      <originalText>vial(s)</originalText>
+                                    </translation>
+                                  </quantity>
+                                </manufacturedMaterial>
+                              </manufacturedProduct>
+                            </consumable>
+                            <component>
+                              <ehrSupplyAuthorise moodCode="INT">
+                                <id root="823059DE-8C96-449A-AA8D-5E96284136F4"/>
+                                <code code="9bG0" displayName="NHS Prescription"/>
+                                <statusCode code="COMPLETE"/>
+                                <effectiveTime>
+                                  <center nullFlavor="NI"/>
+                                </effectiveTime>
+                                <availabilityTime value="20070509"/>
+                                <repeatNumber value="0"/>
+                                <quantity value="1" unit="1">
+                                  <translation value="1">
+                                    <originalText>vial(s)</originalText>
+                                  </translation>
+                                </quantity>
+                              </ehrSupplyAuthorise>
+                            </component>
+                            <pertinentInformation>
+                              <pertinentMedicationDosage moodCode="RMD">
+                                <text>USE AS DIRECTED</text>
+                              </pertinentMedicationDosage>
+                            </pertinentInformation>
+                          </MedicationStatement>
+                        </component>
+                        <component>
+                          <NarrativeStatement>
+                            <id root="6AE3EEA5-71AF-4FF5-80E8-94FC9A3DA106"/>
+                            <text>Capreomycin Injection 1 million units/vial 1</text>
+                            <statusCode code="COMPLETE"/>
+                            <availabilityTime value="20070509"/>
+                          </NarrativeStatement>
+                        </component>
+                      </CompoundStatement>
+                    </component>
+                  </CompoundStatement>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="82643751-AE19-47BB-BD29-C34B67E266F8"/>
+                <code code="25671000000102" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Surgery Consultation Note">
+                  <originalText>G.P.Surgery</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070509"/>
+                <author>
+                  <time value="20100901123330"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="0413BD60-7352-4454-BF27-90C6275EA2E1"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <CompoundStatement classCode="TOPIC">
+                    <id root="9BA7E1AF-247D-4735-B161-B65623CE5970"/>
+                    <code code="G20..00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Essential hypertension"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                    <component>
+                      <CompoundStatement classCode="CATEGORY">
+                        <id root="075E53FA-F9C4-4868-89A1-161F83F57136"/>
+                        <code code="394841004" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Other">
+                          <originalText>Problem title</originalText>
+                        </code>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20070509"/>
+                        <component>
+                          <ObservationStatement>
+                            <id root="824F1EB2-F4CE-4631-AE13-6A6901099484"/>
+                            <code code="G20..00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Essential hypertension">
+                              <qualifier>
+                                <name code="288527008" displayName="New"/>
+                              </qualifier>
+                            </code>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <pertinentInformation>
+                              <sequenceNumber value="+1"/>
+                              <pertinentAnnotation moodCode="EVN">
+                                <text>(Thhilkklkl) </text>
+                              </pertinentAnnotation>
+                            </pertinentInformation>
+                          </ObservationStatement>
+                        </component>
+                      </CompoundStatement>
+                    </component>
+                    <component>
+                      <CompoundStatement classCode="CATEGORY">
+                        <id root="0C2156F9-407A-4E28-A6B0-7E40C5259370"/>
+                        <code code="25721000000107" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Template entry">
+                          <originalText>Template entry</originalText>
+                        </code>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20070509"/>
+                        <component>
+                          <CompoundStatement classCode="BATTERY">
+                            <id root="DB36431B-26BE-42C8-A0E5-4A78AAAE686A"/>
+                            <code code="246..00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="O/E blood pressure reading"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <component>
+                              <ObservationStatement>
+                                <id root="8256CF5C-DC4F-4D3B-B21D-1E31CBDAC8D7"/>
+                                <code code="2469.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Systolic blood pressure"/>
+                                <statusCode code="COMPLETE"/>
+                                <effectiveTime>
+                                  <center nullFlavor="NI"/>
+                                </effectiveTime>
+                                <availabilityTime value="20070509"/>
+                                <value xsi:type="PQ" value="170" unit="1">
+                                  <translation value="170">
+                                    <originalText>mm Hg</originalText>
+                                  </translation>
+                                </value>
+                              </ObservationStatement>
+                            </component>
+                            <component>
+                              <ObservationStatement>
+                                <id root="8257C9E7-9C8E-474D-9BAD-D00205B928C5"/>
+                                <code code="246A.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Diastolic blood pressure"/>
+                                <statusCode code="COMPLETE"/>
+                                <effectiveTime>
+                                  <center nullFlavor="NI"/>
+                                </effectiveTime>
+                                <availabilityTime value="20070509"/>
+                                <value xsi:type="PQ" value="70" unit="1">
+                                  <translation value="70">
+                                    <originalText>mm Hg</originalText>
+                                  </translation>
+                                </value>
+                              </ObservationStatement>
+                            </component>
+                          </CompoundStatement>
+                        </component>
+                      </CompoundStatement>
+                    </component>
+                  </CompoundStatement>
+                </component>
+                <component>
+                  <LinkSet>
+                    <id root="EE8E11DA-FAC8-42D5-9EFA-BD776A0EC988"/>
+                    <code code="394775005" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Inactive Problem">
+                      <originalText>Past Problem, significant</originalText>
+                      <qualifier>
+                        <name code="386134007" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Significant"/>
+                      </qualifier>
+                    </code>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <low value="20070509"/>
+                      <high nullFlavor="UNK"/>
+                    </effectiveTime>
+                    <availabilityTime value="20100901123330"/>
+                    <conditionNamed inversionInd="true">
+                      <namedStatementRef classCode="OBS" moodCode="EVN">
+                        <id root="824F1EB2-F4CE-4631-AE13-6A6901099484"/>
+                      </namedStatementRef>
+                    </conditionNamed>
+                  </LinkSet>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="82644CE0-407D-47D5-9435-2DC28B86672D"/>
+                <code code="25671000000102" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Surgery Consultation Note">
+                  <originalText>G.P.Surgery</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070509"/>
+                <author>
+                  <time value="20100901123915"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="0413BD60-7352-4454-BF27-90C6275EA2E1"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <CompoundStatement classCode="TOPIC">
+                    <id root="07E14D2B-6293-4EB6-BD78-D3950698123E"/>
+                    <code code="Z....00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="UnspecifiedCondtions"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                    <component>
+                      <CompoundStatement classCode="CATEGORY">
+                        <id root="DA7CA304-4171-4B51-A66D-8E48BA4F944F"/>
+                        <code code="394617004" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Result">
+                          <originalText>Lab results</originalText>
+                        </code>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20070509"/>
+                        <component>
+                          <ObservationStatement>
+                            <id root="8235E6BC-04FA-4467-AA98-691C740DB572"/>
+                            <code code="4696.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Urine blood test = ++"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                          </ObservationStatement>
+                        </component>
+                        <component>
+                          <ObservationStatement>
+                            <id root="82359A91-7EC7-4E01-94BC-969D951152AE"/>
+                            <code code="4667.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Urine glucose test = ++++"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <pertinentInformation>
+                              <sequenceNumber value="+1"/>
+                              <pertinentAnnotation moodCode="EVN">
+                                <text>This is the Urine test result comment</text>
+                              </pertinentAnnotation>
+                            </pertinentInformation>
+                          </ObservationStatement>
+                        </component>
+                        <component>
+                          <ObservationStatement>
+                            <id root="825BFDDE-525D-44F4-8A5F-CFBA8370356D"/>
+                            <code code="44M3.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Serum total protein"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <value xsi:type="PQ" value="75" unit="1">
+                              <translation value="75">
+                                <originalText>g/l</originalText>
+                              </translation>
+                            </value>
+                          </ObservationStatement>
+                        </component>
+                      </CompoundStatement>
+                    </component>
+                  </CompoundStatement>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="8264AEE0-5B82-4187-A7D9-E8571C1A9BBA"/>
+                <code code="25671000000102" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Surgery Consultation Note">
+                  <originalText>G.P.Surgery</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070509"/>
+                <author>
+                  <time value="20100901124933"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="0413BD60-7352-4454-BF27-90C6275EA2E1"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <CompoundStatement classCode="TOPIC">
+                    <id root="45259D66-F658-40CC-84E4-747D28AA3E7D"/>
+                    <code code="Z....00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="UnspecifiedCondtions"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                    <component>
+                      <CompoundStatement classCode="CATEGORY">
+                        <id root="A13F56D5-1C9D-47FD-A261-ED89D302C3E0"/>
+                        <code code="394617004" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Result">
+                          <originalText>Lab results</originalText>
+                        </code>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20070509"/>
+                        <component>
+                          <ObservationStatement>
+                            <id root="825C7F09-7869-40BC-B72B-88F2EF5F4DE6"/>
+                            <code code="44M3.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Serum total protein"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <value xsi:type="PQ" value="0" unit="1">
+                              <translation value="0">
+                                <originalText>g/l</originalText>
+                              </translation>
+                            </value>
+                          </ObservationStatement>
+                        </component>
+                        <component>
+                          <ObservationStatement>
+                            <id root="82379B16-C073-4544-9667-272ECF1D21DE"/>
+                            <code code="44D9.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Whole blood pyruvate level"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                          </ObservationStatement>
+                        </component>
+                        <component>
+                          <ObservationStatement>
+                            <id root="8238A884-53F6-43DC-8A1F-8C8B1113F328"/>
+                            <code code="44O2.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Serum lipids normal"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                          </ObservationStatement>
+                        </component>
+                        <component>
+                          <ObservationStatement>
+                            <id root="823B01EB-CA38-4340-B8D4-66E92D4D8B70"/>
+                            <code code="44P..00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Serum cholesterol"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <value xsi:type="IVL_PQ">
+                              <low value="23" unit="1" inclusive="false">
+                                <translation value="23">
+                                  <originalText>mmol/l</originalText>
+                                </translation>
+                              </low>
+                            </value>
+                            <interpretationCode code="PA"/>
+                            <referenceRange>
+                              <referenceInterpretationRange>
+                                <value>
+                                  <high value="5.2"/>
+                                </value>
+                              </referenceInterpretationRange>
+                            </referenceRange>
+                          </ObservationStatement>
+                        </component>
+                        <component>
+                          <ObservationStatement>
+                            <id root="823BD5A9-E9C4-4B1E-B6F7-DA51CDA5937D"/>
+                            <code code="44Q..00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Serum triglycerides"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <value xsi:type="IVL_PQ">
+                              <high value="6" unit="1" inclusive="false">
+                                <translation value="6">
+                                  <originalText>mmol/l</originalText>
+                                </translation>
+                              </high>
+                            </value>
+                            <pertinentInformation>
+                              <sequenceNumber value="+1"/>
+                              <pertinentAnnotation moodCode="EVN">
+                                <text>These are the inequality operators</text>
+                              </pertinentAnnotation>
+                            </pertinentInformation>
+                            <referenceRange>
+                              <referenceInterpretationRange>
+                                <value>
+                                  <low value="0.5"/>
+                                  <high value="1.8"/>
+                                </value>
+                              </referenceInterpretationRange>
+                            </referenceRange>
+                          </ObservationStatement>
+                        </component>
+                      </CompoundStatement>
+                    </component>
+                  </CompoundStatement>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="8265DE01-8245-4A24-AA43-46E91FD835AB"/>
+                <code code="25671000000102" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Surgery Consultation Note">
+                  <originalText>G.P.Surgery</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070509"/>
+                <author>
+                  <time value="20100901125558"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="0413BD60-7352-4454-BF27-90C6275EA2E1"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <CompoundStatement classCode="TOPIC">
+                    <id root="2A416712-ECFB-4556-BC98-EBF750F8EC7C"/>
+                    <code code="7M06z00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Cauterisation of organ not otherwise classifiable NOS"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                    <component>
+                      <CompoundStatement classCode="CATEGORY">
+                        <id root="06482E43-4C17-4422-8A06-8A41F53DB9F9"/>
+                        <code code="394841004" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Other">
+                          <originalText>Problem title</originalText>
+                        </code>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20070509"/>
+                        <component>
+                          <ObservationStatement>
+                            <id root="825245FE-4A1F-4237-9F41-506180AB9E65"/>
+                            <code code="7M06z00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Cauterisation of organ not otherwise classifiable NOS">
+                              <qualifier>
+                                <name code="303350001" displayName="Ongoing">
+                                  <originalText>Review</originalText>
+                                </name>
+                              </qualifier>
+                            </code>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                          </ObservationStatement>
+                        </component>
+                      </CompoundStatement>
+                    </component>
+                    <component>
+                      <CompoundStatement classCode="CATEGORY">
+                        <id root="50DCA89C-3C71-4AAA-B5B1-203D59647CA2"/>
+                        <code code="3457005" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Referral">
+                          <originalText>Referral</originalText>
+                        </code>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20070509"/>
+                        <component>
+                          <RequestStatement>
+                            <id root="8247F855-38CE-491C-9543-90FE89EE6B27"/>
+                            <id root="2.16.840.1.113883.2.1.4.5.3" extension="10"/>
+                            <code code="8H...00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Referral for further care">
+                              <qualifier codeSystem="2.16.840.1.113883.2.1.6.3">
+                                <name code="RequestType" displayName="RequestType"/>
+                                <value code="Outpatient" displayName="Outpatient"/>
+                              </qualifier>
+                            </code>
+                            <text>Outpatient, This referral is associated with the problem</text>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <priorityCode code="394848005" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Normal"/>
+                            <responsibleParty type="REFT">
+                              <agentRef>
+                                <id root="D9844C38-3F8A-4DAB-9064-CC03D687E85F"/>
+                              </agentRef>
+                            </responsibleParty>
+                          </RequestStatement>
+                        </component>
+                      </CompoundStatement>
+                    </component>
+                  </CompoundStatement>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="826624A2-CF1D-4365-80ED-C455FBDCEC4E"/>
+                <code code="25671000000102" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Surgery Consultation Note">
+                  <originalText>G.P.Surgery</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070509"/>
+                <author>
+                  <time value="20100901125617"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="0413BD60-7352-4454-BF27-90C6275EA2E1"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <CompoundStatement classCode="TOPIC">
+                    <id root="F4EEA9A8-4F09-4152-B564-F8D713AA4D9B"/>
+                    <code code="Z....00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="UnspecifiedCondtions"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                    <component>
+                      <CompoundStatement classCode="CATEGORY">
+                        <id root="572CA74C-A11A-47CE-8B08-D900D43742FF"/>
+                        <code code="3457005" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Referral">
+                          <originalText>Referral</originalText>
+                        </code>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20070509"/>
+                        <component>
+                          <RequestStatement>
+                            <id root="82484737-9853-43E4-82B2-7D765DE5BFC2"/>
+                            <id root="2.16.840.1.113883.2.1.4.5.3" extension="11"/>
+                            <code code="8H6..00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Referral to other doctor">
+                              <qualifier codeSystem="2.16.840.1.113883.2.1.6.3">
+                                <name code="RequestType" displayName="RequestType"/>
+                                <value code="Outpatient" displayName="Outpatient"/>
+                              </qualifier>
+                            </code>
+                            <text>Outpatient, Just the Dr</text>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <priorityCode code="394848005" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Normal"/>
+                            <responsibleParty type="REFT">
+                              <agentRef>
+                                <id root="63D41951-FC15-40A8-A38E-5CDE8BACF49D"/>
+                              </agentRef>
+                            </responsibleParty>
+                          </RequestStatement>
+                        </component>
+                      </CompoundStatement>
+                    </component>
+                  </CompoundStatement>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="826838CF-DF1C-4C2F-8DBF-82E52310971A"/>
+                <code code="25671000000102" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Surgery Consultation Note">
+                  <originalText>G.P.Surgery</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070509"/>
+                <author>
+                  <time value="20100901125917"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="0413BD60-7352-4454-BF27-90C6275EA2E1"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <CompoundStatement classCode="TOPIC">
+                    <id root="7B1FB3EE-C120-4F17-AD4B-3504430EF5F9"/>
+                    <code code="A57y500" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Monkeypox"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                    <component>
+                      <CompoundStatement classCode="CATEGORY">
+                        <id root="8F3966D2-B711-4DE9-8E56-DA707CA648CF"/>
+                        <code code="394841004" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Other">
+                          <originalText>Problem title</originalText>
+                        </code>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20070509"/>
+                        <component>
+                          <ObservationStatement>
+                            <id root="824B5BD3-EA41-4ABB-9EBC-0D93645F5907"/>
+                            <code code="A57y500" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Monkeypox"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                          </ObservationStatement>
+                        </component>
+                      </CompoundStatement>
+                    </component>
+                  </CompoundStatement>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="8269296B-2340-418B-9773-73B577A73D9A"/>
+                <code code="25671000000102" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Surgery Consultation Note">
+                  <originalText>G.P.Surgery</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070509"/>
+                <author>
+                  <time value="20100901130549"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="0413BD60-7352-4454-BF27-90C6275EA2E1"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <CompoundStatement classCode="TOPIC">
+                    <id root="E0CA7F52-C887-4861-BFF7-BEECA672A4F5"/>
+                    <code code="AB20.13" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Pharyngeal candidiasis"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                    <component>
+                      <CompoundStatement classCode="CATEGORY">
+                        <id root="7868973B-03A1-4186-8635-6DCD6A9B8E69"/>
+                        <code code="394841004" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Other">
+                          <originalText>Problem title</originalText>
+                        </code>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20070509"/>
+                        <component>
+                          <ObservationStatement>
+                            <id root="824C6E14-2303-4D4E-AB34-64ECA45ACCEA"/>
+                            <code code="AB20.13" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Pharyngeal candidiasis">
+                              <qualifier>
+                                <name code="255217005" displayName="First"/>
+                              </qualifier>
+                            </code>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <pertinentInformation>
+                              <sequenceNumber value="+1"/>
+                              <pertinentAnnotation moodCode="EVN">
+                                <text>This is the problem</text>
+                              </pertinentAnnotation>
+                            </pertinentInformation>
+                          </ObservationStatement>
+                        </component>
+                      </CompoundStatement>
+                    </component>
+                  </CompoundStatement>
+                </component>
+                <component>
+                  <LinkSet>
+                    <id root="4E2442BE-07D8-4C22-8940-028953F9A375"/>
+                    <code code="394774009" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Active Problem">
+                      <originalText>Active Problem, significant</originalText>
+                      <qualifier>
+                        <name code="386134007" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Significant"/>
+                      </qualifier>
+                    </code>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <low value="20070509"/>
+                    </effectiveTime>
+                    <availabilityTime value="20100901130549"/>
+                    <component>
+                      <statementRef classCode="OBS" moodCode="EVN">
+                        <id root="9B2C3599-57BC-44CC-975F-05A159E2D077"/>
+                      </statementRef>
+                    </component>
+                    <conditionNamed inversionInd="true">
+                      <namedStatementRef classCode="OBS" moodCode="EVN">
+                        <id root="824C6E14-2303-4D4E-AB34-64ECA45ACCEA"/>
+                      </namedStatementRef>
+                    </conditionNamed>
+                  </LinkSet>
+                </component>
+                <component>
+                  <CompoundStatement classCode="TOPIC">
+                    <id root="54879A5A-0E07-40DE-97A7-59C3D0E08B32"/>
+                    <code code="A87..00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Relapsing fever"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                    <component>
+                      <CompoundStatement classCode="CATEGORY">
+                        <id root="FB2C6E58-0A65-4BFB-9ECA-3791EB212AB5"/>
+                        <code code="394841004" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Other">
+                          <originalText>Problem title</originalText>
+                        </code>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20070509"/>
+                        <component>
+                          <ObservationStatement>
+                            <id root="824BECCA-D024-4DE7-870C-02017A2FD685"/>
+                            <code code="A87..00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Relapsing fever">
+                              <qualifier>
+                                <name code="288527008" displayName="New"/>
+                              </qualifier>
+                            </code>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <pertinentInformation>
+                              <sequenceNumber value="+1"/>
+                              <pertinentAnnotation moodCode="EVN">
+                                <text>This is the other problem</text>
+                              </pertinentAnnotation>
+                            </pertinentInformation>
+                          </ObservationStatement>
+                        </component>
+                      </CompoundStatement>
+                    </component>
+                  </CompoundStatement>
+                </component>
+                <component>
+                  <LinkSet>
+                    <id root="98E4E0F8-0E2E-4542-B9F4-6F8E59590AE1"/>
+                    <code code="394776006" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Unspecified Problem">
+                      <originalText>Health Administration</originalText>
+                    </code>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <low value="20070509"/>
+                    </effectiveTime>
+                    <availabilityTime value="20100901130549"/>
+                    <conditionNamed inversionInd="true">
+                      <namedStatementRef classCode="OBS" moodCode="EVN">
+                        <id root="824BECCA-D024-4DE7-870C-02017A2FD685"/>
+                      </namedStatementRef>
+                    </conditionNamed>
+                  </LinkSet>
+                </component>
+                <component>
+                  <CompoundStatement classCode="TOPIC">
+                    <id root="BB2401AE-87B9-491C-8F2F-F3B877E14C5F"/>
+                    <code code="J530.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Anal fissure"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                    <component>
+                      <CompoundStatement classCode="CATEGORY">
+                        <id root="131E15C1-1237-4F27-A17D-672722FCB21B"/>
+                        <code code="394841004" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Other">
+                          <originalText>Problem title</originalText>
+                        </code>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20070509"/>
+                        <component>
+                          <ObservationStatement>
+                            <id root="82518C66-5613-44B1-B8FF-F487CAFC9639"/>
+                            <code code="J530.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Anal fissure">
+                              <qualifier>
+                                <name code="255217005" displayName="First"/>
+                              </qualifier>
+                            </code>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <pertinentInformation>
+                              <sequenceNumber value="+1"/>
+                              <pertinentAnnotation moodCode="EVN">
+                                <text>This is the final problem</text>
+                              </pertinentAnnotation>
+                            </pertinentInformation>
+                          </ObservationStatement>
+                        </component>
+                      </CompoundStatement>
+                    </component>
+                    <component>
+                      <CompoundStatement classCode="CATEGORY">
+                        <id root="6555507F-1B68-4F16-92CB-A631CCBD8784"/>
+                        <code code="394841004" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Other">
+                          <originalText>Additional</originalText>
+                        </code>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20070509"/>
+                        <component>
+                          <ObservationStatement>
+                            <id root="824FF014-0527-41A4-8B61-07E8E432E1E0"/>
+                            <code code="H27..00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Influenza"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <pertinentInformation>
+                              <sequenceNumber value="+1"/>
+                              <pertinentAnnotation moodCode="EVN">
+                                <text>This is asociated with the problem</text>
+                              </pertinentAnnotation>
+                            </pertinentInformation>
+                          </ObservationStatement>
+                        </component>
+                      </CompoundStatement>
+                    </component>
+                  </CompoundStatement>
+                </component>
+                <component>
+                  <LinkSet>
+                    <id root="9B2C3599-57BC-44CC-975F-05A159E2D077"/>
+                    <code code="394775005" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Inactive Problem">
+                      <originalText>Unified Problem</originalText>
+                    </code>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <low value="20070509"/>
+                    </effectiveTime>
+                    <availabilityTime value="20100901130549"/>
+                    <conditionNamed inversionInd="true">
+                      <namedStatementRef classCode="OBS" moodCode="EVN">
+                        <id root="82518C66-5613-44B1-B8FF-F487CAFC9639"/>
+                      </namedStatementRef>
+                    </conditionNamed>
+                  </LinkSet>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="82699392-0615-4CA2-A489-90F0158A54EA"/>
+                <code code="25671000000102" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Surgery Consultation Note">
+                  <originalText>G.P.Surgery</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070509"/>
+                <author>
+                  <time value="20100901130957"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="0413BD60-7352-4454-BF27-90C6275EA2E1"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <CompoundStatement classCode="TOPIC">
+                    <id root="1A7CB23E-FE91-40E2-A4FC-9C0D52CC9A1B"/>
+                    <code code="F4D0.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Blepharitis"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                    <component>
+                      <CompoundStatement classCode="CATEGORY">
+                        <id root="0112EFAD-42D5-445C-8DDE-9D17BA1CA3A9"/>
+                        <code code="394841004" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Other">
+                          <originalText>Problem title</originalText>
+                        </code>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20070509"/>
+                        <component>
+                          <ObservationStatement>
+                            <id root="824DAEFA-8481-4C8B-B28F-3875D5FD0F26"/>
+                            <code code="F4D0.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Blepharitis">
+                              <qualifier>
+                                <name code="255217005" displayName="First"/>
+                              </qualifier>
+                            </code>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <pertinentInformation>
+                              <sequenceNumber value="+1"/>
+                              <pertinentAnnotation moodCode="EVN">
+                                <text>This is the first problem</text>
+                              </pertinentAnnotation>
+                            </pertinentInformation>
+                          </ObservationStatement>
+                        </component>
+                      </CompoundStatement>
+                    </component>
+                  </CompoundStatement>
+                </component>
+                <component>
+                  <LinkSet>
+                    <id root="6CDA1509-C175-4555-BC72-975F0DB230B3"/>
+                    <code code="394775005" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Inactive Problem">
+                      <originalText>Unified Problem</originalText>
+                    </code>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <low value="20070509"/>
+                    </effectiveTime>
+                    <availabilityTime value="20100901130957"/>
+                    <conditionNamed inversionInd="true">
+                      <namedStatementRef classCode="OBS" moodCode="EVN">
+                        <id root="824DAEFA-8481-4C8B-B28F-3875D5FD0F26"/>
+                      </namedStatementRef>
+                    </conditionNamed>
+                  </LinkSet>
+                </component>
+                <component>
+                  <CompoundStatement classCode="TOPIC">
+                    <id root="A1DF0FD5-8582-4AB9-A000-E031AD69AE55"/>
+                    <code code="L124.11" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Mild pre-eclampsia"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                    <component>
+                      <CompoundStatement classCode="CATEGORY">
+                        <id root="E0B0E674-6FC4-42CA-B3DA-91335DEA7748"/>
+                        <code code="394841004" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Other">
+                          <originalText>Problem title</originalText>
+                        </code>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20070509"/>
+                        <component>
+                          <ObservationStatement>
+                            <id root="824A986C-289F-445F-A258-D2F14FC41D11"/>
+                            <code code="L124.11" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Mild pre-eclampsia">
+                              <qualifier>
+                                <name code="255217005" displayName="First"/>
+                              </qualifier>
+                            </code>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                          </ObservationStatement>
+                        </component>
+                      </CompoundStatement>
+                    </component>
+                  </CompoundStatement>
+                </component>
+                <component>
+                  <LinkSet>
+                    <id root="AED111DD-3628-4ED2-88DA-D908181B5DE6"/>
+                    <code code="394775005" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Inactive Problem">
+                      <originalText>Past Problem, minor</originalText>
+                      <qualifier>
+                        <name code="371929004" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="minimally signficant"/>
+                      </qualifier>
+                    </code>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <low value="20070509"/>
+                      <high value="20070509"/>
+                    </effectiveTime>
+                    <availabilityTime value="20100901130957"/>
+                    <conditionNamed inversionInd="true">
+                      <namedStatementRef classCode="OBS" moodCode="EVN">
+                        <id root="824A986C-289F-445F-A258-D2F14FC41D11"/>
+                      </namedStatementRef>
+                    </conditionNamed>
+                  </LinkSet>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="8269992F-E04A-48EE-8746-B5DDC3B75A89"/>
+                <code code="25671000000102" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Surgery Consultation Note">
+                  <originalText>G.P.Surgery</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070509"/>
+                <author>
+                  <time value="20100901144826"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="0413BD60-7352-4454-BF27-90C6275EA2E1"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <CompoundStatement classCode="TOPIC">
+                    <id root="430AC1A8-B0F6-435D-AD77-849FDC8ED2B0"/>
+                    <code code="Z....00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="UnspecifiedCondtions"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                    <component>
+                      <CompoundStatement classCode="CATEGORY">
+                        <id root="F2B598FF-F783-446E-B1D7-F3EE4F483D56"/>
+                        <code code="394831002" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Examination">
+                          <originalText>Examination</originalText>
+                        </code>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20070509"/>
+                        <component>
+                          <CompoundStatement classCode="BATTERY">
+                            <id root="4B90BF0B-0DFE-4E21-9120-92E570A13B24"/>
+                            <code code="246..00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="O/E blood pressure reading"/>
+                            <statusCode code="COMPLETE"/>
+                            <effectiveTime>
+                              <center nullFlavor="NI"/>
+                            </effectiveTime>
+                            <availabilityTime value="20070509"/>
+                            <component>
+                              <ObservationStatement>
+                                <id root="8257D820-C41A-4E0A-9F2D-624E6CDEB2D7"/>
+                                <code code="2469.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Systolic blood pressure"/>
+                                <statusCode code="COMPLETE"/>
+                                <effectiveTime>
+                                  <center nullFlavor="NI"/>
+                                </effectiveTime>
+                                <availabilityTime value="20070509"/>
+                                <value xsi:type="PQ" value="130" unit="1">
+                                  <translation value="130">
+                                    <originalText>mm Hg</originalText>
+                                  </translation>
+                                </value>
+                                <pertinentInformation>
+                                  <sequenceNumber value="-1"/>
+                                  <pertinentAnnotation moodCode="EVN">
+                                    <text>This is BP pref </text>
+                                  </pertinentAnnotation>
+                                </pertinentInformation>
+                                <pertinentInformation>
+                                  <sequenceNumber value="+1"/>
+                                  <pertinentAnnotation moodCode="EVN">
+                                    <text>and post </text>
+                                  </pertinentAnnotation>
+                                </pertinentInformation>
+                              </ObservationStatement>
+                            </component>
+                            <component>
+                              <ObservationStatement>
+                                <id root="82592B25-FD0F-40A5-B4B8-B7AEDF771F8D"/>
+                                <code code="246A.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Diastolic blood pressure"/>
+                                <statusCode code="COMPLETE"/>
+                                <effectiveTime>
+                                  <center nullFlavor="NI"/>
+                                </effectiveTime>
+                                <availabilityTime value="20070509"/>
+                                <value xsi:type="PQ" value="90" unit="1">
+                                  <translation value="90">
+                                    <originalText>mm Hg</originalText>
+                                  </translation>
+                                </value>
+                                <pertinentInformation>
+                                  <sequenceNumber value="+1"/>
+                                  <pertinentAnnotation moodCode="EVN">
+                                    <text>followed by more text</text>
+                                  </pertinentAnnotation>
+                                </pertinentInformation>
+                              </ObservationStatement>
+                            </component>
+                          </CompoundStatement>
+                        </component>
+                      </CompoundStatement>
+                    </component>
+                  </CompoundStatement>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="E52A3A0E-5380-4CD4-AC5D-B8BB23EC5AE3"/>
+                <code code="196401000000100" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Non-consultation data">
+                  <originalText>Summary event entry</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20100126"/>
+                <author>
+                  <time value="20100901132216"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <ObservationStatement>
+                    <id root="822CFD3C-3295-4835-9F7A-4051AA08F13F"/>
+                    <code code="199..00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Vomiting"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20100126"/>
+                    <pertinentInformation>
+                      <sequenceNumber value="+1"/>
+                      <pertinentAnnotation moodCode="EVN">
+                        <text>kjkjkjkjkkjkkjk</text>
+                      </pertinentAnnotation>
+                    </pertinentInformation>
+                  </ObservationStatement>
+                </component>
+                <component>
+                  <LinkSet>
+                    <id root="833FE03D-9396-4E4F-9915-ACA051EDAA8F"/>
+                    <code code="394774009" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Active Problem">
+                      <originalText>Active Problem, significant</originalText>
+                      <qualifier>
+                        <name code="386134007" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Significant"/>
+                      </qualifier>
+                    </code>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <low value="20100126"/>
+                    </effectiveTime>
+                    <availabilityTime value="20100901132216"/>
+                    <conditionNamed inversionInd="true">
+                      <namedStatementRef classCode="OBS" moodCode="EVN">
+                        <id root="822CFD3C-3295-4835-9F7A-4051AA08F13F"/>
+                      </namedStatementRef>
+                    </conditionNamed>
+                  </LinkSet>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="D4115CBA-CAEC-4CDF-B677-62B6B5E08FD9"/>
+                <code code="196401000000100" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Non-consultation data">
+                  <originalText>Summary event entry</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20100126"/>
+                <author>
+                  <time value="20100901142517"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <ObservationStatement>
+                    <id root="822E0A91-6B73-4DB9-9A7E-9DF6963C3DEA"/>
+                    <code code="A860.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Chagas' disease with heart involvement"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20100126"/>
+                    <pertinentInformation>
+                      <sequenceNumber value="+1"/>
+                      <pertinentAnnotation moodCode="EVN">
+                        <text>This is a standalone problem</text>
+                      </pertinentAnnotation>
+                    </pertinentInformation>
+                  </ObservationStatement>
+                </component>
+                <component>
+                  <LinkSet>
+                    <id root="FFF3255B-B533-46E2-9DB5-1C746FABE90D"/>
+                    <code code="394774009" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Active Problem">
+                      <originalText>Active Problem, significant</originalText>
+                      <qualifier>
+                        <name code="386134007" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Significant"/>
+                      </qualifier>
+                    </code>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <low value="20100126"/>
+                    </effectiveTime>
+                    <availabilityTime value="20100901142517"/>
+                    <component>
+                      <statementRef classCode="OBS" moodCode="EVN">
+                        <id root="118F5A28-5121-4868-844E-1A878A5C86C8"/>
+                      </statementRef>
+                    </component>
+                    <conditionNamed inversionInd="true">
+                      <namedStatementRef classCode="OBS" moodCode="EVN">
+                        <id root="822E0A91-6B73-4DB9-9A7E-9DF6963C3DEA"/>
+                      </namedStatementRef>
+                    </conditionNamed>
+                  </LinkSet>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="03A7BBB8-C3AF-44C7-BFCE-FC11BE622448"/>
+                <code code="196401000000100" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Non-consultation data">
+                  <originalText>Summary event entry</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070509"/>
+                <author>
+                  <time value="20100901125251"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <ObservationStatement>
+                    <id root="824777DA-B349-466C-A745-D8AE4D66AAE5"/>
+                    <code code="7M06z00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Cauterisation of organ not otherwise classifiable NOS"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                    <pertinentInformation>
+                      <sequenceNumber value="+1"/>
+                      <pertinentAnnotation moodCode="EVN">
+                        <text>Another one</text>
+                      </pertinentAnnotation>
+                    </pertinentInformation>
+                  </ObservationStatement>
+                </component>
+                <component>
+                  <LinkSet>
+                    <id root="EAB58A35-99FE-4BA4-BBFF-DCCD2746CE96"/>
+                    <code code="394774009" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Active Problem">
+                      <originalText>Active Problem, significant</originalText>
+                      <qualifier>
+                        <name code="386134007" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Significant"/>
+                      </qualifier>
+                    </code>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <low value="20070509"/>
+                    </effectiveTime>
+                    <availabilityTime value="20100901125251"/>
+                    <conditionNamed inversionInd="true">
+                      <namedStatementRef classCode="OBS" moodCode="EVN">
+                        <id root="824777DA-B349-466C-A745-D8AE4D66AAE5"/>
+                      </namedStatementRef>
+                    </conditionNamed>
+                  </LinkSet>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="5DF8D2AA-C352-435C-B069-AEF399BBBDA9"/>
+                <code code="196401000000100" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Non-consultation data">
+                  <originalText>Summary event entry</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070509"/>
+                <author>
+                  <time value="20100901132928"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <ObservationStatement>
+                    <id root="8249D19E-0342-458F-9F63-11BD2F0B0537"/>
+                    <code code="A340000" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Streptococcal angina"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                  </ObservationStatement>
+                </component>
+                <component>
+                  <LinkSet>
+                    <id root="E3AA28A2-D4C8-495B-B508-44B7DE591370"/>
+                    <code code="394774009" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Active Problem">
+                      <originalText>Active Problem, minor</originalText>
+                      <qualifier>
+                        <name code="371929004" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="minimally signficant"/>
+                      </qualifier>
+                    </code>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <low value="20070509"/>
+                    </effectiveTime>
+                    <availabilityTime value="20100901132928"/>
+                    <component>
+                      <statementRef classCode="OBS" moodCode="EVN">
+                        <id root="AED111DD-3628-4ED2-88DA-D908181B5DE6"/>
+                      </statementRef>
+                    </component>
+                    <conditionNamed inversionInd="true">
+                      <namedStatementRef classCode="OBS" moodCode="EVN">
+                        <id root="8249D19E-0342-458F-9F63-11BD2F0B0537"/>
+                      </namedStatementRef>
+                    </conditionNamed>
+                  </LinkSet>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="8E9D47BC-3B8D-45E1-9A8A-6FCAAE63F591"/>
+                <code code="196401000000100" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Non-consultation data">
+                  <originalText>Summary event entry</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070509"/>
+                <author>
+                  <time value="20100901133246"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <ObservationStatement>
+                    <id root="824BD769-F18E-4648-A67C-592BBA730323"/>
+                    <code code="A864.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Rhodesian trypanosomiasis"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                    <pertinentInformation>
+                      <sequenceNumber value="+1"/>
+                      <pertinentAnnotation moodCode="EVN">
+                        <text>Another problem</text>
+                      </pertinentAnnotation>
+                    </pertinentInformation>
+                  </ObservationStatement>
+                </component>
+                <component>
+                  <LinkSet>
+                    <id root="B9573C9E-1299-44AA-95E4-3674A7D2A445"/>
+                    <code code="394776006" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Unspecified Problem">
+                      <originalText>Health Administration</originalText>
+                    </code>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <low value="20070509"/>
+                    </effectiveTime>
+                    <availabilityTime value="20100901133246"/>
+                    <conditionNamed inversionInd="true">
+                      <namedStatementRef classCode="OBS" moodCode="EVN">
+                        <id root="824BD769-F18E-4648-A67C-592BBA730323"/>
+                      </namedStatementRef>
+                    </conditionNamed>
+                  </LinkSet>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="13EC3947-6118-4A9A-8EF1-DA3CED38AC6A"/>
+                <code code="196401000000100" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Non-consultation data">
+                  <originalText>Summary event entry</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20100126"/>
+                <author>
+                  <time value="20100901132617"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <CompoundStatement classCode="CATEGORY">
+                    <id root="8C8F1A32-2C25-45DB-926E-A75323AB895F"/>
+                    <code code="14L..00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="H/O: drug allergy"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20100126"/>
+                    <component>
+                      <ObservationStatement>
+                        <id root="8233FBA7-E330-4607-B677-093FE5C56745"/>
+                        <code code="TJ40000" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Adverse reaction to ferrous sulphate"/>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20100126"/>
+                        <value xsi:type="CD" code="ALLERGY-READ2-TJ400" codeSystem="2.16.840.1.113883.2.1.6.3" displayName="Adverse reaction to ferrous sulphate"/>
+                        <pertinentInformation>
+                          <sequenceNumber value="+1"/>
+                          <pertinentAnnotation moodCode="EVN">
+                            <text>This is by summary</text>
+                          </pertinentAnnotation>
+                        </pertinentInformation>
+                      </ObservationStatement>
+                    </component>
+                  </CompoundStatement>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="266D7117-EF45-4BCF-8D13-3899599C02C2"/>
+                <code code="196401000000100" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Non-consultation data">
+                  <originalText>Summary event entry</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070509"/>
+                <author>
+                  <time value="20100901131905"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <ObservationStatement>
+                    <id root="8237CD2B-D180-4119-8D96-A5C4B87DF2DF"/>
+                    <code code="44J2.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Blood urea abnormal"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                    <pertinentInformation>
+                      <sequenceNumber value="+1"/>
+                      <pertinentAnnotation moodCode="EVN">
+                        <text>This is the serum electrolytes</text>
+                      </pertinentAnnotation>
+                    </pertinentInformation>
+                  </ObservationStatement>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="856B9684-CC7E-47C5-A9D0-386E611419B4"/>
+                <code code="196401000000100" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Non-consultation data">
+                  <originalText>Summary event entry</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070509"/>
+                <author>
+                  <time value="20100901131905"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <ObservationStatement>
+                    <id root="82597D89-6EC3-454B-9CDA-48552C500F09"/>
+                    <code code="44I4.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Serum potassium"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                    <value xsi:type="PQ" value="12" unit="1">
+                      <translation value="12">
+                        <originalText>mmol/l</originalText>
+                      </translation>
+                    </value>
+                    <interpretationCode code="PA"/>
+                    <pertinentInformation>
+                      <sequenceNumber value="+1"/>
+                      <pertinentAnnotation moodCode="EVN">
+                        <text>This is the serum electrolytes</text>
+                      </pertinentAnnotation>
+                    </pertinentInformation>
+                    <referenceRange>
+                      <referenceInterpretationRange>
+                        <value>
+                          <low value="3.3"/>
+                          <high value="4.8"/>
+                        </value>
+                      </referenceInterpretationRange>
+                    </referenceRange>
+                  </ObservationStatement>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="149F9A94-CFFB-417C-88D2-FB4E5D4BD102"/>
+                <code code="196401000000100" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Non-consultation data">
+                  <originalText>Summary event entry</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070509"/>
+                <author>
+                  <time value="20100901131905"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <ObservationStatement>
+                    <id root="82599B70-E9A6-48FA-B8A6-0DA38275A406"/>
+                    <code code="44I5.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Serum sodium"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                    <value xsi:type="PQ" value="500" unit="1">
+                      <translation value="500">
+                        <originalText>mmol/l</originalText>
+                      </translation>
+                    </value>
+                    <interpretationCode code="PA"/>
+                    <pertinentInformation>
+                      <sequenceNumber value="+1"/>
+                      <pertinentAnnotation moodCode="EVN">
+                        <text>This is the serum electrolytes</text>
+                      </pertinentAnnotation>
+                    </pertinentInformation>
+                    <referenceRange>
+                      <referenceInterpretationRange>
+                        <value>
+                          <low value="133"/>
+                          <high value="145"/>
+                        </value>
+                      </referenceInterpretationRange>
+                    </referenceRange>
+                  </ObservationStatement>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="701C724C-4FA4-42C8-9AF6-760B412A1F7F"/>
+                <code code="196401000000100" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Non-consultation data">
+                  <originalText>Summary event entry</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070509"/>
+                <author>
+                  <time value="20100901131905"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <ObservationStatement>
+                    <id root="825BEA41-544B-4F4D-93F7-C8040A185217"/>
+                    <code code="44J3.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Serum creatinine"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                    <value xsi:type="PQ" value="15" unit="1">
+                      <translation value="15">
+                        <originalText>umol/l</originalText>
+                      </translation>
+                    </value>
+                    <interpretationCode code="PA"/>
+                    <pertinentInformation>
+                      <sequenceNumber value="+1"/>
+                      <pertinentAnnotation moodCode="EVN">
+                        <text>This is the serum electrolytes</text>
+                      </pertinentAnnotation>
+                    </pertinentInformation>
+                    <referenceRange>
+                      <referenceInterpretationRange>
+                        <value>
+                          <low value="50"/>
+                          <high value="120"/>
+                        </value>
+                      </referenceInterpretationRange>
+                    </referenceRange>
+                  </ObservationStatement>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="E6112885-E49A-4BC7-A045-0B82AC5D5B77"/>
+                <code code="196401000000100" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Non-consultation data">
+                  <originalText>Summary event entry</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070509"/>
+                <author>
+                  <time value="20100901131905"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <ObservationStatement>
+                    <id root="825D0FE7-7A5C-423E-BB23-EF4D4B6820D7"/>
+                    <code code="44M3.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Serum total protein"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                    <value xsi:type="PQ" value="8" unit="1">
+                      <translation value="8">
+                        <originalText>g/l</originalText>
+                      </translation>
+                    </value>
+                    <pertinentInformation>
+                      <sequenceNumber value="+1"/>
+                      <pertinentAnnotation moodCode="EVN">
+                        <text>This is the serum electrolytes</text>
+                      </pertinentAnnotation>
+                    </pertinentInformation>
+                  </ObservationStatement>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="A057FC0C-54DC-4110-8929-A15D41E1ADD3"/>
+                <code code="196391000000103" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Non-consultation medication data">
+                  <originalText>Medication Issue</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070509"/>
+                <author>
+                  <time value="20070509"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <MedicationStatement moodCode="ORD">
+                    <id root="C9411485-8AA4-4A6D-A85F-48A396E22CA0"/>
+                    <statusCode code="ACTIVE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070509"/>
+                    <consumable>
+                      <manufacturedProduct>
+                        <manufacturedMaterial determinerCode="KIND">
+                          <code code="CAIN4674" codeSystem="2.16.840.1.113883.2.1.6.9" displayName="Capreomycin  Injection  1 million units/vial">
+                            <translation code="324455006" codeSystem="2.16.840.1.113883.2.1.3.2.4.15"/>
+                          </code>
+                          <quantity value="1" unit="1">
+                            <translation value="1">
+                              <originalText>vial(s)</originalText>
+                            </translation>
+                          </quantity>
+                        </manufacturedMaterial>
+                      </manufacturedProduct>
+                    </consumable>
+                    <component>
+                      <ehrSupplyPrescribe moodCode="ORD">
+                        <id root="825DCE5E-8099-4F47-AC29-864D8EC4B91B"/>
+                        <code code="394823007" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="NHS Prescription"/>
+                        <statusCode code="COMPLETE"/>
+                        <availabilityTime value="20070509"/>
+                        <quantity value="1" unit="1">
+                          <translation value="1">
+                            <originalText>vial(s)</originalText>
+                          </translation>
+                        </quantity>
+                        <inFulfillmentOf>
+                          <priorMedicationRef moodCode="ORD">
+                            <id root="823059DE-8C96-449A-AA8D-5E96284136F4"/>
+                          </priorMedicationRef>
+                        </inFulfillmentOf>
+                      </ehrSupplyPrescribe>
+                    </component>
+                    <pertinentInformation>
+                      <pertinentMedicationDosage moodCode="RMD">
+                        <text>USE AS DIRECTED</text>
+                      </pertinentMedicationDosage>
+                    </pertinentInformation>
+                  </MedicationStatement>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="569E315A-C364-4B58-84A5-19866AF1D16E"/>
+                <code code="196401000000100" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Non-consultation data">
+                  <originalText>Summary Allergy</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20100126"/>
+                <author>
+                  <time value="20100901132529"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <CompoundStatement classCode="CATEGORY">
+                    <id root="A46BCC58-49F8-4F33-982D-8F5486ADC26F"/>
+                    <code code="14L..00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="H/O: drug allergy"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20100126"/>
+                    <component>
+                      <ObservationStatement>
+                        <id root="8230BD21-CAA8-4AC8-AA45-A80772A908CD"/>
+                        <code code="ALLERGY-EMISDRUGGROUP-5.2" codeSystem="2.16.840.1.113883.2.1.6.3" displayName="Adverse reaction to Antifungal Drugs"/>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20100126"/>
+                        <value xsi:type="CD" code="ALLERGY-EMISDRUGGROUP-5.2" codeSystem="2.16.840.1.113883.2.1.6.3" displayName="Adverse reaction to Antifungal Drugs"/>
+                        <pertinentInformation>
+                          <sequenceNumber value="+1"/>
+                          <pertinentAnnotation moodCode="EVN">
+                            <text>This is by summary</text>
+                          </pertinentAnnotation>
+                        </pertinentInformation>
+                      </ObservationStatement>
+                    </component>
+                  </CompoundStatement>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="36A074EC-8C6E-4E6E-98B0-32B0933BF709"/>
+                <code code="196401000000100" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Non-consultation data">
+                  <originalText>Summary Allergy</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20100126"/>
+                <author>
+                  <time value="20100901132540"/>
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <CompoundStatement classCode="CATEGORY">
+                    <id root="F7EFE6EA-67BF-49A4-A243-B5435421F182"/>
+                    <code code="SN53.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Allergy, unspecified"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20100126"/>
+                    <component>
+                      <ObservationStatement>
+                        <id root="8233BED8-DCA5-4458-BEC8-08B69D21D7BB"/>
+                        <code code="ALLERGY-EMISNONDRUGALLERGY-banana" codeSystem="2.16.840.1.113883.2.1.6.3" displayName="Adverse reaction to Banana"/>
+                        <statusCode code="COMPLETE"/>
+                        <effectiveTime>
+                          <center nullFlavor="NI"/>
+                        </effectiveTime>
+                        <availabilityTime value="20100126"/>
+                        <pertinentInformation>
+                          <sequenceNumber value="+1"/>
+                          <pertinentAnnotation moodCode="EVN">
+                            <text>This is by summary</text>
+                          </pertinentAnnotation>
+                        </pertinentInformation>
+                      </ObservationStatement>
+                    </component>
+                  </CompoundStatement>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="1012F736-DB34-4634-BA5A-4D035DEF6C97"/>
+                <code code="196401000000100" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Non-consultation data">
+                  <originalText>Summary Referral Entry</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20100126"/>
+                <author>
+                  <time value="20100901132235"/>
+                  <agentRef>
+                    <id root="0413BD60-7352-4454-BF27-90C6275EA2E1"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="0413BD60-7352-4454-BF27-90C6275EA2E1"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <RequestStatement>
+                    <id root="822D142E-7935-4B7F-814E-DDEFD18DADB0"/>
+                    <id root="2.16.840.1.113883.2.1.4.5.3" extension="12"/>
+                    <code code="8H2..00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Emergency hospital admission">
+                      <qualifier codeSystem="2.16.840.1.113883.2.1.6.3">
+                        <name code="RequestType" displayName="RequestType"/>
+                        <value code="Outpatient" displayName="Outpatient"/>
+                      </qualifier>
+                    </code>
+                    <text>Outpatient, kjlkjkllkjlkjljlkljkl</text>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20100126"/>
+                    <priorityCode code="394848005" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Normal"/>
+                    <responsibleParty type="REFT">
+                      <agentRef>
+                        <id root="3572EB28-5E1E-4A43-84C8-79D26CEEE2F5"/>
+                      </agentRef>
+                    </responsibleParty>
+                  </RequestStatement>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="3454A137-CC23-412E-B6EF-A625F3FA680F"/>
+                <code code="196401000000100" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Non-consultation data">
+                  <originalText>Summary Referral Entry</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20100126"/>
+                <author>
+                  <time value="20100901132249"/>
+                  <agentRef>
+                    <id root="0413BD60-7352-4454-BF27-90C6275EA2E1"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="0413BD60-7352-4454-BF27-90C6275EA2E1"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <RequestStatement>
+                    <id root="822D1A99-4FA7-4E9B-B0EA-33F048DEDE0A"/>
+                    <id root="2.16.840.1.113883.2.1.4.5.3" extension="13"/>
+                    <code code="8H43.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Dermatological referral">
+                      <qualifier codeSystem="2.16.840.1.113883.2.1.6.3">
+                        <name code="RequestType" displayName="RequestType"/>
+                        <value code="Outpatient" displayName="Outpatient"/>
+                      </qualifier>
+                    </code>
+                    <text>Outpatient, This has no agents</text>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20100126"/>
+                    <priorityCode code="394848005" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Normal"/>
+                  </RequestStatement>
+                </component>
+              </ehrComposition>
+            </component>
+            <component>
+              <ehrComposition>
+                <id root="E5CE8360-5362-40AC-BB79-1B671DFEDB08"/>
+                <code code="196401000000100" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Non-consultation data">
+                  <originalText>Summary Diary Entry</originalText>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center value="20250811"/>
+                </effectiveTime>
+                <availabilityTime value="20100831120813"/>
+                <author>
+                  <time value="20100831120813"/>
+                  <agentRef>
+                    <id root="0453CE95-2B3F-4FF9-8976-9D58BEBC541E"/>
+                  </agentRef>
+                </author>
+                <Participant2 typeCode="RESP">
+                  <agentRef>
+                    <id root="0453CE95-2B3F-4FF9-8976-9D58BEBC541E"/>
+                  </agentRef>
+                </Participant2>
+                <component>
+                  <PlanStatement>
+                    <id root="623674BE-843D-4F13-87DB-A62CD3D879C9"/>
+                    <code code="EGTONEL2" codeSystem="2.16.840.1.113883.2.1.6.3" displayName="Elderly Health Assessment"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center value="20250811"/>
+                    </effectiveTime>
+                    <availabilityTime value="20100831120813"/>
+                  </PlanStatement>
+                </component>
+              </ehrComposition>
+            </component>
+          </ehrFolder>
+        </component>
+        <inFulfillmentOf>
+          <priorEhrRequest>
+            <id root="93DB29F6-BCF7-4007-8A1A-14727317418D"/>
+          </priorEhrRequest>
+        </inFulfillmentOf>
+        <limitation inversionInd="true">
+          <limitingEhrExtractSpecification classCode="OBS" moodCode="DEF">
+            <id root="422EAB1F-BF53-4409-BF03-F2C75D979771"/>
+            <code code="37241000000102" codeSystem="2.16.840.1.113883.6.96" displayName="Entire record available to originator"/>
+          </limitingEhrExtractSpecification>
+        </limitation>
+      </EhrExtract>
+    </subject>
+  </ControlActEvent>
+</RCMR_IN030000UK06>

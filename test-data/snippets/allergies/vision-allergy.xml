@@ -1,0 +1,210 @@
+<component typeCode="COMP">
+  <ehrComposition classCode="COMPOSITION" moodCode="EVN">
+    <id root="58AFD783-ED37-4CA9-9255-4AD610041433"/>
+    <code code="24591000000103" displayName="Other report" codeSystem="2.16.840.1.113883.2.1.3.2.4.15">
+      <originalText>Other</originalText>
+    </code>
+    <statusCode code="COMPLETE"/>
+    <effectiveTime>
+      <low value="20050315105500"/>
+      <high value="20050315105800"/>
+    </effectiveTime>
+    <availabilityTime value="20050315"/>
+    <author typeCode="AUT" contextControlCode="OP">
+      <time value="20060406112140"/>
+      <agentRef classCode="AGNT">
+        <id root="749107A2-4975-441F-8EDF-ADFF451FD12D"/>
+      </agentRef>
+    </author>
+    <Participant2 typeCode="PRF" contextControlCode="OP">
+      <agentRef classCode="AGNT">
+        <id root="0A0ADC1A-77D0-4EBD-8D54-30A6BDE2A280"/>
+      </agentRef>
+    </Participant2>
+    <component typeCode="COMP">
+      <CompoundStatement classCode="TOPIC" moodCode="EVN">
+        <id root="0929986A-5C96-4E44-B6A2-CC81F09F11D0"/>
+        <code code="14L..00" displayName="H/O: drug allergy" codeSystem="2.16.840.1.113883.2.1.6.10">
+          <translation code="14L..00" displayName="H/O: drug allergy" codeSystem="2.16.840.1.113883.2.1.6.2"/>
+        </code>
+        <statusCode code="COMPLETE"/>
+        <effectiveTime>
+          <center nullFlavor="NI"/>
+        </effectiveTime>
+        <availabilityTime value="20050315"/>
+        <component typeCode="COMP" contextConductionInd="true">
+          <CompoundStatement classCode="CATEGORY" moodCode="EVN">
+            <id root="3728B434-F2D1-4702-9A99-E9C27C19FFCD"/>
+            <code code="394831002" displayName="Examination"/>
+            <statusCode code="COMPLETE"/>
+            <effectiveTime>
+              <center nullFlavor="NI"/>
+            </effectiveTime>
+            <availabilityTime value="20050315"/>
+            <component typeCode="COMP" contextConductionInd="true">
+              <CompoundStatement classCode="CATEGORY" moodCode="EVN">
+                <id root="3397897D-FE61-4A9B-A03D-A7E0E935C9D8"/>
+                <code code="14L..00" displayName="H/O: drug allergy" codeSystem="2.16.840.1.113883.2.1.6.2"/>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20050315"/>
+                <component typeCode="COMP" contextConductionInd="true">
+                  <ObservationStatement classCode="OBS" moodCode="EVN">
+                    <id root="7BBFA6D3-6BC0-4E65-A1B6-5CF9776C34D7"/>
+                    <code code="14L..00" displayName="H/O: drug allergy" codeSystem="2.16.840.1.113883.2.1.6.10">
+                      <qualifier>
+                        <name code="entity_ty" displayName="Entity Type"/>
+                        <value code="88" displayName="ALLERGY"/>
+                      </qualifier>
+                      <qualifier>
+                        <name code="private" displayName="Private"/>
+                        <value code="0" displayName="No"/>
+                      </qualifier>
+                      <qualifier>
+                        <name code="reaction" displayName="Reaction type"/>
+                        <value code="RCT002" displayName="Intolerance"/>
+                      </qualifier>
+                      <qualifier>
+                        <name code="read_code2" displayName="Read code for reaction"/>
+                        <value code="1D14.00" displayName="C/O: a rash"/>
+                      </qualifier>
+                      <qualifier>
+                        <name code="certainty" displayName="Certainty of allergy"/>
+                        <value code="CER005" displayName="Certain"/>
+                      </qualifier>
+                      <qualifier>
+                        <name code="severity" displayName="Severity of allergy"/>
+                        <value code="SEV005" displayName="Very severe"/>
+                      </qualifier>
+                      <translation code="14L..00" displayName="H/O: drug allergy" codeSystem="2.16.840.1.113883.2.1.6.2"/>
+                    </code>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20050315"/>
+                    <value codeSystem="2.16.840.1.113883.2.1.6.15" code="52201020" displayName="Ginger syrup" xsi:type="CD">
+                      <translation code="5239311000001106" displayName="Ginger syrup" codeSystem="2.16.840.1.113883.2.1.3.2.4.15"/>
+                    </value>
+                    <pertinentInformation typeCode="PERT">
+                      <sequenceNumber value="+1"/>
+                      <pertinentAnnotation classCode="OBS" moodCode="EVN">
+                        <text>Reaction type: Intolerance, Read code for reaction: C/O: a rash [1D14.00], Certainty of allergy: Certain, Severity of allergy: Very severe.</text>
+                      </pertinentAnnotation>
+                    </pertinentInformation>
+                  </ObservationStatement>
+                </component>
+              </CompoundStatement>
+            </component>
+            <component typeCode="COMP" contextConductionInd="true">
+              <ObservationStatement classCode="OBS" moodCode="EVN">
+                <id root="213C80AA-7D5D-441A-A29E-CD0C60F765C5"/>
+                <code code="2H2D.00" displayName="O/E - neck joint abnormal" codeSystem="2.16.840.1.113883.2.1.6.10">
+                  <qualifier>
+                    <name code="entity_ty" displayName="Entity Type"/>
+                    <value code="63" displayName="GENERAL"/>
+                  </qualifier>
+                  <qualifier>
+                    <name code="private" displayName="Private"/>
+                    <value code="0" displayName="No"/>
+                  </qualifier>
+                  <qualifier>
+                    <name code="episode" displayName="Episode"/>
+                    <value code="EPI004" displayName="Other"/>
+                  </qualifier>
+                  <qualifier>
+                    <name code="global_priority" displayName="Priority"/>
+                    <value code="GPL003" displayName="Major, significant, important, enduring diagnoses/summaries"/>
+                  </qualifier>
+                  <translation code="2H2D.00" displayName="O/E - neck joint abnormal" codeSystem="2.16.840.1.113883.2.1.6.2"/>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <high value="20050315"/>
+                </effectiveTime>
+                <availabilityTime value="20050315"/>
+                <pertinentInformation typeCode="PERT">
+                  <sequenceNumber value="+1"/>
+                  <pertinentAnnotation classCode="OBS" moodCode="EVN">
+                    <text>Episode: Other.</text>
+                  </pertinentAnnotation>
+                </pertinentInformation>
+              </ObservationStatement>
+            </component>
+            <component typeCode="COMP" contextConductionInd="true">
+              <CompoundStatement moodCode="EVN" classCode="BATTERY">
+                <id root="DCC25749-C256-4A50-ABF1-64F98BFCC48A"/>
+                <code code="246..00" displayName="O/E - blood pressure reading" codeSystem="2.16.840.1.113883.2.1.6.10">
+                  <qualifier>
+                    <name code="entity_ty" displayName="Entity Type"/>
+                    <value code="56" displayName="BP"/>
+                  </qualifier>
+                  <qualifier>
+                    <name code="private" displayName="Private"/>
+                    <value code="0" displayName="No"/>
+                  </qualifier>
+                  <qualifier>
+                    <name code="laterality" displayName="Laterality"/>
+                    <value code="LAT001" displayName="Left"/>
+                  </qualifier>
+                  <qualifier>
+                    <name code="posture" displayName="Posture for BP recording"/>
+                    <value code="POS001" displayName="Sitting"/>
+                  </qualifier>
+                  <qualifier>
+                    <name code="cuff" displayName="Cuff size used"/>
+                    <value code="CUF001" displayName="Standard"/>
+                  </qualifier>
+                  <translation code="246..00" displayName="O/E - blood pressure reading" codeSystem="2.16.840.1.113883.2.1.6.2"/>
+                </code>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20050315"/>
+                <component typeCode="COMP" contextConductionInd="true">
+                  <ObservationStatement classCode="OBS" moodCode="EVN">
+                    <id root="0DD721F1-EC51-4344-8F73-3B5C84632F80"/>
+                    <code code="2469.00" displayName="O/E - Systolic BP reading" codeSystem="2.16.840.1.113883.2.1.6.10">
+                      <translation code="2469.00" displayName="O/E - Systolic BP reading" codeSystem="2.16.840.1.113883.2.1.6.2"/>
+                    </code>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20050315"/>
+                    <value value="160" unit="mm[Hg]" xsi:type="PQ"/>
+                  </ObservationStatement>
+                </component>
+                <component typeCode="COMP" contextConductionInd="true">
+                  <ObservationStatement classCode="OBS" moodCode="EVN">
+                    <id root="7C73BB36-822B-4839-838F-FA65905B6EEF"/>
+                    <code code="246A.00" displayName="O/E - Diastolic BP reading" codeSystem="2.16.840.1.113883.2.1.6.10">
+                      <translation code="246A.00" displayName="O/E - Diastolic BP reading" codeSystem="2.16.840.1.113883.2.1.6.2"/>
+                    </code>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20050315"/>
+                    <value value="60" unit="mm[Hg]" xsi:type="PQ"/>
+                  </ObservationStatement>
+                </component>
+                <component typeCode="COMP" contextConductionInd="true">
+                  <NarrativeStatement classCode="OBS" moodCode="EVN">
+                    <id root="7B240417-1825-44B4-9FDC-595DC931958A"/>
+                    <text>Laterality: Left, Posture for BP recording: Sitting, Cuff size used: Standard</text>
+                    <statusCode code="COMPLETE"/>
+                    <availabilityTime value="20050315"/>
+                  </NarrativeStatement>
+                </component>
+              </CompoundStatement>
+            </component>
+          </CompoundStatement>
+        </component>
+      </CompoundStatement>
+    </component>
+  </ehrComposition>
+</component>

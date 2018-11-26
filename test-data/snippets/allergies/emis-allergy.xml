@@ -1,0 +1,242 @@
+<component>
+  <ehrComposition>
+    <id root="8260A3B0-6E68-4230-9BE8-BE41EC7B5B9D"/>
+    <code code="25671000000102" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Surgery Consultation Note">
+      <originalText>G.P.Surgery</originalText>
+    </code>
+    <statusCode code="COMPLETE"/>
+    <effectiveTime>
+      <center nullFlavor="NI"/>
+    </effectiveTime>
+    <availabilityTime value="20070508"/>
+    <author>
+      <time value="20100901120611"/>
+      <agentRef>
+        <id root="041156E3-98B9-4807-8027-854E56E9B9EF"/>
+      </agentRef>
+    </author>
+    <Participant2 typeCode="RESP">
+      <agentRef>
+        <id root="0413BD60-7352-4454-BF27-90C6275EA2E1"/>
+      </agentRef>
+    </Participant2>
+    <component>
+      <CompoundStatement classCode="TOPIC">
+        <id root="B16B911D-5E79-43F9-873B-686098B38EFE"/>
+        <code code="Z....00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="UnspecifiedCondtions"/>
+        <statusCode code="COMPLETE"/>
+        <effectiveTime>
+          <center nullFlavor="NI"/>
+        </effectiveTime>
+        <availabilityTime value="20070508"/>
+        <component>
+          <CompoundStatement classCode="CATEGORY">
+            <id root="478A6726-7A0F-4C28-85FF-C1A9268B6113"/>
+            <code code="15621000000105" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="History">
+              <originalText>History</originalText>
+            </code>
+            <statusCode code="COMPLETE"/>
+            <effectiveTime>
+              <center nullFlavor="NI"/>
+            </effectiveTime>
+            <availabilityTime value="20070508"/>
+            <component>
+              <CompoundStatement classCode="CATEGORY">
+                <id root="A0E35133-D56F-4A69-AB7F-828B0FA1E811"/>
+                <code code="14L..00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="H/O: drug allergy"/>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070508"/>
+                <component>
+                  <ObservationStatement>
+                    <id root="8253CD7A-ED60-46D7-A917-35E1BD0EF949"/>
+                    <code code="ALLERGY-EMISDRUGNAME-17305NEMIS" codeSystem="2.16.840.1.113883.2.1.6.3" displayName="Adverse reaction to Amobarbital"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070508"/>
+                    <value xsi:type="CD" code="ALLERGY-EMISDRUGNAME-17305NEMIS" codeSystem="2.16.840.1.113883.2.1.6.3" displayName="Adverse reaction to Amobarbital"/>
+                    <pertinentInformation>
+                      <sequenceNumber value="+1"/>
+                      <pertinentAnnotation moodCode="EVN">
+                        <text>This is the drug allergy by  Ingredient</text>
+                      </pertinentAnnotation>
+                    </pertinentInformation>
+                  </ObservationStatement>
+                </component>
+              </CompoundStatement>
+            </component>
+            <component>
+              <CompoundStatement classCode="CATEGORY">
+                <id root="860ACE7D-F3CC-4447-905C-112A408443A0"/>
+                <code code="14L..00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="H/O: drug allergy"/>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070508"/>
+                <component>
+                  <ObservationStatement>
+                    <id root="82552AA5-C67B-4CDC-9D2C-6188CFE34685"/>
+                    <code code="ALLERGY-EMISDRUGGROUP-6.3" codeSystem="2.16.840.1.113883.2.1.6.3" displayName="Adverse reaction to Corticosteroids - Systemic"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070508"/>
+                    <value xsi:type="CD" code="ALLERGY-EMISDRUGGROUP-6.3" codeSystem="2.16.840.1.113883.2.1.6.3" displayName="Adverse reaction to Corticosteroids - Systemic"/>
+                    <pertinentInformation>
+                      <sequenceNumber value="+1"/>
+                      <pertinentAnnotation moodCode="EVN">
+                        <text>This is the drug allergy by bnf chapter</text>
+                      </pertinentAnnotation>
+                    </pertinentInformation>
+                  </ObservationStatement>
+                </component>
+              </CompoundStatement>
+            </component>
+            <component>
+              <CompoundStatement classCode="CATEGORY">
+                <id root="D5EDDAA7-6240-4C4A-932D-20920C5863EF"/>
+                <code code="SN53.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Allergy, unspecified"/>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070508"/>
+                <component>
+                  <ObservationStatement>
+                    <id root="82557AAE-6B7F-4498-9EC7-5754BB545EC8"/>
+                    <code code="ALLERGY-EMISNONDRUGALLERGY-latex" codeSystem="2.16.840.1.113883.2.1.6.3" displayName="Adverse reaction to Latex"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070508"/>
+                  </ObservationStatement>
+                </component>
+              </CompoundStatement>
+            </component>
+          </CompoundStatement>
+        </component>
+        <component>
+          <CompoundStatement classCode="CATEGORY">
+            <id root="C2E1C9CA-9DAF-4A34-86C5-C9E10FF39105"/>
+            <code code="394841004" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Comment">
+              <originalText>Comment</originalText>
+            </code>
+            <statusCode code="COMPLETE"/>
+            <effectiveTime>
+              <center nullFlavor="NI"/>
+            </effectiveTime>
+            <availabilityTime value="20070508"/>
+            <component>
+              <CompoundStatement classCode="CATEGORY">
+                <id root="E902B3F6-5E71-4FDA-9A72-BA1C3404CBC2"/>
+                <code code="14L..00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="H/O: drug allergy"/>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070508"/>
+                <component>
+                  <ObservationStatement>
+                    <id root="8255B052-5876-4751-B6D1-70F8F2DC225F"/>
+                    <code code="TJ70000" codeSystem="2.16.840.1.113883.2.1.6.2"
+                          displayName="Adverse reaction to amylobarbitone"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070508"/>
+                    <value xsi:type="CD" code="ALLERGY-READ2-TJ700" codeSystem="2.16.840.1.113883.2.1.6.3"
+                           displayName="Adverse reaction to amylobarbitone"/>
+                    <pertinentInformation>
+                      <sequenceNumber value="+1"/>
+                      <pertinentAnnotation moodCode="EVN">
+                        <text>This is a read coded drug allergy</text>
+                      </pertinentAnnotation>
+                    </pertinentInformation>
+                  </ObservationStatement>
+                </component>
+              </CompoundStatement>
+            </component>
+          </CompoundStatement>
+        </component>
+        <component>
+          <CompoundStatement classCode="CATEGORY">
+            <id root="9BFF37AA-C2F8-456F-BFD8-7FD9FDDFBEEB"/>
+            <code code="394841004" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Other">
+              <originalText>Additional</originalText>
+            </code>
+            <statusCode code="COMPLETE"/>
+            <effectiveTime>
+              <center nullFlavor="NI"/>
+            </effectiveTime>
+            <availabilityTime value="20070508"/>
+            <component>
+              <CompoundStatement classCode="CATEGORY">
+                <id root="661C1838-397A-40B5-A65D-61994014C9BB"/>
+                <code code="SN53.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Allergy, unspecified"/>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070508"/>
+                <component>
+                  <ObservationStatement>
+                    <id root="82557E86-0C42-413C-A0E3-B2F5C084C690"/>
+                    <code code="ALLERGY-EMISNONDRUGALLERGY-wasp" codeSystem="2.16.840.1.113883.2.1.6.3" displayName="Adverse reaction to Wasp"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070508"/>
+                    <pertinentInformation>
+                      <sequenceNumber value="+1"/>
+                      <pertinentAnnotation moodCode="EVN">
+                        <text>This is the non drug allergy</text>
+                      </pertinentAnnotation>
+                    </pertinentInformation>
+                  </ObservationStatement>
+                </component>
+              </CompoundStatement>
+            </component>
+            <component>
+              <CompoundStatement classCode="CATEGORY">
+                <id root="7D8B0E86-236B-4752-B329-D70906FF7367"/>
+                <code code="14L..00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="H/O: drug allergy"/>
+                <statusCode code="COMPLETE"/>
+                <effectiveTime>
+                  <center nullFlavor="NI"/>
+                </effectiveTime>
+                <availabilityTime value="20070508"/>
+                <component>
+                  <ObservationStatement>
+                    <id root="8254BF7B-C294-4956-83C9-616BF10797A2"/>
+                    <code code="ALLERGY-EMISDRUGNAME-4307EGTON" codeSystem="2.16.840.1.113883.2.1.6.3" displayName="Adverse reaction to Elastoplast"/>
+                    <statusCode code="COMPLETE"/>
+                    <effectiveTime>
+                      <center nullFlavor="NI"/>
+                    </effectiveTime>
+                    <availabilityTime value="20070508"/>
+                    <value xsi:type="CD" code="ALLERGY-EMISDRUGNAME-4307EGTON" codeSystem="2.16.840.1.113883.2.1.6.3" displayName="Adverse reaction to Elastoplast"/>
+                    <pertinentInformation>
+                      <sequenceNumber value="+1"/>
+                      <pertinentAnnotation moodCode="EVN">
+                        <text>This is really a drug allergy</text>
+                      </pertinentAnnotation>
+                    </pertinentInformation>
+                  </ObservationStatement>
+                </component>
+              </CompoundStatement>
+            </component>
+          </CompoundStatement>
+        </component>
+      </CompoundStatement>
+    </component>
+  </ehrComposition>
+</component>

@@ -1,0 +1,140 @@
+<component typeCode="COMP">
+  <!--Debug Id:c85075-->
+  <ehrComposition classCode="COMPOSITION" moodCode="EVN">
+    <id root="AC384A07-4D1C-11E3-A2DD-010000000161"/>
+    <code code="37351000000107" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Administration Note"/>
+    <statusCode code="COMPLETE"/>
+    <effectiveTime>
+      <center value="19761205082922"/>
+    </effectiveTime>
+    <availabilityTime value="19761205082922"/>
+    <author typeCode="AUT" contextControlCode="OP">
+      <time value="20101216082729"/>
+      <agentRef classCode="AGNT">
+        <id root="ACAD52F0-4D1C-11E3-9E6B-010000001205"/>
+      </agentRef>
+    </author>
+    <location typeCode="LOC">
+      <locatedEntity classCode="LOCE">
+        <locatedPlace classCode="PLC" determinerCode="INSTANCE">
+          <name>Testvale Surgery</name>
+          <telecom use="WP" value="tel:01414221031">
+            <useablePeriod>
+              <low value="20131114"/>
+            </useablePeriod>
+          </telecom>
+          <addr use="WP">
+            <streetAddressLine>22 Northern Parade</streetAddressLine>
+            <streetAddressLine>Portsmouth</streetAddressLine>
+            <streetAddressLine>Hampshire</streetAddressLine>
+            <postalCode>PO2 9PF</postalCode>
+            <useablePeriod>
+              <low value="20131114"/>
+            </useablePeriod>
+          </addr>
+        </locatedPlace>
+      </locatedEntity>
+    </location>
+    <Participant2 typeCode="PRF" contextControlCode="OP">
+      <agentRef classCode="AGNT">
+        <id root="ACAD52F0-4D1C-11E3-9E6B-010000001205"/>
+      </agentRef>
+    </Participant2>
+    <component typeCode="COMP">
+      <ObservationStatement classCode="OBS" moodCode="EVN">
+        <id root="AC8C8489-4D1C-11E3-A2DD-010000000161"/>
+        <code code="XaPlY" codeSystem="2.16.840.1.113883.2.1.3.2.4.14" displayName="Non-coeliac gluten sensitivity">
+          <translation code="J695.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Non-coeliac gluten sensitivity"/>
+        </code>
+        <statusCode code="COMPLETE"/>
+        <effectiveTime>
+          <low value="19761205"/>
+        </effectiveTime>
+        <availabilityTime value="19761205"/>
+        <pertinentInformation typeCode="PERT">
+          <sequenceNumber value="+1"/>
+          <pertinentAnnotation classCode="OBS" moodCode="EVN">
+            <text>Problem severity: Minor Problem header for gluten allergy</text>
+          </pertinentAnnotation>
+        </pertinentInformation>
+      </ObservationStatement>
+    </component>
+    <component typeCode="COMP">
+      <LinkSet classCode="OBS" moodCode="EVN">
+        <id root="AC8C8488-4D1C-11E3-A2DD-010000000161"/>
+        <code code="394774009" codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Active Problem"/>
+        <statusCode code="COMPLETE"/>
+        <effectiveTime>
+          <low value="19761205000000"/>
+        </effectiveTime>
+        <availabilityTime value="19761205082922"/>
+        <conditionNamed typeCode="NAME" inversionInd="true">
+          <namedStatementRef classCode="OBS" moodCode="EVN">
+            <id root="AC8C8489-4D1C-11E3-A2DD-010000000161"/>
+          </namedStatementRef>
+        </conditionNamed>
+      </LinkSet>
+    </component>
+    <component typeCode="COMP">
+      <CompoundStatement classCode="CATEGORY" moodCode="EVN">
+        <id root="B02080B2-4D1C-11E3-A2DD-010000000161"/>
+        <code code="SN53.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Allergy, unspecified"/>
+        <statusCode code="COMPLETE"/>
+        <effectiveTime>
+          <center nullFlavor="NI"/>
+        </effectiveTime>
+        <availabilityTime value="19761205082922"/>
+        <component typeCode="COMP" contextConductionInd="true">
+          <ObservationStatement classCode="OBS" moodCode="EVN">
+            <id root="B02080B1-4D1C-11E3-A2DD-010000000161"/>
+            <code code="XaPlY" codeSystem="2.16.840.1.113883.2.1.3.2.4.14" displayName="Non-coeliac gluten sensitivity">
+              <translation code="J695.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Non-coeliac gluten sensitivity"/>
+            </code>
+            <statusCode code="COMPLETE"/>
+            <effectiveTime>
+              <center nullFlavor="NI"/>
+            </effectiveTime>
+            <availabilityTime value="19761205082922"/>
+            <pertinentInformation typeCode="PERT">
+              <sequenceNumber value="+1"/>
+              <pertinentAnnotation classCode="OBS" moodCode="EVN">
+                <text>This is a gluten allergy that is also a problem</text>
+              </pertinentAnnotation>
+            </pertinentInformation>
+          </ObservationStatement>
+        </component>
+      </CompoundStatement>
+    </component>
+    <component typeCode="COMP">
+      <CompoundStatement classCode="CATEGORY" moodCode="EVN">
+        <id root="B02080B0-4D1C-11E3-A2DD-010000000161"/>
+        <code code="SN53.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Allergy, unspecified"/>
+        <statusCode code="COMPLETE"/>
+        <effectiveTime>
+          <center nullFlavor="NI"/>
+        </effectiveTime>
+        <availabilityTime value="19761205082922"/>
+        <component typeCode="COMP" contextConductionInd="true">
+          <ObservationStatement classCode="OBS" moodCode="EVN">
+            <id root="B01F2125-4D1C-11E3-A2DD-010000000161"/>
+            <code code="XaLGS" codeSystem="2.16.840.1.113883.2.1.3.2.4.14" displayName="Transfer-degraded non-drug allergy">
+              <originalText>Lentil Allergy</originalText>
+              <translation code="9bJ5.00" codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Transfer-degraded non-drug allergy"/>
+            </code>
+            <statusCode code="COMPLETE"/>
+            <effectiveTime>
+              <center nullFlavor="NI"/>
+            </effectiveTime>
+            <availabilityTime value="19761205082922"/>
+            <pertinentInformation typeCode="PERT">
+              <sequenceNumber value="+1"/>
+              <pertinentAnnotation classCode="OBS" moodCode="EVN">
+                <text>Well nobody likes lentils</text>
+              </pertinentAnnotation>
+            </pertinentInformation>
+          </ObservationStatement>
+        </component>
+      </CompoundStatement>
+    </component>
+  </ehrComposition>
+</component>
