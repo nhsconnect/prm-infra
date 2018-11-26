@@ -1,0 +1,4 @@
+.terraform
+example.zip
+*.swo
+*.swp
