@@ -3,4 +3,9 @@ version: 0.1
 phases:
   build:
     commands:
-      - echo Hello Jon
+      - echo Build started on ServerlessExample
+      - echo Lambda is being zipped!
+      - zip example.zip lambda/main.js
+      - echo Uploading zip file to bucket
+      - aws s3 cp example.zip s3://terraform-serverless-kc4/example.zip
+    
