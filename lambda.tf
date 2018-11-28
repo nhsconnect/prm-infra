@@ -106,31 +106,49 @@ resource "aws_iam_role" "lambda_exec" {
 EOF
 }
 
-data "aws_iam_policy_document" "cloudwatch-log-group-lambda" {
-  statement {
-    actions = [
-      "logs:CreateLogGroup",
-      "logs:CreateLogStream",
-      "logs:PutLogEvents"
-    ]
+resource "aws_cloudwatch_metric_alarm" "notify-error" {
+  alarm_name                = "terraform-test-notify-error"
+  comparison_operator       = "GreaterThanOrEqualToThreshold"
+  evaluation_periods        = "1"
+  metric_name               = "4XXError"
+  namespace                 = "AWS/ApiGateway"
+  period                    = "120"
+  statistic                 = "Sum"
+  threshold                 = "0"
+  alarm_description         = "This metric monitors 4xx errors on API-gateway"
+  insufficient_data_actions = []
 
-    resources = [
-      "arn:aws:logs:::*",
-    ]
+  dimensions {
+    ApiName = "${aws_lambda_function.example.function_name}"
   }
 }
 
-resource "aws_iam_role_policy" "lambda-cloudwatch-log-group" {
-  name = "cloudwatch-log-group"
-  role = "${aws_iam_role.lambda_exec.name}"
-  policy = "${data.aws_iam_policy_document.cloudwatch-log-group-lambda.json}"
-}
 
-resource "aws_cloudwatch_log_group" "yada" {
-  name = "Yada"
-}
-
-resource "aws_cloudwatch_log_stream" "foo" {
-  name           = "SampleLogStream1234"
-  log_group_name = "${aws_cloudwatch_log_group.yada.name}"
-}
+//data "aws_iam_policy_document" "cloudwatch-log-group-lambda" {
+//  statement {
+//    actions = [
+//      "logs:CreateLogGroup",
+//      "logs:CreateLogStream",
+//      "logs:PutLogEvents"
+//    ]
+//
+//    resources = [
+//      "arn:aws:logs:::*",
+//    ]
+//  }
+//}
+//
+//resource "aws_iam_role_policy" "lambda-cloudwatch-log-group" {
+//  name = "cloudwatch-log-group"
+//  role = "${aws_iam_role.lambda_exec.name}"
+//  policy = "${data.aws_iam_policy_document.cloudwatch-log-group-lambda.json}"
+//}
+//
+//resource "aws_cloudwatch_log_group" "yada" {
+//  name = "Yada"
+//}
+//
+//resource "aws_cloudwatch_log_stream" "foo" {
+//  name           = "SampleLogStream1234"
+//  log_group_name = "${aws_cloudwatch_log_group.yada.name}"
+//}
