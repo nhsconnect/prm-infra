@@ -1,11 +1,13 @@
 version: 0.1
 
 phases:
+  install:
+    commands:
+      - sudo apt-get install zip
   build:
     commands:
       - echo Build started on ServerlessExample
       - echo Lambda is being zipped!
-      - sudo apt-get install zip
       - zip example.zip lambda/main.js
       - echo Uploading zip file to bucket
       - aws s3 cp example.zip s3://terraform-serverless-kc4/example.zip
