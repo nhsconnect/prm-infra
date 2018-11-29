@@ -7,8 +7,8 @@ provider "aws" {
   region = "eu-west-2"
 }
 
-resource "aws_lambda_function" "example" {
-  function_name = "ServerlessExample"
+resource "aws_lambda_function" "EHR-extract-handler" {
+  function_name = "EhrExtractHandler"
 
   # The bucket name as created earlier with "aws s3api create-bucket"
   s3_bucket = "terraform-serverless-kc4"
@@ -43,7 +43,7 @@ resource "aws_api_gateway_integration" "lambda" {
 
   integration_http_method = "POST"
   type = "AWS_PROXY"
-  uri = "${aws_lambda_function.example.invoke_arn}"
+  uri = "${aws_lambda_function.EHR-extract-handler.invoke_arn}"
 }
 
 resource "aws_api_gateway_method" "proxy_root" {
@@ -60,7 +60,7 @@ resource "aws_api_gateway_integration" "lambda_root" {
 
   integration_http_method = "POST"
   type = "AWS_PROXY"
-  uri = "${aws_lambda_function.example.invoke_arn}"
+  uri = "${aws_lambda_function.EHR-extract-handler.invoke_arn}"
 }
 
 resource "aws_api_gateway_deployment" "example" {
@@ -76,7 +76,7 @@ resource "aws_api_gateway_deployment" "example" {
 resource "aws_lambda_permission" "apigw" {
   statement_id = "AllowAPIGatewayInvoke"
   action = "lambda:InvokeFunction"
-  function_name = "${aws_lambda_function.example.arn}"
+  function_name = "${aws_lambda_function.EHR-extract-handler.arn}"
   principal = "apigateway.amazonaws.com"
 
   # The /*/* portion grants access from any method on any resource
@@ -119,7 +119,7 @@ resource "aws_cloudwatch_metric_alarm" "notify-error" {
   insufficient_data_actions = []
 
   dimensions {
-    ApiName = "${aws_lambda_function.example.function_name}"
+    ApiName = "${aws_lambda_function.EHR-extract-handler.function_name}"
   }
 }
 
@@ -129,7 +129,7 @@ resource "aws_cloudwatch_metric_alarm" "notify-error" {
 //  acl = "private"
 //}
 
-resource "aws_codebuild_webhook" "example" {
+resource "aws_codebuild_webhook" "walking-skeleton-repo-webhook" {
   project_name = "${aws_codebuild_project.kc-build-project.name}"
 }
 
@@ -208,7 +208,7 @@ resource "aws_codebuild_project" "kc-build-project" {
 
   cache {
     type = "S3"
-    location = "${aws_lambda_function.example.s3_bucket}"
+    location = "${aws_lambda_function.EHR-extract-handler.s3_bucket}"
   }
 
   environment {
