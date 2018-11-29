@@ -7,8 +7,8 @@ provider "aws" {
   region = "eu-west-2"
 }
 
-resource "aws_lambda_function" "EHR-extract-handler" {
-  function_name = "EhrExtractHandler"
+resource "aws_lambda_function" "example" {
+  function_name = "ServerlessExample"
 
   # The bucket name as created earlier with "aws s3api create-bucket"
   s3_bucket = "terraform-serverless-kc4"
@@ -24,43 +24,43 @@ resource "aws_lambda_function" "EHR-extract-handler" {
 }
 
 resource "aws_api_gateway_resource" "proxy" {
-  rest_api_id = "${aws_api_gateway_rest_api.EHR-extract-handler-api.id}"
-  parent_id = "${aws_api_gateway_rest_api.EHR-extract-handler-api.root_resource_id}"
+  rest_api_id = "${aws_api_gateway_rest_api.example.id}"
+  parent_id = "${aws_api_gateway_rest_api.example.root_resource_id}"
   path_part = "{proxy+}"
 }
 
 resource "aws_api_gateway_method" "proxy" {
-  rest_api_id = "${aws_api_gateway_rest_api.EHR-extract-handler-api.id}"
+  rest_api_id = "${aws_api_gateway_rest_api.example.id}"
   resource_id = "${aws_api_gateway_resource.proxy.id}"
   http_method = "ANY"
   authorization = "NONE"
 }
 
 resource "aws_api_gateway_integration" "lambda" {
-  rest_api_id = "${aws_api_gateway_rest_api.EHR-extract-handler-api.id}"
+  rest_api_id = "${aws_api_gateway_rest_api.example.id}"
   resource_id = "${aws_api_gateway_method.proxy.resource_id}"
   http_method = "${aws_api_gateway_method.proxy.http_method}"
 
   integration_http_method = "POST"
   type = "AWS_PROXY"
-  uri = "${aws_lambda_function.EHR-extract-handler.invoke_arn}"
+  uri = "${aws_lambda_function.example.invoke_arn}"
 }
 
 resource "aws_api_gateway_method" "proxy_root" {
-  rest_api_id = "${aws_api_gateway_rest_api.EHR-extract-handler-api.id}"
-  resource_id = "${aws_api_gateway_rest_api.EHR-extract-handler-api.root_resource_id}"
+  rest_api_id = "${aws_api_gateway_rest_api.example.id}"
+  resource_id = "${aws_api_gateway_rest_api.example.root_resource_id}"
   http_method = "ANY"
   authorization = "NONE"
 }
 
 resource "aws_api_gateway_integration" "lambda_root" {
-  rest_api_id = "${aws_api_gateway_rest_api.EHR-extract-handler-api.id}"
+  rest_api_id = "${aws_api_gateway_rest_api.example.id}"
   resource_id = "${aws_api_gateway_method.proxy_root.resource_id}"
   http_method = "${aws_api_gateway_method.proxy_root.http_method}"
 
   integration_http_method = "POST"
   type = "AWS_PROXY"
-  uri = "${aws_lambda_function.EHR-extract-handler.invoke_arn}"
+  uri = "${aws_lambda_function.example.invoke_arn}"
 }
 
 resource "aws_api_gateway_deployment" "example" {
@@ -69,14 +69,14 @@ resource "aws_api_gateway_deployment" "example" {
     "aws_api_gateway_integration.lambda_root",
   ]
 
-  rest_api_id = "${aws_api_gateway_rest_api.EHR-extract-handler-api.id}"
+  rest_api_id = "${aws_api_gateway_rest_api.example.id}"
   stage_name = "test"
 }
 
 resource "aws_lambda_permission" "apigw" {
   statement_id = "AllowAPIGatewayInvoke"
   action = "lambda:InvokeFunction"
-  function_name = "${aws_lambda_function.EHR-extract-handler.arn}"
+  function_name = "${aws_lambda_function.example.arn}"
   principal = "apigateway.amazonaws.com"
 
   # The /*/* portion grants access from any method on any resource
@@ -119,7 +119,7 @@ resource "aws_cloudwatch_metric_alarm" "notify-error" {
   insufficient_data_actions = []
 
   dimensions {
-    ApiName = "${aws_api_gateway_rest_api.EHR-extract-handler-api.name}"
+    ApiName = "${aws_lambda_function.example.function_name}"
   }
 }
 
@@ -129,7 +129,7 @@ resource "aws_cloudwatch_metric_alarm" "notify-error" {
 //  acl = "private"
 //}
 
-resource "aws_codebuild_webhook" "walking-skeleton-repo-webhook" {
+resource "aws_codebuild_webhook" "example" {
   project_name = "${aws_codebuild_project.kc-build-project.name}"
 }
 
@@ -208,7 +208,7 @@ resource "aws_codebuild_project" "kc-build-project" {
 
   cache {
     type = "S3"
-    location = "${aws_lambda_function.EHR-extract-handler.s3_bucket}"
+    location = "${aws_lambda_function.example.s3_bucket}"
   }
 
   environment {
@@ -216,16 +216,16 @@ resource "aws_codebuild_project" "kc-build-project" {
     image = "aws/codebuild/python:3.6.5"
     type = "LINUX_CONTAINER"
 
-//    environment_variable {
-//      "name" = "SOME_KEY1"
-//      "value" = "SOME_VALUE1"
-//    }
-//
-//    environment_variable {
-//      "name" = "SOME_KEY2"
-//      "value" = "SOME_VALUE2"
-//      "type" = "PARAMETER_STORE"
-//    }
+    //    environment_variable {
+    //      "name" = "SOME_KEY1"
+    //      "value" = "SOME_VALUE1"
+    //    }
+    //
+    //    environment_variable {
+    //      "name" = "SOME_KEY2"
+    //      "value" = "SOME_VALUE2"
+    //      "type" = "PARAMETER_STORE"
+    //    }
   }
 
   source {
@@ -234,17 +234,17 @@ resource "aws_codebuild_project" "kc-build-project" {
     git_clone_depth = 1
   }
 
-//  vpc_config {
-//    vpc_id = "vpc-725fca"
-//
-//    subnets = [
-//      "subnet-ba35d2e0",
-//      "subnet-ab129af1",
-//    ]
-//
-//    security_group_ids = [
-//      "sg-f9f27d91",
-//      "sg-e4f48g23",
-//    ]
-//  }
+  //  vpc_config {
+  //    vpc_id = "vpc-725fca"
+  //
+  //    subnets = [
+  //      "subnet-ba35d2e0",
+  //      "subnet-ab129af1",
+  //    ]
+  //
+  //    security_group_ids = [
+  //      "sg-f9f27d91",
+  //      "sg-e4f48g23",
+  //    ]
+  //  }
 }
