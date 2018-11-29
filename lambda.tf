@@ -119,7 +119,7 @@ resource "aws_cloudwatch_metric_alarm" "notify-error" {
   insufficient_data_actions = []
 
   dimensions {
-    ApiName = "${aws_lambda_function.EHR-extract-handler.function_name}"
+    ApiName = "${aws_api_gateway_rest_api.EHR-extract-handler-api.name}"
   }
 }
 
