@@ -107,15 +107,15 @@ EOF
 }
 
 resource "aws_cloudwatch_metric_alarm" "notify-error" {
-  alarm_name                = "terraform-test-notify-error"
-  comparison_operator       = "GreaterThanOrEqualToThreshold"
-  evaluation_periods        = "1"
-  metric_name               = "4XXError"
-  namespace                 = "AWS/ApiGateway"
-  period                    = "120"
-  statistic                 = "Sum"
-  threshold                 = "0"
-  alarm_description         = "This metric monitors 4xx errors on API-gateway"
+  alarm_name = "terraform-test-notify-error"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods = "1"
+  metric_name = "4XXError"
+  namespace = "AWS/ApiGateway"
+  period = "120"
+  statistic = "Sum"
+  threshold = "0"
+  alarm_description = "This metric monitors 4xx errors on API-gateway"
   insufficient_data_actions = []
 
   dimensions {
@@ -123,32 +123,128 @@ resource "aws_cloudwatch_metric_alarm" "notify-error" {
   }
 }
 
+// Setting CodeBuild
+//resource "aws_s3_bucket" "terraform-serverless-kc4" {
+//  bucket = "terraform-serverless-kc4"
+//  acl = "private"
+//}
 
-//data "aws_iam_policy_document" "cloudwatch-log-group-lambda" {
-//  statement {
-//    actions = [
-//      "logs:CreateLogGroup",
-//      "logs:CreateLogStream",
-//      "logs:PutLogEvents"
+resource "aws_codebuild_webhook" "example" {
+  project_name = "${aws_codebuild_project.kc-build-project.name}"
+}
+
+resource "aws_iam_role" "codebuild-test-service-role2" {
+  name = "codebuild-test-service-role2"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "codebuild.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy" "codebuild-test-service-policy" {
+  role = "${aws_iam_role.codebuild-test-service-role2.name}"
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Resource": [
+        "*"
+      ],
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Resource": [
+          "arn:aws:s3:::codepipeline-eu-west-2-*"
+      ],
+      "Action": [
+          "s3:PutObject",
+          "s3:GetObject",
+          "s3:GetObjectVersion"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:*"
+      ],
+      "Resource": [
+        "arn:aws:s3:::terraform-serverless-kc4",
+        "arn:aws:s3:::terraform-serverless-kc4/*"
+      ]
+    }
+  ]
+}
+POLICY
+}
+
+resource "aws_codebuild_project" "kc-build-project" {
+  name = "kc-build-project"
+  description = "Trying to build kc-build-project"
+  build_timeout = "5"
+  service_role = "${aws_iam_role.codebuild-test-service-role2.arn}"
+
+  artifacts {
+    type = "NO_ARTIFACTS"
+  }
+
+  cache {
+    type = "S3"
+    location = "${aws_lambda_function.example.s3_bucket}"
+  }
+
+  environment {
+    compute_type = "BUILD_GENERAL1_SMALL"
+    image = "aws/codebuild/python:3.6.5"
+    type = "LINUX_CONTAINER"
+
+//    environment_variable {
+//      "name" = "SOME_KEY1"
+//      "value" = "SOME_VALUE1"
+//    }
+//
+//    environment_variable {
+//      "name" = "SOME_KEY2"
+//      "value" = "SOME_VALUE2"
+//      "type" = "PARAMETER_STORE"
+//    }
+  }
+
+  source {
+    type = "BITBUCKET"
+    location = "https://bitbucket.org/twnhsd/walking-skeleton-spikes.git"
+    git_clone_depth = 1
+  }
+
+//  vpc_config {
+//    vpc_id = "vpc-725fca"
+//
+//    subnets = [
+//      "subnet-ba35d2e0",
+//      "subnet-ab129af1",
 //    ]
 //
-//    resources = [
-//      "arn:aws:logs:::*",
+//    security_group_ids = [
+//      "sg-f9f27d91",
+//      "sg-e4f48g23",
 //    ]
 //  }
-//}
-//
-//resource "aws_iam_role_policy" "lambda-cloudwatch-log-group" {
-//  name = "cloudwatch-log-group"
-//  role = "${aws_iam_role.lambda_exec.name}"
-//  policy = "${data.aws_iam_policy_document.cloudwatch-log-group-lambda.json}"
-//}
-//
-//resource "aws_cloudwatch_log_group" "yada" {
-//  name = "Yada"
-//}
-//
-//resource "aws_cloudwatch_log_stream" "foo" {
-//  name           = "SampleLogStream1234"
-//  log_group_name = "${aws_cloudwatch_log_group.yada.name}"
-//}
+}
