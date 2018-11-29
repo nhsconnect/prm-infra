@@ -14,4 +14,4 @@ phases:
       - cd ..
       - echo Uploading zip file to bucket
       - aws s3 cp example.zip s3://terraform-serverless-kc4/example.zip
-      - echo Build completecd ;a
+      - echo Build completed
