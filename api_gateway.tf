@@ -1,6 +1,6 @@
-resource "aws_api_gateway_rest_api" "example" {
-  name        = "ServerlessExample"
-  description = "Terraform Serverless Application Example"
+resource "aws_api_gateway_rest_api" "ehr-extract-handler-api" {
+  name        = "EhrExtractHandlerApi"
+  description = "Receives and sends GP2GP messages"
 }
 
 output "base_url" {
