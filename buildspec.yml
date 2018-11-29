@@ -9,7 +9,9 @@ phases:
     commands:
       - echo Build started on ServerlessExample
       - echo Lambda is being zipped
+      - pwd
       - cd lambda
+      - ls
       - zip ../example main.js
       - cd ..
       - echo Uploading zip file to bucket
