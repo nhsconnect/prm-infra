@@ -249,7 +249,7 @@ resource "aws_codebuild_project" "prm-infra-validate" {
   service_role = "${aws_iam_role.codebuild-prm-trigger-service-role.arn}"
 
   artifacts {
-    type = "NO_ARTIFACTS"
+    type = "CODEPIPELINE"
   }
 
   cache {
