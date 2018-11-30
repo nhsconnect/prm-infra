@@ -76,7 +76,7 @@ resource "aws_api_gateway_deployment" "example" {
 resource "aws_lambda_permission" "apigw" {
   statement_id = "AllowAPIGatewayInvoke"
   action = "lambda:InvokeFunction"
-  function_name = "${aws_lambda_function.ehr_extract_handler.arn}"
+  function_name = "${aws_lambda_function.ehr_extract_handler.function_name}"
   principal = "apigateway.amazonaws.com"
 
   # The /*/* portion grants access from any method on any resource
