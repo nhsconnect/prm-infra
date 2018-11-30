@@ -140,12 +140,6 @@ resource "aws_cloudwatch_metric_alarm" "notify-error-5xx" {
   }
 }
 
-// Setting CodeBuild
-//resource "aws_s3_bucket" "terraform-serverless-kc4" {
-//  bucket = "terraform-serverless-kc4"
-//  acl = "private"
-//}
-
 resource "aws_codebuild_webhook" "codebuild-prm-webhook" {
   project_name = "${aws_codebuild_project.prm-vcs-trigger.name}"
 }
@@ -305,7 +299,9 @@ resource "aws_iam_role_policy" "prm-infra-codepipeline-policy" {
       ],
       "Resource": [
         "${aws_s3_bucket.prm-infra-codepipeline-bucket.arn}",
-        "${aws_s3_bucket.prm-infra-codepipeline-bucket.arn}/*"
+        "${aws_s3_bucket.prm-infra-codepipeline-bucket.arn}/*",
+        "arn:aws:s3:::terraform-serverless-kc4",
+        "arn:aws:s3:::terraform-serverless-kc4/*"
       ]
     },
     {
