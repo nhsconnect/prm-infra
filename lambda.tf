@@ -259,11 +259,73 @@ resource "aws_codebuild_project" "prm-vcs-trigger" {
   }
 }
 
+resource "aws_iam_role" "codebuild-prm-infra-validate-role" {
+  name = "codebuild-prm-infra-validate-role"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "codebuild.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy" "codebuild-prm-infra-validate-service-policy" {
+  role = "${aws_iam_role.codebuild-prm-infra-validate-role.name}"
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Resource": [
+        "*"
+      ],
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Resource": [
+          "arn:aws:s3:::codepipeline-eu-west-2-*"
+      ],
+      "Action": [
+          "s3:*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:*"
+      ],
+      "Resource": [
+        "${aws_s3_bucket.prm-infra-codepipeline-bucket.arn}",
+        "${aws_s3_bucket.prm-infra-codepipeline-bucket.arn}/*"
+      ]
+    }
+  ]
+}
+POLICY
+}
+
+
 resource "aws_codebuild_project" "prm-infra-validate" {
   name = "prm-infra-validate"
   description = "Validates the infrastructure"
   build_timeout = "5"
-  service_role = "${aws_iam_role.codebuild-prm-trigger-service-role.arn}"
+  service_role = "${aws_iam_role.codebuild-prm-infra-validate-role.arn}"
 
   artifacts {
     type = "CODEPIPELINE"
