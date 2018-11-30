@@ -13,6 +13,6 @@ phases:
       - sudo mv terragrunt_linux_amd64 /bin/terragrunt
   build:
     commands:
-      - terragrunt init
-      - terragrunt validate      
-      
+      - sudo terragrunt init
+      - sudo terragrunt validate      
+
