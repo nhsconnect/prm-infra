@@ -1,5 +1,5 @@
-resource "aws_api_gateway_rest_api" "example" {
-  name        = "ServerlessExample"
+resource "aws_api_gateway_rest_api" "ehr_extract_handler_api" {
+  name        = "EhrExtractHandlerApi"
   description = "Terraform Serverless Application Example"
 }
 

@@ -7,8 +7,8 @@ provider "aws" {
   region = "eu-west-2"
 }
 
-resource "aws_lambda_function" "example" {
-  function_name = "ServerlessExample"
+resource "aws_lambda_function" "ehr_extract_handler" {
+  function_name = "EhrExtractHandler"
 
   # The bucket name as created earlier with "aws s3api create-bucket"
   s3_bucket = "terraform-serverless-kc4"
@@ -24,43 +24,43 @@ resource "aws_lambda_function" "example" {
 }
 
 resource "aws_api_gateway_resource" "proxy" {
-  rest_api_id = "${aws_api_gateway_rest_api.example.id}"
-  parent_id = "${aws_api_gateway_rest_api.example.root_resource_id}"
+  rest_api_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
+  parent_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.root_resource_id}"
   path_part = "{proxy+}"
 }
 
 resource "aws_api_gateway_method" "proxy" {
-  rest_api_id = "${aws_api_gateway_rest_api.example.id}"
+  rest_api_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
   resource_id = "${aws_api_gateway_resource.proxy.id}"
   http_method = "ANY"
   authorization = "NONE"
 }
 
 resource "aws_api_gateway_integration" "lambda" {
-  rest_api_id = "${aws_api_gateway_rest_api.example.id}"
+  rest_api_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
   resource_id = "${aws_api_gateway_method.proxy.resource_id}"
   http_method = "${aws_api_gateway_method.proxy.http_method}"
 
   integration_http_method = "POST"
   type = "AWS_PROXY"
-  uri = "${aws_lambda_function.example.invoke_arn}"
+  uri = "${aws_lambda_function.ehr_extract_handler.invoke_arn}"
 }
 
 resource "aws_api_gateway_method" "proxy_root" {
-  rest_api_id = "${aws_api_gateway_rest_api.example.id}"
-  resource_id = "${aws_api_gateway_rest_api.example.root_resource_id}"
+  rest_api_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
+  resource_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.root_resource_id}"
   http_method = "ANY"
   authorization = "NONE"
 }
 
 resource "aws_api_gateway_integration" "lambda_root" {
-  rest_api_id = "${aws_api_gateway_rest_api.example.id}"
+  rest_api_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
   resource_id = "${aws_api_gateway_method.proxy_root.resource_id}"
   http_method = "${aws_api_gateway_method.proxy_root.http_method}"
 
   integration_http_method = "POST"
   type = "AWS_PROXY"
-  uri = "${aws_lambda_function.example.invoke_arn}"
+  uri = "${aws_lambda_function.ehr_extract_handler.invoke_arn}"
 }
 
 resource "aws_api_gateway_deployment" "example" {
@@ -69,14 +69,14 @@ resource "aws_api_gateway_deployment" "example" {
     "aws_api_gateway_integration.lambda_root",
   ]
 
-  rest_api_id = "${aws_api_gateway_rest_api.example.id}"
+  rest_api_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
   stage_name = "test"
 }
 
 resource "aws_lambda_permission" "apigw" {
   statement_id = "AllowAPIGatewayInvoke"
   action = "lambda:InvokeFunction"
-  function_name = "${aws_lambda_function.example.arn}"
+  function_name = "${aws_lambda_function.ehr_extract_handler.arn}"
   principal = "apigateway.amazonaws.com"
 
   # The /*/* portion grants access from any method on any resource
@@ -119,7 +119,7 @@ resource "aws_cloudwatch_metric_alarm" "notify-error-4xx" {
   insufficient_data_actions = []
 
   dimensions {
-    ApiName = "${aws_lambda_function.example.function_name}"
+    ApiName = "${aws_lambda_function.ehr_extract_handler.function_name}"
   }
 }
 
@@ -136,7 +136,7 @@ resource "aws_cloudwatch_metric_alarm" "notify-error-5xx" {
   insufficient_data_actions = []
 
   dimensions {
-    ApiName = "${aws_lambda_function.example.function_name}"
+    ApiName = "${aws_lambda_function.ehr_extract_handler.function_name}"
   }
 }
 
@@ -225,7 +225,7 @@ resource "aws_codebuild_project" "kc-build-project" {
 
   cache {
     type = "S3"
-    location = "${aws_lambda_function.example.s3_bucket}"
+    location = "${aws_lambda_function.ehr_extract_handler.s3_bucket}"
   }
 
   environment {
