@@ -140,6 +140,40 @@ resource "aws_cloudwatch_metric_alarm" "notify-error-5xx" {
   }
 }
 
+// Setting cloudwatch event to ping once a min
+//resource "aws_lambda_function" "check_foo" {
+//  filename = "check_foo.zip"
+//  function_name = "checkFoo"
+//  role = "arn:aws:iam::424242:role/something"
+//  handler = "index.handler"
+//}
+
+resource "aws_cloudwatch_event_rule" "once_a_minute" {
+  name = "every-minute"
+  description = "Fires every minute"
+  schedule_expression = "rate(1 minute)"
+}
+
+resource "aws_cloudwatch_event_target" "check_pinger_every_five_minutes" {
+  rule = "${aws_cloudwatch_event_rule.once_a_minute.name}"
+//  target_id = "check_pinger"
+  arn = "arn:aws:lambda:eu-west-2:431593652018:function:EhrExtractHandlerPinger"
+}
+
+resource "aws_lambda_permission" "allow_cloudwatch_to_call_check_foo" {
+  statement_id = "AllowExecutionFromCloudWatch"
+  action = "lambda:InvokeFunction"
+  function_name = "EhrExtractHandlerPinger"
+  principal = "events.amazonaws.com"
+  source_arn = "${aws_cloudwatch_event_rule.once_a_minute.arn}"
+}
+
+// Setting CodeBuild
+//resource "aws_s3_bucket" "terraform-serverless-kc4" {
+//  bucket = "terraform-serverless-kc4"
+//  acl = "private"
+//}
+
 resource "aws_codebuild_webhook" "codebuild-prm-webhook" {
   project_name = "${aws_codebuild_project.prm-vcs-trigger.name}"
 }
