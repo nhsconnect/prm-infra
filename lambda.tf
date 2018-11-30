@@ -251,11 +251,6 @@ resource "aws_codebuild_project" "prm-vcs-trigger" {
     type = "NO_ARTIFACTS"
   }
 
-  cache {
-    type = "S3"
-    location = "${aws_lambda_function.ehr_extract_handler.s3_bucket}"
-  }
-
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
     image = "aws/codebuild/python:3.6.5"
@@ -278,11 +273,6 @@ resource "aws_codebuild_project" "prm-infra-validate" {
 
   artifacts {
     type = "CODEPIPELINE"
-  }
-
-  cache {
-    type = "S3"
-    location = "${aws_lambda_function.ehr_extract_handler.s3_bucket}"
   }
 
   environment {
