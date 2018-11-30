@@ -259,8 +259,8 @@ resource "aws_codebuild_project" "prm-vcs-trigger" {
   }
 }
 
-resource "aws_iam_role" "codebuild-prm-infra-validate-role" {
-  name = "codebuild-prm-infra-validate-role"
+resource "aws_iam_role" "codebuild-prm-infra-plan-role" {
+  name = "codebuild-prm-infra-plan-role"
 
   assume_role_policy = <<EOF
 {
@@ -278,8 +278,8 @@ resource "aws_iam_role" "codebuild-prm-infra-validate-role" {
 EOF
 }
 
-resource "aws_iam_role_policy" "codebuild-prm-infra-validate-service-policy" {
-  role = "${aws_iam_role.codebuild-prm-infra-validate-role.name}"
+resource "aws_iam_role_policy" "codebuild-prm-infra-plan-service-policy" {
+  role = "${aws_iam_role.codebuild-prm-infra-plan-role.name}"
 
   policy = <<POLICY
 {
@@ -314,11 +314,11 @@ POLICY
 }
 
 
-resource "aws_codebuild_project" "prm-infra-validate" {
-  name = "prm-infra-validate"
+resource "aws_codebuild_project" "prm-infra-plan" {
+  name = "prm-infra-plan"
   description = "Validates the infrastructure"
   build_timeout = "5"
-  service_role = "${aws_iam_role.codebuild-prm-infra-validate-role.arn}"
+  service_role = "${aws_iam_role.codebuild-prm-infra-plan-role.arn}"
 
   artifacts {
     type = "CODEPIPELINE"
@@ -424,10 +424,10 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
   }
 
   stage {
-    name = "Validate"
+    name = "Plan"
 
     action {
-      name            = "Validate"
+      name            = "Plan"
       category        = "Test"
       owner           = "AWS"
       provider        = "CodeBuild"
@@ -435,7 +435,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       input_artifacts = ["source"]
  
       configuration {
-        ProjectName = "${aws_codebuild_project.prm-infra-validate.name}"
+        ProjectName = "${aws_codebuild_project.prm-infra-plan.name}"
       }
     }
   }
