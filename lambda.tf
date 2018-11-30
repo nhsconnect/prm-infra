@@ -146,12 +146,12 @@ resource "aws_cloudwatch_metric_alarm" "notify-error-5xx" {
 //  acl = "private"
 //}
 
-resource "aws_codebuild_webhook" "example" {
-  project_name = "${aws_codebuild_project.kc-build-project.name}"
+resource "aws_codebuild_webhook" "codebuild-prm-webhook" {
+  project_name = "${aws_codebuild_project.prm-vcs-trigger.name}"
 }
 
-resource "aws_iam_role" "codebuild-test-service-role2" {
-  name = "codebuild-test-service-role2"
+resource "aws_iam_role" "codebuild-prm-trigger-service-role" {
+  name = "codebuild-prm-trigger-service-role"
 
   assume_role_policy = <<EOF
 {
@@ -169,8 +169,8 @@ resource "aws_iam_role" "codebuild-test-service-role2" {
 EOF
 }
 
-resource "aws_iam_role_policy" "codebuild-test-service-policy" {
-  role = "${aws_iam_role.codebuild-test-service-role2.name}"
+resource "aws_iam_role_policy" "codebuild-prm-trigger-service-policy" {
+  role = "${aws_iam_role.codebuild-prm-trigger-service-role.name}"
 
   policy = <<POLICY
 {
@@ -213,11 +213,11 @@ resource "aws_iam_role_policy" "codebuild-test-service-policy" {
 POLICY
 }
 
-resource "aws_codebuild_project" "kc-build-project" {
-  name = "kc-build-project"
-  description = "Trying to build kc-build-project"
+resource "aws_codebuild_project" "prm-vcs-trigger" {
+  name = "prm-vcs-trigger"
+  description = "The trigger to start the PRM pipelines (because pipeline doesn't integrate with BitBucket)"
   build_timeout = "5"
-  service_role = "${aws_iam_role.codebuild-test-service-role2.arn}"
+  service_role = "${aws_iam_role.codebuild-prm-trigger-service-role.arn}"
 
   artifacts {
     type = "NO_ARTIFACTS"
@@ -232,36 +232,12 @@ resource "aws_codebuild_project" "kc-build-project" {
     compute_type = "BUILD_GENERAL1_SMALL"
     image = "aws/codebuild/python:3.6.5"
     type = "LINUX_CONTAINER"
-
-    //    environment_variable {
-    //      "name" = "SOME_KEY1"
-    //      "value" = "SOME_VALUE1"
-    //    }
-    //
-    //    environment_variable {
-    //      "name" = "SOME_KEY2"
-    //      "value" = "SOME_VALUE2"
-    //      "type" = "PARAMETER_STORE"
-    //    }
   }
 
   source {
     type = "BITBUCKET"
     location = "https://bitbucket.org/twnhsd/walking-skeleton-spikes.git"
     git_clone_depth = 1
+    buildspec = "webhook_trigger.yml"
   }
-
-  //  vpc_config {
-  //    vpc_id = "vpc-725fca"
-  //
-  //    subnets = [
-  //      "subnet-ba35d2e0",
-  //      "subnet-ab129af1",
-  //    ]
-  //
-  //    security_group_ids = [
-  //      "sg-f9f27d91",
-  //      "sg-e4f48g23",
-  //    ]
-  //  }
 }
