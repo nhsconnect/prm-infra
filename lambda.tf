@@ -298,15 +298,6 @@ resource "aws_iam_role_policy" "codebuild-prm-infra-validate-service-policy" {
     },
     {
       "Effect": "Allow",
-      "Resource": [
-          "arn:aws:s3:::codepipeline-eu-west-2-*"
-      ],
-      "Action": [
-          "s3:*"
-      ]
-    },
-    {
-      "Effect": "Allow",
       "Action": [
         "s3:*"
       ],
