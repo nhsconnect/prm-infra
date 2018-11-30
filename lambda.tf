@@ -344,6 +344,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       owner            = "AWS"
       provider         = "S3"
       version          = "1"
+      output_artifacts = ["source"]
 
       configuration {
         S3Bucket  = "terraform-serverless-kc4"
