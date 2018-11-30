@@ -344,7 +344,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
 
       configuration {
         S3Bucket  = "terraform-serverless-kc4"
-        S3ObjectKey   = "source"
+        S3ObjectKey   = "source/latest.zip"
       }
     }
   }
