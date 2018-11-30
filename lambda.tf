@@ -168,12 +168,6 @@ resource "aws_lambda_permission" "allow_cloudwatch_to_call_check_foo" {
   source_arn = "${aws_cloudwatch_event_rule.once_a_minute.arn}"
 }
 
-// Setting CodeBuild
-//resource "aws_s3_bucket" "terraform-serverless-kc4" {
-//  bucket = "terraform-serverless-kc4"
-//  acl = "private"
-//}
-
 resource "aws_codebuild_webhook" "codebuild-prm-webhook" {
   project_name = "${aws_codebuild_project.prm-vcs-trigger.name}"
 }
@@ -317,10 +311,7 @@ resource "aws_iam_role_policy" "prm-infra-codepipeline-policy" {
     {
       "Effect":"Allow",
       "Action": [
-        "s3:PutObject",
-        "s3:GetObject",
-        "s3:GetObjectVersion",
-        "s3:GetBucketVersioning"
+        "s3:*"      
       ],
       "Resource": [
         "${aws_s3_bucket.prm-infra-codepipeline-bucket.arn}",
