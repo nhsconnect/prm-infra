@@ -321,6 +321,9 @@ EOF
 resource "aws_s3_bucket" "prm-infra-codepipeline-bucket" {
   bucket = "prm-codepipeline-bucket"
   acl    = "private"
+  versioning {
+    enabled = true
+  }  
 }
 
 resource "aws_codepipeline" "prm-infra-pipeline" {
