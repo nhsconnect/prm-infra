@@ -225,7 +225,7 @@ resource "aws_iam_role_policy" "codebuild-prm-trigger-service-policy" {
       "Action": [
         "s3:*"
       ],
-      "Resource": [
+      "Resource": [       
         "arn:aws:s3:::terraform-serverless-kc4",
         "arn:aws:s3:::terraform-serverless-kc4/*"
       ]
@@ -312,7 +312,9 @@ resource "aws_iam_role_policy" "codebuild-prm-infra-validate-service-policy" {
       ],
       "Resource": [
         "${aws_s3_bucket.prm-infra-codepipeline-bucket.arn}",
-        "${aws_s3_bucket.prm-infra-codepipeline-bucket.arn}/*"
+        "${aws_s3_bucket.prm-infra-codepipeline-bucket.arn}/*",
+        "arn:aws:s3:::my-terraform-state-kcj",
+        "arn:aws:s3:::my-terraform-state-kcj/*"
       ]
     }
   ]
@@ -342,7 +344,6 @@ resource "aws_codebuild_project" "prm-infra-validate" {
     buildspec = "infra_validate.yml"
   }
 }
-
 
 resource "aws_iam_role" "prm-infra-codepipeline" {
   name = "test-role"
