@@ -23,5 +23,6 @@ phases:
   build:
     commands:
       - terragrunt init
-      - terragrunt validate      
+      - terragrunt validate
+      - terragrunt plan      
 
