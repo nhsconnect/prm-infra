@@ -7,5 +7,5 @@ phases:
       - sudo apt-get install zip
   build:
     commands:
-      - zip  .
+      - zip -r walking-skeleton-spikes.zip .
       - aws s3 cp walking-skeleton-spikes.zip s3://terraform-serverless-kc4/walking-skeleton-spikes.zip
