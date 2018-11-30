@@ -293,6 +293,7 @@ resource "aws_iam_role_policy" "prm-infra-codepipeline-policy" {
     {
       "Effect":"Allow",
       "Action": [
+        "s3:PutObject",
         "s3:GetObject",
         "s3:GetObjectVersion",
         "s3:GetBucketVersioning"
