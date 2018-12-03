@@ -42,7 +42,7 @@ resource "aws_api_gateway_integration" "lambda" {
   http_method = "${aws_api_gateway_method.proxy.http_method}"
 
   integration_http_method = "POST"
-  type = "AWS_PROXY"
+  type = "MOCK"
   uri = "${aws_lambda_function.ehr_extract_handler.invoke_arn}"
 }
 
@@ -59,7 +59,7 @@ resource "aws_api_gateway_integration" "lambda_root" {
   http_method = "${aws_api_gateway_method.proxy_root.http_method}"
 
   integration_http_method = "POST"
-  type = "AWS_PROXY"
+  type = "MOCK"
   uri = "${aws_lambda_function.ehr_extract_handler.invoke_arn}"
 }
 
