@@ -38,7 +38,7 @@ resource "aws_api_gateway_method" "proxy" {
 
 resource "aws_api_gateway_method_settings" "s" {
   rest_api_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
-  stage_name  = "${aws_api_gateway_stage.test.stage_name}"
+  stage_name  = "test"
   method_path = "*/*"
 
   settings {
@@ -49,19 +49,19 @@ resource "aws_api_gateway_method_settings" "s" {
   }
 }
 
-resource "aws_api_gateway_stage" "test" {
-//  # ... other configuration ...
-//  # new enhancement:
-//  cloudwatch_settings {
-//    enabled                 = true
-//    log_level               = "ERROR" # or "INFO"
-//    log_full_requests       = true
-//    enable_detailed_metrics = true
-//  }
-  stage_name    = "test"
-  rest_api_id   = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
-  deployment_id = "${aws_api_gateway_deployment.example.id}"
-}
+//resource "aws_api_gateway_stage" "test" {
+////  # ... other configuration ...
+////  # new enhancement:
+////  cloudwatch_settings {
+////    enabled                 = true
+////    log_level               = "ERROR" # or "INFO"
+////    log_full_requests       = true
+////    enable_detailed_metrics = true
+////  }
+//  stage_name    = "test"
+//  rest_api_id   = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
+//  deployment_id = "${aws_api_gateway_deployment.example.id}"
+//}
 
 resource "aws_api_gateway_integration" "lambda" {
   rest_api_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
