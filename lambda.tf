@@ -36,6 +36,20 @@ resource "aws_api_gateway_method" "proxy" {
   authorization = "NONE"
 }
 
+resource "aws_api_gateway_stage" "example" {
+  # ... other configuration ...
+  # new enhancement:
+  cloudwatch_settings {
+    enabled                 = true
+    log_level               = "ERROR" # or "INFO"
+    log_full_requests       = true
+    enable_detailed_metrics = true
+  }
+  stage_name    = "test"
+  rest_api_id   = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
+  deployment_id = "${aws_api_gateway_deployment.example.id}"
+}
+
 resource "aws_api_gateway_integration" "lambda" {
   rest_api_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
   resource_id = "${aws_api_gateway_method.proxy.resource_id}"
