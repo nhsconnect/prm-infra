@@ -154,7 +154,7 @@ resource "aws_cloudwatch_event_rule" "once_a_minute" {
   schedule_expression = "rate(1 minute)"
 }
 
-resource "aws_cloudwatch_event_target" "check_pinger_every_five_minutes" {
+resource "aws_cloudwatch_event_target" "check_pinger_every_minute" {
   rule = "${aws_cloudwatch_event_rule.once_a_minute.name}"
 //  target_id = "check_pinger"
   arn = "arn:aws:lambda:eu-west-2:431593652018:function:EhrExtractHandlerPinger"
