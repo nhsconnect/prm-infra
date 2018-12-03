@@ -284,47 +284,32 @@ resource "aws_iam_role_policy" "codebuild-prm-infra-plan-service-policy" {
   policy = <<POLICY
 {
   "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Resource": [
-        "*"
-      ],
-      "Action": [
-        "logs:CreateLogGroup",
-        "logs:CreateLogStream",
-        "logs:PutLogEvents"
-      ]
-    },
+  "Statement": [    
     {
       "Effect": "Allow",
       "Action": [
-        "s3:*"
+        "lambda:CreateFunction",
+        "lambda:UpdateEventSourceMapping",
+        "lambda:ListFunctions",
+        "apigateway:*",
+        "s3:*",
+        "lambda:GetEventSourceMapping",
+        "logs:*",
+        "lambda:GetAccountSettings",
+        "lambda:CreateEventSourceMapping",
+        "codebuild:*",
+        "iam:*",
+        "cloudwatch:*",
+        "kms:*",
+        "ssm:*",
+        "codedeploy:*",
+        "lambda:*",
+        "lambda:ListEventSourceMappings",
+        "ec2:*",
+        "codepipeline:*",
+        "lambda:DeleteEventSourceMapping",
+        "events:*"
       ],
-      "Resource": [
-        "${aws_s3_bucket.prm-infra-codepipeline-bucket.arn}",
-        "${aws_s3_bucket.prm-infra-codepipeline-bucket.arn}/*",
-        "arn:aws:s3:::my-terraform-state-kcj",
-        "arn:aws:s3:::my-terraform-state-kcj/*"
-      ]
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "iam:GetRole"
-      ],
-      "Resource": [
-        "*"
-      ]      
-    },
-    {
-      "Effect": "Allow",
-      "Action": "codebuild:*",
-      "Resource": "*"
-    },
-    {
-      "Effect": "Allow",
-      "Action": "codepipeline:*",
       "Resource": "*"
     }    
   ]
