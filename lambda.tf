@@ -129,7 +129,7 @@ resource "aws_cloudwatch_metric_alarm" "notify-error-5xx" {
   evaluation_periods = "1"
   metric_name = "5XXError"
   namespace = "AWS/ApiGateway"
-  period = "60"
+  period = "300"
   statistic = "Sum"
   threshold = "0"
   alarm_description = "This metric monitors 5xx errors on API-gateway"
