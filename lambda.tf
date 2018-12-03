@@ -307,7 +307,17 @@ resource "aws_iam_role_policy" "codebuild-prm-infra-plan-service-policy" {
         "arn:aws:s3:::my-terraform-state-kcj",
         "arn:aws:s3:::my-terraform-state-kcj/*"
       ]
-    }
+    },
+    {
+        "Version": "2012-10-17",
+        "Statement": [{
+            "Effect": "Allow",
+            "Action": [
+                "iam:GetRole"
+            ],
+            "Resource": "arn:aws:iam::4315-9365-2018"
+        }]
+    }    
   ]
 }
 POLICY
