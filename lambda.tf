@@ -309,18 +309,13 @@ resource "aws_iam_role_policy" "codebuild-prm-infra-plan-service-policy" {
       ]
     },
     {
-      "Version": "2012-10-17",
-      "Statement": [
-          {
-              "Effect": "Allow",
-              "Action": [
-                  "iam:Get*",
-                  "iam:List*",
-              ],
-              "Resource": "*"
-          }
-      ]
-  } 
+        "Effect": "Allow",
+        "Action": [
+            "iam:Get*",
+            "iam:List*",
+        ],
+        "Resource": "*"
+    }
   ]
 }
 POLICY
