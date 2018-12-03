@@ -309,18 +309,18 @@ resource "aws_iam_role_policy" "codebuild-prm-infra-plan-service-policy" {
       ]
     },
     {
-        "Effect": "Allow",
-        "Action": [
-            "iam:Get*",
-            "iam:List*",
-        ],
-        "Resource": "*"
-    }
+      "Effect": "Allow",
+      "Action": [
+        "iam:GetRole"
+      ],
+      "Resource": [
+        "*"
+      ]      
+    }    
   ]
 }
 POLICY
 }
-
 
 resource "aws_codebuild_project" "prm-infra-plan" {
   name = "prm-infra-plan"
