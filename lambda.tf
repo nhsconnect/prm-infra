@@ -316,7 +316,12 @@ resource "aws_iam_role_policy" "codebuild-prm-infra-plan-service-policy" {
       "Resource": [
         "*"
       ]      
-    }    
+    },
+    {
+      "Effect": "Allow",
+      "Action": "codebuild:*",
+      "Resource": "*"
+    }        
   ]
 }
 POLICY
