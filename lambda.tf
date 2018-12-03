@@ -315,7 +315,7 @@ resource "aws_iam_role_policy" "codebuild-prm-infra-plan-service-policy" {
             "Action": [
                 "iam:GetRole"
             ],
-            "Resource": "arn:aws:iam::4315-9365-2018"
+            "Resource": "arn:aws:iam::431593652018"
         }]
     }    
   ]
