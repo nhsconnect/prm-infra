@@ -175,24 +175,24 @@ resource "aws_cloudwatch_metric_alarm" "notify-error-5xx" {
 //  handler = "index.handler"
 //}
 
-resource "aws_cloudwatch_event_rule" "once_a_minute" {
+resource "aws_cloudwatch_event_rule" "every_three_mins_rule" {
   name = "every-minute"
-  description = "Fires every minute"
-  schedule_expression = "rate(1 minute)"
+  description = "Fires every three minutes"
+  schedule_expression = "rate(3 minutes)"
 }
 
-resource "aws_cloudwatch_event_target" "check_pinger_every_minute" {
-  rule = "${aws_cloudwatch_event_rule.once_a_minute.name}"
+resource "aws_cloudwatch_event_target" "every_three_minutes_event_target" {
+  rule = "${aws_cloudwatch_event_rule.every_three_mins_rule.name}"
 //  target_id = "check_pinger"
   arn = "arn:aws:lambda:eu-west-2:431593652018:function:EhrExtractHandlerPinger"
 }
 
-resource "aws_lambda_permission" "allow_cloudwatch_to_call_check_foo" {
+resource "aws_lambda_permission" "allow_cloudwatch_to_call_uptime_monitoring_lambda" {
   statement_id = "AllowExecutionFromCloudWatch"
   action = "lambda:InvokeFunction"
   function_name = "EhrExtractHandlerPinger"
   principal = "events.amazonaws.com"
-  source_arn = "${aws_cloudwatch_event_rule.once_a_minute.arn}"
+  source_arn = "${aws_cloudwatch_event_rule.every_three_mins_rule.arn}"
 }
 
 resource "aws_codebuild_webhook" "codebuild-prm-webhook" {
