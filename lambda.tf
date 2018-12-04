@@ -9,17 +9,19 @@ provider "aws" {
 
 resource "aws_lambda_function" "ehr_extract_handler" {
   function_name = "EhrExtractHandler"
-
-  # The bucket name as created earlier with "aws s3api create-bucket"
   s3_bucket = "terraform-serverless-kc4"
   s3_key = "example.zip"
-
-  # "main" is the filename within the zip file (main.js) and "handler"
-  # is the name of the property under which the handler function was
-  # exported in that file.
   handler = "main.handler"
   runtime = "nodejs6.10"
+  role = "${aws_iam_role.lambda_exec.arn}"
+}
 
+resource "aws_lambda_function" "uptime_monitoring" {
+  function_name = "UptimeMonitoring"
+  s3_bucket = "${aws_s3_bucket.uptime_monitoring_bucket.bucket}"
+  s3_key = "uptime_monitoring.zip"
+  handler = "main.handler"
+  runtime = "nodejs6.10"
   role = "${aws_iam_role.lambda_exec.arn}"
 }
 
@@ -44,24 +46,8 @@ resource "aws_api_gateway_method_settings" "s" {
   settings {
     metrics_enabled = true
     logging_level   = "ERROR"
-//    log_full_requests       = true
-//    enable_detailed_metrics = true
   }
 }
-
-//resource "aws_api_gateway_stage" "test" {
-////  # ... other configuration ...
-////  # new enhancement:
-////  cloudwatch_settings {
-////    enabled                 = true
-////    log_level               = "ERROR" # or "INFO"
-////    log_full_requests       = true
-////    enable_detailed_metrics = true
-////  }
-//  stage_name    = "test"
-//  rest_api_id   = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
-//  deployment_id = "${aws_api_gateway_deployment.example.id}"
-//}
 
 resource "aws_api_gateway_integration" "lambda" {
   rest_api_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
@@ -167,14 +153,6 @@ resource "aws_cloudwatch_metric_alarm" "notify-error-5xx" {
   }
 }
 
-// Setting cloudwatch event to ping once a min
-//resource "aws_lambda_function" "check_foo" {
-//  filename = "check_foo.zip"
-//  function_name = "checkFoo"
-//  role = "arn:aws:iam::424242:role/something"
-//  handler = "index.handler"
-//}
-
 resource "aws_cloudwatch_event_rule" "every_three_mins_rule" {
   name = "every-minute"
   description = "Fires every three minutes"
@@ -184,7 +162,7 @@ resource "aws_cloudwatch_event_rule" "every_three_mins_rule" {
 resource "aws_cloudwatch_event_target" "every_three_minutes_event_target" {
   rule = "${aws_cloudwatch_event_rule.every_three_mins_rule.name}"
 //  target_id = "check_pinger"
-  arn = "arn:aws:lambda:eu-west-2:431593652018:function:EhrExtractHandlerPinger"
+  arn = "${aws_lambda_function.uptime_monitoring.arn}"
 }
 
 resource "aws_lambda_permission" "allow_cloudwatch_to_call_uptime_monitoring_lambda" {
@@ -504,6 +482,14 @@ resource "aws_s3_bucket" "prm-infra-codepipeline-bucket" {
   versioning {
     enabled = true
   }  
+}
+
+resource "aws_s3_bucket" "uptime_monitoring_bucket" {
+  bucket = "uptime-monitoring-bucket"
+  acl    = "private"
+//  versioning {
+//    enabled = true
+//  }
 }
 
 resource "aws_codepipeline" "prm-infra-pipeline" {
