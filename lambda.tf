@@ -175,7 +175,7 @@ resource "aws_cloudwatch_event_target" "every_three_minutes_event_target" {
 resource "aws_lambda_permission" "allow_cloudwatch_to_call_uptime_monitoring_lambda" {
   statement_id = "AllowExecutionFromCloudWatch"
   action = "lambda:InvokeFunction"
-  function_name = "EhrExtractHandlerPinger"
+  function_name = "${aws_lambda_function.uptime_monitoring.function_name}"
   principal = "events.amazonaws.com"
   source_arn = "${aws_cloudwatch_event_rule.every_three_mins_rule.arn}"
 }
