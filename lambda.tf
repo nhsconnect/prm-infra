@@ -631,7 +631,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
     }
   }
   stage {
-    name = "Build Uptime Monitor"
+    name = "Build-Uptime-Monitor"
 
     action {
       name            = "Build-Uptime-Monitor"
