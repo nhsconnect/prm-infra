@@ -23,6 +23,13 @@ resource "aws_lambda_function" "uptime_monitoring" {
   handler = "main.handler"
   runtime = "nodejs6.10"
   role = "${aws_iam_role.lambda_exec.arn}"
+
+  environment {
+    variables = {
+      url = "${aws_api_gateway_deployment.example.invoke_url}"
+    }
+  }
+
 }
 
 resource "aws_api_gateway_resource" "proxy" {
