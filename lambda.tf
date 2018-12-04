@@ -15,15 +15,15 @@ resource "aws_lambda_function" "ehr_extract_handler" {
   runtime = "nodejs6.10"
   role = "${aws_iam_role.lambda_exec.arn}"
 }
-
-resource "aws_lambda_function" "uptime_monitoring" {
-  function_name = "UptimeMonitoring"
-  s3_bucket = "${aws_s3_bucket.uptime_monitoring_bucket.bucket}"
-  s3_key = "uptime_monitoring.zip"
-  handler = "main.handler"
-  runtime = "nodejs6.10"
-  role = "${aws_iam_role.lambda_exec.arn}"
-}
+//
+//resource "aws_lambda_function" "uptime_monitoring" {
+//  function_name = "UptimeMonitoring"
+//  s3_bucket = "${aws_s3_bucket.uptime_monitoring_bucket.bucket}"
+//  s3_key = "uptime_monitoring.zip"
+//  handler = "main.handler"
+//  runtime = "nodejs6.10"
+//  role = "${aws_iam_role.lambda_exec.arn}"
+//}
 
 resource "aws_api_gateway_resource" "proxy" {
   rest_api_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
@@ -158,12 +158,12 @@ resource "aws_cloudwatch_event_rule" "every_three_mins_rule" {
   description = "Fires every three minutes"
   schedule_expression = "rate(3 minutes)"
 }
-
-resource "aws_cloudwatch_event_target" "every_three_minutes_event_target" {
-  rule = "${aws_cloudwatch_event_rule.every_three_mins_rule.name}"
-//  target_id = "check_pinger"
-  arn = "${aws_lambda_function.uptime_monitoring.arn}"
-}
+//
+//resource "aws_cloudwatch_event_target" "every_three_minutes_event_target" {
+//  rule = "${aws_cloudwatch_event_rule.every_three_mins_rule.name}"
+////  target_id = "check_pinger"
+//  arn = "${aws_lambda_function.uptime_monitoring.arn}"
+//}
 
 resource "aws_lambda_permission" "allow_cloudwatch_to_call_uptime_monitoring_lambda" {
   statement_id = "AllowExecutionFromCloudWatch"
