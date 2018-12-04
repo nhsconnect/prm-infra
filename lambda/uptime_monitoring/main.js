@@ -14,6 +14,7 @@
 const http = require('https');
 
 exports.handler = async (event, context) => {
+    console.log(process.env.url)
 
     return new Promise((resolve, reject) => {
         const options = {
