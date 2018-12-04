@@ -373,7 +373,7 @@ resource "aws_iam_role_policy" "codebuild-prm-uptime-monitoring-policy" {
         "events:*"
       ],
       "Resource": "*"
-    }    
+    }
   ]
 }
 POLICY
@@ -634,7 +634,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
     name = "Build Uptime Monitor"
 
     action {
-      name            = "Build Uptime Monitor"
+      name            = "Build-Uptime-Monitor"
       category        = "Build"
       owner           = "AWS"
       provider        = "CodeBuild"
