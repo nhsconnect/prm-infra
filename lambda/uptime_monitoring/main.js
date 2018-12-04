@@ -1,32 +1,19 @@
-// const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest
-// const Http = new XMLHttpRequest();
-// const url='https://vk070b7rgc.execute-api.eu-west-2.amazonaws.com/test';
-
-// // Http.onreadystatechange=(e)=>{
-// //     console.log(Http.responseText);
-// // }
-// exports.handler = (event, context) => {
-//     console.log("I'm here!!");
-//     Http.open("POST", url);
-//     Http.send();
-// };
-
 const http = require('https');
+const URL = require('url');
 
 exports.handler = async (event, context) => {
-    console.log(process.env.url)
+    const myURL = new URL.URL(process.env.url);
 
     return new Promise((resolve, reject) => {
         const options = {
-            host: 'vk070b7rgc.execute-api.eu-west-2.amazonaws.com',
+            host: myURL.host,
             path: '/test',
             // port: 8000,
             method: 'POST'
         };
 
         const req = http.request(options, (res) => {
-            console.log("res = " + res.statusCode)
-            console.log("location = " + res.headers.location)
+            console.log(`res ${res.statusCode}`);
             resolve('Success');
         });
 
@@ -34,7 +21,6 @@ exports.handler = async (event, context) => {
             reject(e.message);
         });
 
-        // send the request
         req.write('');
         req.end();
     });
