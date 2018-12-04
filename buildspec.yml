@@ -9,7 +9,7 @@ phases:
     commands:
       - echo Build started on ServerlessExample
       - echo Lambda is being zipped
-      - cd lambda && pwd && ls && zip ../example main.js
+      - cd lambda/ehr_extract_handler && pwd && ls && zip ../../example main.js
       - echo Uploading zip file to bucket
       - aws s3 cp example.zip s3://terraform-serverless-kc4/example.zip
       - echo Build completed
