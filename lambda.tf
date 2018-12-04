@@ -321,6 +321,63 @@ resource "aws_iam_role_policy" "codebuild-prm-infra-plan-service-policy" {
 }
 POLICY
 }
+resource "aws_iam_role" "codebuild-prm-uptime-monitoring-role" {
+  name = "codebuild-prm-uptime-monitoring-role"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "codebuild.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy" "codebuild-prm-uptime-monitoring-policy" {
+  role = "${aws_iam_role.codebuild-prm-uptime-monitoring-role.name}"
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "lambda:CreateFunction",
+        "lambda:UpdateEventSourceMapping",
+        "lambda:ListFunctions",
+        "apigateway:*",
+        "s3:*",
+        "lambda:GetEventSourceMapping",
+        "logs:*",
+        "lambda:GetAccountSettings",
+        "lambda:CreateEventSourceMapping",
+        "codebuild:*",
+        "iam:*",
+        "cloudwatch:*",
+        "kms:*",
+        "ssm:*",
+        "codedeploy:*",
+        "lambda:*",
+        "lambda:ListEventSourceMappings",
+        "ec2:*",
+        "codepipeline:*",
+        "lambda:DeleteEventSourceMapping",
+        "events:*"
+      ],
+      "Resource": "*"
+    }    
+  ]
+}
+POLICY
+}
 
 resource "aws_codebuild_project" "prm-infra-plan" {
   name = "prm-infra-plan"
@@ -341,6 +398,27 @@ resource "aws_codebuild_project" "prm-infra-plan" {
   source {
     type = "CODEPIPELINE"
     buildspec = "infra_validate.yml"
+  }
+}
+resource "aws_codebuild_project" "prm-build-uptime-monitor" {
+  name = "prm-build-uptime-monitor"
+  description = "Builds uptime monitoring"
+  build_timeout = "5"
+  service_role = "${aws_iam_role.codebuild-prm-uptime-monitoring-role.arn}"
+
+  artifacts {
+    type = "CODEPIPELINE"
+  }
+
+  environment {
+    compute_type = "BUILD_GENERAL1_SMALL"
+    image = "aws/codebuild/python:3.6.5"
+    type = "LINUX_CONTAINER"
+  }
+
+  source {
+    type = "CODEPIPELINE"
+    buildspec = "uptime_monitoring.yml"
   }
 }
 
@@ -551,5 +629,21 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
         ProjectName = "${aws_codebuild_project.prm-infra-apply.name}"
       }
     }
-  }  
+  }
+  stage {
+    name = "Build Uptime Monitor"
+
+    action {
+      name            = "Build Uptime Monitor"
+      category        = "Build"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      version         = "1"
+      input_artifacts = ["source"]
+
+      configuration {
+        ProjectName = "${aws_codebuild_project.prm-build-uptime-monitor.name}"
+      }
+    }
+  }
 }
