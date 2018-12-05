@@ -1,0 +1,15 @@
+version: 0.1
+
+phases:
+  install:
+    commands:
+      - sudo apt-get update
+      - sudo apt-get install zip
+  build:
+    commands:
+      - echo Build started on EhrExtractHandler
+      - echo lambda/ehr_extract_handler/main.js is being zipped
+      - cd lambda/ehr_extract_handler && zip ../../ehr_extract_handler main.js
+      - echo Uploading zip file to uptime-monitoring-bucket
+      - aws s3 cp ehr_extract_handler.zip s3://prm-application-source/example.zip
+      - echo EhrExtractHandler build completed

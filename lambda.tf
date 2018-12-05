@@ -29,7 +29,6 @@ resource "aws_lambda_function" "uptime_monitoring" {
       url = "${aws_api_gateway_deployment.example.invoke_url}"
     }
   }
-
 }
 
 resource "aws_api_gateway_resource" "proxy" {
@@ -327,8 +326,28 @@ resource "aws_iam_role_policy" "codebuild-prm-infra-plan-service-policy" {
 }
 POLICY
 }
+
 resource "aws_iam_role" "codebuild-prm-uptime-monitoring-role" {
   name = "codebuild-prm-uptime-monitoring-role"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "codebuild.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role" "codebuild-prm-ehr-extract-role" {
+  name = "codebuild-prm-ehr-extract-role"
 
   assume_role_policy = <<EOF
 {
@@ -406,6 +425,7 @@ resource "aws_codebuild_project" "prm-infra-plan" {
     buildspec = "infra_validate.yml"
   }
 }
+
 resource "aws_codebuild_project" "prm-build-uptime-monitor" {
   name = "prm-build-uptime-monitor"
   description = "Builds uptime monitoring"
@@ -425,6 +445,28 @@ resource "aws_codebuild_project" "prm-build-uptime-monitor" {
   source {
     type = "CODEPIPELINE"
     buildspec = "uptime_monitoring.yml"
+  }
+}
+
+resource "aws_codebuild_project" "prm-build-ehr-extract" {
+  name = "prm-build-ehr-extract"
+  description = "Builds EhrExtract"
+  build_timeout = "5"
+  service_role = "${aws_iam_role.codebuild-prm-ehr-extract-role.arn}"
+
+  artifacts {
+    type = "CODEPIPELINE"
+  }
+
+  environment {
+    compute_type = "BUILD_GENERAL1_SMALL"
+    image = "aws/codebuild/python:3.6.5"
+    type = "LINUX_CONTAINER"
+  }
+
+  source {
+    type = "CODEPIPELINE"
+    buildspec = "ehr_extract_handler.yml"
   }
 }
 
@@ -598,6 +640,23 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       configuration {
         S3Bucket  = "prm-application-source"
         S3ObjectKey   = "source/latest.zip"
+      }
+    }
+  }
+
+  stage {
+    name = "Build-Ehr-Extract"
+
+    action {
+      name            = "Build-Ehr-Extract"
+      category        = "Build"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      version         = "1"
+      input_artifacts = ["source"]
+
+      configuration {
+        ProjectName = "${aws_codebuild_project.prm-build-ehr-extract.name}"
       }
     }
   }
