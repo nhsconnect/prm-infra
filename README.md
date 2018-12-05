@@ -4,41 +4,32 @@ The purpose of this walking skeleton is to de-risk the technical uncertainty aro
 # Deploying the Skeleton to a new Environment
 
 ## Assumptions TBD
-Users, roles, credentials etc
-Requirements
+1. Create an AWS account
+2. Create a user with permissions to edit all resource types
+3. Export AWS credentials and save them in local aws profile
+4. Make sure your AWS CLI works with the user from step 3
+
+### Requirements
+Install
+- [terraform](https://www.terraform.io/)
+- [terragrunt](https://github.com/gruntwork-io/terragrunt#install-terragrunt)
 
 ## Set Up Steps
  
 ### Create S3 bucket to hold lambda code
 This will become the bucket to hold the application code used in lambdas
-1. Navigate to your S3 console 
-2. Create a bucket named `prm-application-source` and keep all the default settings
 
-### Upload BitBucket code to S3 bucket
-1. Navigate to the BitBucket repo
-2. Download the directory [here](https://bitbucket.org/twnhsd/walking-skeleton-spikes/src/master/)
-3. Zip up the contents of the directory while ensuring there is no additional directory on root level
-4. Rename the zip file to *latest.zip*
-5. Navigate to S3 console and open the *prm-application-source* bucket
-6. Upload the zipped file to the root level of the bucket
-### Upload application code to S3 bucket
-1. Navigate to the project directory
-2. Run the command 
-`cd lambda/ehr-extract-handler && zip ../../example main.js`
-3. Navigate to S3 console, open the *prm-application-source* bucket and upload example.zip at root level
-### Set event trigger in S3 bucket
-Every time there is a change in the `prm-application-source` bucket, i.e. main.js is edited, a 'helper' lambda *(fileHasher)* will be triggered to update the code in EhrExtractHandler lambda by pulling the new resources from the `prm-application-source` bucket.
-1. Navigate to S3 console
-2. Select the **Properties** tab
-3. Scroll down to **Advanced Settings**
-4. Select **Events**
-5. Click **Add Notification**
-6. Under **Events** section, select **All object create events**
-7. Under **Send to** select **Lambda Function**
-8. In the dropdown, select *fileHasher*
-9. Select **Save**
+Run below commands
+```console
+git clone https://bitbucket.org/twnhsd/walking-skeleton-spikes.git
+cd walking-skeleton-spikes
+aws s3api create-bucket --bucket=prm-application-source
+git archive -o latest.zip HEAD 
+aws s3 cp latest.zip s3://prm-application-source/source/latest.zip
+cd lambda/ehr_extract_handler && zip ../../ehr_extract_handler main.js && cd -
+aws s3 cp ehr_extract_handler.zip s3://prm-application-source/example.zip
+terragrunt apply
+```
 
-## Run Terragrunt commands
-1. Run `terragrunt apply`
-2. Type *yes* to build the infrastructure 
+Type **yes** to build the infrastructure 
 
