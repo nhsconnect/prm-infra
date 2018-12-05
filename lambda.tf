@@ -563,6 +563,7 @@ EOF
 resource "aws_s3_bucket" "prm-infra-codepipeline-bucket" {
   bucket = "prm-codepipeline-bucket"
   acl    = "private"
+  force_destroy = true
   versioning {
     enabled = true
   }  
@@ -571,9 +572,7 @@ resource "aws_s3_bucket" "prm-infra-codepipeline-bucket" {
 resource "aws_s3_bucket" "uptime_monitoring_bucket" {
   bucket = "uptime-monitoring-bucket"
   acl    = "private"
-//  versioning {
-//    enabled = true
-//  }
+  force_destroy = true
 }
 
 resource "aws_codepipeline" "prm-infra-pipeline" {
