@@ -365,6 +365,45 @@ resource "aws_iam_role" "codebuild-prm-ehr-extract-role" {
 EOF
 }
 
+resource "aws_iam_role_policy" "codebuild-prm-ehr-extract-policy" {
+  role = "${aws_iam_role.codebuild-prm-ehr-extract-role.name}"
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "lambda:CreateFunction",
+        "lambda:UpdateEventSourceMapping",
+        "lambda:ListFunctions",
+        "apigateway:*",
+        "s3:*",
+        "lambda:GetEventSourceMapping",
+        "logs:*",
+        "lambda:GetAccountSettings",
+        "lambda:CreateEventSourceMapping",
+        "codebuild:*",
+        "iam:*",
+        "cloudwatch:*",
+        "kms:*",
+        "ssm:*",
+        "codedeploy:*",
+        "lambda:*",
+        "lambda:ListEventSourceMappings",
+        "ec2:*",
+        "codepipeline:*",
+        "lambda:DeleteEventSourceMapping",
+        "events:*"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+POLICY
+}
+
 resource "aws_iam_role_policy" "codebuild-prm-uptime-monitoring-policy" {
   role = "${aws_iam_role.codebuild-prm-uptime-monitoring-role.name}"
 
