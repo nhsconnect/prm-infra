@@ -7,9 +7,9 @@ phases:
       - sudo apt-get install zip
   build:
     commands:
-      - echo Build started on ServerlessExample
-      - echo Lambda is being zipped
-      - cd lambda/uptime_monitoring && pwd && ls && zip ../../uptime_monitoring main.js
-      - echo Uploading zip file to bucket
+      - echo Build started on Uptime Monitoring
+      - echo lambda/uptime_monitoring/main.js is being zipped
+      - cd lambda/uptime_monitoring && zip ../../uptime_monitoring main.js
+      - echo Uploading zip file to uptime-monitoring-bucket
       - aws s3 cp uptime_monitoring.zip s3://uptime-monitoring-bucket/uptime_monitoring.zip
-      - echo Build completed
+      - echo Uptime Monitoring build completed
