@@ -273,7 +273,7 @@ resource "aws_codebuild_project" "prm-vcs-trigger" {
 
 resource "aws_iam_role" "codebuild-prm-infra-plan-role" {
   name = "codebuild-prm-infra-plan-role"
-
+  force_detach_policies = true
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -292,7 +292,6 @@ EOF
 
 resource "aws_iam_role_policy" "codebuild-prm-infra-plan-service-policy" {
   role = "${aws_iam_role.codebuild-prm-infra-plan-role.name}"
-
   policy = <<POLICY
 {
   "Version": "2012-10-17",
