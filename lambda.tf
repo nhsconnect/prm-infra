@@ -605,6 +605,23 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
   }
 
   stage {
+    name = "Build-Uptime-Monitor"
+
+    action {
+      name            = "Build-Uptime-Monitor"
+      category        = "Build"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      version         = "1"
+      input_artifacts = ["source"]
+
+      configuration {
+        ProjectName = "${aws_codebuild_project.prm-build-uptime-monitor.name}"
+      }
+    }
+  }
+
+  stage {
     name = "Plan"
 
     action {
@@ -614,7 +631,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       provider        = "CodeBuild"
       version         = "1"
       input_artifacts = ["source"]
- 
+
       configuration {
         ProjectName = "${aws_codebuild_project.prm-infra-plan.name}"
       }
@@ -631,25 +648,9 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       provider        = "CodeBuild"
       version         = "1"
       input_artifacts = ["source"]
- 
+
       configuration {
         ProjectName = "${aws_codebuild_project.prm-infra-apply.name}"
-      }
-    }
-  }
-  stage {
-    name = "Build-Uptime-Monitor"
-
-    action {
-      name            = "Build-Uptime-Monitor"
-      category        = "Build"
-      owner           = "AWS"
-      provider        = "CodeBuild"
-      version         = "1"
-      input_artifacts = ["source"]
-
-      configuration {
-        ProjectName = "${aws_codebuild_project.prm-build-uptime-monitor.name}"
       }
     }
   }
