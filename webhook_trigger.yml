@@ -8,5 +8,5 @@ phases:
   build:
     commands:
       - git archive -o latest.zip HEAD
-      - git rev-parse --short HEAD | xargs -I{} aws s3 cp latest.zip s3://terraform-serverless-kc4/source/{}.zip
-      - aws s3 cp latest.zip s3://terraform-serverless-kc4/source/latest.zip
+      - git rev-parse --short HEAD | xargs -I{} aws s3 cp latest.zip s3://prm-application-source/source/{}.zip
+      - aws s3 cp latest.zip s3://prm-application-source/source/latest.zip

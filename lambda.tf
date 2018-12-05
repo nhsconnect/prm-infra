@@ -9,7 +9,7 @@ provider "aws" {
 
 resource "aws_lambda_function" "ehr_extract_handler" {
   function_name = "EhrExtractHandler"
-  s3_bucket = "terraform-serverless-kc4"
+  s3_bucket = "prm-application-source"
   s3_key = "example.zip"
   handler = "main.handler"
   runtime = "nodejs8.10"
@@ -238,8 +238,8 @@ resource "aws_iam_role_policy" "codebuild-prm-trigger-service-policy" {
         "s3:*"
       ],
       "Resource": [       
-        "arn:aws:s3:::terraform-serverless-kc4",
-        "arn:aws:s3:::terraform-serverless-kc4/*"
+        "arn:aws:s3:::prm-application-source",
+        "arn:aws:s3:::prm-application-source/*"
       ]
     }
   ]
@@ -543,8 +543,8 @@ resource "aws_iam_role_policy" "prm-infra-codepipeline-policy" {
       "Resource": [
         "${aws_s3_bucket.prm-infra-codepipeline-bucket.arn}",
         "${aws_s3_bucket.prm-infra-codepipeline-bucket.arn}/*",
-        "arn:aws:s3:::terraform-serverless-kc4",
-        "arn:aws:s3:::terraform-serverless-kc4/*"
+        "arn:aws:s3:::prm-application-source",
+        "arn:aws:s3:::prm-application-source/*"
       ]
     },
     {
@@ -596,7 +596,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       output_artifacts = ["source"]
 
       configuration {
-        S3Bucket  = "terraform-serverless-kc4"
+        S3Bucket  = "prm-application-source"
         S3ObjectKey   = "source/latest.zip"
       }
     }
