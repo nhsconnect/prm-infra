@@ -1,9 +1,13 @@
 # Walking Skeleton
 The purpose of this walking skeleton is to de-risk the technical uncertainty around creating a new live service for HSCN.
 
-# Setup
+# Deploying the Skeleton to a new Environment
 
-## Manual Steps
+## Assumptions TBD
+Users, roles, credentials etc
+Requirements
+
+## Set Up Steps
  
 ### Create S3 bucket to hold lambda code
 This will become the bucket to hold the application code used in lambdas
@@ -12,7 +16,7 @@ This will become the bucket to hold the application code used in lambdas
 
 ### Upload BitBucket code to S3 bucket
 1. Navigate to the BitBucket repo
-2. Download the directory
+2. Download the directory [here](https://bitbucket.org/twnhsd/walking-skeleton-spikes/src/master/)
 3. Zip up the contents of the directory while ensuring there is no additional directory on root level
 4. Rename the zip file to *latest.zip*
 5. Navigate to S3 console and open the *prm-application-source* bucket
