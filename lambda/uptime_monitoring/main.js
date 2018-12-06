@@ -1,5 +1,6 @@
 const http = require('https');
 const URL = require('url');
+const xmlData = '<?xml version="1.0" encoding="UTF-8"?>'
 
 exports.handler = async (event, context) => {
     const myURL = new URL.URL(process.env.url);
@@ -9,7 +10,11 @@ exports.handler = async (event, context) => {
         const options = {
             host: myURL.host,
             path: "/test",
-            method: 'POST'
+            method: 'POST',
+            headers: {
+                'Content-Type': 'text/xml',
+                'Content-Length': Buffer.byteLength(xmlData)
+            }
         };
 
         const req = http.request(options, (res) => {
@@ -21,7 +26,7 @@ exports.handler = async (event, context) => {
             reject(e.message);
         });
 
-        req.write('');
+        req.write(xmlData);
         req.end();
     });
 
@@ -41,7 +46,7 @@ exports.handler = async (event, context) => {
             reject(e.message);
         });
 
-        req.write('');
+        req.write(xmlData);
         req.end();
     });
 
