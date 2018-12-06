@@ -1,16 +1,15 @@
 terragrunt = {
   terraform {
     extra_arguments "conditional_vars" {
-      //      commands = [
-      //        "apply",
-      //        "plan",
-      //        "import",
-      //        "push",
-      //        "refresh"
-      //      ]
 
-      required_var_files = [
-        "${get_parent_tfvars_dir()}/environments/dev-intergration/dev-intergration.tfvars"
+      commands = [
+        "validate",
+        "plan",
+        "apply"
+      ]
+
+      arguments = [
+        "-var", "prm-application-source-bucket=prm-application-source"
       ]
     }
   }
