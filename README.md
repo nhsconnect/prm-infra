@@ -32,5 +32,7 @@ terragrunt init
 terragrunt apply
 ```
 
+Caveat: make sure that your .terraform directory is empty or deleted when you run `terragrunt init`.
+
 Type **yes** to build the infrastructure 
 
