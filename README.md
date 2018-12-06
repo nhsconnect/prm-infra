@@ -29,6 +29,8 @@ git archive -o latest.zip HEAD
 aws s3 cp latest.zip s3://prm-application-source/source/latest.zip
 cd lambda/ehr_extract_handler && zip ../../ehr_extract_handler main.js && cd -
 aws s3 cp ehr_extract_handler.zip s3://prm-application-source/example.zip
+cd lambda/uptime_monitoring && zip ../../uptime_monitoring main.js && cd -
+aws s3 cp uptime_monitoring.zip s3://uptime-monitoring-bucket/uptime_monitoring.zip
 terragrunt init
 terragrunt apply
 ```
