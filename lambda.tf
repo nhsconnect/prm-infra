@@ -810,7 +810,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
   }
 
   stage {
-    name = "Plan"
+    name = "Dev_Integration"
 
     action {
       name            = "Plan"
@@ -819,15 +819,12 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       provider        = "CodeBuild"
       version         = "1"
       input_artifacts = ["source"]
+      run_order = 1
 
       configuration {
         ProjectName = "${aws_codebuild_project.prm-infra-plan.name}"
       }
     }
-  }
-
-  stage {
-    name = "Apply"
 
     action {
       name            = "Apply"
@@ -836,27 +833,37 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       provider        = "CodeBuild"
       version         = "1"
       input_artifacts = ["source"]
+      run_order = 2
 
       configuration {
         ProjectName = "${aws_codebuild_project.prm-infra-apply.name}"
       }
-    }
+    }    
+
+    stage {
+      name = "Validate"
+
+      action {
+        name            = "Validate"
+        category        = "Test"
+        owner           = "AWS"
+        provider        = "CodeBuild"
+        version         = "1"
+        input_artifacts = ["source"]
+        run_order = 3
+
+        configuration {
+          ProjectName = "${aws_codebuild_project.prm-infra-validate.name}"
+        }
+      }
+    }  
   }
 
   stage {
-    name = "Validate"
+    name = "Apply"
 
-    action {
-      name            = "Validate"
-      category        = "Test"
-      owner           = "AWS"
-      provider        = "CodeBuild"
-      version         = "1"
-      input_artifacts = ["source"]
 
-      configuration {
-        ProjectName = "${aws_codebuild_project.prm-infra-validate.name}"
-      }
-    }
-  }  
+  }
+
+
 }
