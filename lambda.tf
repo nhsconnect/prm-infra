@@ -129,7 +129,7 @@ EOF
 
 resource "aws_cloudwatch_metric_alarm" "notify-error-4xx" {
   alarm_name = "terraform-test-notify-error-4xx"
-  comparison_operator = "GreaterThanOrEqualToThreshold"
+  comparison_operator = "GreaterThanThreshold"
   evaluation_periods = "1"
   metric_name = "4XXError"
   namespace = "AWS/ApiGateway"
@@ -146,7 +146,7 @@ resource "aws_cloudwatch_metric_alarm" "notify-error-4xx" {
 
 resource "aws_cloudwatch_metric_alarm" "notify-error-5xx" {
   alarm_name = "terraform-test-notify-error-5xx"
-  comparison_operator = "GreaterThanOrEqualToThreshold"
+  comparison_operator = "GreaterThanThreshold"
   evaluation_periods = "1"
   metric_name = "5XXError"
   namespace = "AWS/ApiGateway"
