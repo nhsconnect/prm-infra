@@ -3,7 +3,8 @@ version: 0.2
 phases:
   install:
     commands:
-      - cd e2e && npm install
+      - cd e2e
+      - npm install
   pre_build:
     commands:
       # Workaround until TF supports creds via Task Roles when running on ECS or CodeBuild
@@ -13,7 +14,5 @@ phases:
       - export AWS_SESSION_TOKEN=`curl --silent http://169.254.170.2:80$AWS_CONTAINER_CREDENTIALS_RELATIVE_URI | jq -r '.Token'`      
   build:
     commands:
-      - pwd
-      - ls
-      - cd e2e && npm test    
+      - npm test    
 
