@@ -172,7 +172,7 @@ resource "aws_cloudwatch_metric_alarm" "notify-error-5xx" {
 resource "aws_cloudwatch_event_rule" "every_three_mins_rule" {
   name = "every-minute"
   description = "Fires every three minutes"
-  schedule_expression = "rate(1 minutes)"
+  schedule_expression = "rate(1 minute)"
 }
 
 resource "aws_cloudwatch_event_target" "every_three_minutes_event_target" {
