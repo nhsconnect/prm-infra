@@ -23,7 +23,8 @@ Run below commands
 ```console
 git clone https://bitbucket.org/twnhsd/walking-skeleton-spikes.git
 cd walking-skeleton-spikes
-aws s3api create-bucket --bucket=prm-application-source --region=eu-west-2
+
+aws s3api create-bucket --bucket prm-application-source --region eu-west-2 --create-bucket-configuration LocationConstraint=eu-west-2
 git archive -o latest.zip HEAD 
 aws s3 cp latest.zip s3://prm-application-source/source/latest.zip
 cd lambda/ehr_extract_handler && zip ../../ehr_extract_handler main.js && cd -
