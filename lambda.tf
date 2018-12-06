@@ -673,7 +673,14 @@ resource "aws_codebuild_project" "prm-infra-validate" {
     compute_type = "BUILD_GENERAL1_SMALL"
     image = "aws/codebuild/nodejs:8.11.0"
     type = "LINUX_CONTAINER"
+
+    environment_variable {
+      "name"  = "PRM_ENDPOINT"
+      "value" = "${aws_api_gateway_deployment.example.invoke_url}"
+    }
+    
   }
+
 
   source {
     type = "CODEPIPELINE"
