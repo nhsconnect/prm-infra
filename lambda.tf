@@ -106,6 +106,13 @@ resource "aws_lambda_permission" "apigw" {
   source_arn = "${aws_api_gateway_deployment.example.execution_arn}/*/*"
 }
 
+
+resource "aws_iam_policy_attachment" "lambda-exec-policy-attachment" {
+  name = "PlanOneLambdaExecPolicy"
+  roles = ["${aws_iam_role.lambda_exec.id}"]
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
+
 # IAM role which dictates what other AWS services the Lambda function
 # may access.
 resource "aws_iam_role" "lambda_exec" {
