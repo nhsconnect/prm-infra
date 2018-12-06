@@ -840,30 +840,18 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       }
     }    
 
-    stage {
-      name = "Validate"
+    action {
+      name            = "Validate"
+      category        = "Test"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      version         = "1"
+      input_artifacts = ["source"]
+      run_order = 3
 
-      action {
-        name            = "Validate"
-        category        = "Test"
-        owner           = "AWS"
-        provider        = "CodeBuild"
-        version         = "1"
-        input_artifacts = ["source"]
-        run_order = 3
-
-        configuration {
-          ProjectName = "${aws_codebuild_project.prm-infra-validate.name}"
-        }
+      configuration {
+        ProjectName = "${aws_codebuild_project.prm-infra-validate.name}"
       }
-    }  
+    } 
   }
-
-  stage {
-    name = "Apply"
-
-
-  }
-
-
 }
