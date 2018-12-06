@@ -13,5 +13,7 @@ phases:
       - export AWS_SESSION_TOKEN=`curl --silent http://169.254.170.2:80$AWS_CONTAINER_CREDENTIALS_RELATIVE_URI | jq -r '.Token'`      
   build:
     commands:
+      - pwd
+      - ls
       - cd e2e && npm test    
 
