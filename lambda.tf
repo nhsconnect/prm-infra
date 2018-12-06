@@ -772,7 +772,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
   }
 
   stage {
-    name = "Build-Ehr-Extract"
+    name = "Build-Lambdas"
 
     action {
       name            = "Build-Ehr-Extract"
@@ -786,10 +786,6 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
         ProjectName = "${aws_codebuild_project.prm-build-ehr-extract.name}"
       }
     }
-  }
-
-  stage {
-    name = "Build-Uptime-Monitor"
 
     action {
       name            = "Build-Uptime-Monitor"
@@ -803,6 +799,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
         ProjectName = "${aws_codebuild_project.prm-build-uptime-monitor.name}"
       }
     }
+
   }
 
   stage {
