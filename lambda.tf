@@ -28,7 +28,8 @@ resource "aws_lambda_function" "uptime_monitoring" {
 
   environment {
     variables = {
-      url = "${aws_api_gateway_deployment.example.invoke_url}"
+      url = "${aws_api_gateway_deployment.example.invoke_url}",
+      stage = "${aws_api_gateway_deployment.example.stage_name}"
     }
   }
 }
