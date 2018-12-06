@@ -4,7 +4,7 @@
   "description": "The e2e tests for PRM",
   "main": "index.js",
   "scripts": {
-    "test": "PRM_URL='https://www.ksalklks.com/test' jest"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
