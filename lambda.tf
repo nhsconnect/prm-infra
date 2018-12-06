@@ -664,7 +664,7 @@ resource "aws_codebuild_project" "prm-infra-validate" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image = "aws/codebuild/python:3.6.5"
+    image = "aws/codebuild/nodejs:8.11.0"
     type = "LINUX_CONTAINER"
   }
 
