@@ -1,3 +1,5 @@
+variable "prm-application-source-bucket" {}
+
 terraform {
   # The configuration for this backend will be filled in by Terragrunt
   backend "s3" {}
@@ -9,7 +11,7 @@ provider "aws" {
 
 resource "aws_lambda_function" "ehr_extract_handler" {
   function_name = "EhrExtractHandler"
-  s3_bucket = "prm-application-source"
+  s3_bucket = "${var.prm-application-source-bucket}"
   s3_key = "example.zip"
   handler = "main.handler"
   runtime = "nodejs8.10"
@@ -236,9 +238,9 @@ resource "aws_iam_role_policy" "codebuild-prm-trigger-service-policy" {
       "Action": [
         "s3:*"
       ],
-      "Resource": [       
-        "arn:aws:s3:::prm-application-source",
-        "arn:aws:s3:::prm-application-source/*"
+      "Resource": [
+        "arn:aws:s3:::${var.prm-application-source-bucket}",
+        "arn:aws:s3:::${var.prm-application-source-bucket}/*"
       ]
     }
   ]
@@ -294,7 +296,7 @@ resource "aws_iam_role_policy" "codebuild-prm-infra-plan-service-policy" {
   policy = <<POLICY
 {
   "Version": "2012-10-17",
-  "Statement": [    
+  "Statement": [
     {
       "Effect": "Allow",
       "Action": [
@@ -321,7 +323,7 @@ resource "aws_iam_role_policy" "codebuild-prm-infra-plan-service-policy" {
         "events:*"
       ],
       "Resource": "*"
-    }    
+    }
   ]
 }
 POLICY
@@ -561,7 +563,7 @@ resource "aws_iam_role_policy" "codebuild-prm-infra-apply-service-policy" {
         "events:*"
       ],
       "Resource": "*"
-    }  
+    }
   ]
 }
 POLICY
@@ -619,13 +621,13 @@ resource "aws_iam_role_policy" "prm-infra-codepipeline-policy" {
     {
       "Effect":"Allow",
       "Action": [
-        "s3:*"      
+        "s3:*"
       ],
       "Resource": [
         "${aws_s3_bucket.prm-infra-codepipeline-bucket.arn}",
         "${aws_s3_bucket.prm-infra-codepipeline-bucket.arn}/*",
-        "arn:aws:s3:::prm-application-source",
-        "arn:aws:s3:::prm-application-source/*"
+        "arn:aws:s3:::${var.prm-application-source-bucket}",
+        "arn:aws:s3:::${var.prm-application-source-bucket}/*"
       ]
     },
     {
@@ -647,7 +649,7 @@ resource "aws_s3_bucket" "prm-infra-codepipeline-bucket" {
   force_destroy = true
   versioning {
     enabled = true
-  }  
+  }
 }
 
 resource "aws_s3_bucket" "uptime_monitoring_bucket" {
@@ -677,7 +679,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       output_artifacts = ["source"]
 
       configuration {
-        S3Bucket  = "prm-application-source"
+        S3Bucket  = "${var.prm-application-source-bucket}"
         S3ObjectKey   = "source/latest.zip"
       }
     }
