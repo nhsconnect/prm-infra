@@ -464,7 +464,7 @@ resource "aws_codebuild_project" "prm-infra-plan" {
 
   source {
     type = "CODEPIPELINE"
-    buildspec = "infra_validate.yml"
+    buildspec = "infra_plan.yml"
   }
 }
 
