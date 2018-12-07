@@ -12,13 +12,28 @@ resource "aws_cloudwatch_dashboard" "PRM-team-dashboard" {
               "view": "timeSeries",
               "stacked": false,
               "metrics": [
-                [ "AWS/ApiGateway", "Count", "ApiName", "EhrExtractHandlerApi" ],
-                [ ".", "Latency", ".", "." ]
+                [ "AWS/ApiGateway", "Count", "ApiName", "EhrExtractHandlerApi" ]
               ],
              "period":300,
              "stat":"Average",
              "region":"eu-west-2",
-             "title":"EhrExtractHandler"
+             "title":"EhrExtractHandlerCount"
+          }
+       },
+        {
+          "type":"metric",
+          "x":0,
+          "y":0,
+          "properties":{
+              "view": "timeSeries",
+              "stacked": false,
+              "metrics": [
+                [ "AWS/ApiGateway", "Latency", "ApiName", "EhrExtractHandlerApi" ]
+              ],
+             "period":300,
+             "stat":"Average",
+             "region":"eu-west-2",
+             "title":"EhrExtractHandlerLatency"
           }
        },
        {
