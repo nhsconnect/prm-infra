@@ -20,6 +20,23 @@ resource "aws_cloudwatch_dashboard" "PRM-team-dashboard" {
              "region":"eu-west-2",
              "title":"EhrExtractHandler"
           }
+       },
+       {
+          "type":"metric",
+          "x":0,
+          "y":0,
+          "properties":{
+          "view": "timeSeries",
+            "stacked": false,
+            "metrics": [
+                [ "AWS/ApiGateway", "5XXError", "ApiName", "EhrExtractHandlerApi" ],
+                [ ".", "4XXError", ".", "." ]
+            ],
+            "period":300,
+             "stat":"Average",
+             "region":"eu-west-2",
+             "title":"EhrExtractHanderErrors"
+          }
        }
    ]
  }
