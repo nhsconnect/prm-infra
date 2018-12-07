@@ -2,7 +2,7 @@ const Url = require("url");
 const request = require("request-promise-native");
 const errors = require('request-promise-native/errors');
 
-const PRM_URL = new Url.URL(process.env.PRM_URL);
+const PRM_URL = new Url.URL(process.env.url);
 
 console.log(PRM_URL)
 
