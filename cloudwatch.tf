@@ -32,15 +32,14 @@ resource "aws_cloudwatch_metric_alarm" "notify-error-5xx" {
   }
 }
 
-resource "aws_cloudwatch_event_rule" "every_three_mins_rule" {
+resource "aws_cloudwatch_event_rule" "every_min_rule" {
   name = "every-minute"
-  description = "Fires every three minutes"
+  description = "Fires every minute"
   schedule_expression = "rate(1 minute)"
 }
 
-resource "aws_cloudwatch_event_target" "every_three_minutes_event_target" {
-  rule = "${aws_cloudwatch_event_rule.every_three_mins_rule.name}"
-  //  target_id = "check_pinger"
+resource "aws_cloudwatch_event_target" "every_minute_event_target" {
+  rule = "${aws_cloudwatch_event_rule.every_min_rule.name}"
   arn = "${aws_lambda_function.uptime_monitoring.arn}"
 }
 
