@@ -50,6 +50,24 @@ resource "aws_cloudwatch_metric_alarm" "notify-ehr_extract_handler-lambda-error-
   }
 }
 
+resource "aws_cloudwatch_metric_alarm" "notify-ehr_extract_handler-lambda-error-4xx" {
+  alarm_name = "notify-ehr_extract_handler-lambda-error-4xx"
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods = "1"
+  metric_name = "Errors"
+  namespace = "AWS/Lambda"
+  period = "60"
+  statistic = "Sum"
+  threshold = "0"
+  alarm_description = "This metric monitors 4xx errors on ehr_extract_handler lambda"
+  insufficient_data_actions = []
+
+  dimensions {
+    FunctionName  = "${aws_lambda_function.ehr_extract_handler.function_name}"
+    Resource = "${aws_lambda_function.ehr_extract_handler.function_name}"
+  }
+}
+
 resource "aws_cloudwatch_event_rule" "every_min_rule" {
   name = "every-minute"
   description = "Fires every minute"
