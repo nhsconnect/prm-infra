@@ -13,3 +13,5 @@ phases:
       - echo Uploading zip file to uptime-monitoring-bucket
       - aws s3 cp uptime_monitoring.zip s3://uptime-monitoring-bucket/uptime_monitoring.zip
       - echo Uptime Monitoring build completed
+      - echo $AWS_REGION
+      - aws lambda update-function-code --region eu-west-2 --function-name uptime_monitoring --s3-bucket uptime-monitoring-bucket--s3-key uptime_monitoring.zip

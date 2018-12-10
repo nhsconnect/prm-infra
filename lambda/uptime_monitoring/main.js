@@ -33,7 +33,7 @@ exports.handler = async (event, context) => {
     const response2 = new Promise((resolve, reject) => {
         const options = {
             host: myURL.host,
-            path: "/cba",
+            path: "/cde",
             method: 'POST'
         };
 
