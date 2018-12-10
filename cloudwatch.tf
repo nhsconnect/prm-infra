@@ -46,7 +46,7 @@ resource "aws_cloudwatch_metric_alarm" "notify-ehr_extract_handler-lambda-error-
 
   dimensions {
     FunctionName  = "${aws_lambda_function.ehr_extract_handler.function_name}"
-    Resource = "${aws_lambda_function.ehr_extract_handler.arn}"
+    Resource = "${aws_lambda_function.ehr_extract_handler.function_name}"
   }
 }
 
