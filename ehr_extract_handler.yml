@@ -13,5 +13,4 @@ phases:
       - echo Uploading zip file to ehr_extract_handler
       - aws s3 cp ehr_extract_handler.zip s3://prm-application-source/example.zip
       - echo EhrExtractHandler build completed
-      - echo $AWS_REGION
-      - aws lambda update-function-code --region eu-west-2 --function-name ehr_extract_handler --s3-bucket prm-application-source --s3-key example.zip
+      - aws lambda update-function-code --region $AWS_REGION --function-name EhrExtractHandler --s3-bucket prm-application-source --s3-key example.zip
