@@ -32,23 +32,6 @@ resource "aws_cloudwatch_metric_alarm" "notify-error-5xx" {
   }
 }
 
-//resource "aws_cloudwatch_metric_alarm" "notify-lambda-error-4xx" {
-//  alarm_name = "terraform-lambda-notify-error-4xx"
-//  comparison_operator = "GreaterThanThreshold"
-//  evaluation_periods = "1"
-//  metric_name = "4XXError"
-//  namespace = "AWS/Lambda"
-//  period = "60"
-//  statistic = "Sum"
-//  threshold = "0"
-//  alarm_description = "This metric monitors 4xx errors on lambda"
-//  insufficient_data_actions = []
-//
-//  dimensions {
-//    ApiName = "${aws_lambda_function.uptime_monitoring.function_name}"
-//  }
-//}
-
 resource "aws_cloudwatch_metric_alarm" "notify-ehr_extract_handler-lambda-error-5xx" {
   alarm_name = "notify-ehr_extract_handler-lambda-error-5xx"
   comparison_operator = "GreaterThanThreshold"
@@ -62,7 +45,8 @@ resource "aws_cloudwatch_metric_alarm" "notify-ehr_extract_handler-lambda-error-
   insufficient_data_actions = []
 
   dimensions {
-    FunctionName = "${aws_lambda_function.ehr_extract_handler.function_name}"
+    FunctionName  = "${aws_lambda_function.ehr_extract_handler.function_name}"
+    Resource = "${aws_lambda_function.ehr_extract_handler.arn}"
   }
 }
 
