@@ -36,7 +36,7 @@ resource "aws_cloudwatch_metric_alarm" "notify-ehr_extract_handler-lambda-error-
   alarm_name = "notify-ehr_extract_handler-lambda-error-5xx"
   comparison_operator = "GreaterThanThreshold"
   evaluation_periods = "1"
-  metric_name = "5XXError"
+  metric_name = "Errors"
   namespace = "AWS/Lambda"
   period = "60"
   statistic = "Sum"
