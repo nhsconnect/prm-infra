@@ -1,14 +1,3 @@
-variable "prm-application-source-bucket" {}
-
-terraform {
-  # The configuration for this backend will be filled in by Terragrunt
-  backend "s3" {}
-}
-
-provider "aws" {
-  region = "eu-west-2"
-}
-
 resource "aws_lambda_permission" "apigw" {
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
@@ -54,10 +43,6 @@ resource "aws_lambda_permission" "allow_cloudwatch_to_call_uptime_monitoring_lam
   function_name = "${aws_lambda_function.uptime_monitoring.function_name}"
   principal     = "events.amazonaws.com"
   source_arn    = "${aws_cloudwatch_event_rule.every_min_rule.arn}"
-}
-
-resource "aws_codebuild_webhook" "codebuild-prm-webhook" {
-  project_name = "${aws_codebuild_project.prm-vcs-trigger.name}"
 }
 
 resource "aws_s3_bucket" "uptime_monitoring_bucket" {
