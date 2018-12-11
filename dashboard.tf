@@ -66,7 +66,7 @@ resource "aws_cloudwatch_dashboard" "PRM-team-dashboard" {
             "period":300,
              "stat":"Average",
              "region":"eu-west-2",
-             "title":"EhrExtractHanderErrors"
+             "title":"ApiLogsMonitor"
           }
        }
    ]
