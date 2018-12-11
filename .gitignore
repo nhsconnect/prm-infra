@@ -294,3 +294,5 @@ tags
 
 graph.svg
 .terraform
+/node_modules/
+/.vscode/
