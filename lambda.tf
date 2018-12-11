@@ -586,6 +586,8 @@ resource "aws_iam_role_policy" "prm-infra-codepipeline-policy" {
         "s3:*"
       ],
       "Resource": [
+        "${aws_s3_bucket.prm-codebuild-artifact.arn}",
+        "${aws_s3_bucket.prm-codebuild-artifact.arn}/*",
         "${aws_s3_bucket.prm-infra-codepipeline-bucket.arn}",
         "${aws_s3_bucket.prm-infra-codepipeline-bucket.arn}/*",
         "arn:aws:s3:::${var.prm-application-source-bucket}",
