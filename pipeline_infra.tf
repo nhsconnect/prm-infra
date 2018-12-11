@@ -20,7 +20,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
 
       configuration {
         S3Bucket    = "${var.prm-application-source-bucket}"
-        S3ObjectKey = "source/latest.zip"
+        S3ObjectKey = "source-walking-skeleton-spikes/latest.zip"
       }
     }
   }

@@ -22,7 +22,7 @@ resource "aws_codebuild_project" "prm-vcs-trigger" {
     type            = "BITBUCKET"
     location        = "https://bitbucket.org/twnhsd/walking-skeleton-spikes.git"
     git_clone_depth = 1
-    buildspec       = "webhook_trigger.yml"
+    buildspec       = "webhook_trigger_walking_skeleton_spikes.yml"
   }
 }
 
