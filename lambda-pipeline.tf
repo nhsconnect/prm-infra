@@ -112,7 +112,7 @@ resource "aws_codebuild_project" "prm-build-uptime-monitor-lambda" {
   name          = "prm-build-uptime-monitor-lambda"
   description   = "Builds uptime monitoring"
   build_timeout = "5"
-  service_role  = "${aws_iam_role.codebuild-prm-uptime-monitoring-role.arn}"
+  service_role  = "${aws_iam_role.codebuild-lambda-build-role.arn}"
 
   artifacts {
     type = "CODEPIPELINE"
@@ -134,7 +134,7 @@ resource "aws_codebuild_project" "prm-build-ehr-extract-lambda" {
   name          = "prm-build-ehr-extract-lambda"
   description   = "Builds EhrExtract"
   build_timeout = "5"
-  service_role  = "${aws_iam_role.codebuild-prm-ehr-extract-role.arn}"
+  service_role  = "${aws_iam_role.codebuild-lambda-build-role.arn}"
 
   artifacts {
     type = "CODEPIPELINE"
@@ -152,8 +152,8 @@ resource "aws_codebuild_project" "prm-build-ehr-extract-lambda" {
   }
 }
 
-resource "aws_iam_role" "codebuild-prm-ehr-extract-lambda-role" {
-  name = "codebuild-prm-ehr-extract-lambda-role"
+resource "aws_iam_role" "codebuild-lambda-build-role" {
+  name = "codebuild-lambda-build-role"
 
   assume_role_policy = <<EOF
 {
@@ -171,66 +171,8 @@ resource "aws_iam_role" "codebuild-prm-ehr-extract-lambda-role" {
 EOF
 }
 
-resource "aws_iam_role_policy" "codebuild-prm-ehr-extract-lambda-policy" {
-  role = "${aws_iam_role.codebuild-prm-ehr-extract-lambda-role.name}"
-
-  policy = <<POLICY
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "lambda:CreateFunction",
-        "lambda:UpdateEventSourceMapping",
-        "lambda:ListFunctions",
-        "apigateway:*",
-        "s3:*",
-        "lambda:GetEventSourceMapping",
-        "logs:*",
-        "lambda:GetAccountSettings",
-        "lambda:CreateEventSourceMapping",
-        "codebuild:*",
-        "iam:*",
-        "cloudwatch:*",
-        "kms:*",
-        "ssm:*",
-        "codedeploy:*",
-        "lambda:*",
-        "lambda:ListEventSourceMappings",
-        "ec2:*",
-        "codepipeline:*",
-        "lambda:DeleteEventSourceMapping",
-        "events:*"
-      ],
-      "Resource": "*"
-    }
-  ]
-}
-POLICY
-}
-
-resource "aws_iam_role" "codebuild-prm-uptime-monitoring-lambda-role" {
-  name = "codebuild-prm-uptime-monitoring-lambda-role"
-
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "codebuild.amazonaws.com"
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-EOF
-}
-
-resource "aws_iam_role_policy" "codebuild-prm-uptime-monitoring-lambda-policy" {
-  role = "${aws_iam_role.codebuild-prm-uptime-monitoring-lambda-role.name}"
+resource "aws_iam_role_policy" "codebuild-lambda-build-policy" {
+  role = "${aws_iam_role.codebuild-lambda-build-role.name}"
 
   policy = <<POLICY
 {
