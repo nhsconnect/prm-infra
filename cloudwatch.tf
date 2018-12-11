@@ -45,7 +45,7 @@ resource "aws_cloudwatch_metric_alarm" "prm-lambda-ehr_extract_handler-error" {
   insufficient_data_actions = []
 
   dimensions {
-    FunctionName  = "${aws_lambda_function.ehr_extract_handler.function_name}"
+    FunctionName = "${aws_lambda_function.ehr_extract_handler.function_name}"
     Resource = "${aws_lambda_function.ehr_extract_handler.function_name}"
   }
 }
@@ -61,3 +61,48 @@ resource "aws_cloudwatch_event_target" "every_minute_event_target" {
   arn = "${aws_lambda_function.uptime_monitoring.arn}"
 }
 
+resource "aws_iam_role" "cloudwatch-apigateway-log-role" {
+  name = "cloudwatch-apigateway-log-role"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "apigateway.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy" "cloudwatch-apigateway-log-policy" {
+  role = "${aws_iam_role.cloudwatch-apigateway-log-role.name}"
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Resource": [
+        "*"
+      ],
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:DescribeLogGroups",
+        "logs:DescribeLogStreams",
+        "logs:PutLogEvents",
+        "logs:GetLogEvents",
+        "logs:FilterLogEvents"
+      ]
+    }
+  ]
+}
+POLICY
+}

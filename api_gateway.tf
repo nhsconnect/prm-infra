@@ -7,6 +7,10 @@ output "base_url" {
   value = "${aws_api_gateway_deployment.api_gw_deployment.invoke_url}"
 }
 
+resource "aws_api_gateway_account" "demo" {
+  cloudwatch_role_arn = "${aws_iam_role.cloudwatch-apigateway-log-role.arn}"
+}
+
 resource "aws_api_gateway_resource" "proxy" {
   rest_api_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
   parent_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.root_resource_id}"
