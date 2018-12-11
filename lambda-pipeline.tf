@@ -1,5 +1,5 @@
 resource "aws_codepipeline" "lambda-pipeline" {
-  name = "lambda-pipeline"
+  name     = "lambda-pipeline"
   role_arn = "${aws_iam_role.prm-lambda-codepipeline.arn}"
 
   artifact_store {
@@ -19,8 +19,38 @@ resource "aws_codepipeline" "lambda-pipeline" {
       output_artifacts = ["source"]
 
       configuration {
-        S3Bucket  = "${var.prm-application-source-bucket}"
-        S3ObjectKey   = "source/latest.zip"
+        S3Bucket    = "${var.prm-application-source-bucket}"
+        S3ObjectKey = "source/latest.zip"
+      }
+    }
+  }
+
+  stage {
+    name = "Build-Lambdas"
+
+    action {
+      name            = "Build-Ehr-Extract"
+      category        = "Build"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      version         = "1"
+      input_artifacts = ["source"]
+
+      configuration {
+        ProjectName = "${aws_codebuild_project.prm-build-ehr-extract-lambda.name}"
+      }
+    }
+
+    action {
+      name            = "Build-Uptime-Monitor"
+      category        = "Build"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      version         = "1"
+      input_artifacts = ["source"]
+
+      configuration {
+        ProjectName = "${aws_codebuild_project.prm-build-uptime-monitor-lambda.name}"
       }
     }
   }
@@ -74,4 +104,48 @@ resource "aws_iam_role_policy" "prm-lambda-codepipeline-policy" {
   ]
 }
 EOF
+}
+
+resource "aws_codebuild_project" "prm-build-uptime-monitor-lambda" {
+  name          = "prm-build-uptime-monitor-lambda"
+  description   = "Builds uptime monitoring"
+  build_timeout = "5"
+  service_role  = "${aws_iam_role.codebuild-prm-uptime-monitoring-role.arn}"
+
+  artifacts {
+    type = "CODEPIPELINE"
+  }
+
+  environment {
+    compute_type = "BUILD_GENERAL1_SMALL"
+    image        = "aws/codebuild/python:3.6.5"
+    type         = "LINUX_CONTAINER"
+  }
+
+  source {
+    type      = "CODEPIPELINE"
+    buildspec = "uptime_monitoring.yml"
+  }
+}
+
+resource "aws_codebuild_project" "prm-build-ehr-extract-lambda" {
+  name          = "prm-build-ehr-extract-lambda"
+  description   = "Builds EhrExtract"
+  build_timeout = "5"
+  service_role  = "${aws_iam_role.codebuild-prm-ehr-extract-role.arn}"
+
+  artifacts {
+    type = "CODEPIPELINE"
+  }
+
+  environment {
+    compute_type = "BUILD_GENERAL1_SMALL"
+    image        = "aws/codebuild/python:3.6.5"
+    type         = "LINUX_CONTAINER"
+  }
+
+  source {
+    type      = "CODEPIPELINE"
+    buildspec = "ehr_extract_handler.yml"
+  }
 }

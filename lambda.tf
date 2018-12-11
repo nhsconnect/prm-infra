@@ -10,20 +10,19 @@ provider "aws" {
 }
 
 resource "aws_lambda_permission" "apigw" {
-  statement_id = "AllowAPIGatewayInvoke"
-  action = "lambda:InvokeFunction"
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
   function_name = "${aws_lambda_function.ehr_extract_handler.function_name}"
-  principal = "apigateway.amazonaws.com"
+  principal     = "apigateway.amazonaws.com"
 
   # The /*/* portion grants access from any method on any resource
   # within the API Gateway "REST API".
   source_arn = "${aws_api_gateway_deployment.api_gw_deployment.execution_arn}/*/*"
 }
 
-
 resource "aws_iam_policy_attachment" "lambda-exec-policy-attachment" {
-  name = "PlanOneLambdaExecPolicy"
-  roles = ["${aws_iam_role.lambda_exec.id}"]
+  name       = "PlanOneLambdaExecPolicy"
+  roles      = ["${aws_iam_role.lambda_exec.id}"]
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
 
@@ -50,11 +49,11 @@ EOF
 }
 
 resource "aws_lambda_permission" "allow_cloudwatch_to_call_uptime_monitoring_lambda" {
-  statement_id = "AllowExecutionFromCloudWatch"
-  action = "lambda:InvokeFunction"
+  statement_id  = "AllowExecutionFromCloudWatch"
+  action        = "lambda:InvokeFunction"
   function_name = "${aws_lambda_function.uptime_monitoring.function_name}"
-  principal = "events.amazonaws.com"
-  source_arn = "${aws_cloudwatch_event_rule.every_min_rule.arn}"
+  principal     = "events.amazonaws.com"
+  source_arn    = "${aws_cloudwatch_event_rule.every_min_rule.arn}"
 }
 
 resource "aws_codebuild_webhook" "codebuild-prm-webhook" {
@@ -125,10 +124,10 @@ POLICY
 }
 
 resource "aws_codebuild_project" "prm-vcs-trigger" {
-  name = "prm-vcs-trigger"
-  description = "The trigger to start the PRM pipelines (because pipeline doesn't integrate with BitBucket)"
+  name          = "prm-vcs-trigger"
+  description   = "The trigger to start the PRM pipelines (because pipeline doesn't integrate with BitBucket)"
   build_timeout = "5"
-  service_role = "${aws_iam_role.codebuild-prm-trigger-service-role.arn}"
+  service_role  = "${aws_iam_role.codebuild-prm-trigger-service-role.arn}"
 
   artifacts {
     type = "NO_ARTIFACTS"
@@ -136,21 +135,22 @@ resource "aws_codebuild_project" "prm-vcs-trigger" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image = "aws/codebuild/python:3.6.5"
-    type = "LINUX_CONTAINER"
+    image        = "aws/codebuild/python:3.6.5"
+    type         = "LINUX_CONTAINER"
   }
 
   source {
-    type = "BITBUCKET"
-    location = "https://bitbucket.org/twnhsd/walking-skeleton-spikes.git"
+    type            = "BITBUCKET"
+    location        = "https://bitbucket.org/twnhsd/walking-skeleton-spikes.git"
     git_clone_depth = 1
-    buildspec = "webhook_trigger.yml"
+    buildspec       = "webhook_trigger.yml"
   }
 }
 
 resource "aws_iam_role" "codebuild-prm-infra-plan-role" {
-  name = "codebuild-prm-infra-plan-role"
+  name                  = "codebuild-prm-infra-plan-role"
   force_detach_policies = true
+
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -169,6 +169,7 @@ EOF
 
 resource "aws_iam_role_policy" "codebuild-prm-infra-plan-service-policy" {
   role = "${aws_iam_role.codebuild-prm-infra-plan-role.name}"
+
   policy = <<POLICY
 {
   "Version": "2012-10-17",
@@ -322,10 +323,10 @@ POLICY
 }
 
 resource "aws_codebuild_project" "prm-infra-plan" {
-  name = "prm-infra-plan"
-  description = "Validates the infrastructure"
+  name          = "prm-infra-plan"
+  description   = "Validates the infrastructure"
   build_timeout = "5"
-  service_role = "${aws_iam_role.codebuild-prm-infra-plan-role.arn}"
+  service_role  = "${aws_iam_role.codebuild-prm-infra-plan-role.arn}"
 
   artifacts {
     type = "CODEPIPELINE"
@@ -333,21 +334,21 @@ resource "aws_codebuild_project" "prm-infra-plan" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image = "aws/codebuild/python:3.6.5"
-    type = "LINUX_CONTAINER"
+    image        = "aws/codebuild/python:3.6.5"
+    type         = "LINUX_CONTAINER"
   }
 
   source {
-    type = "CODEPIPELINE"
+    type      = "CODEPIPELINE"
     buildspec = "infra_plan.yml"
   }
 }
 
 resource "aws_codebuild_project" "prm-build-uptime-monitor" {
-  name = "prm-build-uptime-monitor"
-  description = "Builds uptime monitoring"
+  name          = "prm-build-uptime-monitor"
+  description   = "Builds uptime monitoring"
   build_timeout = "5"
-  service_role = "${aws_iam_role.codebuild-prm-uptime-monitoring-role.arn}"
+  service_role  = "${aws_iam_role.codebuild-prm-uptime-monitoring-role.arn}"
 
   artifacts {
     type = "CODEPIPELINE"
@@ -355,21 +356,21 @@ resource "aws_codebuild_project" "prm-build-uptime-monitor" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image = "aws/codebuild/python:3.6.5"
-    type = "LINUX_CONTAINER"
+    image        = "aws/codebuild/python:3.6.5"
+    type         = "LINUX_CONTAINER"
   }
 
   source {
-    type = "CODEPIPELINE"
+    type      = "CODEPIPELINE"
     buildspec = "uptime_monitoring.yml"
   }
 }
 
 resource "aws_codebuild_project" "prm-build-ehr-extract" {
-  name = "prm-build-ehr-extract"
-  description = "Builds EhrExtract"
+  name          = "prm-build-ehr-extract"
+  description   = "Builds EhrExtract"
   build_timeout = "5"
-  service_role = "${aws_iam_role.codebuild-prm-ehr-extract-role.arn}"
+  service_role  = "${aws_iam_role.codebuild-prm-ehr-extract-role.arn}"
 
   artifacts {
     type = "CODEPIPELINE"
@@ -377,12 +378,12 @@ resource "aws_codebuild_project" "prm-build-ehr-extract" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image = "aws/codebuild/python:3.6.5"
-    type = "LINUX_CONTAINER"
+    image        = "aws/codebuild/python:3.6.5"
+    type         = "LINUX_CONTAINER"
   }
 
   source {
-    type = "CODEPIPELINE"
+    type      = "CODEPIPELINE"
     buildspec = "ehr_extract_handler.yml"
   }
 }
@@ -446,10 +447,10 @@ POLICY
 }
 
 resource "aws_codebuild_project" "prm-infra-apply" {
-  name = "prm-infra-apply"
-  description = "Applies the infrastructure"
+  name          = "prm-infra-apply"
+  description   = "Applies the infrastructure"
   build_timeout = "5"
-  service_role = "${aws_iam_role.codebuild-prm-infra-apply-role.arn}"
+  service_role  = "${aws_iam_role.codebuild-prm-infra-apply-role.arn}"
 
   artifacts {
     type = "CODEPIPELINE"
@@ -457,12 +458,12 @@ resource "aws_codebuild_project" "prm-infra-apply" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image = "aws/codebuild/python:3.6.5"
-    type = "LINUX_CONTAINER"
+    image        = "aws/codebuild/python:3.6.5"
+    type         = "LINUX_CONTAINER"
   }
 
   source {
-    type = "CODEPIPELINE"
+    type      = "CODEPIPELINE"
     buildspec = "infra_apply.yml"
   }
 }
@@ -525,13 +526,11 @@ resource "aws_iam_role_policy" "codebuild-prm-infra-validate-service-policy" {
 POLICY
 }
 
-
-
 resource "aws_codebuild_project" "prm-infra-validate" {
-  name = "prm-infra-validate"
-  description = "Validates the infrastructure"
+  name          = "prm-infra-validate"
+  description   = "Validates the infrastructure"
   build_timeout = "5"
-  service_role = "${aws_iam_role.codebuild-prm-infra-validate-role.arn}"
+  service_role  = "${aws_iam_role.codebuild-prm-infra-validate-role.arn}"
 
   artifacts {
     type = "CODEPIPELINE"
@@ -539,19 +538,17 @@ resource "aws_codebuild_project" "prm-infra-validate" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image = "aws/codebuild/nodejs:8.11.0"
-    type = "LINUX_CONTAINER"
+    image        = "aws/codebuild/nodejs:8.11.0"
+    type         = "LINUX_CONTAINER"
 
     environment_variable {
       "name"  = "PRM_ENDPOINT"
       "value" = "${aws_api_gateway_deployment.api_gw_deployment.invoke_url}"
     }
-    
   }
 
-
   source {
-    type = "CODEPIPELINE"
+    type      = "CODEPIPELINE"
     buildspec = "infra_validate.yml"
   }
 }
@@ -609,21 +606,23 @@ EOF
 }
 
 resource "aws_s3_bucket" "prm-infra-codepipeline-bucket" {
-  bucket = "prm-infra-codepipeline-bucket"
-  acl    = "private"
+  bucket        = "prm-infra-codepipeline-bucket"
+  acl           = "private"
   force_destroy = true
+
   versioning {
     enabled = true
   }
 }
 
 resource "aws_s3_bucket" "uptime_monitoring_bucket" {
-  bucket = "uptime-monitoring-bucket"
-  acl    = "private"
+  bucket        = "uptime-monitoring-bucket"
+  acl           = "private"
   force_destroy = true
+
   versioning {
     enabled = true
-  }  
+  }
 }
 
 resource "aws_codepipeline" "prm-infra-pipeline" {
@@ -647,8 +646,8 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       output_artifacts = ["source"]
 
       configuration {
-        S3Bucket  = "${var.prm-application-source-bucket}"
-        S3ObjectKey   = "source/latest.zip"
+        S3Bucket    = "${var.prm-application-source-bucket}"
+        S3ObjectKey = "source/latest.zip"
       }
     }
   }
@@ -681,7 +680,6 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
         ProjectName = "${aws_codebuild_project.prm-build-uptime-monitor.name}"
       }
     }
-
   }
 
   stage {
@@ -694,7 +692,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       provider        = "CodeBuild"
       version         = "1"
       input_artifacts = ["source"]
-      run_order = 1
+      run_order       = 1
 
       configuration {
         ProjectName = "${aws_codebuild_project.prm-infra-plan.name}"
@@ -708,12 +706,12 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       provider        = "CodeBuild"
       version         = "1"
       input_artifacts = ["source"]
-      run_order = 2
+      run_order       = 2
 
       configuration {
         ProjectName = "${aws_codebuild_project.prm-infra-apply.name}"
       }
-    }    
+    }
 
     action {
       name            = "Validate"
@@ -722,11 +720,11 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       provider        = "CodeBuild"
       version         = "1"
       input_artifacts = ["source"]
-      run_order = 3
+      run_order       = 3
 
       configuration {
         ProjectName = "${aws_codebuild_project.prm-infra-validate.name}"
       }
-    } 
+    }
   }
 }

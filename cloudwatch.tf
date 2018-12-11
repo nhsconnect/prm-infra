@@ -1,13 +1,13 @@
 resource "aws_cloudwatch_metric_alarm" "prm-gateway-error-4xx" {
-  alarm_name = "prm-gateway-error-4xx"
-  comparison_operator = "GreaterThanThreshold"
-  evaluation_periods = "1"
-  metric_name = "4XXError"
-  namespace = "AWS/ApiGateway"
-  period = "300"
-  statistic = "Sum"
-  threshold = "0"
-  alarm_description = "This metric monitors 4xx errors on API-gateway"
+  alarm_name                = "prm-gateway-error-4xx"
+  comparison_operator       = "GreaterThanThreshold"
+  evaluation_periods        = "1"
+  metric_name               = "4XXError"
+  namespace                 = "AWS/ApiGateway"
+  period                    = "300"
+  statistic                 = "Sum"
+  threshold                 = "0"
+  alarm_description         = "This metric monitors 4xx errors on API-gateway"
   insufficient_data_actions = []
 
   dimensions {
@@ -16,15 +16,15 @@ resource "aws_cloudwatch_metric_alarm" "prm-gateway-error-4xx" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "prm-gateway-error-5xx" {
-  alarm_name = "prm-gateway-error-5xx"
-  comparison_operator = "GreaterThanThreshold"
-  evaluation_periods = "1"
-  metric_name = "5XXError"
-  namespace = "AWS/ApiGateway"
-  period = "300"
-  statistic = "Sum"
-  threshold = "0"
-  alarm_description = "This metric monitors 5xx errors on API-gateway"
+  alarm_name                = "prm-gateway-error-5xx"
+  comparison_operator       = "GreaterThanThreshold"
+  evaluation_periods        = "1"
+  metric_name               = "5XXError"
+  namespace                 = "AWS/ApiGateway"
+  period                    = "300"
+  statistic                 = "Sum"
+  threshold                 = "0"
+  alarm_description         = "This metric monitors 5xx errors on API-gateway"
   insufficient_data_actions = []
 
   dimensions {
@@ -33,32 +33,32 @@ resource "aws_cloudwatch_metric_alarm" "prm-gateway-error-5xx" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "prm-lambda-ehr_extract_handler-error" {
-  alarm_name = "prm-lambda-ehr_extract_handler-error"
-  comparison_operator = "GreaterThanThreshold"
-  evaluation_periods = "1"
-  metric_name = "Errors"
-  namespace = "AWS/Lambda"
-  period = "300"
-  statistic = "Sum"
-  threshold = "0"
-  alarm_description = "This metric monitors errors on ehr_extract_handler lambda"
+  alarm_name                = "prm-lambda-ehr_extract_handler-error"
+  comparison_operator       = "GreaterThanThreshold"
+  evaluation_periods        = "1"
+  metric_name               = "Errors"
+  namespace                 = "AWS/Lambda"
+  period                    = "300"
+  statistic                 = "Sum"
+  threshold                 = "0"
+  alarm_description         = "This metric monitors errors on ehr_extract_handler lambda"
   insufficient_data_actions = []
 
   dimensions {
     FunctionName = "${aws_lambda_function.ehr_extract_handler.function_name}"
-    Resource = "${aws_lambda_function.ehr_extract_handler.function_name}"
+    Resource     = "${aws_lambda_function.ehr_extract_handler.function_name}"
   }
 }
 
 resource "aws_cloudwatch_event_rule" "every_min_rule" {
-  name = "every-minute"
-  description = "Fires every minute"
+  name                = "every-minute"
+  description         = "Fires every minute"
   schedule_expression = "rate(1 minute)"
 }
 
 resource "aws_cloudwatch_event_target" "every_minute_event_target" {
   rule = "${aws_cloudwatch_event_rule.every_min_rule.name}"
-  arn = "${aws_lambda_function.uptime_monitoring.arn}"
+  arn  = "${aws_lambda_function.uptime_monitoring.arn}"
 }
 
 resource "aws_iam_role" "cloudwatch-apigateway-log-role" {
@@ -83,6 +83,7 @@ EOF
 resource "aws_iam_role_policy" "cloudwatch-apigateway-log-policy" {
   role = "${aws_iam_role.cloudwatch-apigateway-log-role.name}"
   name = "cloudwatch-apigateway-log-policy"
+
   policy = <<POLICY
 {
   "Version": "2012-10-17",
