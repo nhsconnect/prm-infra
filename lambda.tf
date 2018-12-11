@@ -605,16 +605,6 @@ resource "aws_iam_role_policy" "prm-infra-codepipeline-policy" {
 EOF
 }
 
-resource "aws_s3_bucket" "prm-infra-codepipeline-bucket" {
-  bucket        = "prm-infra-codepipeline-bucket"
-  acl           = "private"
-  force_destroy = true
-
-  versioning {
-    enabled = true
-  }
-}
-
 resource "aws_s3_bucket" "uptime_monitoring_bucket" {
   bucket        = "uptime-monitoring-bucket"
   acl           = "private"
