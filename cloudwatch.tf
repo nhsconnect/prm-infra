@@ -1,5 +1,5 @@
-resource "aws_cloudwatch_metric_alarm" "notify-error-4xx" {
-  alarm_name = "terraform-test-notify-error-4xx"
+resource "aws_cloudwatch_metric_alarm" "prm-gateway-error-4xx" {
+  alarm_name = "prm-gateway-error-4xx"
   comparison_operator = "GreaterThanThreshold"
   evaluation_periods = "1"
   metric_name = "4XXError"
@@ -15,8 +15,8 @@ resource "aws_cloudwatch_metric_alarm" "notify-error-4xx" {
   }
 }
 
-resource "aws_cloudwatch_metric_alarm" "notify-error-5xx" {
-  alarm_name = "terraform-test-notify-error-5xx"
+resource "aws_cloudwatch_metric_alarm" "prm-gateway-error-5xx" {
+  alarm_name = "prm-gateway-error-4xx"
   comparison_operator = "GreaterThanThreshold"
   evaluation_periods = "1"
   metric_name = "5XXError"
@@ -32,13 +32,13 @@ resource "aws_cloudwatch_metric_alarm" "notify-error-5xx" {
   }
 }
 
-resource "aws_cloudwatch_metric_alarm" "notify-ehr_extract_handler-lambda-errors" {
-  alarm_name = "notify-ehr_extract_handler-lambda-errors"
+resource "aws_cloudwatch_metric_alarm" "prm-lambda-ehr_extract_handler-error" {
+  alarm_name = "prm-lambda-ehr_extract_handler-error"
   comparison_operator = "GreaterThanThreshold"
   evaluation_periods = "1"
   metric_name = "Errors"
   namespace = "AWS/Lambda"
-  period = "60"
+  period = "300"
   statistic = "Sum"
   threshold = "0"
   alarm_description = "This metric monitors errors on ehr_extract_handler lambda"
