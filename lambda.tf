@@ -15,8 +15,6 @@ resource "aws_iam_policy_attachment" "lambda-exec-policy-attachment" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
 
-# IAM role which dictates what other AWS services the Lambda function
-# may access.
 resource "aws_iam_role" "lambda_exec" {
   name = "serverless_example_lambda"
 
