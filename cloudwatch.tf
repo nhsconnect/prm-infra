@@ -16,7 +16,7 @@ resource "aws_cloudwatch_metric_alarm" "prm-gateway-error-4xx" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "prm-gateway-error-5xx" {
-  alarm_name = "prm-gateway-error-4xx"
+  alarm_name = "prm-gateway-error-5xx"
   comparison_operator = "GreaterThanThreshold"
   evaluation_periods = "1"
   metric_name = "5XXError"
