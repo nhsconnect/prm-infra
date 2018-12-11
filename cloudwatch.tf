@@ -82,7 +82,7 @@ EOF
 
 resource "aws_iam_role_policy" "cloudwatch-apigateway-log-policy" {
   role = "${aws_iam_role.cloudwatch-apigateway-log-role.name}"
-
+  name = "cloudwatch-apigateway-log-policy"
   policy = <<POLICY
 {
   "Version": "2012-10-17",
