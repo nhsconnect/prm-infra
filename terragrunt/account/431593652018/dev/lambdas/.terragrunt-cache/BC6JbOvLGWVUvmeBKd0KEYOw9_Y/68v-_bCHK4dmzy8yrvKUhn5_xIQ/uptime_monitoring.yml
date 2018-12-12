@@ -1,0 +1,16 @@
+version: 0.1
+
+phases:
+  install:
+    commands:
+      - sudo apt-get update
+      - sudo apt-get install zip
+  build:
+    commands:
+      - echo Build started on Uptime Monitoring
+      - echo lambda/uptime_monitoring/main.js is being zipped
+      - cd lambda/uptime_monitoring && zip ../../uptime_monitoring main.js
+      - echo Uploading zip file to uptime-monitoring-bucket
+      - aws s3 cp uptime_monitoring.zip s3://uptime-monitoring-bucket/uptime_monitoring.zip
+      - echo Uptime Monitoring build completed
+      - aws lambda update-function-code --region $AWS_REGION --function-name UptimeMonitoring --s3-bucket uptime-monitoring-bucket --s3-key uptime_monitoring.zip
