@@ -14,5 +14,6 @@ phases:
       - export AWS_SESSION_TOKEN=`curl --silent http://169.254.170.2:80$AWS_CONTAINER_CREDENTIALS_RELATIVE_URI | jq -r '.Token'`      
   build:
     commands:
+      - export PRM_ENDPOINT="https://j4dbzo021j.execute-api.eu-west-2.amazonaws.com/test"
       - npm test    
 
