@@ -29,5 +29,5 @@ phases:
       - echo Lambdas building
       - terragrunt init --terragrunt-working-dir ./terragrunt/account/431593652018/dev/lambdas
       - terragrunt validate --terragrunt-working-dir ./terragrunt/account/431593652018/dev/lambdas
-      - terragrunt plan -auto-approve --terragrunt-working-dir ./terragrunt/account/431593652018/dev/lambdas
+      - terragrunt plan --terragrunt-working-dir ./terragrunt/account/431593652018/dev/lambdas
 

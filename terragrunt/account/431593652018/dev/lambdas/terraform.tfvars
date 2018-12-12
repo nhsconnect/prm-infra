@@ -12,9 +12,9 @@ terragrunt = {
   }
 
   # Include all settings from the root terraform.tfvars.old.old file
-//  include = {
-//    path = "${find_in_parent_folders()}"
-//  }
+  #include = {
+  #  path = "${find_in_parent_folders()}"
+  # }
 
   extra_arguments "conditional_vars" {
 
@@ -24,10 +24,10 @@ terragrunt = {
       "apply"
     ]
 
-//    arguments = [
-//      "-var",
-//      "prm-application-source-bucket=prm-application-source"
-//    ]
+  #  arguments = [
+  #    "-var",
+  #    "prm-application-source-bucket=prm-application-source"
+  #  ]
   }
 
   remote_state {
