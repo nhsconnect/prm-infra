@@ -22,7 +22,7 @@ phases:
       - export AWS_SESSION_TOKEN=`curl --silent http://169.254.170.2:80$AWS_CONTAINER_CREDENTIALS_RELATIVE_URI | jq -r '.Token'`      
   build:
     commands:
-      - terragrunt init
-      - terragrunt validate
-      - terragrunt plan      
+      - terragrunt init --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
+      - terragrunt validate --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
+      - terragrunt plan --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
 
