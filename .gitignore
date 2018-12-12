@@ -293,6 +293,5 @@ tags
 # End of https://www.gitignore.io/api/vim,macos,python,intellij,terraform
 
 graph.svg
-.terraform
 /node_modules/
 /.vscode/
