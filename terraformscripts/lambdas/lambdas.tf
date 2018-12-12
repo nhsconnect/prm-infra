@@ -1,11 +1,13 @@
 resource "aws_lambda_function" "ehr_extract_handler" {
   function_name = "EhrExtractHandler"
-//  s3_bucket     = "${var.prm-application-source-bucket}"
-//  s3_key        = "example.zip"
+
+  //  s3_bucket     = "${var.prm-application-source-bucket}"
+  //  s3_key        = "example.zip"
   filename = "${path.root}/example.zip"
-  handler       = "main.handler"
-  runtime       = "nodejs8.10"
-  role          = "${aws_iam_role.lambda_exec.arn}"
+
+  handler = "main.handler"
+  runtime = "nodejs8.10"
+  role    = "${aws_iam_role.lambda_exec.arn}"
 }
 
 resource "aws_lambda_function" "uptime_monitoring" {

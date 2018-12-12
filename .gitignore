@@ -247,6 +247,9 @@ pip-selfcheck.json
 # Local .terraform directories
 **/.terraform/*
 
+### Terragrunt ###
+**/.terragrunt-cache/*
+
 # .tfstate files
 *.tfstate
 *.tfstate.*
