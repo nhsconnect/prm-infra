@@ -149,7 +149,7 @@ resource "aws_codebuild_project" "prm-infra-plan" {
 
   source {
     type      = "CODEPIPELINE"
-    buildspec = "./terraformscripts/codepipeline/codepipeline_infra_plan.yml"
+    buildspec = "./pipeline_definition/codepipeline_infra_plan.yml"
   }
 }
 
@@ -229,7 +229,7 @@ resource "aws_codebuild_project" "prm-infra-apply" {
 
   source {
     type      = "CODEPIPELINE"
-    buildspec = "./terraformscripts/codepipeline/codepipeline_infra_apply.yml"
+    buildspec = "./pipeline_definition/codepipeline_infra_apply.yml"
   }
 }
 
@@ -314,7 +314,7 @@ resource "aws_codebuild_project" "prm-infra-validate" {
 
   source {
     type      = "CODEPIPELINE"
-    buildspec = "./terraformscripts/codepipeline/codepipeline_infra_validate.yml"
+    buildspec = "./pipeline_definition/codepipeline_infra_validate.yml"
   }
 }
 

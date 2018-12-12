@@ -126,7 +126,7 @@ resource "aws_codebuild_project" "prm-build-uptime-monitor-lambda" {
 
   source {
     type      = "CODEPIPELINE"
-    buildspec = "./terraformscripts/codepipeline/lambdas_uptime_monitoring.yml"
+    buildspec = "./pipeline_definition/lambdas_uptime_monitoring.yml"
   }
 }
 
@@ -148,7 +148,7 @@ resource "aws_codebuild_project" "prm-build-ehr-extract-lambda" {
 
   source {
     type      = "CODEPIPELINE"
-    buildspec = "./terraformscripts/codepipeline/lambdas_ehr_extract_handler.yml"
+    buildspec = "./pipeline_definition/lambdas_ehr_extract_handler.yml"
   }
 }
 
