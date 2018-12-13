@@ -4,7 +4,7 @@ resource "aws_lambda_function" "ehr_extract_handler" {
   #  s3_bucket     = "${var.prm-application-source-bucket}"
   #  s3_key        = "example.zip"
   filename = "${path.root}/dummy_ehr_extract_handler.zip"
-  source_code_hash = "${base64sha256(format("%s/dummy_ehr_extract_handler.zip", path.root))}"
+  # source_code_hash = "${base64sha256(format("%s/dummy_ehr_extract_handler.zip", path.root))}"
 
   handler = "main.handler"
   runtime = "nodejs8.10"
@@ -17,7 +17,7 @@ resource "aws_lambda_function" "uptime_monitoring" {
   #  s3_bucket     = "${aws_s3_bucket.uptime_monitoring_bucket.bucket}"
   #  s3_key        = "uptime_monitoring.zip"
   filename = "${path.root}/dummy_uptime_monitoring.zip"
-  source_code_hash = "${base64sha256(format("%s/dummy_uptime_monitoring.zip", path.root))}"
+  # source_code_hash = "${base64sha256(format("%s/dummy_uptime_monitoring.zip", path.root))}"
 
   handler = "main.handler"
   runtime = "nodejs8.10"
