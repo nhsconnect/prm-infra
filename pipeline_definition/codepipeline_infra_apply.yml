@@ -29,5 +29,8 @@ phases:
 #      - echo Lambdas building
 #      - terragrunt init --terragrunt-working-dir ./terragrunt/account/431593652018/dev/lambdas
 #      - terragrunt validate --terragrunt-working-dir ./terragrunt/account/431593652018/dev/lambdas
-#      - terragrunt apply -auto-approve --terragrunt-working-dir ./terragrunt/account/431593652018/dev/lambdas
+#      - terragrunt apply -auto-approve --terragrunt-working-dir ./terragrunt/account/431593652018/dev/lambdas#      - echo Lambdas building
+      - terragrunt init --terragrunt-working-dir ./terragrunt/account/431593652018/common/assume_role
+      - terragrunt validate --terragrunt-working-dir ./terragrunt/account/431593652018/common/assume_role
+      - terragrunt apply -auto-approve --terragrunt-working-dir ./terragrunt/account/431593652018/common/assume_role
 
