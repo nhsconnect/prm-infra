@@ -1,8 +1,3 @@
-
-
-
-
-
 resource "aws_iam_role_policy_attachment" "infra-plan-attach" {
   role       = "${aws_iam_role.codebuild-prm-infra-plan-role.name}"
   policy_arn = "${aws_iam_policy.assume-role-codepipeline-policy.arn}"
