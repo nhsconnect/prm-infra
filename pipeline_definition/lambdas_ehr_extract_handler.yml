@@ -7,16 +7,13 @@ phases:
       - sudo apt-get install -y jq zip unzip
   pre_build:
     commands:
-      # Workaround until TF supports creds via Task Roles when running on ECS or CodeBuild
-      # See: https://github.com/hashicorp/terraform/issues/8746
-      #- export AWS_ACCESS_KEY_ID=`curl --silent http://169.254.170.2:80$AWS_CONT
+      #Assume role
       - export ASSUME_ROLE_NAME=arn:aws:iam::431593652018:role/PASTASLOTHVULGAR
+      - export TERRAGRUNT_IAM_ROLE=$ASSUME_ROLE_NAME
       - eval $(./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_NAME)
   build:
     commands:
       - echo Build started on EhrExtractHandler
-      #- export ASSUME_ROLE_NAME=arn:aws:iam::431593652018:role/PASTASLOTHVULGAR
-      #- eval $(./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_NAME)
       - echo lambda/ehr_extract_handler/main.js is being zipped
       - cd lambda/ehr_extract_handler && zip ../../ehr_extract_handler main.js
       - echo Uploading zip file to ehr_extract_handler
