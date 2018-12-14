@@ -18,6 +18,7 @@ phases:
       - export ASSUME_ROLE_NAME=arn:aws:iam::431593652018:role/PASTASLOTHVULGAR
       - export TERRAGRUNT_IAM_ROLE=$ASSUME_ROLE_NAME
       - eval $(./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_NAME)
+      - env
   build:
     commands:
       - touch terraform.tfvars
