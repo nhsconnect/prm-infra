@@ -8,10 +8,9 @@ phases:
   pre_build:
     commands:
       #Assume role
-      - export ASSUME_ROLE_ARN="arn:aws:iam::431593652018:role/PASTASLOTHVULGAR"
-      - export TERRAGRUNT_IAM_ROLE=$ASSUME_ROLE_ARN
-      - echo Is this my assume role $ASSUME_ROLE_ARN
-      - eval $(./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_ARN)
+      - export ASSUME_ROLE_NAME=arn:aws:iam::431593652018:role/PASTASLOTHVULGAR
+      - export TERRAGRUNT_IAM_ROLE=$ASSUME_ROLE_NAME
+      - eval $(./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_NAME)
       - env 
   build:
     commands:
