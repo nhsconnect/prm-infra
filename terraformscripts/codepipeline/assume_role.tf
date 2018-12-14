@@ -1,3 +1,4 @@
+#pipeline_infra
 resource "aws_iam_role_policy_attachment" "infra-plan-attach" {
   role       = "${aws_iam_role.codebuild-prm-infra-plan-role.name}"
   policy_arn = "${aws_iam_policy.assume-role-codepipeline-policy.arn}"
@@ -13,6 +14,11 @@ resource "aws_iam_role_policy_attachment" "infra-validate-attach" {
   policy_arn = "${aws_iam_policy.assume-role-codepipeline-policy.arn}"
 }
 
+#pipeline_lambda
+resource "aws_iam_role_policy_attachment" "lambda-build-attach" {
+  role       = "${aws_iam_role.codebuild-lambda-build-role.name}"
+  policy_arn = "${aws_iam_policy.assume-role-codepipeline-policy.arn}"
+}
 
 resource "aws_iam_policy" "assume-role-codepipeline-policy" {
   name = "assume-role-codepipeline-policy"
