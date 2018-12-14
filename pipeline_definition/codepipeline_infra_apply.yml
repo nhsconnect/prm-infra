@@ -4,8 +4,7 @@ phases:
   install:
     commands:
       - sudo apt-get update
-      - sudo apt-get install zip
-      - sudo apt-get install unzip
+      - sudo apt-get install -y jq zip unzip
       - wget https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_amd64.zip
       - unzip terraform_0.11.10_linux_amd64.zip
       - sudo mv terraform /bin

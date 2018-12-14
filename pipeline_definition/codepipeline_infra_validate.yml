@@ -3,6 +3,8 @@ version: 0.2
 phases:
   install:
     commands:
+      - sudo apt-get update
+      - sudo apt-get install -y jq zip unzip
       - cd e2e
       - npm install
   pre_build:

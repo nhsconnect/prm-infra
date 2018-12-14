@@ -4,9 +4,7 @@ phases:
   install:
     commands:
       - sudo apt-get update
-      - sudo apt-get install zip
-      - sudo apt-get install unzip
-      - apt-get install -y jq
+      - sudo apt-get install -y jq zip unzip
       - wget https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_amd64.zip
       - unzip terraform_0.11.10_linux_amd64.zip
       - sudo mv terraform /bin
@@ -24,9 +22,10 @@ phases:
   build:
     commands:
       - touch terraform.tfvars
-      - terragrunt init --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
-      - terragrunt validate --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
-      - terragrunt plan --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
+      - export ASSUME_ROLE_NAME=arn:aws:iam::431593652018:role/PASTASLOTHVULGAR
+      - terragrunt init --terragrunt-iam-role $ASSUME_ROLE_NAME --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
+      - terragrunt validate --terragrunt-iam-role $ASSUME_ROLE_NAME --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
+      - terragrunt plan --terragrunt-iam-role $ASSUME_ROLE_NAME --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
 #      - echo Lambdas building
 #      - terragrunt init --terragrunt-working-dir ./terragrunt/account/431593652018/dev/lambdas
 #      - terragrunt validate --terragrunt-working-dir ./terragrunt/account/431593652018/dev/lambdas
@@ -34,4 +33,3 @@ phases:
       - terragrunt init --terragrunt-working-dir ./terragrunt/account/431593652018/common/assume_role
       - terragrunt validate --terragrunt-working-dir ./terragrunt/account/431593652018/common/assume_role
       - terragrunt plan --terragrunt-working-dir ./terragrunt/account/431593652018/common/assume_role
-      - ./utils/aws-cli-assumerole.sh -r arn:aws:iam::431593652018:role/PASTASLOTHVULGAR | tail -n 1
