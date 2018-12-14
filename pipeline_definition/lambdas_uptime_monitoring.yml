@@ -9,7 +9,7 @@ phases:
     commands:
       - echo Build started on Uptime Monitoring
       - export ASSUME_ROLE_NAME=arn:aws:iam::431593652018:role/PASTASLOTHVULGAR
-      - `./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_NAME`
+      - eval $(./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_NAME)
       - echo lambda/uptime_monitoring/main.js is being zipped
       - cd lambda/uptime_monitoring && zip ../../uptime_monitoring main.js
       - echo Uploading zip file to uptime-monitoring-bucket

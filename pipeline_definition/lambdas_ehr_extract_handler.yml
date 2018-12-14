@@ -9,7 +9,7 @@ phases:
     commands:
       - echo Build started on EhrExtractHandler
       - export ASSUME_ROLE_NAME=arn:aws:iam::431593652018:role/PASTASLOTHVULGAR
-      - `./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_NAME` 
+      - eval $(./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_NAME)
       - echo lambda/ehr_extract_handler/main.js is being zipped
       - cd lambda/ehr_extract_handler && zip ../../ehr_extract_handler main.js
       - echo Uploading zip file to ehr_extract_handler
