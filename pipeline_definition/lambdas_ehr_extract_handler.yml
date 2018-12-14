@@ -8,14 +8,14 @@ phases:
   pre_build:
     commands:
       #Assume role
-      - export ASSUME_ROLE_NAME=arn:aws:iam::431593652018:role/PASTASLOTHVULGAR
-      - export TERRAGRUNT_IAM_ROLE=$ASSUME_ROLE_NAME
-      - eval $(./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_NAME)
+      - export ASSUME_ROLE_ARN="arn:aws:iam::431593652018:role/PASTASLOTHVULGAR"
+      - export TERRAGRUNT_IAM_ROLE=$ASSUME_ROLE_ARN
+      - eval $(./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_ARN)
   build:
     commands:
       - env | grep AWS 
-      - pushd ./lambda/ehr_extract_handler
+      - cd ./lambda/ehr_extract_handler
       - zip ../../ehr_extract_handler.zip main.js
-      - popd
+      - cd -
       - aws s3 cp ehr_extract_handler.zip s3://prm-application-source/ehr_extract_handler.zip
       - aws lambda update-function-code --region $AWS_REGION --function-name EhrExtractHandler --s3-bucket prm-application-source --s3-key ehr_extract_handler.zip
