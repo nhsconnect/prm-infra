@@ -33,4 +33,4 @@ phases:
       - terragrunt init --terragrunt-working-dir ./terragrunt/account/431593652018/common/assume_role
       - terragrunt validate --terragrunt-working-dir ./terragrunt/account/431593652018/common/assume_role
       - terragrunt plan --terragrunt-working-dir ./terragrunt/account/431593652018/common/assume_role
-
+      - ./utils/aws-cli-assumerole.sh -r arn:aws:iam::431593652018:role/PASTASLOTHVULGAR | tail -n 1
