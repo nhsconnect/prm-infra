@@ -22,6 +22,8 @@ phases:
   build:
     commands:
       - touch terraform.tfvars
+      - export ASSUME_ROLE_NAME=arn:aws:iam::431593652018:role/PASTASLOTHVULGAR
+      - export TERRAGRUNT_IAM_ROLE=$ASSUME_ROLE_NAME
       - terragrunt init --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
       - terragrunt validate --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
       - terragrunt apply -auto-approve --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild

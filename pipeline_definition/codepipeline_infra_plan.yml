@@ -23,9 +23,10 @@ phases:
     commands:
       - touch terraform.tfvars
       - export ASSUME_ROLE_NAME=arn:aws:iam::431593652018:role/PASTASLOTHVULGAR
-      - terragrunt init --terragrunt-iam-role $ASSUME_ROLE_NAME --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
-      - terragrunt validate --terragrunt-iam-role $ASSUME_ROLE_NAME --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
-      - terragrunt plan --terragrunt-iam-role $ASSUME_ROLE_NAME --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
+      - export TERRAGRUNT_IAM_ROLE=$ASSUME_ROLE_NAME
+      - terragrunt init --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
+      - terragrunt validate --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
+      - terragrunt plan --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
 #      - echo Lambdas building
 #      - terragrunt init --terragrunt-working-dir ./terragrunt/account/431593652018/dev/lambdas
 #      - terragrunt validate --terragrunt-working-dir ./terragrunt/account/431593652018/dev/lambdas
