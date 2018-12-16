@@ -3,8 +3,8 @@ version: 0.2
 phases:
   install:
     commands:
-      - sudo apt-get update
-      - sudo apt-get install -y jq zip unzip
+      - apt-get update
+      - apt-get install -y jq zip unzip
   pre_build:
     commands:
       - export ASSUME_ROLE_NAME=arn:aws:iam::431593652018:role/PASTASLOTHVULGAR

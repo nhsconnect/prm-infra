@@ -3,13 +3,13 @@ version: 0.2
 phases:
   install:
     commands:
-      - sudo apt-get update
-      - sudo apt-get install -y jq zip unzip
+      - apt-get update
+      - apt-get install -y jq zip unzip
       - wget -q https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_amd64.zip
       - unzip terraform_0.11.10_linux_amd64.zip -d /bin
-      - sudo chmod +x /bin/terraform
+      - chmod +x /bin/terraform
       - wget -q https://github.com/gruntwork-io/terragrunt/releases/download/v0.17.3/terragrunt_linux_amd64 -O /bin/terragrunt
-      - sudo chmod +x /bin/terragrunt
+      - chmod +x /bin/terragrunt
   pre_build:
     commands:
       - export ASSUME_ROLE_NAME=arn:aws:iam::431593652018:role/PASTASLOTHVULGAR

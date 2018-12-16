@@ -26,7 +26,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
   }
 
   stage {
-    name = "Build_assume_role"
+    name = "Build_Assume_role"
 
     action {
       name            = "Plan"

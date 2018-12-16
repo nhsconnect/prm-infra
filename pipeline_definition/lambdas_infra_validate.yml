@@ -3,10 +3,8 @@ version: 0.2
 phases:
   install:
     commands:
-      - sudo apt-get update
-      - sudo apt-get install -y jq zip unzip
-      - cd e2e
-      - npm install
+      - apt-get update
+      - apt-get install -y jq zip unzip npm nodejs
   pre_build:
     commands:
       - export ASSUME_ROLE_NAME=arn:aws:iam::431593652018:role/PASTASLOTHVULGAR
@@ -15,5 +13,6 @@ phases:
   build:
     commands:
       - export PRM_ENDPOINT="https://j4dbzo021j.execute-api.eu-west-2.amazonaws.com/test"
-      - npm test    
-
+      - cd e2e
+      - nodejs -v
+      - npm install test
