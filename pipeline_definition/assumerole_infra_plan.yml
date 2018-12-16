@@ -18,6 +18,6 @@ phases:
   build:
     commands:
       - touch terraform.tfvars
-      - terragrunt init --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
-      - terragrunt validate --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
-      - terragrunt apply -auto-approve --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
+      - terragrunt init --terragrunt-working-dir ./terragrunt/account/431593652018/common/assume_role
+      - terragrunt validate --terragrunt-working-dir ./terragrunt/account/431593652018/common/assume_role
+      - terragrunt plan --terragrunt-working-dir ./terragrunt/account/431593652018/common/assume_role

@@ -12,7 +12,6 @@ phases:
       - sudo chmod +x /bin/terragrunt
   pre_build:
     commands:
-      #Assume role
       - export ASSUME_ROLE_NAME=arn:aws:iam::431593652018:role/PASTASLOTHVULGAR
       - export TERRAGRUNT_IAM_ROLE=$ASSUME_ROLE_NAME
       - eval $(./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_NAME)
@@ -22,10 +21,3 @@ phases:
       - terragrunt init --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
       - terragrunt validate --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
       - terragrunt plan --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
-#      - echo Lambdas building
-#      - terragrunt init --terragrunt-working-dir ./terragrunt/account/431593652018/dev/lambdas
-#      - terragrunt validate --terragrunt-working-dir ./terragrunt/account/431593652018/dev/lambdas
-#      - terragrunt plan --terragrunt-working-dir ./terragrunt/account/431593652018/dev/lambdas
-      - terragrunt init --terragrunt-working-dir ./terragrunt/account/431593652018/common/assume_role
-      - terragrunt validate --terragrunt-working-dir ./terragrunt/account/431593652018/common/assume_role
-      - terragrunt plan --terragrunt-working-dir ./terragrunt/account/431593652018/common/assume_role
