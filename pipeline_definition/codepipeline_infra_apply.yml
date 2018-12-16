@@ -5,12 +5,10 @@ phases:
     commands:
       - sudo apt-get update
       - sudo apt-get install -y jq zip unzip
-      - wget https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_amd64.zip
-      - unzip terraform_0.11.10_linux_amd64.zip
-      - sudo mv terraform /bin
+      - wget -q https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_amd64.zip
+      - unzip terraform_0.11.10_linux_amd64.zip -d /bin
       - sudo chmod +x /bin/terraform
-      - wget https://github.com/gruntwork-io/terragrunt/releases/download/v0.17.3/terragrunt_linux_amd64
-      - sudo mv terragrunt_linux_amd64 /bin/terragrunt
+      - wget -q https://github.com/gruntwork-io/terragrunt/releases/download/v0.17.3/terragrunt_linux_amd64 -O /bin/terragrunt
       - sudo chmod +x /bin/terragrunt
   pre_build:
     commands:

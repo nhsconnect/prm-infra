@@ -254,6 +254,9 @@ pip-selfcheck.json
 **.tfstate
 **.tfstate.*
 
+# root level terrform.tfvars
+terraform.tfvars
+
 # Crash log files
 crash.log
 
@@ -298,3 +301,7 @@ tags
 graph.svg
 /node_modules/
 /.vscode/
+
+#Codebuild pipeline trigger artefact
+latest.zip
+

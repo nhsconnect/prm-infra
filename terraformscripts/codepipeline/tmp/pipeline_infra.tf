@@ -92,6 +92,45 @@ resource "aws_iam_role" "codebuild-prm-infra-plan-role" {
 EOF
 }
 
+resource "aws_iam_role_policy" "codebuild-prm-infra-plan-service-policy" {
+  role = "${aws_iam_role.codebuild-prm-infra-plan-role.name}"
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "lambda:CreateFunction",
+        "lambda:UpdateEventSourceMapping",
+        "lambda:ListFunctions",
+        "apigateway:*",
+        "s3:*",
+        "lambda:GetEventSourceMapping",
+        "logs:*",
+        "lambda:GetAccountSettings",
+        "lambda:CreateEventSourceMapping",
+        "codebuild:*",
+        "iam:*",
+        "cloudwatch:*",
+        "kms:*",
+        "ssm:*",
+        "codedeploy:*",
+        "lambda:*",
+        "lambda:ListEventSourceMappings",
+        "ec2:*",
+        "codepipeline:*",
+        "lambda:DeleteEventSourceMapping",
+        "events:*"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+POLICY
+}
+
 resource "aws_codebuild_project" "prm-infra-plan" {
   name          = "prm-infra-plan"
   description   = "Validates the infrastructure"
@@ -133,6 +172,45 @@ resource "aws_iam_role" "codebuild-prm-infra-apply-role" {
 EOF
 }
 
+resource "aws_iam_role_policy" "codebuild-prm-infra-apply-service-policy" {
+  role = "${aws_iam_role.codebuild-prm-infra-apply-role.name}"
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "lambda:CreateFunction",
+        "lambda:UpdateEventSourceMapping",
+        "lambda:ListFunctions",
+        "apigateway:*",
+        "s3:*",
+        "lambda:GetEventSourceMapping",
+        "logs:*",
+        "lambda:GetAccountSettings",
+        "lambda:CreateEventSourceMapping",
+        "codebuild:*",
+        "iam:*",
+        "cloudwatch:*",
+        "kms:*",
+        "ssm:*",
+        "codedeploy:*",
+        "lambda:*",
+        "lambda:ListEventSourceMappings",
+        "ec2:*",
+        "codepipeline:*",
+        "lambda:DeleteEventSourceMapping",
+        "events:*"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+POLICY
+}
+
 resource "aws_codebuild_project" "prm-infra-apply" {
   name          = "prm-infra-apply"
   description   = "Applies the infrastructure"
@@ -172,6 +250,45 @@ resource "aws_iam_role" "codebuild-prm-infra-validate-role" {
   ]
 }
 EOF
+}
+
+resource "aws_iam_role_policy" "codebuild-prm-infra-validate-service-policy" {
+  role = "${aws_iam_role.codebuild-prm-infra-validate-role.name}"
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "lambda:CreateFunction",
+        "lambda:UpdateEventSourceMapping",
+        "lambda:ListFunctions",
+        "apigateway:*",
+        "s3:*",
+        "lambda:GetEventSourceMapping",
+        "logs:*",
+        "lambda:GetAccountSettings",
+        "lambda:CreateEventSourceMapping",
+        "codebuild:*",
+        "iam:*",
+        "cloudwatch:*",
+        "kms:*",
+        "ssm:*",
+        "codedeploy:*",
+        "lambda:*",
+        "lambda:ListEventSourceMappings",
+        "ec2:*",
+        "codepipeline:*",
+        "lambda:DeleteEventSourceMapping",
+        "events:*"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+POLICY
 }
 
 resource "aws_codebuild_project" "prm-infra-validate" {

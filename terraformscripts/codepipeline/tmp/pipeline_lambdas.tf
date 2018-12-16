@@ -170,3 +170,42 @@ resource "aws_iam_role" "codebuild-lambda-build-role" {
 }
 EOF
 }
+
+resource "aws_iam_role_policy" "codebuild-lambda-build-policy" {
+  role = "${aws_iam_role.codebuild-lambda-build-role.name}"
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "lambda:CreateFunction",
+        "lambda:UpdateEventSourceMapping",
+        "lambda:ListFunctions",
+        "apigateway:*",
+        "s3:*",
+        "lambda:GetEventSourceMapping",
+        "logs:*",
+        "lambda:GetAccountSettings",
+        "lambda:CreateEventSourceMapping",
+        "codebuild:*",
+        "iam:*",
+        "cloudwatch:*",
+        "kms:*",
+        "ssm:*",
+        "codedeploy:*",
+        "lambda:*",
+        "lambda:ListEventSourceMappings",
+        "ec2:*",
+        "codepipeline:*",
+        "lambda:DeleteEventSourceMapping",
+        "events:*"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+POLICY
+}
