@@ -15,4 +15,5 @@ phases:
       - export PRM_ENDPOINT="https://j4dbzo021j.execute-api.eu-west-2.amazonaws.com/test"
       - cd e2e
       - nodejs -v
+      - npm -v
       - npm install test
