@@ -10,8 +10,9 @@ phases:
     commands:
       - export ASSUME_ROLE_NAME=arn:aws:iam::431593652018:role/PASTASLOTHVULGAR
       - export TERRAGRUNT_IAM_ROLE=$ASSUME_ROLE_NAME
-      - eval $(./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_NAME)
+      - eval $(../utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_NAME)
       - export PRM_ENDPOINT="https://j4dbzo021j.execute-api.eu-west-2.amazonaws.com"
   build:
     commands:
+      - pwd
       - npm t
