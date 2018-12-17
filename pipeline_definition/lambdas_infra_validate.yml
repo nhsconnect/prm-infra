@@ -12,7 +12,7 @@ phases:
       - eval $(./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_NAME)
   build:
     commands:
-      - export PRM_ENDPOINT="https://j4dbzo021j.execute-api.eu-west-2.amazonaws.com/test"
+      - export PRM_ENDPOINT="https://j4dbzo021j.execute-api.eu-west-2.amazonaws.com"
       - cd e2e
       - nodejs -v
       - npm -v
