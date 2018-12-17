@@ -305,3 +305,5 @@ graph.svg
 #Codebuild pipeline trigger artefact
 latest.zip
 
+**/node_modules
+**/node_modules/*
