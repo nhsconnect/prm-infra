@@ -61,7 +61,7 @@ resource "aws_cloudwatch_dashboard" "PRM-team-dashboard" {
           "view": "timeSeries",
             "stacked": false,
             "metrics": [
-              [ "AWS/Logs", "IncomingLogEvents", "LogGroupName", "API-Gateway-Execution-Logs_${aws_api_gateway_rest_api.ehr_extract_handler_api.id}/test" ]
+              [ "AWS/Logs", "IncomingLogEvents", "LogGroupName", "API-Gateway-Execution-Logs_${aws_api_gateway_rest_api.ehr_extract_handler_api.id}/send" ]
             ],
             "period":300,
              "stat":"Average",
