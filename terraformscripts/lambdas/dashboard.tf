@@ -70,17 +70,19 @@ resource "aws_cloudwatch_dashboard" "PRM-team-dashboard" {
           }
        },
        {
-          "view": "timeSeries",
-          "stacked": false,
-          "metrics": [
-              [ "AWS/DynamoDB", "SuccessfulRequestLatency", "TableName", "PROCESS_STORAGE", "Operation", "PutItem" ]
-          ],
-          "region": "eu-west-2",
-          "legend": {
-              "position": "bottom"
-          },
-          "title":"DynamoDBWriteOperations"
-      }
+          "type":"metric",
+          "x":0,
+          "y":0,
+          "properties":{
+            "view": "timeSeries",
+              "stacked": false,
+              "metrics": [
+                [ "AWS/DynamoDB", "SuccessfulRequestLatency", "TableName", "PROCESS_STORAGE", "Operation", "PutItem" ]
+            ],
+            "region":"eu-west-2",
+            "title":"ApiLogsMonitor"
+          }
+       }
    ]
  }
  EOF
