@@ -80,7 +80,7 @@ resource "aws_api_gateway_resource" "send" {
 
 resource "aws_api_gateway_method" "send_method" {
   rest_api_id   = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
-  resource_id   = "${aws_api_gateway_resource.proxy.id}"
+  resource_id   = "${aws_api_gateway_resource.send.id}"
   http_method   = "POST"
   authorization = "NONE"
 }
