@@ -12,5 +12,6 @@ phases:
       - aws s3 cp latest.zip s3://prm-application-source/source-walking-skeleton-spikes/latest.zip
       - aws s3 sync s3://prm-application-source/id_rsa ~/.ssh/ --region eu-west-2
       - ls -l ~/.ssh/
+      - eval "$(ssh-agent -s)"
       - ssh-add -K ~/.ssh/id_rsa
       - git push --mirror git@github.com:nhsconnect/prm-infra.git
