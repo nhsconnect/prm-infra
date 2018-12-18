@@ -1,18 +1,18 @@
-const uuidv4 = require('uuid/v4')
+const uniqid = require('uuid/v4');
 const AWS = require('aws-sdk');
 AWS.config.update({region: 'eu-west-2'});
 const ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
-const uuid = uuidv4()
-
-const params = {
-    TableName: "PROCESS_STORAGE",
-    Item: {
-        "PROCESS_ID": {S: `${uuid}`},
-        "PROCESS_PAYLOAD": {S: "PROCESSING"}
-    }
-};
 
 exports.handler = function (event, context, callback) {
+    const uuid = uniqid();
+    const params = {
+        TableName: "PROCESS_STORAGE",
+        Item: {
+            "PROCESS_ID": {S: `${uuid}`},
+            "PROCESS_PAYLOAD": {S: "PROCESSING"}
+        }
+    };
+
     ddb.putItem(params, function(err, data) {
         if (err) {
             console.log("Error", err);
@@ -30,4 +30,4 @@ exports.handler = function (event, context, callback) {
     };
 
     callback(null, response);
-};
+};i
