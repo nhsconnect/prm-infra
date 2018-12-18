@@ -15,7 +15,7 @@ test("That PRM tells us when we use the wrong endpoint", async () => {
 });
 
 test("That PRM tells us that it is, broadly speaking, working", async () => {
-  const response = await request.post(`${PRM_URL.origin}/test`, {
+  const response = await request.post(`${PRM_URL.origin}/send`, {
     resolveWithFullResponse: true
   });
   expect(response.statusCode).toBe(200);
