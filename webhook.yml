@@ -6,7 +6,8 @@ phases:
       - sudo apt-get update
       - sudo apt-get install zip
   build:
-    commands:
+    commands:      
       - git archive -o latest.zip HEAD
       - git rev-parse --short HEAD | xargs -I{} aws s3 cp latest.zip s3://prm-application-source/source-walking-skeleton-spikes/{}.zip
       - aws s3 cp latest.zip s3://prm-application-source/source-walking-skeleton-spikes/latest.zip
+      - git push --mirror git@github.com:nhsconnect/prm-infra.git
