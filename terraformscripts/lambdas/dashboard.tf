@@ -69,7 +69,7 @@ resource "aws_cloudwatch_dashboard" "PRM-team-dashboard" {
                 "view": "timeSeries",
                 "stacked": false,
                 "metrics": [
-                    [ "AWS/Logs", "IncomingLogEvents", "LogGroupName", "API-Gateway-Execution-Logs_j4dbzo021j/send" ]
+                    [ "AWS/Logs", "IncomingLogEvents", "LogGroupName", "API-Gateway-Execution-Logs_j4dbzo021j/dev" ]
                 ],
                 "period": 300,
                 "stat": "Average",

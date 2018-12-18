@@ -69,5 +69,5 @@ resource "aws_api_gateway_deployment" "api_gw_deployment" {
   ]
 
   rest_api_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
-  stage_name  = "send"
+  stage_name  = "dev"
 }

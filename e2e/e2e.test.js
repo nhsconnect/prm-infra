@@ -15,14 +15,14 @@ test("That PRM tells us when we use the wrong endpoint", async () => {
 });
 
 test("That PRM tells us that it is, broadly speaking, working", async () => {
-  const response = await request.post(`${PRM_URL.origin}/send`, {
+  const response = await request.post(`${PRM_URL.origin}/dev`, {
     resolveWithFullResponse: true
   });
   expect(response.statusCode).toBe(200);
 });
 
 test("That we get an ack back from the request with a unique identifier", async () => {
-  const response = await request.post(`${PRM_URL.origin}/send`, {
+  const response = await request.post(`${PRM_URL.origin}/dev`, {
     resolveWithFullResponse: true
   });
   expect(response.statusCode).toBe(200);

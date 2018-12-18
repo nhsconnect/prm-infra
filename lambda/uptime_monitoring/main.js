@@ -9,7 +9,7 @@ exports.handler = async (event, context) => {
     const response1 = new Promise((resolve, reject) => {
         const options = {
             host: myURL.host,
-            path: "/send",
+            path: "/dev",
             method: 'POST',
             headers: {
                 'Content-Type': 'text/xml',
