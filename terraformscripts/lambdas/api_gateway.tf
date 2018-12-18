@@ -71,3 +71,16 @@ resource "aws_api_gateway_deployment" "api_gw_deployment" {
   rest_api_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
   stage_name  = "dev"
 }
+
+resource "aws_api_gateway_resource" "send" {
+  rest_api_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
+  parent_id   = "${aws_api_gateway_rest_api.ehr_extract_handler_api.root_resource_id}"
+  path_part   = "send"
+}
+
+resource "aws_api_gateway_method" "send_method" {
+  rest_api_id   = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
+  resource_id   = "${aws_api_gateway_resource.proxy.id}"
+  http_method   = "POST"
+  authorization = "NONE"
+}
