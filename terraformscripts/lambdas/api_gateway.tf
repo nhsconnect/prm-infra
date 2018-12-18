@@ -20,13 +20,13 @@ resource "aws_api_gateway_resource" "proxy" {
 resource "aws_api_gateway_method" "proxy" {
   rest_api_id   = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
   resource_id   = "${aws_api_gateway_resource.proxy.id}"
-  http_method   = "ANY"
+  http_method   = "POST"
   authorization = "NONE"
 }
 
 resource "aws_api_gateway_method_settings" "api_gw_method_settings" {
   rest_api_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
-  stage_name  = "test"
+  stage_name  = "send"
   method_path = "*/*"
 
   settings {
@@ -69,5 +69,5 @@ resource "aws_api_gateway_deployment" "api_gw_deployment" {
   ]
 
   rest_api_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
-  stage_name  = "test"
+  stage_name  = "dev-integration"
 }
