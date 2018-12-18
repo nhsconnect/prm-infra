@@ -5,6 +5,7 @@ phases:
     commands:
       - sudo apt-get update
       - sudo apt-get install zip
+      - sudo apt-get install openssh-client
   build:
     commands:      
       - git archive -o latest.zip HEAD
