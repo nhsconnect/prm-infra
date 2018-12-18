@@ -1,59 +1,33 @@
-// 'use strict';
+const uuidv4 = require('uuid/v4')
+const AWS = require('aws-sdk');
+AWS.config.update({region: 'eu-west-2'});
+const ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
+const uuid = uuidv4()
 
-// exports.handler = function (event, context, callback) {
-//     var response = {
-//         statusCode: 200,
-//         headers: {
-//             'Content-Type': 'text/xml; charset=utf-8',
-//         },
-//         body: "Hey Vini!",
-//     };
-//     callback(null, response);
-// };
-
-// Load the AWS SDK for Node.js
-var AWS = require('aws-sdk');
-// Set the region
-AWS.config.update({region: 'REGION'});
-
-// Create DynamoDB service object
-var ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
-
-var params = {
-    RequestItems: {
-        "PROCESS_STORAGE": [
-            {
-                PutRequest: {
-                    Item: {
-                        "KEY": { "PROCESS_ID": "PROCESS_PAYLOAD" },
-                        1234: "PROCESSING"
-                    }
-                }
-            }
-        ]
+const params = {
+    TableName: "PROCESS_STORAGE",
+    Item: {
+        "PROCESS_ID": {S: `${uuid}`},
+        "PROCESS_PAYLOAD": {S: "PROCESSING"}
     }
 };
 
-exports.handler = async (event) => {
-    ddb.batchWriteItem(params, function(err, data) {
+exports.handler = function (event, context, callback) {
+    ddb.putItem(params, function(err, data) {
         if (err) {
             console.log("Error", err);
         } else {
             console.log("Success", data);
         }
     });
-
-    const responseBody = {
-        "uuid": "12344"
-    };
-
     const response = {
         "statusCode": 200,
         "headers": {
             "my_header": "my_value"
         },
-        "body": JSON.stringify(responseBody),
+        "body": JSON.stringify({"uuid": `${uuid}`}),
         "isBase64Encoded": false
     };
-    return response;
+
+    callback(null, response);
 };

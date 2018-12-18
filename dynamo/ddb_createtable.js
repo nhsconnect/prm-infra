@@ -10,7 +10,7 @@ var params = {
     AttributeDefinitions: [
         {
             AttributeName: 'PROCESS_ID',
-            AttributeType: 'N'
+            AttributeType: 'S'
         },
         {
             AttributeName: 'PROCESS_PAYLOAD',
