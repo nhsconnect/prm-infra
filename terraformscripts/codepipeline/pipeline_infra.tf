@@ -23,11 +23,12 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
         S3ObjectKey = "source-walking-skeleton-spikes/latest.zip"
       }
     }
+
     action {
       name             = "GithubSource"
       category         = "Source"
       owner            = "ThirdParty"
-      provider         = "GITHUB"
+      provider         = "GitHub"
       version          = "1"
       output_artifacts = ["github-source"]
 
