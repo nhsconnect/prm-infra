@@ -29,9 +29,8 @@ test("That we get an ack back from the request with a unique identifier", async 
   const { uuid } = JSON.parse(response.body)
   expect(uuid).toBeDefined();
 
-  // wait 1 sec
 
-  // const response2 = await request.get(`${PRM_URL.origin}/result?uuid=${uuid}`, {
+  // const response2 = await request.get(`${PRM_URL.origin}/status?uuid=${uuid}`, {
   //   resolveWithFullResponse: true
   // });
   // expect(response2.statusCode).toBe(200);
@@ -40,7 +39,7 @@ test("That we get an ack back from the request with a unique identifier", async 
   //
   // // wait 1 sec
   //
-  // const response3 = await request.get(`${PRM_URL.origin}/result?uuid=${uuid}`, {
+  // const response3 = await request.get(`${PRM_URL.origin}/status?uuid=${uuid}`, {
   //   resolveWithFullResponse: true
   // });
   // expect(response3.statusCode).toBe(200);

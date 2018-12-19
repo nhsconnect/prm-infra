@@ -53,5 +53,18 @@ resource "aws_codepipeline" "lambda-pipeline" {
         ProjectName = "${aws_codebuild_project.prm-build-uptime-monitor-lambda.name}"
       }
     }
+
+    action {
+      name            = "Build-Retrieve-Status"
+      category        = "Build"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      version         = "1"
+      input_artifacts = ["source"]
+
+      configuration {
+        ProjectName = "${aws_codebuild_project.prm-build-retrieve-status-lambda.name}"
+      }
+    }
   }
 }
