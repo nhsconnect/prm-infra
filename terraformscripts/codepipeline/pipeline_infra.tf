@@ -45,20 +45,6 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
     name = "Build_Assume_role"
 
     action {
-      name            = "Plan"
-      category        = "Test"
-      owner           = "AWS"
-      provider        = "CodeBuild"
-      version         = "1"
-      input_artifacts = ["source"]
-      run_order       = 3
-
-      configuration {
-        ProjectName = "${aws_codebuild_project.prm-infra-assume-role-plan.name}"
-      }
-    }
-
-    action {
       name            = "Apply"
       category        = "Build"
       owner           = "AWS"
