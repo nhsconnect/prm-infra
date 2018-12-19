@@ -11,20 +11,12 @@ var params = {
         {
             AttributeName: 'PROCESS_ID',
             AttributeType: 'S'
-        },
-        {
-            AttributeName: 'PROCESS_PAYLOAD',
-            AttributeType: 'S'
         }
     ],
     KeySchema: [
         {
             AttributeName: 'PROCESS_ID',
             KeyType: 'HASH'
-        },
-        {
-            AttributeName: 'PROCESS_PAYLOAD',
-            KeyType: 'RANGE'
         }
     ],
     ProvisionedThroughput: {
