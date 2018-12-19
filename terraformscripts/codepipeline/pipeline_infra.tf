@@ -71,6 +71,34 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
         ProjectName = "${aws_codebuild_project.prm-infra-assume-role-apply.name}"
       }
     }
+
+    action {
+      name            = "PlanGitHub"
+      category        = "Test"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      version         = "1"
+      input_artifacts = ["github-source"]
+      run_order       = 3
+
+      configuration {
+        ProjectName = "${aws_codebuild_project.prm-infra-assume-role-plan.name}"
+      }
+    }
+
+    action {
+      name            = "ApplyGitHub"
+      category        = "Build"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      version         = "1"
+      input_artifacts = ["github-source"]
+      run_order       = 4
+
+      configuration {
+        ProjectName = "${aws_codebuild_project.prm-infra-assume-role-apply.name}"
+      }
+    }    
   }
 
   stage {
