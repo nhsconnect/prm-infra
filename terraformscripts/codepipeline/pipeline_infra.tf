@@ -11,26 +11,12 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
     name = "Source"
 
     action {
-      name             = "Source"
-      category         = "Source"
-      owner            = "AWS"
-      provider         = "S3"
-      version          = "1"
-      output_artifacts = ["source"]
-
-      configuration {
-        S3Bucket    = "${var.prm-application-source-bucket}"
-        S3ObjectKey = "source-walking-skeleton-spikes/latest.zip"
-      }
-    }
-
-    action {
       name             = "GithubSource"
       category         = "Source"
       owner            = "ThirdParty"
       provider         = "GitHub"
       version          = "1"
-      output_artifacts = ["github-source"]
+      output_artifacts = ["source"]
 
       configuration {
         Owner  = "nhsconnect"
@@ -45,26 +31,12 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
     name = "Build_Assume_role"
 
     action {
-      name            = "Apply"
-      category        = "Build"
-      owner           = "AWS"
-      provider        = "CodeBuild"
-      version         = "1"
-      input_artifacts = ["source"]
-      run_order       = 4
-
-      configuration {
-        ProjectName = "${aws_codebuild_project.prm-infra-assume-role-apply.name}"
-      }
-    }
-
-    action {
-      name            = "PlanGitHub"
+      name            = "Plan"
       category        = "Test"
       owner           = "AWS"
       provider        = "CodeBuild"
       version         = "1"
-      input_artifacts = ["github-source"]
+      input_artifacts = ["source"]
       run_order       = 1
 
       configuration {
@@ -73,18 +45,18 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
     }
 
     action {
-      name            = "ApplyGitHub"
+      name            = "Apply"
       category        = "Build"
       owner           = "AWS"
       provider        = "CodeBuild"
       version         = "1"
-      input_artifacts = ["github-source"]
+      input_artifacts = ["source"]
       run_order       = 2
 
       configuration {
         ProjectName = "${aws_codebuild_project.prm-infra-assume-role-apply.name}"
       }
-    }    
+    }      
   }
 
   stage {
