@@ -43,4 +43,14 @@ Type **yes** to build the infrastructure
 ## Additional
 This code base is mirrored @ https://github.com/nhsconnect/prm-infra
 
-Test.
+## Known Problems
+### Help! Im getting....
+#### InvalidActionDeclarationException: Action configuration for the new action 'GithubSource' contains an invalid configuration for the secret property 'OAuthToken'. '****' may be used in secret properties only when updating an existing action.
+We currently don't manage secrets. So to resolve this:
+- Change the OAuthToken value to `1234`
+- Commit/Push
+- Wait for the infrastructure to apply successfully
+- Change the OAuthToken value to `****`
+- Commit/Push
+- Wait for the infrastructure to apply successfully
+- In the AWS Console for CodePipeline, find the affected pipeline source stage, edit and authorise codepipeline as an application in github.
