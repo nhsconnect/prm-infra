@@ -17,4 +17,5 @@ phases:
       - ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
       - eval "$(ssh-agent -s)"
       - ssh-add ~/.ssh/id_rsa
+      - git fetch --unshallow
       - git push --mirror git@github.com:nhsconnect/prm-infra.git --force
