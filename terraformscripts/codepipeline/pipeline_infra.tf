@@ -51,7 +51,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       provider        = "CodeBuild"
       version         = "1"
       input_artifacts = ["source"]
-      run_order       = 1
+      run_order       = 3
 
       configuration {
         ProjectName = "${aws_codebuild_project.prm-infra-assume-role-plan.name}"
@@ -65,7 +65,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       provider        = "CodeBuild"
       version         = "1"
       input_artifacts = ["source"]
-      run_order       = 2
+      run_order       = 4
 
       configuration {
         ProjectName = "${aws_codebuild_project.prm-infra-assume-role-apply.name}"
@@ -79,7 +79,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       provider        = "CodeBuild"
       version         = "1"
       input_artifacts = ["github-source"]
-      run_order       = 3
+      run_order       = 1
 
       configuration {
         ProjectName = "${aws_codebuild_project.prm-infra-assume-role-plan.name}"
@@ -93,7 +93,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       provider        = "CodeBuild"
       version         = "1"
       input_artifacts = ["github-source"]
-      run_order       = 4
+      run_order       = 2
 
       configuration {
         ProjectName = "${aws_codebuild_project.prm-infra-assume-role-apply.name}"
