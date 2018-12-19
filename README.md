@@ -40,3 +40,6 @@ Caveat: make sure that your .terraform directory is empty or deleted when you ru
 
 Type **yes** to build the infrastructure 
 
+## Additional
+This code base is mirrored @ https://github.com/nhsconnect/prm-infra
+
