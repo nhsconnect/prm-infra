@@ -36,7 +36,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
         Owner  = "nhsconnect"
         Repo   = "prm-infra"
         Branch = "master"
-        OAuthToken = "****"
+        OAuthToken = "1234"
       }
     }    
   }
