@@ -23,6 +23,20 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
         S3ObjectKey = "source-walking-skeleton-spikes/latest.zip"
       }
     }
+    action {
+      name             = "GithubSource"
+      category         = "Source"
+      owner            = "ThirdParty"
+      provider         = "GITHUB"
+      version          = "1"
+      output_artifacts = ["github-source"]
+
+      configuration {
+        Owner  = "nhsconnect"
+        Repo   = "prm-infra"
+        Branch = "master"
+      }
+    }    
   }
 
   stage {
