@@ -85,6 +85,16 @@ resource "aws_api_gateway_method" "send_method" {
   authorization = "NONE"
 }
 
+resource "aws_api_gateway_integration" "send_integration" {
+  rest_api_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
+  resource_id = "${aws_api_gateway_method.send_method.resource_id}"
+  http_method = "${aws_api_gateway_method.send_method.http_method}"
+
+  integration_http_method = "POST"
+  type                    = "AWS_PROXY"
+  uri                     = "${aws_lambda_function.ehr_extract_handler.invoke_arn}"
+}
+
 # /status
 resource "aws_api_gateway_resource" "status" {
   rest_api_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
