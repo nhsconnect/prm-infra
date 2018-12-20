@@ -18,8 +18,7 @@ phases:
       - eval $(./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_NAME)
   build:
     commands:
-      - touch terraform.tfvars
-      - terragrunt init --terragrunt-working-dir ./terragrunt/account/431593652018/dev/lambdas
-      - terragrunt validate --terragrunt-working-dir ./terragrunt/account/431593652018/dev/lambdas
-      - terragrunt apply -auto-approve --terragrunt-working-dir ./terragrunt/account/431593652018/dev/lambdas
-
+      - cd ./terraformscripts/dev-431593652018/lambdas
+      - terragrunt init --terragrunt-source-update
+      - terragrunt validate
+      - terragrunt apply -auto-approve
