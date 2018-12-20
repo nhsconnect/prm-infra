@@ -34,7 +34,7 @@ terragrunt = {
     backend = "s3"
     config {
       bucket = "prm-terraform-state"
-      key = "lambdas/terraform.tfstate"
+      key = "dev/lambdas/terraform.tfstate"
       region = "eu-west-2"
       encrypt = true
     }
