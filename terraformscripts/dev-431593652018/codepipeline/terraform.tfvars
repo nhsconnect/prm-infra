@@ -49,8 +49,4 @@ terragrunt = {
 aws_region = "eu-west-2"
 environment = "dev"
 
-opentest-assets-bucket = "prm-431593652018-opentest-assets"
-ssh_keypair_name = "vfabrizi"
-vpc_id = "vpc-0c8a00921746c3b9c"
-vpc_subnet_private_ids = ["subnet-02cf6f16716489d84", "subnet-0abec008d0638fbae", "subnet-03619c9b4d3927d1b"]
-
+prm-application-source-bucket = "prm-application-source"
