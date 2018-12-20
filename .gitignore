@@ -255,7 +255,7 @@ pip-selfcheck.json
 **.tfstate.*
 
 # root level terrform.tfvars
-terraform.tfvars
+#terraform.tfvars
 
 # Crash log files
 crash.log
