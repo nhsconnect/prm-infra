@@ -20,4 +20,5 @@ phases:
     commands:
       - cd ./terraformscripts/dev-431593652018/assume_role 
       - terragrunt init --terragrunt-source-update
+      - terragrunt validate
       - terragrunt plan

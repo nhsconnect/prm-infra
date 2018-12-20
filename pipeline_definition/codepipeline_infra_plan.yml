@@ -18,7 +18,7 @@ phases:
       - eval $(./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_NAME)
   build:
     commands:
-      - touch terraform.tfvars
-      - terragrunt init --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
-      - terragrunt validate --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
-      - terragrunt plan --terragrunt-working-dir ./terragrunt/account/431593652018/common/codebuild
+      - cd ./terraformscripts/dev-431593652018/codepipeline
+      - terragrunt init --terragrunt-source-update
+      - terragrunt validate
+      - terragrunt plan
