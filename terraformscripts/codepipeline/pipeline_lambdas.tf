@@ -8,6 +8,26 @@ resource "aws_codepipeline" "lambda-pipeline" {
   }
 
   stage {
+    name = "Source"
+
+    action {
+      name             = "GithubSource"
+      category         = "Source"
+      owner            = "ThirdParty"
+      provider         = "GitHub"
+      version          = "1"
+      output_artifacts = ["github-source"]
+
+      configuration {
+        Owner  = "nhsconnect"
+        Repo   = "prm-infra"
+        Branch = "master"
+        OAuthToken = "1234"
+      }
+    }    
+  }
+
+  stage {
     name = "source-lambdas-stage"
 
     action {
