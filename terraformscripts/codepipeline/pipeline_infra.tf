@@ -30,7 +30,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
         Repo                 = "prm-infra"
         Branch               = "master"
         OAuthToken           = "3423423434verydummyvalue345343"
-        PollForSourceChanges = "false"
+        PollForSourceChanges = "true"
       }
     }
   }

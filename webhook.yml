@@ -14,7 +14,7 @@ phases:
       - git archive -o latest.zip HEAD
       - git rev-parse --short HEAD | xargs -I{} aws s3 cp latest.zip s3://prm-application-source/source-walking-skeleton-spikes/{}.zip
       - aws s3 cp latest.zip s3://prm-application-source/source-walking-skeleton-spikes/latest.zip          
-      - ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-      - eval "$(ssh-agent -s)"
-      - ssh-add ~/.ssh/id_rsa
-      - git push --mirror git@github.com:nhsconnect/prm-infra.git --force
+      #- ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+      #- eval "$(ssh-agent -s)"
+      #- ssh-add ~/.ssh/id_rsa
+      #- git push --mirror git@github.com:nhsconnect/prm-infra.git --force
