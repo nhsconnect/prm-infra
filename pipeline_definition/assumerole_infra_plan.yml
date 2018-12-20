@@ -18,7 +18,7 @@ phases:
       - eval $(./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_NAME)
   build:
     commands:
-      - pwd
+      - ls -la
       - cd ./terraformscripts/dev-431593652018/assume_role 
       - terragrunt init --terragrunt-source-update
       - terragrunt plan
