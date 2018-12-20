@@ -42,7 +42,6 @@ Type **yes** to build the infrastructure
 
 ## Additional
 This code base is mirrored @ https://github.com/nhsconnect/prm-infra
-Test
 
 ## Known Problems
 ### Help! Im getting....
