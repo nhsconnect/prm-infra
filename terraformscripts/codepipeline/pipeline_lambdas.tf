@@ -11,26 +11,12 @@ resource "aws_codepipeline" "lambda-pipeline" {
     name = "source-lambdas-stage"
 
     action {
-      name             = "source-lambdas-action"
-      category         = "Source"
-      owner            = "AWS"
-      provider         = "S3"
-      version          = "1"
-      output_artifacts = ["source"]
-
-      configuration {
-        S3Bucket    = "${var.prm-application-source-bucket}"
-        S3ObjectKey = "source-walking-skeleton-spikes/latest.zip"
-      }
-    }
-
-    action {
       name             = "GithubSource"
       category         = "Source"
       owner            = "ThirdParty"
       provider         = "GitHub"
       version          = "1"
-      output_artifacts = ["github-source"]
+      output_artifacts = ["source"]
 
       configuration {
         Owner  = "nhsconnect"
