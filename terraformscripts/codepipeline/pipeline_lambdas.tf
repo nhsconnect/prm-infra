@@ -1,4 +1,11 @@
 resource "aws_codepipeline" "lambda-pipeline" {
+  lifecycle {
+    ignore_changes = [
+      "stage.0.action.0.configuration.OAuthToken",
+      "stage.0.action.0.configuration.%",
+    ]
+  }
+
   name     = "lambda-pipeline"
   role_arn = "${aws_iam_role.prm-lambda-codepipeline.arn}"
 
@@ -19,10 +26,11 @@ resource "aws_codepipeline" "lambda-pipeline" {
       output_artifacts = ["source"]
 
       configuration {
-        Owner      = "nhsconnect"
-        Repo       = "prm-infra"
-        Branch     = "master"
-        OAuthToken = "****"
+        Owner                = "nhsconnect"
+        Repo                 = "prm-infra"
+        Branch               = "master"
+        OAuthToken           = "3423423434verydummyvalue345343"
+        PollForSourceChanges = "true"
       }
     }
   }
