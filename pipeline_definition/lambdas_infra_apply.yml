@@ -14,11 +14,12 @@ phases:
     commands:
       - export ASSUME_ROLE_NAME=arn:aws:iam::431593652018:role/PASTASLOTHVULGAR
       - export TERRAGRUNT_IAM_ROLE=$ASSUME_ROLE_NAME
+      - chmod +x ./utils/*
       - eval $(./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_NAME)
   build:
     commands:
       - touch terraform.tfvars
-#      - terragrunt init --terragrunt-working-dir ./terragrunt/account/431593652018/dev/lambdas
-#      - terragrunt validate --terragrunt-working-dir ./terragrunt/account/431593652018/dev/lambdas
-#      - terragrunt apply -auto-approve --terragrunt-working-dir ./terragrunt/account/431593652018/dev/lambdas
+      - terragrunt init --terragrunt-working-dir ./terragrunt/account/431593652018/dev/lambdas
+      - terragrunt validate --terragrunt-working-dir ./terragrunt/account/431593652018/dev/lambdas
+      - terragrunt apply -auto-approve --terragrunt-working-dir ./terragrunt/account/431593652018/dev/lambdas
 
