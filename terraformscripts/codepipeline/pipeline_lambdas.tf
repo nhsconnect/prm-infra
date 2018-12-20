@@ -27,7 +27,7 @@ resource "aws_codepipeline" "lambda-pipeline" {
 
       configuration {
         Owner                = "nhsconnect"
-        Repo                 = "prm-infra"
+        Repo                 = "prm-migrator"
         Branch               = "master"
         OAuthToken           = "3423423434verydummyvalue345343"
         PollForSourceChanges = "true"
