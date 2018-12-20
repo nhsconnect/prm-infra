@@ -54,3 +54,5 @@ We currently don't manage secrets. So to resolve this:
 - Commit/Push
 - Wait for the infrastructure to apply successfully
 - In the AWS Console for CodePipeline, find the affected pipeline source stage, edit and authorise codepipeline as an application in github.
+
+TEst
