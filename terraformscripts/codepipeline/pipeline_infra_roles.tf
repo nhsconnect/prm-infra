@@ -75,6 +75,8 @@ resource "aws_iam_role" "prm-infra-codepipeline" {
 EOF
 }
 
+#TODO: use role2policy association
+
 resource "aws_iam_role_policy" "prm-infra-codepipeline-policy" {
   name = "prm-infra-codepipeline-policy"
   role = "${aws_iam_role.prm-infra-codepipeline.id}"

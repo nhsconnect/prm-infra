@@ -19,12 +19,12 @@ resource "aws_codepipeline" "lambda-pipeline" {
       output_artifacts = ["source"]
 
       configuration {
-        Owner  = "nhsconnect"
-        Repo   = "prm-infra"
-        Branch = "master"
+        Owner      = "nhsconnect"
+        Repo       = "prm-infra"
+        Branch     = "master"
         OAuthToken = "****"
       }
-    }       
+    }
   }
 
   stage {

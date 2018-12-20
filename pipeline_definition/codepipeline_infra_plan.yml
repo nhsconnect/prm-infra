@@ -12,6 +12,7 @@ phases:
       - chmod +x /bin/terragrunt
   pre_build:
     commands:
+      - cat ./pipeline_definition/codepipeline_infra_plan.yml
       - export ASSUME_ROLE_NAME=arn:aws:iam::431593652018:role/PASTASLOTHVULGAR
       - export TERRAGRUNT_IAM_ROLE=$ASSUME_ROLE_NAME
       - eval $(./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_NAME)

@@ -63,6 +63,3 @@ resource "aws_codebuild_project" "prm-build-retrieve-status-lambda" {
     buildspec = "./pipeline_definition/lambdas_retrieve_status.yml"
   }
 }
-
-
-
