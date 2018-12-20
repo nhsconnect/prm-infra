@@ -26,10 +26,11 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       output_artifacts = ["source"]
 
       configuration {
-        Owner      = "nhsconnect"
-        Repo       = "prm-infra"
-        Branch     = "master"
-        OAuthToken = "3423423434verydummyvalue345343"
+        Owner                = "nhsconnect"
+        Repo                 = "prm-infra"
+        Branch               = "master"
+        OAuthToken           = "3423423434verydummyvalue345343"
+        PollForSourceChanges = "false"
       }
     }
   }
