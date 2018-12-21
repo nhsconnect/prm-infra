@@ -10,6 +10,13 @@ terragrunt = {
     source = "../..//tf/network"
   }
 
+  iam_role = "arn:aws:iam::431593652018:role/PASTASLOTHVULGAR"
+
+  dependencies {
+    paths = []
+  }
+
+
   # Include all settings from the root terraform.tfvars.old.old file
   #include = {
   #  path = "${find_in_parent_folders()}"
