@@ -38,35 +38,16 @@ resource "aws_iam_role_policy_attachment" "codepipeline-generic-role-attachment"
 }
 
 resource "aws_iam_policy" "codepipeline-generic-policy" {
-  name = "codepipeline-generic-policy"
-
-  policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect":"Allow",
-      "Action": [
-        "s3:*"
-      ],
-      "Resource": [
-        "${aws_s3_bucket.prm-codebuild-artifact.arn}",
-        "${aws_s3_bucket.prm-codebuild-artifact.arn}/*",
-        "${aws_s3_bucket.prm-codebuild-lambda-artifact.arn}",
-        "${aws_s3_bucket.prm-codebuild-lambda-artifact.arn}/*",
-        "arn:aws:s3:::${var.prm-application-source-bucket}",
-        "arn:aws:s3:::${var.prm-application-source-bucket}/*"
-      ]
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "codebuild:BatchGetBuilds",
-        "codebuild:StartBuild"
-      ],
-      "Resource": "*"
-    }
-  ]
+  name   = "codepipeline-generic-policy"
+  policy = "${data.template_file.codepipeline-generic-policy.rendered}"
 }
-EOF
+
+data "template_file" "codepipeline-generic-policy" {
+  template = "${file("${path.module}/codepipeline-generic-policy.json")}"
+
+  vars {
+    PRM_CODEBUILD_ARTIFACT_BUCKET        = "${aws_s3_bucket.prm-codebuild-artifact.arn}"
+    PRM_CODEBUILD_LAMBDA_ARTIFACT_BUCKET = "${aws_s3_bucket.prm-codebuild-lambda-artifact.arn}"
+    PRM_APPLICATION_SOURCE_BUCKET        = "arn:aws:s3:::${var.prm-application-source-bucket}"
+  }
 }

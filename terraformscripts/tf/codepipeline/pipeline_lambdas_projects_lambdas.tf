@@ -2,7 +2,8 @@ resource "aws_codebuild_project" "prm-build-uptime-monitor-lambda" {
   name          = "prm-build-uptime-monitor-lambda"
   description   = "Builds uptime monitoring"
   build_timeout = "5"
-  service_role  = "${aws_iam_role.codebuild-lambda-build-role.arn}"
+
+  service_role = "${aws_iam_role.codebuild-project-generic-role.arn}"
 
   artifacts {
     type = "CODEPIPELINE"
@@ -21,9 +22,10 @@ resource "aws_codebuild_project" "prm-build-uptime-monitor-lambda" {
 }
 
 resource "aws_codebuild_project" "prm-test-ehr-extract-lambda" {
-  name         = "prm-test-ehr-extract-lambda"
-  description  = "Tests EhrExtract"
-  service_role = "${aws_iam_role.codebuild-lambda-build-role.arn}"
+  name        = "prm-test-ehr-extract-lambda"
+  description = "Tests EhrExtract"
+
+  service_role = "${aws_iam_role.codebuild-project-generic-role.arn}"
 
   artifacts {
     type = "CODEPIPELINE"
@@ -45,7 +47,8 @@ resource "aws_codebuild_project" "prm-build-ehr-extract-lambda" {
   name          = "prm-build-ehr-extract-lambda"
   description   = "Builds EhrExtract"
   build_timeout = "5"
-  service_role  = "${aws_iam_role.codebuild-lambda-build-role.arn}"
+
+  service_role = "${aws_iam_role.codebuild-project-generic-role.arn}"
 
   artifacts {
     type = "CODEPIPELINE"
@@ -67,7 +70,8 @@ resource "aws_codebuild_project" "prm-build-retrieve-status-lambda" {
   name          = "prm-build-retrieve-status-lambda"
   description   = "Builds RetrieveStatus"
   build_timeout = "5"
-  service_role  = "${aws_iam_role.codebuild-lambda-build-role.arn}"
+
+  service_role = "${aws_iam_role.codebuild-project-generic-role.arn}"
 
   artifacts {
     type = "CODEPIPELINE"

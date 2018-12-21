@@ -1,0 +1,27 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect":"Allow",
+        "Action": [
+          "s3:*"
+        ],
+        "Resource": [
+          "${PRM_CODEBUILD_ARTIFACT_BUCKET}",
+          "${PRM_CODEBUILD_ARTIFACT_BUCKET}/*",
+          "${PRM_CODEBUILD_LAMBDA_ARTIFACT_BUCKET}",
+          "${PRM_CODEBUILD_LAMBDA_ARTIFACT_BUCKET}/*",
+          "${PRM_APPLICATION_SOURCE_BUCKET}",
+          "${PRM_APPLICATION_SOURCE_BUCKET}/*"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "codebuild:BatchGetBuilds",
+          "codebuild:StartBuild"
+        ],
+        "Resource": "*"
+      }
+    ]
+  }

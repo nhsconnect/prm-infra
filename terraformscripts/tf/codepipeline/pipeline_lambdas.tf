@@ -7,7 +7,7 @@ resource "aws_codepipeline" "lambda-pipeline" {
   }
 
   name     = "lambda-pipeline"
-  role_arn = "${aws_iam_role.prm-lambda-codepipeline.arn}"
+  role_arn = "${aws_iam_role.codepipeline-generic-role.arn}"
 
   artifact_store {
     location = "${aws_s3_bucket.prm-codebuild-artifact.bucket}"

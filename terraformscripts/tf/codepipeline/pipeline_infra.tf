@@ -7,7 +7,6 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
   }
 
   name     = "prm-infra-pipeline"
-  #role_arn = "${aws_iam_role.prm-infra-codepipeline.arn}"
   role_arn = "${aws_iam_role.codepipeline-generic-role.arn}"
 
   artifact_store {
