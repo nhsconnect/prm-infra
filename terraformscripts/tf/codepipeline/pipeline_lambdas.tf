@@ -36,6 +36,23 @@ resource "aws_codepipeline" "lambda-pipeline" {
   }
 
   stage {
+    name="Test-Lambdas"
+    
+    action {
+      name            = "Test-Ehr-Extract"
+      category        = "Test"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      version         = "1"
+      input_artifacts = ["source"]
+
+      configuration {
+        ProjectName = "${aws_codebuild_project.prm-test-ehr-extract-lambda.name}"
+      }
+    }
+  }
+
+  stage {
     name = "Build-Lambdas"
 
     action {
