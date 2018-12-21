@@ -8,7 +8,6 @@ phases:
   pre_build:
     commands:
       - export ASSUME_ROLE_NAME=arn:aws:iam::431593652018:role/PASTASLOTHVULGAR
-      - export TERRAGRUNT_IAM_ROLE=$ASSUME_ROLE_NAME
       - chmod a+x ./utils/*
       - eval $(./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_NAME)
   build:
