@@ -21,9 +21,9 @@ resource "aws_codebuild_project" "prm-build-uptime-monitor-lambda" {
 }
 
 resource "aws_codebuild_project" "prm-test-ehr-extract-lambda" {
-  name          = "prm-test-ehr-extract-lambda"
-  description   = "Tests EhrExtract"
-  service_role  = "${aws_iam_role.codebuild-lambda-build-role.arn}"
+  name         = "prm-test-ehr-extract-lambda"
+  description  = "Tests EhrExtract"
+  service_role = "${aws_iam_role.codebuild-lambda-build-role.arn}"
 
   artifacts {
     type = "CODEPIPELINE"

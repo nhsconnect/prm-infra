@@ -36,8 +36,8 @@ resource "aws_codepipeline" "lambda-pipeline" {
   }
 
   stage {
-    name="Test-Lambdas"
-    
+    name = "Test-Lambdas"
+
     action {
       name            = "Test-Ehr-Extract"
       category        = "Test"
