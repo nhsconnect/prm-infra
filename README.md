@@ -45,14 +45,40 @@ This code base is mirrored @ https://github.com/nhsconnect/prm-infra
 
 ## Known Problems
 ### Help! Im getting....
-#### InvalidActionDeclarationException: Action configuration for the new action 'GithubSource' contains an invalid configuration for the secret property 'OAuthToken'. '****' may be used in secret properties only when updating an existing action.
-We currently don't manage secrets. So to resolve this:
-- Change the OAuthToken value to `1234`
-- Commit/Push
-- Wait for the infrastructure to apply successfully
-- Change the OAuthToken value to `****`
-- Commit/Push
-- Wait for the infrastructure to apply successfully
-- In the AWS Console for CodePipeline, find the affected pipeline source stage, edit and authorise codepipeline as an application in github.
+#### [ERROR] Error updating CodePipeline (xxxxxxx): InvalidActionDeclarationException: Action configuration for action 'XXXXXX' is missing required configuration 'OAuthToken'
+This will happen anytime you wish to make a change to one of the 'aws_codepipeline' resources and where one of the sources of that pipeline is GitHub.
 
-TEst
+We currently don't manage secrets. And there are some 'issues' at the moment with GitHub Integration, AWS and Terraform, see https://github.com/terraform-providers/terraform-provider-aws/issues/2854.
+
+At the top of the pipeline find the following code block:
+```
+  lifecycle {
+    ignore_changes = [
+      "stage.0.action.0.configuration.OAuthToken",
+      "stage.0.action.0.configuration.%",
+    ]
+  }
+```
+
+and comment out the ignore changes, a la:
+```
+  lifecycle {
+    ignore_changes = [
+      #"stage.0.action.0.configuration.OAuthToken",
+      #"stage.0.action.0.configuration.%",
+    ]
+  }
+```
+
+and commit this alongside your change to the pipeline.
+
+Then revert the code back to its original state:
+```
+  lifecycle {
+    ignore_changes = [
+      "stage.0.action.0.configuration.OAuthToken",
+      "stage.0.action.0.configuration.%",
+    ]
+  }
+```
+Sucks right. I know.
