@@ -16,7 +16,7 @@ resource "aws_codebuild_project" "prm-build-uptime-monitor-lambda" {
 
   source {
     type      = "CODEPIPELINE"
-    buildspec = "./pipeline_definition/lambdas_uptime_monitoring.yml"
+    buildspec = "./lambda/uptime_monitoring/build_deploy.yml"
   }
 }
 
@@ -38,7 +38,7 @@ resource "aws_codebuild_project" "prm-build-ehr-extract-lambda" {
 
   source {
     type      = "CODEPIPELINE"
-    buildspec = "./pipeline_definition/lambdas_ehr_extract_handler.yml"
+    buildspec = "./lambda/ehr_extract_handler/build_deploy.yml"
   }
 }
 
@@ -60,6 +60,6 @@ resource "aws_codebuild_project" "prm-build-retrieve-status-lambda" {
 
   source {
     type      = "CODEPIPELINE"
-    buildspec = "./pipeline_definition/lambdas_retrieve_status.yml"
+    buildspec = "./lambda/retrieve_status/build_deploy.yml"
   }
 }
