@@ -4,9 +4,7 @@ resource "aws_codebuild_project" "prm-infra-assume-role-plan" {
   name          = "prm-assume-role-plan"
   description   = "Validates the infrastructure"
   build_timeout = "5"
-
-  #service_role  = "${aws_iam_role.codebuild-prm-infra-plan-role.arn}"
-  service_role = "${aws_iam_role.codebuild-project-generic-role.arn}"
+  service_role  = "${aws_iam_role.codebuild-project-generic-role.arn}"
 
   artifacts {
     type = "CODEPIPELINE"
@@ -28,8 +26,7 @@ resource "aws_codebuild_project" "prm-infra-assume-role-apply" {
   name          = "prm-assume-role-apply"
   description   = "Applies the infrastructure"
   build_timeout = "5"
-  #service_role  = "${aws_iam_role.codebuild-prm-infra-apply-role.arn}"
-  service_role = "${aws_iam_role.codebuild-project-generic-role.arn}"
+  service_role  = "${aws_iam_role.codebuild-project-generic-role.arn}"
 
   artifacts {
     type = "CODEPIPELINE"
