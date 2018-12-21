@@ -1,8 +1,8 @@
 resource "aws_codepipeline" "lambda-pipeline" {
   lifecycle {
     ignore_changes = [
-      "stage.0.action.0.configuration.OAuthToken",
-      "stage.0.action.0.configuration.%",
+      #"stage.0.action.0.configuration.OAuthToken",
+      #"stage.0.action.0.configuration.%",
     ]
   }
 
@@ -94,4 +94,21 @@ resource "aws_codepipeline" "lambda-pipeline" {
       }
     }
   }
+
+  stage {
+    name = "E2E-Test-Lambdas"
+
+    action {
+      name            = "E2E-Test-Lambdas"
+      category        = "Test"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      version         = "1"
+      input_artifacts = ["source"]
+
+      configuration {
+        ProjectName = "${aws_codebuild_project.prm-test-e2e-lambda.name}"
+      }
+    }
+  }  
 }
