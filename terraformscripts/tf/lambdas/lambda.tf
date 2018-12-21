@@ -42,13 +42,3 @@ resource "aws_lambda_permission" "allow_cloudwatch_to_call_uptime_monitoring_lam
   principal     = "events.amazonaws.com"
   source_arn    = "${aws_cloudwatch_event_rule.every_min_rule.arn}"
 }
-
-resource "aws_s3_bucket" "uptime_monitoring_bucket" {
-  bucket        = "uptime-monitoring-bucket"
-  acl           = "private"
-  force_destroy = true
-
-  versioning {
-    enabled = true
-  }
-}

@@ -24,10 +24,12 @@ resource "aws_api_gateway_method_settings" "api_gw_method_settings" {
 
 resource "aws_api_gateway_deployment" "api_gw_deployment" {
   depends_on = [
-    "aws_api_gateway_integration.send_integration"
-    //    "aws_api_gateway_integration.lambda",
-    //    "aws_api_gateway_integration.lambda_root",
+    "aws_api_gateway_integration.send_integration",
   ]
+
+  //    "aws_api_gateway_integration.lambda",
+  //    "aws_api_gateway_integration.lambda_root",
+
   rest_api_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
   stage_name  = "dev"
 }
