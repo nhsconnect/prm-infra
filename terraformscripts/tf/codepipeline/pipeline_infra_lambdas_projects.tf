@@ -3,7 +3,6 @@ resource "aws_codebuild_project" "prm-infra-lambdas-plan" {
   description   = "Validates the infrastructure"
   build_timeout = "5"
 
-  #service_role  = "${aws_iam_role.codebuild-prm-infra-plan-role.arn}"
   service_role = "${aws_iam_role.codebuild-project-generic-role.arn}"
 
   artifacts {
@@ -27,7 +26,6 @@ resource "aws_codebuild_project" "prm-infra-lambdas-apply" {
   description   = "Applies the infrastructure"
   build_timeout = "5"
 
-  #service_role  = "${aws_iam_role.codebuild-prm-infra-apply-role.arn}"
   service_role = "${aws_iam_role.codebuild-project-generic-role.arn}"
 
   artifacts {
@@ -51,7 +49,6 @@ resource "aws_codebuild_project" "prm-infra-lambdas-validate" {
   description   = "Validate the infrastructure"
   build_timeout = "5"
 
-  #service_role  = "${aws_iam_role.codebuild-prm-infra-apply-role.arn}"
   service_role = "${aws_iam_role.codebuild-project-generic-role.arn}"
 
   artifacts {
