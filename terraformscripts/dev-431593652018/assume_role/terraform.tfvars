@@ -40,7 +40,7 @@ terragrunt = {
   remote_state {
     backend = "s3"
     config {
-      bucket = "prm-terraform-state"
+      bucket = "prm-431593652018-terraform-states"
       key = "assume_role/terraform.tfstate"
       region = "eu-west-2"
       encrypt = true
