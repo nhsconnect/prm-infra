@@ -92,7 +92,7 @@ resource "aws_codebuild_project" "prm-build-retrieve-status-lambda" {
 resource "aws_codebuild_project" "prm-test-e2e-lambda" {
   name         = "prm-test-e2e-lambda"
   description  = "e2e Tests lambdas"
-  service_role = "${aws_iam_role.codebuild-lambda-build-role.arn}"
+  service_role = "${aws_iam_role.codebuild-project-generic-role.arn}"
 
   artifacts {
     type = "CODEPIPELINE"
