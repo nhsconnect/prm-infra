@@ -17,10 +17,12 @@ phases:
       - eval $(./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_NAME)
   build:
     commands:
-      - echo $PWD
-      - echo ~
-      - mkdir -p ~/terraform_outputs
+      - mkdir -p $CODEBUILD_SRC_DIR/terraform_outputs
       - cd ./terraformscripts/dev-431593652018/network 
       - terragrunt init --terragrunt-source-update
       - terragrunt validate
       - terragrunt apply -auto-approve
+      - echo fff #sed 's/^/export /'
+      - terragrunt output | grep ' = ' | tr -d [:blank:] >> $CODEBUILD_SRC_DIR/terraform_outputs/terraform.output | true
+      - export  $( grep -v '^#' $CODEBUILD_SRC_DIR/terraform_outputs/terraform.output | xargs)
+      - env
