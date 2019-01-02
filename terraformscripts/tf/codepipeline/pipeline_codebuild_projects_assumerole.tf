@@ -1,6 +1,6 @@
 # Assume-role projects
 
-resource "aws_codebuild_project" "prm-infra-assume-role-plan" {
+resource "aws_codebuild_project" "prm-codebuild-assume-role-plan" {
   name          = "prm-assume-role-plan"
   description   = "Validates the infrastructure"
   build_timeout = "5"
@@ -18,11 +18,11 @@ resource "aws_codebuild_project" "prm-infra-assume-role-plan" {
 
   source {
     type      = "CODEPIPELINE"
-    buildspec = "./pipeline_definition/assumerole_infra_plan.yml"
+    buildspec = "./pipeline_definition/assumerole_codebuild_plan.yml"
   }
 }
 
-resource "aws_codebuild_project" "prm-infra-assume-role-apply" {
+resource "aws_codebuild_project" "prm-codebuild-assume-role-apply" {
   name          = "prm-assume-role-apply"
   description   = "Applies the infrastructure"
   build_timeout = "5"
@@ -40,6 +40,6 @@ resource "aws_codebuild_project" "prm-infra-assume-role-apply" {
 
   source {
     type      = "CODEPIPELINE"
-    buildspec = "./pipeline_definition/assumerole_infra_apply.yml"
+    buildspec = "./pipeline_definition/assumerole_codebuild_apply.yml"
   }
 }

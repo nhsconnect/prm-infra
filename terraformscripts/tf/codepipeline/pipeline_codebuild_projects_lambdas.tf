@@ -1,4 +1,4 @@
-resource "aws_codebuild_project" "prm-infra-lambdas-plan" {
+resource "aws_codebuild_project" "prm-codebuild-lambdas-plan" {
   name          = "prm-lambdas-plan"
   description   = "Validates the infrastructure"
   build_timeout = "5"
@@ -17,11 +17,11 @@ resource "aws_codebuild_project" "prm-infra-lambdas-plan" {
 
   source {
     type      = "CODEPIPELINE"
-    buildspec = "./pipeline_definition/lambdas_infra_plan.yml"
+    buildspec = "./pipeline_definition/lambdas_codebuild_plan.yml"
   }
 }
 
-resource "aws_codebuild_project" "prm-infra-lambdas-apply" {
+resource "aws_codebuild_project" "prm-codebuild-lambdas-apply" {
   name          = "prm-lambdas-apply"
   description   = "Applies the infrastructure"
   build_timeout = "5"
@@ -40,11 +40,11 @@ resource "aws_codebuild_project" "prm-infra-lambdas-apply" {
 
   source {
     type      = "CODEPIPELINE"
-    buildspec = "./pipeline_definition/lambdas_infra_apply.yml"
+    buildspec = "./pipeline_definition/lambdas_codebuild_apply.yml"
   }
 }
 
-resource "aws_codebuild_project" "prm-infra-lambdas-validate" {
+resource "aws_codebuild_project" "prm-codebuild-lambdas-validate" {
   name          = "prm-lambdas-validate"
   description   = "Validate the infrastructure"
   build_timeout = "5"
@@ -63,6 +63,6 @@ resource "aws_codebuild_project" "prm-infra-lambdas-validate" {
 
   source {
     type      = "CODEPIPELINE"
-    buildspec = "./pipeline_definition/lambdas_infra_validate.yml"
+    buildspec = "./pipeline_definition/lambdas_codebuild_validate.yml"
   }
 }

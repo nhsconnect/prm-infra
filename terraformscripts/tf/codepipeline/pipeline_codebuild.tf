@@ -1,4 +1,4 @@
-resource "aws_codepipeline" "prm-infra-pipeline" {
+resource "aws_codepipeline" "prm-codebuild-pipeline" {
   # This lifecycle is here as it's needed to instruct Terraform not to get ruffled when the OAuthToken token differs from the explicited. A solution would be to implement some form  # of secret management and pass the OAuthToken secret down to the Terraform script as a paramenter.  # This lifecycle  statement also need to be commented out when making changes to the pipeline, as the AWS API consider the OAuthToken parameter being not optional.
 
   lifecycle {
@@ -7,7 +7,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
 
   # Also, terraform fmt will clob the above comments. Enjoy!
 
-  name     = "prm-infra-pipeline"
+  name     = "prm-codepipeline-pipeline"
   role_arn = "${aws_iam_role.codepipeline-generic-role.arn}"
   artifact_store {
     location = "${aws_s3_bucket.prm-codebuild-artifact.bucket}"
@@ -66,7 +66,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       run_order       = 1
 
       configuration {
-        ProjectName = "${aws_codebuild_project.prm-infra-assume-role-plan.name}"
+        ProjectName = "${aws_codebuild_project.prm-codebuild-assume-role-plan.name}"
       }
     }
 
@@ -80,7 +80,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       run_order       = 2
 
       configuration {
-        ProjectName = "${aws_codebuild_project.prm-infra-assume-role-apply.name}"
+        ProjectName = "${aws_codebuild_project.prm-codebuild-assume-role-apply.name}"
       }
     }
   }
@@ -97,7 +97,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       run_order       = 1
 
       configuration {
-        ProjectName = "${aws_codebuild_project.prm-infra-codepipeline-plan.name}"
+        ProjectName = "${aws_codebuild_project.prm-codebuild-codepipeline-plan.name}"
       }
     }
 
@@ -111,7 +111,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       run_order       = 2
 
       configuration {
-        ProjectName = "${aws_codebuild_project.prm-infra-codepipeline-apply.name}"
+        ProjectName = "${aws_codebuild_project.prm-codebuild-codepipeline-apply.name}"
       }
     }
   }
@@ -128,7 +128,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       run_order       = 1
 
       configuration {
-        ProjectName = "${aws_codebuild_project.prm-infra-lambdas-plan.name}"
+        ProjectName = "${aws_codebuild_project.prm-codebuild-lambdas-plan.name}"
       }
     }
 
@@ -142,7 +142,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       run_order       = 2
 
       configuration {
-        ProjectName = "${aws_codebuild_project.prm-infra-lambdas-apply.name}"
+        ProjectName = "${aws_codebuild_project.prm-codebuild-lambdas-apply.name}"
       }
     }
 
@@ -156,7 +156,7 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       run_order       = 3
 
       configuration {
-        ProjectName = "${aws_codebuild_project.prm-infra-lambdas-validate.name}"
+        ProjectName = "${aws_codebuild_project.prm-codebuild-lambdas-validate.name}"
       }
     }
   }

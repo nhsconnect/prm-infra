@@ -1,6 +1,6 @@
 # Codepipeline projects
 
-resource "aws_codebuild_project" "prm-infra-codepipeline-plan" {
+resource "aws_codebuild_project" "prm-codebuild-codepipeline-plan" {
   name          = "prm-codepipeline-plan"
   description   = "Validates the infrastructure"
   build_timeout = "5"
@@ -19,11 +19,11 @@ resource "aws_codebuild_project" "prm-infra-codepipeline-plan" {
 
   source {
     type      = "CODEPIPELINE"
-    buildspec = "./pipeline_definition/codepipeline_infra_plan.yml"
+    buildspec = "./pipeline_definition/codepipeline_codebuild_plan.yml"
   }
 }
 
-resource "aws_codebuild_project" "prm-infra-codepipeline-apply" {
+resource "aws_codebuild_project" "prm-codebuild-codepipeline-apply" {
   name          = "prm-codepipeline-apply"
   description   = "Applies the infrastructure"
   build_timeout = "5"
@@ -42,6 +42,6 @@ resource "aws_codebuild_project" "prm-infra-codepipeline-apply" {
 
   source {
     type      = "CODEPIPELINE"
-    buildspec = "./pipeline_definition/codepipeline_infra_apply.yml"
+    buildspec = "./pipeline_definition/codepipeline_codebuild_apply.yml"
   }
 }

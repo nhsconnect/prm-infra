@@ -6,7 +6,7 @@ resource "aws_codepipeline" "lambda-pipeline" {
     ]
   }
 
-  name     = "lambda-pipeline"
+  name     = "prm-lambda-pipeline"
   role_arn = "${aws_iam_role.codepipeline-generic-role.arn}"
 
   artifact_store {
