@@ -1,20 +1,18 @@
 resource "aws_codepipeline" "prm-infra-pipeline" {
-  # This lifecycle is here as it's needed to instruct Terraform not to get ruffled when the OAuthToken token differs from the explicited. A solution would be to implement some form  # of secret management and pass the OAuthToken secret down to the Terraform script as a paramenter.  # This lifecycle  statement also need to be commented out when making changes to the pipeline, as the AWS API don't like having an invalid OAuthToken secret being set.
-
-  # Also, terraform fmt will clob the above comments. Enjoy!
+  # This lifecycle is here as it's needed to instruct Terraform not to get ruffled when the OAuthToken token differs from the explicited. A solution would be to implement some form  # of secret management and pass the OAuthToken secret down to the Terraform script as a paramenter.  # This lifecycle  statement also need to be commented out when making changes to the pipeline, as the AWS API consider the OAuthToken parameter being not optional.
 
   lifecycle {
     ignore_changes = ["stage.0.action.0.configuration.OAuthToken", "stage.0.action.0.configuration.%"]
   }
 
+  # Also, terraform fmt will clob the above comments. Enjoy!
+
   name     = "prm-infra-pipeline"
   role_arn = "${aws_iam_role.codepipeline-generic-role.arn}"
-
   artifact_store {
     location = "${aws_s3_bucket.prm-codebuild-artifact.bucket}"
     type     = "S3"
   }
-
   stage {
     name = "Source"
 
@@ -55,7 +53,6 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
     #  }
     #}
   }
-
   stage {
     name = "Build_Assume_role"
 
@@ -87,7 +84,6 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       }
     }
   }
-
   stage {
     name = "Build_Codepipeline"
 
@@ -119,7 +115,6 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
       }
     }
   }
-
   stage {
     name = "Build_Lambdas"
 
