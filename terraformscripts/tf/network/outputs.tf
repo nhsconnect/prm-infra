@@ -7,17 +7,17 @@ output "vpc_cidr" {
 }
 
 output "vpc_subnet_public_ids" {
-  value = "${module.network.public_subnets}"
+  value = "${join(",", module.network.public_subnets)}"
 }
 
 output "vpc_subnet_public_cidrs" {
-  value = "${module.network.public_subnets_cidr_blocks}"
+  value = "${join(",", module.network.public_subnets_cidr_blocks)}"
 }
 
 output "vpc_subnet_private_ids" {
-  value = "${module.network.private_subnets}"
+  value = "${join(",", module.network.private_subnets)}"
 }
 
 output "vpc_subnet_private_cidrs" {
-  value = "${module.network.private_subnets_cidr_blocks}"
+  value = "${join(",", module.network.private_subnets_cidr_blocks)}"
 }
