@@ -1,9 +1,10 @@
 resource "aws_codepipeline" "prm-infra-pipeline" {
+  # This lifecycle is here as it's needed to instruct Terraform not to get ruffled when the OAuthToken token differs from the explicited. A solution would be to implement some form  # of secret management and pass the OAuthToken secret down to the Terraform script as a paramenter.  # This lifecycle  statement also need to be commented out when making changes to the pipeline, as the AWS API don't like having an invalid OAuthToken secret being set.
+
+  # Also, terraform fmt will clob the above comments. Enjoy!
+
   lifecycle {
-    ignore_changes = [
-      "stage.0.action.0.configuration.OAuthToken",
-      "stage.0.action.0.configuration.%",
-    ]
+    ignore_changes = ["stage.0.action.0.configuration.OAuthToken", "stage.0.action.0.configuration.%"]
   }
 
   name     = "prm-infra-pipeline"
@@ -33,6 +34,26 @@ resource "aws_codepipeline" "prm-infra-pipeline" {
         PollForSourceChanges = "true"
       }
     }
+
+    # Unfortunately multiple sources cannot output in the same outputArtifacts, as documented in https://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html
+    # This make having both a GitHub and an S3 integration difficult to maintain. My suggestion would be to ditch the GitHub one and pipe everything through S3 via a webhook trigger. 
+    # As a side effects we would also get rid of the OAuthToken issue, as there is no way to redefine the pipeline and maintain the secrets in place (even using Terraform), as documented
+    # in the aforementioned page. Additionally, we would not need to restore the execute flag which is not preserved with the GitHub integration.
+
+    #action {
+    #  name             = "S3Source"
+    #  category         = "Source"
+    #  owner            = "AWS"
+    #  provider         = "S3"
+    #  version          = "1"
+    #  output_artifacts = ["sourceS3"]
+
+    #  configuration {
+    #    S3Bucket             = "${aws_s3_bucket.prm-codebuild-lambda-artifact.id}"
+    #    S3ObjectKey          = "prm-infra.zip"
+    #    PollForSourceChanges = "false"
+    #  }
+    #}
   }
 
   stage {

@@ -110,5 +110,5 @@ resource "aws_codepipeline" "lambda-pipeline" {
         ProjectName = "${aws_codebuild_project.prm-test-e2e-lambda.name}"
       }
     }
-  }  
+  }
 }
