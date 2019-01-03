@@ -22,7 +22,3 @@ phases:
       - terragrunt init --terragrunt-source-update
       - terragrunt validate
       - terragrunt apply -auto-approve
-      - echo fff #sed 's/^/export /'
-      - terragrunt output | grep ' = ' | tr -d "[:blank:]" >> $CODEBUILD_SRC_DIR/terraform_outputs/terraform.output | true
-      - export $(grep -v '^#' $CODEBUILD_SRC_DIR/terraform_outputs/terraform.output | xargs)
-      - env | grep vpc_
