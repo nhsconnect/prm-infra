@@ -1,6 +1,0 @@
-TF_VAR_vpc_cidr=10.0.0.0/16
-TF_VAR_vpc_id=vpc-0ec0fda797be790f0
-TF_VAR_vpc_subnet_private_cidrs=10.0.101.0/24,10.0.102.0/24,10.0.103.0/24
-TF_VAR_vpc_subnet_private_ids=subnet-0b65ac0767a906951,subnet-0462c85111ab440ea,subnet-00c800fd80ab66de6
-TF_VAR_vpc_subnet_public_cidrs=10.0.1.0/24,10.0.2.0/24,10.0.3.0/24
-TF_VAR_vpc_subnet_public_ids=subnet-07123523351f0c9ce,subnet-05733bc7499275cb1,subnet-0acec8e4e5e253475
