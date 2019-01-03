@@ -33,23 +33,23 @@ resource "aws_codepipeline" "prm-servinginfra-pipeline" {
   }
 
   stage {
-    name = "Approve"
+    name = "Approve_Infra_Provisioning"
 
     action {
-      name     = "Approval"
+      name     = "Approve_Infra_Provisioning"
       category = "Approval"
       owner    = "AWS"
       provider = "Manual"
       version  = "1"
 
       configuration {
-        CustomData = "Approve me!"
+        CustomData = "Approve_Infra_Provisioning"
       }
     }
   }
 
   stage {
-    name = "Build_network"
+    name = "Build_Network"
 
     action {
       name            = "Plan"
@@ -113,17 +113,17 @@ resource "aws_codepipeline" "prm-servinginfra-pipeline" {
   }
 
   stage {
-    name = "Approve_Destroy"
+    name = "Approve_Infra_Destruction"
 
     action {
-      name     = "Approve_servinginfra_destroy"
+      name     = "Approve_Infra_Destruction"
       category = "Approval"
       owner    = "AWS"
       provider = "Manual"
       version  = "1"
 
       configuration {
-        CustomData = "Approve me!"
+        CustomData = "Approve_Infra_Destruction"
       }
     }
   }
@@ -132,7 +132,7 @@ resource "aws_codepipeline" "prm-servinginfra-pipeline" {
     name = "Destroy_Opentest"
 
     action {
-      name            = "Destroy_Network"
+      name            = "Destroy"
       category        = "Test"
       owner           = "AWS"
       provider        = "CodeBuild"
@@ -147,10 +147,10 @@ resource "aws_codepipeline" "prm-servinginfra-pipeline" {
   }
 
   stage {
-    name = "Destroy_network"
+    name = "Destroy_Network"
 
     action {
-      name            = "Destroy_Network"
+      name            = "Destroy"
       category        = "Test"
       owner           = "AWS"
       provider        = "CodeBuild"
