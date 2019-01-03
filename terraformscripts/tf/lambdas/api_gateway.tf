@@ -99,17 +99,28 @@ resource "aws_api_gateway_integration" "send_integration" {
 }
 
 # /status
-resource "aws_api_gateway_resource" "status" {
+resource "aws_api_gateway_resource" "status_parent" {
   rest_api_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
   parent_id   = "${aws_api_gateway_rest_api.ehr_extract_handler_api.root_resource_id}"
   path_part   = "status"
+}
+
+resource "aws_api_gateway_resource" "status" {
+  rest_api_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
+  parent_id   = "${aws_api_gateway_resource.status_parent.id}"
+  path_part   = "{uuid}"
 }
 
 resource "aws_api_gateway_method" "status_method" {
   rest_api_id   = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
   resource_id   = "${aws_api_gateway_resource.status.id}"
   http_method   = "GET"
+//  http_method = "POST"
   authorization = "NONE"
+  
+  request_parameters {
+    "method.request.path.uuid" = true
+  }
 }
 
 resource "aws_api_gateway_integration" "status_integration" {
@@ -119,5 +130,5 @@ resource "aws_api_gateway_integration" "status_integration" {
 
   integration_http_method = "GET"
   type                    = "AWS_PROXY"
-  uri                     = "arn:aws:apigateway:eu-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-2:431593652018:function:RetrieveStatus/invocations"
+  uri                     = "arn:aws:apigateway:eu-west-2:lambda:path/2015-03-31/functions/${aws_lambda_function.retrieve_status.arn}/invocations"
 }
