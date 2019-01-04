@@ -25,8 +25,8 @@ phases:
       - export $(grep -v '^#' ./terraform.output | xargs)
       - env | grep TF_VAR_
       - cd -
-      - echo Destroying Lambdas
-      - cd ./terraformscripts/dev-431593652018/lambdas
+      - #echo Destroying Lambdas
+      - #cd ./terraformscripts/dev-431593652018/lambdas
       - #terragrunt init --terragrunt-source-update
       - #terragrunt validate
-      - terragrunt destroy -auto-approve
+      - #terragrunt destroy -auto-approve
