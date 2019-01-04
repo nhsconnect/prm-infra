@@ -42,3 +42,11 @@ resource "aws_lambda_function" "retrieve_status" {
   runtime = "nodejs8.10"
   role    = "${aws_iam_role.lambda_exec.arn}"
 }
+
+resource "aws_lambda_function" "retrieve_processed_ehr_extract" {
+  function_name = "RetrieveProcessedEhrExtract"
+  filename      = "${path.root}/dummy_retrieve_processed_ehr_extract.zip"
+  handler = "main.handler"
+  runtime = "nodejs8.10"
+  role    = "${aws_iam_role.lambda_exec.arn}"
+}

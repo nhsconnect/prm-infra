@@ -1,6 +1,5 @@
 resource "aws_api_gateway_rest_api" "ehr_extract_handler_api" {
   name        = "EhrExtractHandlerApi"
-  description = "Terraform Serverless Application Example"
 }
 
 output "base_url" {
@@ -130,4 +129,38 @@ resource "aws_api_gateway_integration" "status_integration" {
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
   uri                     = "arn:aws:apigateway:eu-west-2:lambda:path/2015-03-31/functions/${aws_lambda_function.retrieve_status.arn}/invocations"
+}
+
+# /retrieve
+resource "aws_api_gateway_resource" "retrieve_parent" {
+  rest_api_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
+  parent_id   = "${aws_api_gateway_rest_api.ehr_extract_handler_api.root_resource_id}"
+  path_part   = "retrieve"
+}
+
+resource "aws_api_gateway_resource" "retrieve" {
+  rest_api_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
+  parent_id   = "${aws_api_gateway_resource.retrieve_parent.id}"
+  path_part   = "{uuid}"
+}
+
+resource "aws_api_gateway_method" "retrieve_method" {
+  rest_api_id   = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
+  resource_id   = "${aws_api_gateway_resource.retrieve.id}"
+  http_method = "POST"
+  authorization = "NONE"
+
+  request_parameters {
+    "method.request.path.uuid" = true
+  }
+}
+
+resource "aws_api_gateway_integration" "retrieve_integration" {
+  rest_api_id = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
+  resource_id = "${aws_api_gateway_method.retrieve_method.resource_id}"
+  http_method = "${aws_api_gateway_method.retrieve_method.http_method}"
+
+  integration_http_method = "POST"
+  type                    = "AWS_PROXY"
+  uri                     = "arn:aws:apigateway:eu-west-2:lambda:path/2015-03-31/functions/${aws_lambda_function.retrieve_processed_ehr_extract.arn}/invocations"
 }
