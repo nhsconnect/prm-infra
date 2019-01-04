@@ -27,6 +27,6 @@ phases:
       - cd -
       - echo Destroying Lambdas
       - cd ./terraformscripts/dev-431593652018/lambdas
-      - terragrunt init --terragrunt-source-update
-      - terragrunt validate
+      - #terragrunt init --terragrunt-source-update
+      - #terragrunt validate
       - terragrunt destroy -auto-approve

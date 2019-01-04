@@ -178,23 +178,23 @@ resource "aws_codepipeline" "prm-servinginfra-pipeline" {
     }
   }
 
-  #  stage {
-  #    name = "Destroy_Lambdas"
-  #
-  #    action {
-  #      name            = "Destroy"
-  #      category        = "Test"
-  #      owner           = "AWS"
-  #      provider        = "CodeBuild"
-  #      version         = "1"
-  #      input_artifacts = ["source"]
-  #      run_order       = 1
-  #
-  #      configuration {
-  #        ProjectName = "${aws_codebuild_project.prm-servinginfra-lambdas-destroy.name}"
-  #      }
-  #    }
-  #  }
+  stage {
+    name = "Destroy_Lambdas"
+
+    action {
+      name            = "Destroy"
+      category        = "Test"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      version         = "1"
+      input_artifacts = ["source"]
+      run_order       = 1
+
+      configuration {
+        ProjectName = "${aws_codebuild_project.prm-servinginfra-lambdas-destroy.name}"
+      }
+    }
+  }
 
   stage {
     name = "Destroy_Network"
