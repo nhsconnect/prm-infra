@@ -17,7 +17,7 @@ phases:
       - eval $(./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_NAME)
   build:
     commands:
-      - export TF_VAR_github_token_prm_infra=$(aws ssm get-parameter --with-decryption --name  /NHS/dev-431593652018/tf/codepipeline/GitHub-token-prm-infra | jq -r '.Parameter.Value')
+      - export TF_VAR_github_token=$(aws ssm get-parameter --with-decryption --name  /NHS/dev-431593652018/tf/codepipeline/github-token | jq -r '.Parameter.Value')
       - cd ./terraformscripts/dev-431593652018/codepipeline
       - terragrunt init --terragrunt-source-update
       - terragrunt validate

@@ -24,7 +24,7 @@ resource "aws_codepipeline" "prm-servinginfra-pipeline" {
         Owner                = "nhsconnect"
         Repo                 = "prm-infra"
         Branch               = "master"
-        OAuthToken           = "${var.github_token_prm_infra}"
+        OAuthToken           = "${var.github_token}"
         PollForSourceChanges = "true"
       }
     }
