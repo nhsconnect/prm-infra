@@ -1,5 +1,5 @@
 resource "aws_api_gateway_rest_api" "ehr_extract_handler_api" {
-  name        = "EhrExtractHandlerApi"
+  name = "EhrExtractHandlerApi"
 }
 
 output "base_url" {
@@ -70,9 +70,9 @@ resource "aws_api_gateway_resource" "status" {
 resource "aws_api_gateway_method" "status_method" {
   rest_api_id   = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
   resource_id   = "${aws_api_gateway_resource.status.id}"
-  http_method = "GET"
+  http_method   = "GET"
   authorization = "NONE"
-  
+
   request_parameters {
     "method.request.path.uuid" = true
   }
@@ -104,7 +104,7 @@ resource "aws_api_gateway_resource" "retrieve" {
 resource "aws_api_gateway_method" "retrieve_method" {
   rest_api_id   = "${aws_api_gateway_rest_api.ehr_extract_handler_api.id}"
   resource_id   = "${aws_api_gateway_resource.retrieve.id}"
-  http_method = "POST"
+  http_method   = "POST"
   authorization = "NONE"
 
   request_parameters {

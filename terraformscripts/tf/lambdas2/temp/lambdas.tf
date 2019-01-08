@@ -26,8 +26,8 @@ resource "aws_lambda_function" "uptime_monitoring" {
   role    = "${aws_iam_role.lambda_exec.arn}"
   environment {
     variables = {
-      url   = "${aws_api_gateway_deployment.api_gw_deployment.invoke_url}"
-      stage = "${aws_api_gateway_deployment.api_gw_deployment.stage_name}"
+      url      = "${aws_api_gateway_deployment.api_gw_deployment.invoke_url}"
+      stage    = "${aws_api_gateway_deployment.api_gw_deployment.stage_name}"
       endpoint = "${aws_api_gateway_resource.send.path_part}"
     }
   }
@@ -47,7 +47,7 @@ resource "aws_lambda_function" "retrieve_status" {
 resource "aws_lambda_function" "retrieve_processed_ehr_extract" {
   function_name = "RetrieveProcessedEhrExtract"
   filename      = "${path.root}/dummy_retrieve_processed_ehr_extract.zip"
-  handler = "main.handler"
-  runtime = "nodejs8.10"
-  role    = "${aws_iam_role.lambda_exec.arn}"
+  handler       = "main.handler"
+  runtime       = "nodejs8.10"
+  role          = "${aws_iam_role.lambda_exec.arn}"
 }
