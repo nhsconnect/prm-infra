@@ -15,6 +15,7 @@ phases:
       - export ASSUME_ROLE_NAME=arn:aws:iam::431593652018:role/PASTASLOTHVULGAR
       - chmod a+x ./utils/*
       - eval $(./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_NAME)
+      - export TF_WARN_OUTPUT_ERRORS=true
   build:
     commands:
       - export TF_VAR_github_token="$(aws ssm get-parameter --with-decryption --name  /NHS/dev-431593652018/tf/codepipeline/github-token | jq -r '.Parameter.Value')"
