@@ -28,6 +28,7 @@ resource "aws_lambda_function" "uptime_monitoring" {
     variables = {
       url   = "${aws_api_gateway_deployment.api_gw_deployment.invoke_url}"
       stage = "${aws_api_gateway_deployment.api_gw_deployment.stage_name}"
+      endpoint = "${aws_api_gateway_resource.send.path_part}"
     }
   }
 }
