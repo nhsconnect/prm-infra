@@ -12,8 +12,10 @@ resource "aws_codebuild_project" "prm-secscan-prm-migrator-scan" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image        = "aws/codebuild/python:3.6.5"
-    type         = "LINUX_CONTAINER"
+
+    #image        = "aws/codebuild/python:3.6.5"
+    image = "aws/codebuild/java:openjdk-9"
+    type  = "LINUX_CONTAINER"
   }
 
   source {
