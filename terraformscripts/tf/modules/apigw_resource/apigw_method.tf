@@ -49,6 +49,6 @@ resource "aws_api_gateway_stage" "stage" {
   deployment_id = "${aws_api_gateway_deployment.deployment.id}"
 
   provisioner "local-exec" {
-    command = "sleep 40"
+    command = "sleep 5"
   }
 }
