@@ -20,4 +20,4 @@ phases:
       # Running git-secrets
       - cd ..; git clone https://github.com/awslabs/git-secrets.git; cd git-secrets
       - make install; git secrets install $CODEBUILD_SRC_DIR; cd $CODEBUILD_SRC_DIR
-      - git secrets scan -r
+      - git secrets --scan -r
