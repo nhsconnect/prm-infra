@@ -12,9 +12,6 @@ phases:
   build:
     commands:
       - pip install truffleHog
-      - pwd
-      - ls -la
-      - env
-      - cd ..
+      - git init
       - python /usr/local/lib/python3.6/site-packages/truffleHog/truffleHog.py file://$CODEBUILD_SRC_DIR
       - echo $?
