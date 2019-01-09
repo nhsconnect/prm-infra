@@ -15,6 +15,5 @@ phases:
       - pwd
       - env
       - cd ..
-      - ls -la $CWD/src
-      - python /usr/local/lib/python3.6/site-packages/truffleHog/truffleHog.py file://$CWD/src
+      - python /usr/local/lib/python3.6/site-packages/truffleHog/truffleHog.py file://$CODEBUILD_SRC_DIR
       - echo $?
