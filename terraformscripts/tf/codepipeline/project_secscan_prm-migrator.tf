@@ -2,7 +2,7 @@
 
 resource "aws_codebuild_project" "prm-secscan-prm-migrator-scan" {
   name          = "prm-secscan-prm-migrator-plan"
-  description   = "Scan the prm-infra repo"
+  description   = "Scan the prm-infra repo (Python)"
   build_timeout = "5"
   service_role  = "${aws_iam_role.codebuild-project-generic-role.arn}"
 
@@ -24,8 +24,8 @@ resource "aws_codebuild_project" "prm-secscan-prm-migrator-scan" {
 }
 
 resource "aws_codebuild_project" "prm-secscan-prm-migrator-scanjava" {
-  name          = "prm-secscan-prm-migrator-plan"
-  description   = "Scan the prm-infra repo"
+  name          = "prm-secscan-prm-migrator-plan_java"
+  description   = "Scan the prm-infra repo (Java)"
   build_timeout = "5"
   service_role  = "${aws_iam_role.codebuild-project-generic-role.arn}"
 
