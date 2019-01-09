@@ -13,6 +13,7 @@ phases:
     commands:
       - pip install truffleHog
       - pwd
+      - env
       - cd ..
       - ls -la $CWD/src
       - python /usr/local/lib/python3.6/site-packages/truffleHog/truffleHog.py file://$CWD/src
