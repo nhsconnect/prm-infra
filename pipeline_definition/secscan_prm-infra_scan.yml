@@ -23,5 +23,4 @@ phases:
       - git secrets --scan -r
       # Running Yelp detect-secrets
       - pip install detect-secrets
-      - find / | grep detect-secrets
-      - detect-secrets 
+      - detect-secrets --no-keyword-scan $CODEBUILD_SRC_DIR
