@@ -8,6 +8,8 @@ variable "apigw_endpoint_public" {}
 
 variable "apigw_integration_lambda_function_arn" {}
 
+variable "apigw_lambda_permission_function_name" {}
+
 variable "environment" {
   default = "dev"
 }

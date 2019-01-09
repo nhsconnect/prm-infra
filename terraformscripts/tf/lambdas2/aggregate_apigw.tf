@@ -21,4 +21,5 @@ module "apigw_resource" {
 
   apigw_integration_lambda_function_arn = "${module.apigw_lambda_ehr_extract_handler.lambda_function_arn}"
 
+  apigw_lambda_permission_function_name = "${module.apigw_lambda_ehr_extract_handler.lambda_function_name}"
 }

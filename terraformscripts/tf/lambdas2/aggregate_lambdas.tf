@@ -25,4 +25,3 @@ module "apigw_lambda_retrieve_status" {
   environment = "${var.environment}"
   lambda_name = "RetrieveStatus"
 }
-

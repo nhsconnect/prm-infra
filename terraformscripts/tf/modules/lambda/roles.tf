@@ -7,12 +7,12 @@ data "template_file" "handler_policy" {
 }
 
 resource "aws_iam_role_policy" "handler_policy" {
-  name_prefix = "${var.environment}-${var.lambda_name}-"
+  name = "${var.environment}-${var.lambda_name}"
   policy = "${data.template_file.handler_policy.rendered}"
   role = "${aws_iam_role.handler_role.id}"
 }
 
 resource "aws_iam_role" "handler_role" {
-  name_prefix = "${var.environment}-${var.lambda_name}-"
+  name = "${var.environment}-${var.lambda_name}"
   assume_role_policy = "${data.template_file.handler_role.rendered}"
 }
