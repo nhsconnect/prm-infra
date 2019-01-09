@@ -21,5 +21,7 @@ phases:
       - cd $TMPDIR; git clone https://github.com/awslabs/git-secrets.git; cd git-secrets; make install
       - cd $CODEBUILD_SRC_DIR; git secrets --install -f; git secrets --register-aws
       - git secrets --scan -r
-      # Running Talisman
-      - cd $TMPDIR; git clone https://github.com/thoughtworks/talisman.git; cd talisman; chmod +x install.sh; ./install.sh
+      # Running Yelp detect-secrets
+      - pip install detect-secrets
+      - find / | grep detect-secrets
+      - detect-secrets 
