@@ -18,5 +18,6 @@ phases:
       - pip install truffleHog
       - python /usr/local/lib/python3.6/site-packages/truffleHog/truffleHog.py --regex --entropy=False file://$CODEBUILD_SRC_DIR
       # Running git-secrets
-      - git clone https://github.com/awslabs/git-secrets.git
-      - cd git-secrets; make install; cd -
+      - cd ..; git clone https://github.com/awslabs/git-secrets.git
+      - cd git-secrets; make install; cd $CODEBUILD_SRC_DIR
+      - git secrets install
