@@ -6,3 +6,36 @@ module "apigw_lambda_ehr_extract_handler" {
 
   lambda_name = "EhrExtractHandler"
 }
+
+module "apigw_lambda_uptime_monitoring" {
+  source     = "../modules/lambda/"
+  aws_region = "${var.aws_region}"
+
+  environment = "${var.environment}"
+
+  lambda_name = "UptimeMonitoring"
+}
+
+module "apigw_lambda_retrieve_processed_ehr_extract" {
+  source     = "../modules/lambda/"
+  aws_region = "${var.aws_region}"
+
+  environment = "${var.environment}"
+
+  lambda_name = "RetrieveProcessedEhrExtract"
+}
+
+module "apigw_lambda_retrieve_status" {
+  source     = "../modules/lambda/"
+  aws_region = "${var.aws_region}"
+
+  environment = "${var.environment}"
+
+  lambda_name = "RetrieveStatus"
+}
+
+module "apigw_endpoint" {
+  source     = "../modules/apigw_endpoint/"
+  environment = "${var.environment}"
+  api_gateway_endpoint_name = "${var.api_gateway_endpoint_name}"
+}
