@@ -13,6 +13,6 @@ phases:
     commands:
       - pip install truffleHog
       - cd ..
-      - find / | grep truffleHog
+      - ls -la $CWD/src
       - python /usr/local/lib/python3.6/site-packages/truffleHog/truffleHog.py file://$CWD/src
       - echo $?
