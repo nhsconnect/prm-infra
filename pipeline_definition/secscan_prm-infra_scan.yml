@@ -12,4 +12,5 @@ phases:
     commands:
       - pip install truffleHog
       - cd ..
-      - env
+      - truffleHog file://$CWD/src
+      - echo $?
