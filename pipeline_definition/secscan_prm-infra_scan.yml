@@ -11,7 +11,7 @@ phases:
       - chmod a+x ./utils/*
   build:
     commands:
+      - git init; git add . -A; git commit -vm "Dummy commit to reinitialise the repo because of the GitHub integration"
       - pip install truffleHog
-      - git init
       - python /usr/local/lib/python3.6/site-packages/truffleHog/truffleHog.py file://$CODEBUILD_SRC_DIR
       - echo $?
