@@ -14,5 +14,5 @@ phases:
       - pip install truffleHog
       - cd ..
       - find / | grep truffleHog
-      - /usr/local/lib/python3.6/site-packages/truffleHog file://$CWD/src
+      - python /usr/local/lib/python3.6/site-packages/truffleHog/truffleHog.py file://$CWD/src
       - echo $?
