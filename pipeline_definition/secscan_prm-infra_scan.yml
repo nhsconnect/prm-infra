@@ -11,8 +11,11 @@ phases:
       - chmod a+x ./utils/*
   build:
     commands:
+      # Re-initialising the repo as a valid git history is needed by the following tools
       - git init; git config user.email "secscapipeline@example.com"; git config --global user.name "secscan pipeline" 
       - git add . -A; git commit -vm "Dummy commit to reinitialise the repo because of the GitHub integration"
+      # Running truffleHog 
       - pip install truffleHog
       - python /usr/local/lib/python3.6/site-packages/truffleHog/truffleHog.py --regex --entropy=False file://$CODEBUILD_SRC_DIR
-      - echo $?
+      # Running git-secrets
+      - git clone https://github.com/awslabs/git-secrets.git && $(cd git-secrets; make install)
