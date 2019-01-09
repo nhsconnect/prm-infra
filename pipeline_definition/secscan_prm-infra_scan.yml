@@ -5,6 +5,7 @@ phases:
     commands:
       - apt-get update
       - apt-get install -y jq zip unzip python-setuptools python-dev build-essential 
+      - pip install --upgrade pip
   pre_build:
     commands:
       - chmod a+x ./utils/*
