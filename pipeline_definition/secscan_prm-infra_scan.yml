@@ -14,5 +14,5 @@ phases:
       - git init; git config user.email "secscapipeline@example.com"; git config --global user.name "secscan pipeline" 
       - git add . -A; git commit -vm "Dummy commit to reinitialise the repo because of the GitHub integration"
       - pip install truffleHog
-      - python /usr/local/lib/python3.6/site-packages/truffleHog/truffleHog.py file://$CODEBUILD_SRC_DIR
+      - python /usr/local/lib/python3.6/site-packages/truffleHog/truffleHog.py --regex --entropy=False file://$CODEBUILD_SRC_DIR
       - echo $?
