@@ -1,8 +1,6 @@
 resource "aws_codepipeline" "prm-codebuild-pipeline" {
   # This lifecycle is here as it's needed to instruct Terraform not to get ruffled when the OAuthToken token differs from the explicited. A solution would be to implement some form  # of secret management and pass the OAuthToken secret down to the Terraform script as a paramenter.  # This lifecycle  statement also need to be commented out when making changes to the pipeline, as the AWS API consider the OAuthToken parameter being not optional.
 
-  #lifecycle {  #  ignore_changes = ["stage.0.action.0.configuration.OAuthToken", "stage.0.action.0.configuration.%"]  #}
-
   # Also, terraform fmt will clob the above comments. Enjoy!
 
   name     = "prm-codepipeline-pipeline"
@@ -114,52 +112,6 @@ resource "aws_codepipeline" "prm-codebuild-pipeline" {
 
       configuration {
         ProjectName = "${aws_codebuild_project.prm-codebuild-codepipeline-apply.name}"
-      }
-    }
-  }
-
-  stage {
-    name = "Build_Lambdas"
-
-    action {
-      name            = "Plan"
-      category        = "Test"
-      owner           = "AWS"
-      provider        = "CodeBuild"
-      version         = "1"
-      input_artifacts = ["source"]
-      run_order       = 1
-
-      configuration {
-        ProjectName = "${aws_codebuild_project.prm-codebuild-lambdas-plan.name}"
-      }
-    }
-
-    action {
-      name            = "Apply"
-      category        = "Build"
-      owner           = "AWS"
-      provider        = "CodeBuild"
-      version         = "1"
-      input_artifacts = ["source"]
-      run_order       = 2
-
-      configuration {
-        ProjectName = "${aws_codebuild_project.prm-codebuild-lambdas-apply.name}"
-      }
-    }
-
-    action {
-      name            = "Validate"
-      category        = "Test"
-      owner           = "AWS"
-      provider        = "CodeBuild"
-      version         = "1"
-      input_artifacts = ["source"]
-      run_order       = 3
-
-      configuration {
-        ProjectName = "${aws_codebuild_project.prm-codebuild-lambdas-validate.name}"
       }
     }
   }
