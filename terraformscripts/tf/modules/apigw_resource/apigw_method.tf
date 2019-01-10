@@ -8,15 +8,15 @@ resource "aws_api_gateway_method" "method" {
   }
 }
 
-resource "aws_api_gateway_resource" "resource_parent" {
-  rest_api_id = "${var.apigw_endpoint_id}"
-  parent_id = "${var.apigw_endpoint_root_resource_id}"
-  path_part = "${var.apigw_parent_path_part}"
-}
+#resource "aws_api_gateway_resource" "resource_parent" {
+#  rest_api_id = "${var.apigw_endpoint_id}"
+#  parent_id = "${var.apigw_endpoint_root_resource_id}"
+#  path_part = "${var.apigw_parent_path_part}"
+#}
 
 resource "aws_api_gateway_resource" "resource" {
   rest_api_id = "${var.apigw_endpoint_id}"
-  parent_id = "${aws_api_gateway_resource.resource_parent.id}"
+  parent_id = "${var.apigw_endpoint_root_resource_id}"
   path_part = "${var.apigw_path_part}"
 }
 
@@ -49,11 +49,11 @@ resource "aws_api_gateway_deployment" "deployment" {
   ]
 
   rest_api_id = "${var.apigw_endpoint_id}"
-  stage_name = ""
+  stage_name = "${var.environment}dep"
 }
 
 resource "aws_api_gateway_stage" "stage" {
-  stage_name = "${var.apigw_parent_path_part}"
+  stage_name = "${var.environment}"
   rest_api_id = "${var.apigw_endpoint_id}"
   deployment_id = "${aws_api_gateway_deployment.deployment.id}"
 
