@@ -15,6 +15,10 @@ variable "environment" {
 }
 
 variable "apigw_path_part" {
+  default = "{uuid}"
+}
+
+variable "apigw_parent_path_part" {
   default = "default_path"
 }
 
@@ -28,4 +32,8 @@ variable "apigw_method_authorisation" {
 
 variable "aws_region" {
   default = "eu-west-2"
+}
+
+variable "apigw_method_request_parameter" {
+  default = "method.request.path.param"
 }

@@ -3,11 +3,20 @@ resource "aws_api_gateway_method" "method" {
   resource_id = "${aws_api_gateway_resource.resource.id}"
   http_method = "${var.apigw_method_http_method}"
   authorization = "${var.apigw_method_authorisation}"
+  request_parameters {
+    "method.request.path.uuid" = true
+  }
+}
+
+resource "aws_api_gateway_resource" "resource_parent" {
+  rest_api_id = "${var.apigw_endpoint_id}"
+  parent_id = "${var.apigw_endpoint_root_resource_id}"
+  path_part = "${var.apigw_parent_path_part}"
 }
 
 resource "aws_api_gateway_resource" "resource" {
   rest_api_id = "${var.apigw_endpoint_id}"
-  parent_id = "${var.apigw_endpoint_root_resource_id}"
+  parent_id = "${aws_api_gateway_resource.resource_parent.id}"
   path_part = "${var.apigw_path_part}"
 }
 
@@ -44,7 +53,7 @@ resource "aws_api_gateway_deployment" "deployment" {
 }
 
 resource "aws_api_gateway_stage" "stage" {
-  stage_name = "${var.environment}"
+  stage_name = "${var.apigw_parent_path_part}"
   rest_api_id = "${var.apigw_endpoint_id}"
   deployment_id = "${aws_api_gateway_deployment.deployment.id}"
 
