@@ -1,11 +1,11 @@
 variable "environment" {
-    default = "dev"
+  default = "dev"
 }
 
 variable "api_gateway_endpoint_name" {
-    default = "EndpointName"
+  default = "EndpointName"
 }
 
 variable "aws_region" {
-    default = "eu-west-2"
+  default = "eu-west-2"
 }

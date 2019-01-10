@@ -9,7 +9,3 @@ variable "environment" {
 variable "api_gateway_endpoint_name" {
   default = "EhrExtractHandlerApi"
 }
-
-variable "ehr_extract_handler_name" {
-  default = "EhrExtractHandler"
-}

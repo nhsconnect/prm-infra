@@ -1,5 +1,3 @@
-data "aws_caller_identity" "current" {}
-
 resource "aws_lambda_permission" "permission" {
   statement_id  = "AllowExecutionFromAPIGateway"
   action        = "lambda:InvokeFunction"

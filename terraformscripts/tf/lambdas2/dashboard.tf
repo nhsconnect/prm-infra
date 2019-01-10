@@ -1,5 +1,5 @@
 resource "aws_cloudwatch_dashboard" "PRM-team-dashboard" {
-  dashboard_name = "PRM-team-dashboard"
+  dashboard_name = "PRM-team-dashboard-${var.environment}"
 
   dashboard_body = <<EOF
  {
@@ -14,12 +14,12 @@ resource "aws_cloudwatch_dashboard" "PRM-team-dashboard" {
                 "view": "timeSeries",
                 "stacked": false,
                 "metrics": [
-                    [ "AWS/ApiGateway", "Count", "ApiName", "EhrExtractHandlerApi" ]
+                    [ "AWS/ApiGateway", "Count", "ApiName", "${var.environment}-EhrExtractHandlerApi" ]
                 ],
                 "period": 300,
                 "stat": "Average",
-                "region": "eu-west-2",
-                "title": "EhrExtractHandlerCount"
+                "region": "${var.aws_region}",
+                "title": "${var.environment}-EhrExtractHandlerCount"
             }
         },
         {
@@ -32,12 +32,12 @@ resource "aws_cloudwatch_dashboard" "PRM-team-dashboard" {
                 "view": "timeSeries",
                 "stacked": false,
                 "metrics": [
-                    [ "AWS/ApiGateway", "Latency", "ApiName", "EhrExtractHandlerApi" ]
+                    [ "AWS/ApiGateway", "Latency", "ApiName", "${var.environment}-EhrExtractHandlerApi" ]
                 ],
                 "period": 300,
                 "stat": "Average",
-                "region": "eu-west-2",
-                "title": "EhrExtractHandlerLatency"
+                "region": "${var.aws_region}",
+                "title": "${var.environment}-EhrExtractHandlerLatency"
             }
         },
         {
@@ -50,13 +50,13 @@ resource "aws_cloudwatch_dashboard" "PRM-team-dashboard" {
                 "view": "timeSeries",
                 "stacked": false,
                 "metrics": [
-                    [ "AWS/ApiGateway", "5XXError", "ApiName", "EhrExtractHandlerApi" ],
+                    [ "AWS/ApiGateway", "5XXError", "ApiName", "${var.environment}-EhrExtractHandlerApi" ],
                     [ ".", "4XXError", ".", "." ]
                 ],
                 "period": 300,
                 "stat": "Average",
-                "region": "eu-west-2",
-                "title": "EhrExtractHanderErrors"
+                "region": "${var.aws_region}",
+                "title": "${var.environment}-EhrExtractHanderErrors"
             }
         },
         {
@@ -73,7 +73,7 @@ resource "aws_cloudwatch_dashboard" "PRM-team-dashboard" {
                 ],
                 "period": 300,
                 "stat": "Average",
-                "region": "eu-west-2",
+                "region": "${var.aws_region}",
                 "title": "ApiLogsMonitor"
             }
         },
@@ -89,7 +89,7 @@ resource "aws_cloudwatch_dashboard" "PRM-team-dashboard" {
                 "metrics": [
                     [ "AWS/DynamoDB", "SuccessfulRequestLatency", "TableName", "PROCESS_STORAGE", "Operation", "PutItem" ]
                 ],
-                "region": "eu-west-2",
+                "region": "${var.aws_region}",
                 "title": "DynamoDBWriteOperations"
             }
         }
