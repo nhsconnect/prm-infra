@@ -250,12 +250,12 @@ pip-selfcheck.json
 ### Terragrunt ###
 **/.terragrunt-cache/*
 
-# .tfstate files
+# Terraform .tfstate files
 **.tfstate
 **.tfstate.*
 
-# root level terrform.tfvars
-#terraform.tfvars
+# Terraform output files
+**/terraform.output
 
 # Crash log files
 crash.log

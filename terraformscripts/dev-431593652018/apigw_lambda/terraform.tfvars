@@ -8,7 +8,7 @@ terragrunt = {
   # Terragrunt will copy the Terraform configurations specified by the source parameter, along with any files in the
   # working directory, into a temporary folder, and execute your Terraform commands in that folder.
   terraform {
-    source = "../..//tf/opentest"
+    source = "../..//tf/apigw_lambda"
   }
 
   iam_role = "arn:aws:iam::431593652018:role/PASTASLOTHVULGAR"
@@ -17,24 +17,18 @@ terragrunt = {
     paths = ["../network"]
   }
 
-
   # Include all settings from the root terraform.tfvars.old.old file
   #include = {
   #  path = "${find_in_parent_folders()}"
   # }
 
   extra_arguments "conditional_vars" {
+
     commands = [
       "validate",
       "plan",
       "apply"
     ]
-
-
-  # optional_var_files = [
-  #     "${get_tfvars_dir()}/test.tfvars"
-  #  ]
-
 
   #  arguments = [
   #    "-var",
@@ -46,7 +40,7 @@ terragrunt = {
     backend = "s3"
     config {
       bucket = "prm-431593652018-terraform-states"
-      key = "dev/opentest/terraform.tfstate"
+      key = "dev/apigw_lambda/terraform.tfstate"
       region = "eu-west-2"
       encrypt = true
     }
@@ -61,9 +55,4 @@ terragrunt = {
 aws_region = "eu-west-2"
 environment = "dev"
 
-opentest-assets-bucket = "prm-431593652018-opentest-assets"
-
-#Variables defined here seems to always take precedence over environment and optional_var_files defined vars. We need to understand this better.
-#vpc_id = "vpc-8f3aaae7"
-#vpc_subnet_private_ids = "subnet-c41e84ad,subnet-d547e1af,subnet-eb9763a7"
-
+prm-application-source-bucket = "prm-431593652018-codebuild-lambda-artifact"

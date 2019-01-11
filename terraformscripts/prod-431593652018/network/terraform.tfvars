@@ -1,4 +1,3 @@
-# ---------------------------------------------------------------------------------------------------------------------
 # TERRAGRUNT CONFIGURATION
 # This is the configuration for Terragrunt, a thin wrapper for Terraform that supports locking and enforces best
 # practices: https://github.com/gruntwork-io/terragrunt
@@ -8,14 +7,15 @@ terragrunt = {
   # Terragrunt will copy the Terraform configurations specified by the source parameter, along with any files in the
   # working directory, into a temporary folder, and execute your Terraform commands in that folder.
   terraform {
-    source = "../..//tf/lambdas2"
+    source = "../..//tf/network"
   }
 
   iam_role = "arn:aws:iam::431593652018:role/PASTASLOTHVULGAR"
 
   dependencies {
-    paths = ["../network"]
+    paths = []
   }
+
 
   # Include all settings from the root terraform.tfvars.old.old file
   #include = {
@@ -40,7 +40,7 @@ terragrunt = {
     backend = "s3"
     config {
       bucket = "prm-431593652018-terraform-states"
-      key = "prod/lambdas2/terraform.tfstate"
+      key = "prod/network/terraform.tfstate"
       region = "eu-west-2"
       encrypt = true
     }
@@ -54,5 +54,3 @@ terragrunt = {
 
 aws_region = "eu-west-2"
 environment = "prod"
-
-prm-application-source-bucket = "prm-application-source"

@@ -8,7 +8,7 @@ terragrunt = {
   # Terragrunt will copy the Terraform configurations specified by the source parameter, along with any files in the
   # working directory, into a temporary folder, and execute your Terraform commands in that folder.
   terraform {
-    source = "../..//tf/lambdas2"
+    source = "../..//tf/lambdas-legacy-code"
   }
 
   iam_role = "arn:aws:iam::431593652018:role/PASTASLOTHVULGAR"
@@ -40,7 +40,7 @@ terragrunt = {
     backend = "s3"
     config {
       bucket = "prm-431593652018-terraform-states"
-      key = "dev/lambdas2/terraform.tfstate"
+      key = "dev/lambdas-legacy-code/terraform.tfstate"
       region = "eu-west-2"
       encrypt = true
     }
