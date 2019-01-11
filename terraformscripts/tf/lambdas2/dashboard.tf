@@ -14,7 +14,7 @@ resource "aws_cloudwatch_dashboard" "PRM-team-dashboard" {
                 "view": "timeSeries",
                 "stacked": false,
                 "metrics": [
-                    [ "AWS/ApiGateway", "Count", "ApiName", "${var.environment}-EhrExtractHandlerApi" ]
+                    [ "AWS/ApiGateway", "Count", "ApiName", "${var.environment}-${var.api_gateway_endpoint_name}" ]
                 ],
                 "period": 300,
                 "stat": "Average",
@@ -32,7 +32,7 @@ resource "aws_cloudwatch_dashboard" "PRM-team-dashboard" {
                 "view": "timeSeries",
                 "stacked": false,
                 "metrics": [
-                    [ "AWS/ApiGateway", "Latency", "ApiName", "${var.environment}-EhrExtractHandlerApi" ]
+                    [ "AWS/ApiGateway", "Latency", "ApiName", "${var.environment}-${var.api_gateway_endpoint_name}" ]
                 ],
                 "period": 300,
                 "stat": "Average",
@@ -50,7 +50,7 @@ resource "aws_cloudwatch_dashboard" "PRM-team-dashboard" {
                 "view": "timeSeries",
                 "stacked": false,
                 "metrics": [
-                    [ "AWS/ApiGateway", "5XXError", "ApiName", "${var.environment}-EhrExtractHandlerApi" ],
+                    [ "AWS/ApiGateway", "5XXError", "ApiName", "${var.environment}-${var.api_gateway_endpoint_name}" ],
                     [ ".", "4XXError", ".", "." ]
                 ],
                 "period": 300,
@@ -69,7 +69,7 @@ resource "aws_cloudwatch_dashboard" "PRM-team-dashboard" {
                 "view": "timeSeries",
                 "stacked": false,
                 "metrics": [
-                    [ "AWS/Logs", "IncomingLogEvents", "LogGroupName", "API-Gateway-Execution-Logs_j4dbzo021j/dev" ]
+                    [ "AWS/Logs", "IncomingLogEvents", "LogGroupName", "API-Gateway-Execution-Logs_${module.apigw_endpoint.apigw_endpoint_id}/${var.environment}" ]
                 ],
                 "period": 300,
                 "stat": "Average",

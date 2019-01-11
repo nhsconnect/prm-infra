@@ -42,6 +42,7 @@ resource "aws_api_gateway_deployment" "deployment" {
 }
 
 # This would be useful but seems to introduce other convergence problems
+# This is needed for creating a Cloudwatch log group for the API
 #resource "aws_api_gateway_method_settings" "method_settings" {
 #  depends_on  = ["aws_api_gateway_deployment.deployment"]
 #  rest_api_id = "${var.apigw_endpoint_id}"
