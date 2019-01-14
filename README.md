@@ -40,8 +40,22 @@ Caveat: make sure that your .terraform directory is empty or deleted when you ru
 
 Type **yes** to build the infrastructure 
 
-## Additional
-This code base is mirrored @ https://github.com/nhsconnect/prm-infra
+### Adding an environment
+
+1. Decide your environment name eg. live
+2. Decide on the AWS account the environment is being deployed to eg. 1234567
+3. Copy and paste terraformscripts/dev-431593652018 and rename appropriately eg. live-1234567
+4. As a minimum you should leave the follwoing folders:
+- apigw_lambda
+- network
+- opentest
+Depending on what you want to setup/what functionality is required of the environment you may need the others.
+5. Create secret in EC2 Parameter Key Store (based on /NHS/dev-431593652018/tf/opentest/ec2_keypair)
+6. Run the following commands:
+```console
+cd utils
+./create-environment.sh {env_name} {account_number}
+```
 
 ## Known Problems
 ### Help! Im getting....
