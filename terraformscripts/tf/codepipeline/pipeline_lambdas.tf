@@ -45,6 +45,19 @@ resource "aws_codepipeline" "lambda-pipeline" {
         ProjectName = "${aws_codebuild_project.prm-test-ehr-extract-lambda.name}"
       }
     }
+
+    action {
+      name            = "Test-Retrieve-Status"
+      category        = "Test"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      version         = "1"
+      input_artifacts = ["source"]
+
+      configuration {
+        ProjectName = "${aws_codebuild_project.prm-test-retrieve-status-lambda.name}"
+      }
+    }
   }
 
   stage {
