@@ -33,3 +33,19 @@ module "apigw_lambda_retrieve_status" {
   #vpc_id      = "${var.vpc_id}"
   #vpc_cidr    = "${var.vpc_cidr}"
 }
+resource "aws_dynamodb_table" "basic-dynamodb-table" {
+  name           = "PROCESS_STORAGE"
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 1
+  write_capacity = 1
+  hash_key       = "PROCESS_ID"
+
+ attribute = {
+    name = "PROCESS_ID"
+    type = "S"
+  }
+  
+  server_side_encryption {
+    enabled = true
+  }
+}
