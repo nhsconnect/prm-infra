@@ -53,6 +53,24 @@ resource "aws_codepipeline" "prm-codebuild-pipeline" {
   }
 
   stage {
+    name = "Scan_prm-infra_repo"
+
+    action {
+      name            = "Plan"
+      category        = "Test"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      version         = "1"
+      input_artifacts = ["source"]
+      run_order       = 1
+
+      configuration {
+        ProjectName = "${aws_codebuild_project.prm-secscan-prm-infra-scan.name}"
+      }
+    }
+  }
+
+  stage {
     name = "Build_Assume_role"
 
     action {
