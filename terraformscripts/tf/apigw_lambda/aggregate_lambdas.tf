@@ -33,6 +33,15 @@ module "apigw_lambda_retrieve_status" {
   #vpc_id      = "${var.vpc_id}"
   #vpc_cidr    = "${var.vpc_cidr}"
 }
+
+module "apigw_lambda_translator" {
+  source      = "../modules/lambda/"
+  aws_region  = "${var.aws_region}"
+  environment = "${var.environment}"
+  lambda_name = "Translator"
+  #vpc_id      = "${var.vpc_id}"
+  #vpc_cidr    = "${var.vpc_cidr}"
+}
 resource "aws_dynamodb_table" "basic-dynamodb-table" {
   name           = "PROCESS_STORAGE"
   billing_mode   = "PROVISIONED"
@@ -44,7 +53,6 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
     name = "PROCESS_ID"
     type = "S"
   }
-  
   server_side_encryption {
     enabled = true
   }
