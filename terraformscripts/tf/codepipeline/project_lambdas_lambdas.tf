@@ -178,6 +178,29 @@ resource "aws_codebuild_project" "prm-build-retrieve-processed-ehr-extract-lambd
   }
 }
 
+resource "aws_codebuild_project" "prm-build-translator-lambda" {
+  name          = "prm-build-translator-lambda"
+  description   = "Builds Translator"
+  build_timeout = "5"
+
+  service_role = "${aws_iam_role.codebuild-project-generic-role.arn}"
+
+  artifacts {
+    type = "CODEPIPELINE"
+  }
+
+  environment {
+    compute_type = "BUILD_GENERAL1_SMALL"
+    image        = "aws/codebuild/python:3.6.5"
+    type         = "LINUX_CONTAINER"
+  }
+
+  source {
+    type      = "CODEPIPELINE"
+    buildspec = "./lambda/translator/build_deploy.yml"
+  }
+}
+
 resource "aws_codebuild_project" "prm-test-e2e-lambda" {
   name         = "prm-test-e2e-lambda"
   description  = "e2e Tests lambdas"
@@ -198,3 +221,4 @@ resource "aws_codebuild_project" "prm-test-e2e-lambda" {
     buildspec = "./e2e/test.yml"
   }
 }
+

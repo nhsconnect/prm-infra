@@ -176,6 +176,19 @@ resource "aws_codepipeline" "lambda-pipeline" {
         ProjectName = "${aws_codebuild_project.prm-build-retrieve-processed-ehr-extract-lambda.name}"
       }
     }
+
+    action {
+      name            = "Build-Translator"
+      category        = "Build"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      version         = "1"
+      input_artifacts = ["source"]
+
+      configuration {
+        ProjectName = "${aws_codebuild_project.prm-build-translator-lambda.name}"
+      }
+    }
   }
 
   stage {
