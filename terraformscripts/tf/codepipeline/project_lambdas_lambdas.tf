@@ -87,6 +87,28 @@ resource "aws_codebuild_project" "prm-test-retrieve-processed-ehr-extract-lambda
   }
 }
 
+resource "aws_codebuild_project" "prm-test-translator-lambda" {
+  name        = "prm-test-translator-lambda"
+  description = "Tests Translator"
+
+  service_role = "${aws_iam_role.codebuild-project-generic-role.arn}"
+
+  artifacts {
+    type = "CODEPIPELINE"
+  }
+
+  environment {
+    compute_type = "BUILD_GENERAL1_SMALL"
+    image        = "aws/codebuild/nodejs:8.11.0"
+    type         = "LINUX_CONTAINER"
+  }
+
+  source {
+    type      = "CODEPIPELINE"
+    buildspec = "./lambda/translator/test.yml"
+  }
+}
+
 resource "aws_codebuild_project" "prm-build-ehr-extract-lambda" {
   name          = "prm-build-ehr-extract-lambda"
   description   = "Builds EhrExtract"
