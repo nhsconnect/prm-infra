@@ -57,6 +57,25 @@ cd utils
 ./create-environment.sh {env_name} {account_number}
 ```
 
+### Security tokens
+
+You will need to manage security tokens for the following:
+- Github
+- OpenTest
+
+#### Managing GitHub
+You gitub token is necessary to connect AWS CodePipeline to the Github Repositories
+
+It is stored in AWS EC2 Parameter Store
+
+The key will have the account and the environment name in and will look like:
+`/NHS/dev-431593652018/tf/codepipeline/github-token` 
+where `dev` is the environment and `431593652018` is the account.
+
+You simply need to change the value in the affected key, or create a new key with that naming convention when setting up a new environment.
+
+See [GitHubs documentation](https://help.github.com/articles/connecting-to-github-with-ssh/) for a step by step guide on setting up SSH keys.
+
 ## Known Problems
 ### Help! Im getting....
 #### [ERROR] Error updating CodePipeline (xxxxxxx): InvalidActionDeclarationException: Action configuration for action 'XXXXXX' is missing required configuration 'OAuthToken'
