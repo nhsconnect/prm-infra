@@ -42,6 +42,16 @@ module "apigw_lambda_translator" {
   #vpc_id      = "${var.vpc_id}"
   #vpc_cidr    = "${var.vpc_cidr}"
 }
+
+resource "aws_lambda_permission" "allow_cloudwatch_to_call_uptime_monitoring_lambda" {
+  statement_id  = "AllowExecutionFromCloudWatch"
+  action        = "lambda:InvokeFunction"
+  function_name = "${module.apigw_lambda_uptime_monitoring.lambda_function_name}"
+  principal     = "events.amazonaws.com"
+  source_arn    = "${aws_cloudwatch_event_rule.every_min_rule.arn}"
+}
+
+
 resource "aws_dynamodb_table" "basic-dynamodb-table" {
   name           = "PROCESS_STORAGE"
   billing_mode   = "PROVISIONED"
