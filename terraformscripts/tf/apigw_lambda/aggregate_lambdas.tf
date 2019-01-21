@@ -58,6 +58,8 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
   read_capacity  = 1
   write_capacity = 1
   hash_key       = "PROCESS_ID"
+  stream_enabled = true
+  stream_view_type = "NEW_IMAGE"
 
  attribute = {
     name = "PROCESS_ID"
@@ -66,4 +68,10 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
   server_side_encryption {
     enabled = true
   }
+}
+
+resource "aws_lambda_event_source_mapping" "translator-subscription" {
+  event_source_arn  = "${aws_dynamodb_table.basic-dynamodb-table.stream_arn}"
+  function_name     = "${module.apigw_lambda_translator.lambda_function_arn}"
+  starting_position = "LATEST"
 }
