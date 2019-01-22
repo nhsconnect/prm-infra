@@ -1,5 +1,10 @@
 resource "aws_codepipeline" "lambda-pipeline" {
-  #lifecycle {  #  ignore_changes = [  #    "stage.0.action.0.configuration.OAuthToken",  #    "stage.0.action.0.configuration.%",  #  ]  #}
+  lifecycle {  
+   ignore_changes = [  
+     "stage.0.action.0.configuration.OAuthToken",  
+     "stage.0.action.0.configuration.%",  
+   ]  
+  }
 
   name     = "prm-lambda-pipeline"
   role_arn = "${aws_iam_role.codepipeline-generic-role.arn}"
