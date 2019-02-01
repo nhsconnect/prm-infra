@@ -1,22 +1,28 @@
-const Url = require("url");
 const request = require("request-promise-native");
 const errors = require("request-promise-native/errors");
+const fs = require("fs")
+const path = require("path")
 
-const PRM_URL = new Url.URL(process.env.PRM_ENDPOINT);
+const PRIVATE_KEY_DATA = process.env.PRIVATE_KEY_DATA;
+const CERT_DATA = fs.readFileSync(path.resolve(__dirname, "cert.pem"))
+const REQUEST_DATA = fs.readFileSync(path.resolve(__dirname, "test-request.xml"))
 
-test("That PRM tells us when we use the wrong endpoint", async () => {
-  expect.assertions(2);
+test("That PDS responds to a valid request", async () => {
   try {
-    await request.post(`${PRM_URL.origin}/bleh`);
+    const options = {
+      url: 'https://192.168.128.11/smsp/pds',
+      cert: CERT_DATA,
+      key: PRIVATE_KEY_DATA,
+      body: REQUEST_DATA,
+      headers: {
+        "Content-Type": "text/xml",
+        "SOAPAction": "urn:nhs-itk:services:201005:getNHSNumber-v1-0"
+      }
+    };
+
+    await request.post(options);
   } catch (e) {
-    expect(e.statusCode).toBe(403);
+    expect(e.statusCode).toBe(200);
     expect(e instanceof errors.StatusCodeError).toBeTruthy();
   }
-});
-
-test("That PRM tells us that it is, broadly speaking, working", async () => {
-  const response = await request.post(`${PRM_URL.origin}/dev`, {
-    resolveWithFullResponse: true
-  });
-  expect(response.statusCode).toBe(200);
 });
