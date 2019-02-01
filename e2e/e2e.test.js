@@ -7,22 +7,26 @@ const PRIVATE_KEY_DATA = process.env.PRIVATE_KEY_DATA;
 const CERT_DATA = fs.readFileSync(path.resolve(__dirname, "cert.pem"))
 const REQUEST_DATA = fs.readFileSync(path.resolve(__dirname, "test-request.xml"))
 
-test("That PDS responds to a valid request", async () => {
-  try {
-    const options = {
-      url: 'https://192.168.128.11/smsp/pds',
-      cert: CERT_DATA,
-      key: PRIVATE_KEY_DATA,
-      body: REQUEST_DATA,
-      headers: {
-        "Content-Type": "text/xml",
-        "SOAPAction": "urn:nhs-itk:services:201005:getNHSNumber-v1-0"
-      }
-    };
+test("That PDS responds to a valid request", () => {
+  expect.assertions(1);  
 
-    await request.post(options);
-  } catch (e) {
-    expect(e.statusCode).toBe(200);
-    expect(e instanceof errors.StatusCodeError).toBeTruthy();
-  }
+  const options = {
+    method: 'POST',
+    url: 'https://172.217.23.3/smsp/pds',
+    cert: CERT_DATA,
+    key: PRIVATE_KEY_DATA,
+    body: REQUEST_DATA,
+    headers: {
+      "Content-Type": "text/xml",
+      "SOAPAction": "urn:nhs-itk:services:201005:getNHSNumber-v1-0"
+    },
+    timeout: 2000
+  };
+
+  request(options)
+    .then(function (body) {
+      expect(body.statusCode).toBe(200);
+    }).catch(function (err) {
+      console.log(err.message);
+    });
 });
