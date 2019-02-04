@@ -21,3 +21,7 @@ output "vpc_subnet_private_ids" {
 output "vpc_subnet_private_cidrs" {
   value = "${join(",", module.network.private_subnets_cidr_blocks)}"
 }
+
+output "vpc_egress_all_security_group" {
+  value = "${aws_security_group.egress_all_security_group.id}"
+}
