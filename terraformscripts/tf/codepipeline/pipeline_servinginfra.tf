@@ -165,7 +165,7 @@ resource "aws_codepipeline" "prm-servinginfra-pipeline" {
     }
 
     action {
-      name            = "Apply"
+      name            = "Update_Test_Project"
       category        = "Build"
       owner           = "AWS"
       provider        = "CodeBuild"
