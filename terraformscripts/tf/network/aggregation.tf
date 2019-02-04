@@ -32,20 +32,20 @@ module "network" {
 }
 
 resource "aws_security_group" "egress_all_security_group" {
-  name = "${var.environment}-egress-all"
+  name        = "${var.environment}-egress-all"
   description = "Allow outgoing traffic to anywhere"
-  vpc_id = "${module.network.vpc_id}"
+  vpc_id      = "${module.network.vpc_id}"
 
   egress {
-    from_port = 0
-    to_port = 0
-    protocol = "-1"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
   tags = {
-    Name = "${var.environment}-egress-all"
+    Name        = "${var.environment}-egress-all"
     Environment = "${var.environment}"
-    Component = "network"
+    Component   = "network"
   }
 }
