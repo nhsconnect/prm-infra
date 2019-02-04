@@ -12,7 +12,7 @@ test("That PDS responds to a valid request", () => {
 
   const options = {
     method: 'POST',
-    url: 'https://172.217.23.3/smsp/pds',
+    url: 'https://192.168.128.11/smsp/pds',
     cert: CERT_DATA,
     key: PRIVATE_KEY_DATA,
     body: REQUEST_DATA,
