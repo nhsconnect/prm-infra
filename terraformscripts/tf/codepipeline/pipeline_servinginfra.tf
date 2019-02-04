@@ -1,8 +1,8 @@
 resource "aws_codepipeline" "prm-servinginfra-pipeline" {
   lifecycle {  
    ignore_changes = [
-     "stage.0.action.0.configuration.OAuthToken", 
-     "stage.0.action.0.configuration.%"
+     #"stage.0.action.0.configuration.OAuthToken", 
+     #"stage.0.action.0.configuration.%"
    ]  
   }
 
@@ -39,7 +39,7 @@ resource "aws_codepipeline" "prm-servinginfra-pipeline" {
     name = "Scan_prm-infra_repo"
 
     action {
-      name            = "Plan"
+      name            = "Scan"
       category        = "Test"
       owner           = "AWS"
       provider        = "CodeBuild"
@@ -73,20 +73,6 @@ resource "aws_codepipeline" "prm-servinginfra-pipeline" {
     name = "Build_Network"
 
     action {
-      name            = "Plan"
-      category        = "Test"
-      owner           = "AWS"
-      provider        = "CodeBuild"
-      version         = "1"
-      input_artifacts = ["source"]
-      run_order       = 1
-
-      configuration {
-        ProjectName = "${aws_codebuild_project.prm-servinginfra-network-plan.name}"
-      }
-    }
-
-    action {
       name            = "Apply"
       category        = "Build"
       owner           = "AWS"
@@ -105,20 +91,6 @@ resource "aws_codepipeline" "prm-servinginfra-pipeline" {
     name = "Build_Opentest"
 
     action {
-      name            = "Plan"
-      category        = "Test"
-      owner           = "AWS"
-      provider        = "CodeBuild"
-      version         = "1"
-      input_artifacts = ["source"]
-      run_order       = 1
-
-      configuration {
-        ProjectName = "${aws_codebuild_project.prm-servinginfra-opentest-plan.name}"
-      }
-    }
-
-    action {
       name            = "Apply"
       category        = "Build"
       owner           = "AWS"
@@ -135,20 +107,6 @@ resource "aws_codepipeline" "prm-servinginfra-pipeline" {
 
   stage {
     name = "Build_Lambdas"
-
-    action {
-      name            = "Plan"
-      category        = "Test"
-      owner           = "AWS"
-      provider        = "CodeBuild"
-      version         = "1"
-      input_artifacts = ["source"]
-      run_order       = 1
-
-      configuration {
-        ProjectName = "${aws_codebuild_project.prm-servinginfra-lambdas-plan.name}"
-      }
-    }
 
     action {
       name            = "Apply"
