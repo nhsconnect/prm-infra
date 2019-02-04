@@ -1,8 +1,8 @@
 resource "aws_codepipeline" "prm-servinginfra-pipeline" {
   lifecycle {  
    ignore_changes = [
-     "stage.0.action.0.configuration.OAuthToken", 
-     "stage.0.action.0.configuration.%"
+     #"stage.0.action.0.configuration.OAuthToken", 
+     #"stage.0.action.0.configuration.%"
    ]  
   }
 
@@ -171,12 +171,13 @@ resource "aws_codepipeline" "prm-servinginfra-pipeline" {
       provider        = "CodeBuild"
       version         = "1"
       input_artifacts = ["source"]
-      run_order       = 2
+      run_order       = 3
 
       configuration {
         ProjectName = "${aws_codebuild_project.prm-servinginfra-update-test-project.name}"
       }
     }
+
     action {
       name            = "Test"
       category        = "Test"
@@ -184,7 +185,7 @@ resource "aws_codepipeline" "prm-servinginfra-pipeline" {
       provider        = "CodeBuild"
       version         = "1"
       input_artifacts = ["source"]
-      run_order       = 3
+      run_order       = 4
 
       configuration {
         ProjectName = "${aws_codebuild_project.prm-servinginfra-lambdas-test.name}"
