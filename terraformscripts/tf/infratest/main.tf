@@ -26,7 +26,7 @@ resource "aws_codebuild_project" "prm-servinginfra-lambdas-test" {
   vpc_config {
       vpc_id = "${var.vpc_id}"
 
-      subnets = ["${split(",", var.vpc_subnet_private_ids)}"]
+      subnets = ["${slice(split(",", var.vpc_subnet_private_ids), 0, 2)}"]
 
       security_group_ids = ["${var.vpc_egress_all_security_group}"]
   }
