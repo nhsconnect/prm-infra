@@ -62,7 +62,7 @@ resource "aws_codebuild_project" "prm-servinginfra-update-test-project" {
 
   source {
     type      = "CODEPIPELINE"
-    buildspec = "./pipeline_definition/opentest_update_testproject.yml"
+    buildspec = "./pipeline_definition/opentest_update_test_project.yml"
   }
 }
 
