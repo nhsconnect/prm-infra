@@ -41,7 +41,7 @@
       "Action": [
         "ec2:CreateNetworkInterfacePermission"
       ],
-      "Resource": "arn:aws:ec2:${var.aws_region}:${data.aws_caller_identity.current.account_id}:network-interface/*",
+      "Resource": "arn:aws:ec2:${AWS_REGION}:${AWS_ACCOUNT_ID}:network-interface/*",
       "Condition": {
         "StringEquals": {
           "ec2:AuthorizedService": "codebuild.amazonaws.com"

@@ -49,5 +49,7 @@ data "template_file" "codepipeline-generic-policy" {
     PRM_CODEBUILD_ARTIFACT_BUCKET        = "${aws_s3_bucket.prm-codebuild-artifact.arn}"
     PRM_CODEBUILD_LAMBDA_ARTIFACT_BUCKET = "${aws_s3_bucket.prm-codebuild-lambda-artifact.arn}"
     PRM_APPLICATION_SOURCE_BUCKET        = "arn:aws:s3:::${var.prm-application-source-bucket}"
+    AWS_REGION                           = "${var.aws_region}"
+    AWS_ACCOUNT_ID                       = "${data.aws_caller_identity.current.account_id}"
   }
 }
