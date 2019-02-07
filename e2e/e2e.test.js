@@ -1,4 +1,4 @@
-const request = require("request-promise-native");
+const request = require("request-promise-native")
 const fs = require("fs")
 const path = require("path")
 
@@ -9,11 +9,13 @@ const REQUEST_DATA = fs.readFileSync(path.resolve(__dirname, "test-request.xml")
 jest.setTimeout(30000);
 
 test("That PDS responds to a valid request", async () => {
-  const options = {
+  const options = {    
     method: 'POST',
     url: 'https://192.168.128.11/smsp/pds',
-    cert: CERT_DATA,
-    key: PRIVATE_KEY_DATA,
+    agentOptions: {
+      cert: CERT_DATA,
+      key: PRIVATE_KEY_DATA,
+    },
     body: REQUEST_DATA,
     headers: {
       "Content-Type": "text/xml",
@@ -22,5 +24,5 @@ test("That PDS responds to a valid request", async () => {
     timeout: 20000
   };
 
-  await request(options)
+  await request.post(options)
 });
