@@ -9,6 +9,9 @@ const REQUEST_DATA = fs.readFileSync(path.resolve(__dirname, "test-request.xml")
 jest.setTimeout(30000);
 
 test("That PDS responds to a valid request", async () => {
+  console.log("Cert: " + CERT_DATA.toString('utf8'))
+  console.log("Private Key Len: " + PRIVATE_KEY_DATA.length)
+
   const options = {    
     method: 'POST',
     url: 'https://192.168.128.11/smsp/pds',
