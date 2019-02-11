@@ -108,19 +108,19 @@ resource "aws_codepipeline" "prm-servinginfra-pipeline" {
   stage {
     name = "Build_Lambdas"
 
-    # action {
-    #   name            = "Apply"
-    #   category        = "Build"
-    #   owner           = "AWS"
-    #   provider        = "CodeBuild"
-    #   version         = "1"
-    #   input_artifacts = ["source"]
-    #   run_order       = 2
+    action {
+      name            = "Apply"
+      category        = "Build"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      version         = "1"
+      input_artifacts = ["source"]
+      run_order       = 2
 
-    #   configuration {
-    #     ProjectName = "${aws_codebuild_project.prm-servinginfra-lambdas-apply.name}"
-    #   }
-    # }
+      configuration {
+        ProjectName = "${aws_codebuild_project.prm-servinginfra-lambdas-apply.name}"
+      }
+    }
 
     action {
       name            = "Update_Test_Project"

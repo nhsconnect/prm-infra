@@ -17,11 +17,3 @@ variable "lambda_runtime" {
 variable "lambda_handler" {
   default = "main.handler"
 }
-
-variable "vpc_id" {
-  default = "vpc-8f3aaae7"
-}
-
-variable "vpc_cidr" {
-  default = "172.31.0.0/16"
-}
