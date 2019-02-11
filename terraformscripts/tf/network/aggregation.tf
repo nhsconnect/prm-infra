@@ -25,6 +25,8 @@ module "network" {
   enable_dns_hostnames = true
   enable_dns_support   = true
 
+  enable_dynamodb_endpoint = true
+
   tags = {
     Environment = "${var.environment}"
     Component   = "network"

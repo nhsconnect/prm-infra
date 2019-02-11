@@ -15,5 +15,4 @@ phases:
       - export PRIVATE_KEY_DATA="$(aws ssm get-parameter --with-decryption --name  /NHS/dev-431593652018/tf/codepipeline/client_private_key | jq -r '.Parameter.Value')"
       - cd ./e2e/
       - npm install
-      - export NODE_TLS_REJECT_UNAUTHORIZED=0
       - npm test

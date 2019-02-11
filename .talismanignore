@@ -1,1 +1,4 @@
 package-lock.json
+e2e/ca.pem
+e2e/cert.pem
+e2e/test-request.xml
