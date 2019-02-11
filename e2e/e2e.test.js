@@ -7,7 +7,7 @@ const CERT_DATA = fs.readFileSync(path.resolve(__dirname, "cert.pem"))
 const CA_DATA = fs.readFileSync(path.resolve(__dirname, "ca.pem"))
 const REQUEST_DATA = fs.readFileSync(path.resolve(__dirname, "test-request.xml"))
 
-jest.setTimeout(8000);
+jest.setTimeout(20000);
 
 test("That PDS responds to a valid request", async () => {
   console.log("Cert: " + CERT_DATA.toString('utf8'))
@@ -29,5 +29,21 @@ test("That PDS responds to a valid request", async () => {
     timeout: 5000
   };
 
-  await request.post(options)
+  let error = null
+  let i = 0
+
+  for (; i < 3; ++i) {
+    try {
+      console.log("Trying to call PDS: " + i)
+      await request.post(options)
+
+      break
+    } catch (err) {
+      error = err
+    }
+  }
+
+  if (i == 3) {
+    fail("failed to call PDS (*3) " + error)
+  }
 });
