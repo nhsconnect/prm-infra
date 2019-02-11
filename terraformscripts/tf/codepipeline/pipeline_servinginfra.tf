@@ -53,21 +53,21 @@ resource "aws_codepipeline" "prm-servinginfra-pipeline" {
     }
   }
 
-  stage {
-    name = "Approve_Infra_Provisioning"
+  # stage {
+  #   name = "Approve_Infra_Provisioning"
 
-    action {
-      name     = "Approve_Infra_Provisioning"
-      category = "Approval"
-      owner    = "AWS"
-      provider = "Manual"
-      version  = "1"
+  #   action {
+  #     name     = "Approve_Infra_Provisioning"
+  #     category = "Approval"
+  #     owner    = "AWS"
+  #     provider = "Manual"
+  #     version  = "1"
 
-      configuration {
-        CustomData = "Approve_Infra_Provisioning"
-      }
-    }
-  }
+  #     configuration {
+  #       CustomData = "Approve_Infra_Provisioning"
+  #     }
+  #   }
+  # }
 
   stage {
     name = "Build_Network"
@@ -108,19 +108,19 @@ resource "aws_codepipeline" "prm-servinginfra-pipeline" {
   stage {
     name = "Build_Lambdas"
 
-    action {
-      name            = "Apply"
-      category        = "Build"
-      owner           = "AWS"
-      provider        = "CodeBuild"
-      version         = "1"
-      input_artifacts = ["source"]
-      run_order       = 2
+    # action {
+    #   name            = "Apply"
+    #   category        = "Build"
+    #   owner           = "AWS"
+    #   provider        = "CodeBuild"
+    #   version         = "1"
+    #   input_artifacts = ["source"]
+    #   run_order       = 2
 
-      configuration {
-        ProjectName = "${aws_codebuild_project.prm-servinginfra-lambdas-apply.name}"
-      }
-    }
+    #   configuration {
+    #     ProjectName = "${aws_codebuild_project.prm-servinginfra-lambdas-apply.name}"
+    #   }
+    # }
 
     action {
       name            = "Update_Test_Project"
