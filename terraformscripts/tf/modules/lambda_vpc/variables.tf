@@ -29,3 +29,8 @@ variable "vpc_cidr" {
 variable "private_subnet_ids" {
    description = "A comma-separated list of subnet IDs associated with the Lambda function."
 }
+
+variable "lambda_environment_variables" {
+  type = "map"
+  default = {}
+}

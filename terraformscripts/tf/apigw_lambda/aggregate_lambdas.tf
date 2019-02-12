@@ -26,6 +26,8 @@ module "apigw_lambda_retrieve_status" {
   lambda_name = "RetrieveStatus"
 }
 
+data "aws_caller_identity" "current" {}
+
 module "apigw_lambda_translator" {
   source      = "../modules/lambda_vpc/"
   aws_region  = "${var.aws_region}"
@@ -34,6 +36,9 @@ module "apigw_lambda_translator" {
   vpc_id      = "${var.vpc_id}"
   vpc_cidr    = "${var.vpc_cidr}"
   private_subnet_ids = "${var.vpc_subnet_private_ids}"
+  lambda_environment_variables = {
+    PDS_PRIVATE_KEY_SSM_PARAM_NAME = "/NHS/${var.environment}-${data.aws_caller_identity.current.account_id}/lambda/${var.environment}-Translator/pds_private_key.pem"
+  }
 }
 
 resource "aws_lambda_permission" "allow_cloudwatch_to_call_uptime_monitoring_lambda" {

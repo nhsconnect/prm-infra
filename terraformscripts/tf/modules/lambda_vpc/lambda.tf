@@ -9,4 +9,8 @@ resource "aws_lambda_function" "handler" {
     subnet_ids  = ["${split(",", var.private_subnet_ids)}"]
     security_group_ids = ["${aws_security_group.allowopentest.id}"]
   }
+
+  environment {
+    variables = "${var.lambda_environment_variables}"
+  }
 }
