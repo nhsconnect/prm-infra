@@ -3,8 +3,8 @@ version: 0.2
 phases:
   pre_build:
     commands:
-    - export TF_WARN_OUTPUT_ERRORS=true
+    - chmod 755 ./packages/modules/opentest/bouncerw
   build:
     commands:
     - cd ./env/${ENVIRONMENT}-${ACCOUNT_ID} 
-    - terragrunt apply-all --terragrunt-non-interactive
+    - terragrunt apply-all --terragrunt-non-interactive -no-color
