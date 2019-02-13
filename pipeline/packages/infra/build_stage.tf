@@ -35,6 +35,12 @@ data "aws_iam_policy_document" "build_role_policy" {
       actions = ["s3:*"]
       resources = ["*"]
   }
+
+  statement {
+      effect = "Allow"
+      actions = ["sts:AssumeRole"]
+      resources = ["${var.iam_role}"]
+  }
 }
 
 resource "aws_iam_role_policy" "build_role_policy" {

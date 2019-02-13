@@ -9,3 +9,7 @@ variable "environment" {
 variable "github_token" {
   description = "The github token to use for authenticating"
 }
+
+variable "iam_role" {
+  description = "The IAM role to use for provisioning"
+}
