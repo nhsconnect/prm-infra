@@ -5,3 +5,7 @@ variable "aws_region" {
 variable "environment" {
   description = "The name of the environment being deployed"
 }
+
+variable "github_token" {
+  description = "The github token to use for authenticating"
+}

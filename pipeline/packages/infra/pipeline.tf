@@ -27,8 +27,10 @@ data "aws_iam_policy_document" "pipeline_role_policy" {
     effect = "Allow"
 
     actions = [
+      "s3:DeleteObject",
       "s3:GetObject",
-      "s3:GetObjectVersion",
+      "s3:PutObject",
+      "s3:PutObjectAcl",
     ]
 
     resources = ["${aws_s3_bucket.artifacts.arn}/*"]
@@ -38,6 +40,7 @@ data "aws_iam_policy_document" "pipeline_role_policy" {
     effect = "Allow"
 
     actions = [
+      "s3:ListBucket",
       "s3:GetBucketVersioning",
     ]
 
@@ -86,7 +89,8 @@ resource "aws_codepipeline" "pipeline" {
       configuration {
         Owner  = "nhsconnect"
         Repo   = "prm-infra"
-        Branch = "master"
+        Branch = "prm-new-infra"
+        OAuthToken = "${var.github_token}"
       }
     }
   }
@@ -101,10 +105,10 @@ resource "aws_codepipeline" "pipeline" {
       provider        = "CodeBuild"
       version         = "1"
       input_artifacts = ["source"]
-    }
 
-    configuration {
-      ProjectName = "${aws_codebuild_project.build.name}"
+      configuration {
+        ProjectName = "${aws_codebuild_project.build.name}"
+      }
     }
   }
 }
