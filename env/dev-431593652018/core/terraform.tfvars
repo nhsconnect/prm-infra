@@ -9,6 +9,14 @@ terragrunt = {
     paths = []
   }
 
+  extra_arguments "no_color" {
+    arguments = [
+      "-no-color"
+    ]
+    commands = [
+      "init",
+    ]
+  }
 
   remote_state {
     backend = "s3"
