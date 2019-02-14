@@ -25,3 +25,7 @@ output "vpc_subnet_private_cidrs" {
 output "vpc_egress_all_security_group" {
   value = "${aws_security_group.egress_all_security_group.id}"
 }
+
+output "vpc_availability_zones" {
+  value = "${join(",", var.availability_zones)}"
+}

@@ -5,3 +5,7 @@ variable "aws_region" {
 variable "environment" {
   default = "eu-west-2"
 }
+
+variable "availability_zones" {
+  type = "list"
+}
