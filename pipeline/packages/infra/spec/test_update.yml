@@ -1,0 +1,6 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+    - aws codebuild update-project --name prm-infra-test-${ENVIRONMENT} --vpc-config vpcId=${VPC_CONFIG}

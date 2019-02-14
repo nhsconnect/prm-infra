@@ -1,14 +1,4 @@
-data "aws_iam_policy_document" "codebuild_assume" {
-  statement {
-    effect  = "Allow"
-    actions = ["sts:AssumeRole"]
-
-    principals {
-      type        = "Service"
-      identifiers = ["codebuild.amazonaws.com"]
-    }
-  }
-}
+# Setup permissions for action
 
 resource "aws_iam_role" "build_role" {
   name               = "infra-pipeline-build-${var.environment}"
@@ -31,9 +21,13 @@ data "aws_iam_policy_document" "build_role_policy" {
   }
 
   statement {
-      effect = "Allow"
-      actions = ["s3:*"]
-      resources = ["*"]
+    effect = "Allow"
+
+    actions = [
+      "s3:GetObject",
+    ]
+
+    resources = ["${aws_s3_bucket.artifacts.arn}/*"]
   }
 
   statement {
@@ -49,14 +43,15 @@ resource "aws_iam_role_policy" "build_role_policy" {
   policy = "${data.aws_iam_policy_document.build_role_policy.json}"
 }
 
-data "aws_caller_identity" "current" {}
+# Create the CodeBuild project for the action
 
 resource "aws_codebuild_project" "build" {
-  name        = "prm-infra-build"
+  name        = "prm-infra-build-${var.environment}"
   description = "Build the infrastructure"
 
   source {
     type = "CODEPIPELINE"
+    buildspec = "./pipeline/packages/infra/spec/build.yml"
   }
 
   artifacts {

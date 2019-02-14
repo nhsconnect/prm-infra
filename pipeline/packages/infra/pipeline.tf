@@ -55,7 +55,11 @@ data "aws_iam_policy_document" "pipeline_role_policy" {
       "codebuild:StartBuild",
     ]
 
-    resources = ["${aws_codebuild_project.build.arn}"]
+    resources = [
+      "${aws_codebuild_project.build.arn}",
+      "${aws_codebuild_project.test_update.arn}",
+      "${aws_codebuild_project.test.arn}",
+    ]
   }
 }
 
@@ -108,6 +112,38 @@ resource "aws_codepipeline" "pipeline" {
 
       configuration {
         ProjectName = "${aws_codebuild_project.build.name}"
+      }
+    }
+  }
+
+  stage {
+    name = "test"
+
+    action {
+      name = "Update_Test_Build"
+      category = "Test"
+      owner = "AWS"
+      provider = "CodeBuild"
+      version = "1"
+      input_artifacts = ["source"]
+      run_order = 1
+
+      configuration {
+        ProjectName = "${aws_codebuild_project.test_update.name}"
+      }
+    }
+
+    action {
+      name = "Test"
+      category = "Test"
+      owner = "AWS"
+      provider = "CodeBuild"
+      version = "1"
+      input_artifacts = ["source"]
+      run_order = 2
+
+      configuration {
+        ProjectName = "${aws_codebuild_project.test.name}"
       }
     }
   }

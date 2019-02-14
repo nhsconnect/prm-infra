@@ -1,0 +1,12 @@
+version: 0.2
+
+env:
+  parameter-store:
+    PRIVATE_KEY_DATA: /NHS/${ENVIRONMENT}-${ACCOUNT_ID}/tf/codepipeline/client_private_key
+
+phases:
+  build:
+    commands:
+      - cd ./e2e/
+      - npm install
+      - npm test
