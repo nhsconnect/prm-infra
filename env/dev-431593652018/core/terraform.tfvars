@@ -36,6 +36,6 @@ terragrunt = {
 
 aws_region = "eu-west-2"
 environment = "dev"
-availability_zones = ["eu-west-2a", "eu-west-2b", "eu-west-2c"]
+availability_zones = ["eu-west-2a"]
 opentest_assets_bucket = "prm-431593652018-opentest-assets"
 secrets_bucket = "dfkjhdsjkgsdfjgkjsfdkgjfsdnkjgsdf"

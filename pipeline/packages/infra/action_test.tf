@@ -1,4 +1,3 @@
-
 # Setup permission for action
 
 resource "aws_iam_role" "test_role" {
@@ -35,11 +34,11 @@ data "aws_iam_policy_document" "test_role_policy" {
     effect = "Allow"
 
     actions = [
-      "ssm:GetParameters"
+      "ssm:GetParameters",
     ]
 
     resources = [
-      "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter/NHS/${var.environment}-${data.aws_caller_identity.current.account_id}/tf/codepipeline/*"
+      "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter/NHS/${var.environment}-${data.aws_caller_identity.current.account_id}/tf/codepipeline/*",
     ]
   }
 }
@@ -56,7 +55,7 @@ resource "aws_codebuild_project" "test" {
   description = "Test the infrastructure"
 
   source {
-    type = "CODEPIPELINE"
+    type      = "CODEPIPELINE"
     buildspec = "./pipeline/packages/infra/spec/test.yml"
   }
 

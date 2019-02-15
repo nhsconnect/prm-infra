@@ -34,11 +34,11 @@ data "aws_iam_policy_document" "test_update_role_policy" {
     effect = "Allow"
 
     actions = [
-      "codebuild:UpdateProject"
+      "codebuild:UpdateProject",
     ]
 
     resources = [
-      "arn:aws:codebuild:${var.aws_region}:${data.aws_caller_identity.current.account_id}:project/prm-infra-test-${var.environment}"
+      "arn:aws:codebuild:${var.aws_region}:${data.aws_caller_identity.current.account_id}:project/prm-infra-test-${var.environment}",
     ]
   }
 }
@@ -56,7 +56,7 @@ resource "aws_codebuild_project" "test_update" {
   description = "Update the test project with VPC details"
 
   source {
-    type = "CODEPIPELINE"
+    type      = "CODEPIPELINE"
     buildspec = "./pipeline/packages/infra/spec/test_update.yml"
   }
 

@@ -31,9 +31,9 @@ data "aws_iam_policy_document" "build_role_policy" {
   }
 
   statement {
-      effect = "Allow"
-      actions = ["sts:AssumeRole"]
-      resources = ["${var.iam_role}"]
+    effect    = "Allow"
+    actions   = ["sts:AssumeRole"]
+    resources = ["${var.iam_role}"]
   }
 }
 
@@ -50,7 +50,7 @@ resource "aws_codebuild_project" "build" {
   description = "Build the infrastructure"
 
   source {
-    type = "CODEPIPELINE"
+    type      = "CODEPIPELINE"
     buildspec = "./pipeline/packages/infra/spec/build.yml"
   }
 
