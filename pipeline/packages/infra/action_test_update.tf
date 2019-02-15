@@ -49,7 +49,7 @@ data "aws_iam_policy_document" "test_update_role_policy" {
       "ec2:DescribeVpcs",
       "ec2:DescribeSubnets",
       "ec2:DescribeSecurityGroups",
-      "ec2:CreateSecurityGroup"
+      "ec2:CreateSecurityGroup",
     ]
 
     resources = ["*"]

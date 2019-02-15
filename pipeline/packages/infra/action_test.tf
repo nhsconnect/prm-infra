@@ -41,6 +41,23 @@ data "aws_iam_policy_document" "test_role_policy" {
       "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter/NHS/${var.environment}-${data.aws_caller_identity.current.account_id}/tf/codepipeline/*",
     ]
   }
+
+  statement {
+    effect = "Allow"
+
+    actions = [
+      "ec2:CreateNetworkInterface",
+      "ec2:CreateNetworkInterfacePermission",
+      "ec2:DescribeDhcpOptions",
+      "ec2:DescribeNetworkInterfaces",
+      "ec2:DeleteNetworkInterface",
+      "ec2:DescribeSubnets",
+      "ec2:DescribeSecurityGroups",
+      "ec2:DescribeVpcs",
+    ]
+
+    resources = ["*"]
+  }
 }
 
 resource "aws_iam_role_policy" "test_role_policy" {
@@ -69,6 +86,16 @@ resource "aws_codebuild_project" "test" {
     compute_type = "BUILD_GENERAL1_SMALL"
     image        = "aws/codebuild/nodejs:8.11.0"
     type         = "LINUX_CONTAINER"
+
+    environment_variable {
+      name  = "ENVIRONMENT"
+      value = "${var.environment}"
+    }
+
+    environment_variable {
+      name = "ACCOUNT_ID"
+      value = "${data.aws_caller_identity.current.account_id}"
+    }
   }
 
   tags {
