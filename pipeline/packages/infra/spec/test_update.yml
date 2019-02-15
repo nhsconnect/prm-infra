@@ -1,12 +1,10 @@
 version: 0.2
 
 phases:
-  pre_build:
+  build:
     commands:
     - export VPC_ID=$(aws ec2 describe-vpcs --filters Name=tag:Name,Values=prm-${ENVIRONMENT} --query 'Vpcs[0].VpcId' --output text)
     - export PRIVATE_SUBNET=$(aws ec2 describe-subnets --filter Name=vpc-id,Values=${VPC_ID},Name=tag:Name,Values=prm-${ENVIRONMENT}-private-subnet --query Subnets[].[SubnetId,AvailabilityZone] --output text | sort -k2 | head -n1 | cut -f1)
     - chmod +x ./pipeline/packages/infra/scripts/get-sg.sh
     - export SECURITY_GROUP=$(./pipeline/packages/infra/scripts/get-sg.sh)
-  build:
-    commands:
     - aws codebuild update-project --name prm-infra-test-${ENVIRONMENT} --vpc-config vpcId=${VPC_ID},subnets=${PRIVATE_SUBNET},securityGroupIds=${SECURITY_GROUP}
