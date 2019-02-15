@@ -41,6 +41,19 @@ data "aws_iam_policy_document" "test_update_role_policy" {
       "arn:aws:codebuild:${var.aws_region}:${data.aws_caller_identity.current.account_id}:project/prm-infra-test-${var.environment}",
     ]
   }
+
+  statement {
+    effect = "Allow"
+
+    actions = [
+      "ec2:DescribeVpcs",
+      "ec2:DescribeSubnets",
+      "ec2:DescribeSecurityGroups",
+      "ec2:CreateSecurityGroup"
+    ]
+
+    resources = ["*"]
+  }
 }
 
 resource "aws_iam_role_policy" "test_update_role_policy" {
