@@ -6,8 +6,8 @@ variable "environment" {
   description = "The name of the environment being deployed"
 }
 
-variable "github_token" {
-  description = "The github token to use for authenticating"
+variable "github_token_name" {
+  description = "The name of the  SSM parameter containing the github token to use for authenticating"
 }
 
 variable "iam_role" {

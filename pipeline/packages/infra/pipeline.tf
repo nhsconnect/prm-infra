@@ -70,6 +70,10 @@ resource "aws_iam_role_policy" "pipeline_role_policy" {
 }
 
 # Pipeline
+data "aws_ssm_parameter" "github_token" {
+  name = "${var.github_token_name}"
+}
+
 resource "aws_codepipeline" "pipeline" {
   name     = "prm-infra-${var.environment}"
   role_arn = "${aws_iam_role.pipeline_role.arn}"
@@ -94,7 +98,7 @@ resource "aws_codepipeline" "pipeline" {
         Owner      = "nhsconnect"
         Repo       = "prm-infra"
         Branch     = "prm-new-infra"
-        OAuthToken = "${var.github_token}"
+        OAuthToken = "${data.aws_ssm_parameter.github_token.value}"
       }
     }
   }

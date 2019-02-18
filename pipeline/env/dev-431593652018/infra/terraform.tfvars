@@ -29,3 +29,4 @@ terragrunt = {
 aws_region = "eu-west-2"
 environment = "dev"
 iam_role = "arn:aws:iam::431593652018:role/PASTASLOTHVULGAR"
+github_token_name = "/NHS/dev-431593652018/tf/codepipeline/github-token"
