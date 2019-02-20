@@ -1,6 +1,6 @@
 FROM debian:stretch-slim
 
-RUN apt-get update && apt-get install -y wget jq unzip python2.7 curl && \
+RUN apt-get update && apt-get install -y wget jq unzip python2.7 curl awscli && \
   ln -s $(which python2.7) /usr/bin/python && \
   wget -q https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_amd64.zip && \
   unzip terraform_0.11.10_linux_amd64.zip -d /bin && \
