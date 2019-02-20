@@ -1,9 +1,9 @@
 resource "aws_codepipeline" "prm-servinginfra-pipeline" {
   lifecycle {
-    ignore_changes = []
-
-    #"stage.0.action.0.configuration.OAuthToken", 
-    #"stage.0.action.0.configuration.%"
+    ignore_changes = [
+      "stage.0.action.0.configuration.OAuthToken",
+      "stage.0.action.0.configuration.%",
+    ]
   }
 
   name     = "prm-servinginfra-pipeline"
