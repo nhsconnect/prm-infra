@@ -6,7 +6,8 @@
         "Action": [
           "s3:*",
           "logs:*",
-          "iam:*"
+          "iam:*",
+          "ecr:*"
         ],
         "Resource": "*"
       },
