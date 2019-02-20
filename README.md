@@ -11,7 +11,9 @@ The environment is provisioned using the [Terragrunt](https://github.com/gruntwo
 The pipeline is provided in the `pipeline` directory, the desired infrastructure code in the root.  Within each of these is an directory `env/<env-name>-<account-name>` which provides the Terragrunt configuration for the environment and a `package` directory that contains the non-environment specific code.
 
 ```
-└── env
+└── e2e
+    ├── *.js
+    env
     ├── <env-name>-<account-name>
     |   └── <package-name>
     |       └── terraform.tfvars
