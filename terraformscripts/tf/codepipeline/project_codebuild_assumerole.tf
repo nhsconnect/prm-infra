@@ -12,7 +12,7 @@ resource "aws_codebuild_project" "prm-codebuild-assume-role-plan" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image        = "aws/codebuild/python:3.6.5"
+    image        = "431593652018.dkr.ecr.eu-west-2.amazonaws.com/codebuild/terraform:latest"
     type         = "LINUX_CONTAINER"
   }
 
@@ -34,7 +34,7 @@ resource "aws_codebuild_project" "prm-codebuild-assume-role-apply" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image        = "aws/codebuild/python:3.6.5"
+    image        = "431593652018.dkr.ecr.eu-west-2.amazonaws.com/codebuild/terraform:latest"
     type         = "LINUX_CONTAINER"
   }
 
