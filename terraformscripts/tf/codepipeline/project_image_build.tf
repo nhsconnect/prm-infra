@@ -1,3 +1,7 @@
+resource "aws_ecr_repository" "terraform-image" {
+    name = "codebuild/terraform"
+}
+
 resource "aws_codebuild_project" "prm-build-terraform-image" {
   name          = "prm-build-terraform-image"
   description   = "Builds terraform image"
@@ -27,7 +31,7 @@ resource "aws_codebuild_project" "prm-build-terraform-image" {
 
     environment_variable {
       name  = "IMAGE_REPO_NAME"
-      value = "codebuild/terraform"
+      value = "${aws_ecr_repository.terraform-image.name}"
     }
 
     environment_variable {
