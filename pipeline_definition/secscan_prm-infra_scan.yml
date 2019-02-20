@@ -1,26 +1,16 @@
 version: 0.2
 
 phases:
-  install:
-    commands:
-      - apt-get update
-      - apt-get install -y jq zip unzip python-setuptools python-dev build-essential 
-      - pip install --upgrade pip
-  pre_build:
-    commands:
-      - chmod a+x ./utils/*
   build:
     commands:
+      - cd $CODEBUILD_SRC_DIR
       # Re-initialising the repo as a valid git history is needed by the following tools
       - git init; git config user.email "secscapipeline@example.com"; git config user.name "secscan pipeline" 
       - git add . -A; git commit -vm "Dummy commit to reinitialise the repo because of the GitHub integration"
       # Running truffleHog 
-      - pip install truffleHog
-      - python /usr/local/lib/python3.6/site-packages/truffleHog/truffleHog.py --regex --entropy=False file://$CODEBUILD_SRC_DIR
+      - trufflehog --regex --entropy=False --max_depth=100 file://$CODEBUILD_SRC_DIR
       # Running git-secrets
-      - cd $TMPDIR; git clone https://github.com/awslabs/git-secrets.git; cd git-secrets; make install
-      - cd $CODEBUILD_SRC_DIR; git secrets --install -f; git secrets --register-aws
+      - git secrets --install -f; git secrets --register-aws
       - git secrets --scan -r
       # Running Yelp detect-secrets
-      - pip install detect-secrets
       - detect-secrets scan --no-keyword-scan $CODEBUILD_SRC_DIR
