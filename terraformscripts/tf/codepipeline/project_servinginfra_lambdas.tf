@@ -56,7 +56,7 @@ resource "aws_codebuild_project" "prm-servinginfra-lambdas-test" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image        = "aws/codebuild/nodejs:8.11.0"
+    image        = "431593652018.dkr.ecr.eu-west-2.amazonaws.com/codebuild/node:latest"
     type         = "LINUX_CONTAINER"
   }
 

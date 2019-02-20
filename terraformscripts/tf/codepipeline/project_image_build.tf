@@ -2,6 +2,59 @@ resource "aws_ecr_repository" "terraform-image" {
     name = "codebuild/terraform"
 }
 
+resource "aws_ecr_lifecycle_policy" "terraform-image" {
+  repository = "${aws_ecr_repository.terraform-image.name}"
+
+  policy = <<EOF
+{
+    "rules": [
+        {
+            "rulePriority": 1,
+            "description": "Expire images older than 1 days",
+            "selection": {
+                "tagStatus": "untagged",
+                "countType": "sinceImagePushed",
+                "countUnit": "days",
+                "countNumber": 1
+            },
+            "action": {
+                "type": "expire"
+            }
+        }
+    ]
+}
+EOF
+}
+
+resource "aws_ecr_repository_policy" "terraform-image" {
+    repository = "${aws_ecr_repository.terraform-image.name}"
+
+    policy = <<EOF
+{
+  "Version": "2008-10-17",
+  "Statement": [
+    {
+      "Sid": "CodeBuildAccess",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::431593652018:root",
+        "Service": "codebuild.amazonaws.com"
+      },
+      "Action": [
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:BatchGetImage",
+        "ecr:DescribeImages",
+        "ecr:DescribeRepositories",
+        "ecr:GetDownloadUrlForLayer",
+        "ecr:GetRepositoryPolicy",
+        "ecr:ListImages"
+      ]
+    }
+  ]
+}    
+EOF
+}
+
 resource "aws_codebuild_project" "prm-build-terraform-image" {
   name          = "prm-build-terraform-image"
   description   = "Builds terraform image"
@@ -53,6 +106,59 @@ resource "aws_codebuild_project" "prm-build-terraform-image" {
 
 resource "aws_ecr_repository" "node-image" {
     name = "codebuild/node"
+}
+
+resource "aws_ecr_lifecycle_policy" "node-image" {
+  repository = "${aws_ecr_repository.node-image.name}"
+
+  policy = <<EOF
+{
+    "rules": [
+        {
+            "rulePriority": 1,
+            "description": "Expire images older than 1 days",
+            "selection": {
+                "tagStatus": "untagged",
+                "countType": "sinceImagePushed",
+                "countUnit": "days",
+                "countNumber": 1
+            },
+            "action": {
+                "type": "expire"
+            }
+        }
+    ]
+}
+EOF
+}
+
+resource "aws_ecr_repository_policy" "node-image" {
+    repository = "${aws_ecr_repository.node-image.name}"
+
+    policy = <<EOF
+{
+  "Version": "2008-10-17",
+  "Statement": [
+    {
+      "Sid": "CodeBuildAccess",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::431593652018:root",
+        "Service": "codebuild.amazonaws.com"
+      },
+      "Action": [
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:BatchGetImage",
+        "ecr:DescribeImages",
+        "ecr:DescribeRepositories",
+        "ecr:GetDownloadUrlForLayer",
+        "ecr:GetRepositoryPolicy",
+        "ecr:ListImages"
+      ]
+    }
+  ]
+}    
+EOF
 }
 
 resource "aws_codebuild_project" "prm-build-node-image" {
