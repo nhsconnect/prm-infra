@@ -35,7 +35,8 @@ test("That PDS responds to a valid request", async () => {
   for (; i < 3; ++i) {
     try {
       console.log("Trying to call PDS: " + i)
-      await request.post(options)
+      let response = await request.post(options)
+      console.log(response)
 
       break
     } catch (err) {
