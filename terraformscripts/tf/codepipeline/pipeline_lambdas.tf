@@ -1,9 +1,9 @@
 resource "aws_codepipeline" "lambda-pipeline" {
-  lifecycle {  
-   ignore_changes = [  
-     "stage.0.action.0.configuration.OAuthToken",  
-     "stage.0.action.0.configuration.%",  
-   ]  
+  lifecycle {
+    ignore_changes = [
+      "stage.0.action.0.configuration.OAuthToken",
+      "stage.0.action.0.configuration.%",
+    ]
   }
 
   name     = "prm-lambda-pipeline"
@@ -45,6 +45,7 @@ resource "aws_codepipeline" "lambda-pipeline" {
       provider        = "CodeBuild"
       version         = "1"
       input_artifacts = ["source"]
+
       #run_order       = 1
 
       configuration {
@@ -63,6 +64,7 @@ resource "aws_codepipeline" "lambda-pipeline" {
       provider        = "CodeBuild"
       version         = "1"
       input_artifacts = ["source"]
+
       #run_order       = 1
 
       configuration {

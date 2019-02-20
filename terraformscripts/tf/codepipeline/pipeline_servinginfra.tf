@@ -1,9 +1,9 @@
 resource "aws_codepipeline" "prm-servinginfra-pipeline" {
-  lifecycle {  
-   ignore_changes = [
-     #"stage.0.action.0.configuration.OAuthToken", 
-     #"stage.0.action.0.configuration.%"
-   ]  
+  lifecycle {
+    ignore_changes = []
+
+    #"stage.0.action.0.configuration.OAuthToken", 
+    #"stage.0.action.0.configuration.%"
   }
 
   name     = "prm-servinginfra-pipeline"
@@ -56,12 +56,14 @@ resource "aws_codepipeline" "prm-servinginfra-pipeline" {
   # stage {
   #   name = "Approve_Infra_Provisioning"
 
+
   #   action {
   #     name     = "Approve_Infra_Provisioning"
   #     category = "Approval"
   #     owner    = "AWS"
   #     provider = "Manual"
   #     version  = "1"
+
 
   #     configuration {
   #       CustomData = "Approve_Infra_Provisioning"
@@ -86,7 +88,6 @@ resource "aws_codepipeline" "prm-servinginfra-pipeline" {
       }
     }
   }
-
   stage {
     name = "Build_Opentest"
 
@@ -104,7 +105,6 @@ resource "aws_codepipeline" "prm-servinginfra-pipeline" {
       }
     }
   }
-
   stage {
     name = "Build_Lambdas"
 
@@ -150,7 +150,6 @@ resource "aws_codepipeline" "prm-servinginfra-pipeline" {
       }
     }
   }
-
   stage {
     name = "Approve_Infra_Destruction"
 
@@ -166,7 +165,6 @@ resource "aws_codepipeline" "prm-servinginfra-pipeline" {
       }
     }
   }
-
   stage {
     name = "Destroy_Opentest"
 
@@ -184,7 +182,6 @@ resource "aws_codepipeline" "prm-servinginfra-pipeline" {
       }
     }
   }
-
   stage {
     name = "Destroy_Lambdas"
 
@@ -202,7 +199,6 @@ resource "aws_codepipeline" "prm-servinginfra-pipeline" {
       }
     }
   }
-
   stage {
     name = "Destroy_Network"
 

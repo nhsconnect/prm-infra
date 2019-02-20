@@ -221,4 +221,3 @@ resource "aws_codebuild_project" "prm-test-e2e-lambda" {
     buildspec = "./e2e/test.yml"
   }
 }
-
