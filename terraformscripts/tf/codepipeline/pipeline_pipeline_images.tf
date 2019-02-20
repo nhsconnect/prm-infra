@@ -50,5 +50,18 @@ resource "aws_codepipeline" "images-pipeline" {
         ProjectName = "${aws_codebuild_project.prm-build-terraform-image.name}"
       }
     }
+      
+    action {
+      name            = "Build-node-image"
+      category        = "Build"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      version         = "1"
+      input_artifacts = ["source"]
+
+      configuration {
+        ProjectName = "${aws_codebuild_project.prm-build-node-image.name}"
+      }
+    }
   }
 }
