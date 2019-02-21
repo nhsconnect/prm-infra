@@ -1,4 +1,4 @@
-resource "aws_codepipeline" "prm-infra-sec-scan" {
+resource "aws_codepipeline" "prm-migrator-sec-scan" {
   #   lifecycle {
   #   ignore_changes = [
   #     "stage.0.action.0.configuration.OAuthToken",
@@ -6,7 +6,7 @@ resource "aws_codepipeline" "prm-infra-sec-scan" {
   #   ]
   # }
 
-  name     = "prm-infra-sec-scan"
+  name     = "prm-migrator-sec-scan"
   role_arn = "${aws_iam_role.codepipeline-generic-role.arn}"
 
   artifact_store {
@@ -27,16 +27,15 @@ resource "aws_codepipeline" "prm-infra-sec-scan" {
 
       configuration {
         Owner                = "nhsconnect"
-        Repo                 = "prm-infra"
+        Repo                 = "prm-migrator"
         Branch               = "master"
         OAuthToken           = "${var.github_token}"
         PollForSourceChanges = "true"
       }
     }
   }
-
   stage {
-    name = "Scan-prm-infra-repo"
+    name = "Scan-prm-migrator-repo"
 
     action {
       name            = "Scan"
@@ -45,10 +44,9 @@ resource "aws_codepipeline" "prm-infra-sec-scan" {
       provider        = "CodeBuild"
       version         = "1"
       input_artifacts = ["source"]
-      run_order       = 1
 
       configuration {
-        ProjectName = "${aws_codebuild_project.prm-secscan-prm-infra-scan.name}"
+        ProjectName = "${aws_codebuild_project.prm-secscan-prm-migrator-scan.name}"
       }
     }
   }
