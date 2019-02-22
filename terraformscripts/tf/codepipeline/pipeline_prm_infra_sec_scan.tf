@@ -57,7 +57,6 @@ resource "aws_cloudwatch_event_rule" "every_five_minutes_rule" {
   name                = "every-five-minutes"
   description         = "Fires every five minutes"
   schedule_expression = "rate(5 minutes)"
-  role_arn            = "${aws_iam_role.cloudwatch-pipeline-role.arn}"
 }
 
 resource "aws_cloudwatch_event_target" "every_five_minutes_event_target" {
@@ -65,7 +64,6 @@ resource "aws_cloudwatch_event_target" "every_five_minutes_event_target" {
   arn  = "${aws_codepipeline.prm-infra-sec-scan.arn}"
   role_arn = "${aws_iam_role.cloudwatch-pipeline-role.arn}"
 }
-
 
 resource "aws_iam_role" "cloudwatch-pipeline-role" {
   name               = "cloudwatch-pipeline-role"
