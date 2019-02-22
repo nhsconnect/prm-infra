@@ -67,7 +67,7 @@ resource "aws_cloudwatch_event_target" "every_five_minutes_event_target" {
 
 resource "aws_iam_role" "cloudwatch-pipeline-role" {
   name               = "cloudwatch-pipeline-role"
-  assume_role_policy = "${data.template_file.cloudwatch-pipeline-policy.rendered}"
+  assume_role_policy = "${file("${path.module}/cloudwatch-pipeline-role.json")}"
 }
 
 resource "aws_iam_role_policy_attachment" "cloudwatch-service-attachment" {

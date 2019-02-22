@@ -6,9 +6,7 @@
             "Action": [
                 "codepipeline:StartPipelineExecution"
             ],
-            "Resource": [
-                "arn:aws:codepipeline:${AWS_REGION}:${AWS_ACCOUNT_ID}:prm-infra-sec-scan"
-            ]
+            "Resource": "arn:aws:codepipeline:${AWS_REGION}:${AWS_ACCOUNT_ID}:prm-infra-sec-scan"
         }
     ]
 }
