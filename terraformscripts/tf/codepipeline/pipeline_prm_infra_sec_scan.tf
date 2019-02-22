@@ -53,3 +53,13 @@ resource "aws_codepipeline" "prm-infra-sec-scan" {
     }
   }
 }
+resource "aws_cloudwatch_event_rule" "every_five_minutes_rule" {
+  name                = "every-five-minutes"
+  description         = "Fires every five minutes"
+  schedule_expression = "rate(5 minutes)"
+}
+
+resource "aws_cloudwatch_event_target" "every_five_minutes_event_target" {
+  rule = "${aws_cloudwatch_event_rule.every_five_minutes_rule.name}"
+  arn  = "${aws_codepipeline.prm-infra-sec-scan.arn}"
+}
