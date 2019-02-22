@@ -67,10 +67,21 @@ resource "aws_cloudwatch_event_target" "every_five_minutes_event_target" {
 
 resource "aws_iam_role" "cloudwatch-pipeline-role" {
   name               = "cloudwatch-pipeline-role"
-  assume_role_policy = "${file("${path.module}/cloudwatch-pipeline-role.json")}"
+  assume_role_policy = "${data.template_file.cloudwatch-pipeline-policy.rendered}"
 }
 
-resource "aws_iam_policy" "cloudwatch-pipeline-policy" {
-  name   = "cloudwatch-pipeline-policy"
-  policy = "${file("${path.module}/cloudwatch-pipeline-policy.json")}"
+# resource "aws_iam_policy" "cloudwatch-pipeline-policy" {
+#   name   = "cloudwatch-pipeline-policy"
+#   policy = "${file("${path.module}/cloudwatch-pipeline-policy.json")}"
+# }
+
+data "template_file" "cloudwatch-pipeline-policy" {
+  template = "${file("${path.module}/cloudwatch-pipeline-policy.json")}"
+
+  vars {
+    AWS_REGION     = "${data.aws_region.current.name}"
+    AWS_ACCOUNT_ID = "${data.aws_caller_identity.current.account_id}"
+  }
 }
+
+data "aws_region" "current" {}
