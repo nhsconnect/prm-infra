@@ -51,3 +51,15 @@ resource "aws_codepipeline" "prm-migrator-sec-scan" {
     }
   }
 }
+resource "aws_cloudwatch_event_rule" "every_five_minutes_rule_prm_migrator_scan" {
+  name                = "every-five-minutes-prm-migrator-scan"
+  description         = "Fires every five minutes"
+  schedule_expression = "rate(5 minutes)"
+  role_arn = "${aws_iam_role.cloudwatch-pipeline-role.arn}"
+}
+
+resource "aws_cloudwatch_event_target" "every_five_minutes_event_target_prm_migrator_scan" {
+  rule = "${aws_cloudwatch_event_rule.every_five_minutes_rule_prm_migrator_scan.name}"
+  arn  = "${aws_codepipeline.prm-migrator-sec-scan.arn}"
+  role_arn = "${aws_iam_role.cloudwatch-pipeline-role.arn}"
+}

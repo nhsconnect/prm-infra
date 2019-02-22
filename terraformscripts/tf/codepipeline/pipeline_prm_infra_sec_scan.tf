@@ -53,42 +53,15 @@ resource "aws_codepipeline" "prm-infra-sec-scan" {
     }
   }
 }
-resource "aws_cloudwatch_event_rule" "every_five_minutes_rule" {
-  name                = "every-five-minutes"
+resource "aws_cloudwatch_event_rule" "every_five_minutes_rule_prm_infra_scan" {
+  name                = "every-five-minutes-prm-infra-scan"
   description         = "Fires every five minutes"
   schedule_expression = "rate(5 minutes)"
   role_arn = "${aws_iam_role.cloudwatch-pipeline-role.arn}"
 }
 
-resource "aws_cloudwatch_event_target" "every_five_minutes_event_target" {
-  rule = "${aws_cloudwatch_event_rule.every_five_minutes_rule.name}"
+resource "aws_cloudwatch_event_target" "every_five_minutes_event_target_prm_infra_scan" {
+  rule = "${aws_cloudwatch_event_rule.every_five_minutes_rule_prm_infra_scan.name}"
   arn  = "${aws_codepipeline.prm-infra-sec-scan.arn}"
   role_arn = "${aws_iam_role.cloudwatch-pipeline-role.arn}"
 }
-
-resource "aws_iam_role" "cloudwatch-pipeline-role" {
-  name               = "cloudwatch-pipeline-role"
-  assume_role_policy = "${file("${path.module}/cloudwatch-pipeline-role.json")}"
-}
-
-resource "aws_iam_role_policy_attachment" "cloudwatch-service-attachment" {
-  role       = "${aws_iam_role.cloudwatch-pipeline-role.name}"
-  policy_arn = "${aws_iam_policy.cloudwatch-role-policy.arn}"
-}
-
-data "template_file" "cloudwatch-pipeline-policy" {
-  template = "${file("${path.module}/cloudwatch-pipeline-policy.json")}"
-
-  vars {
-    AWS_REGION     = "${data.aws_region.current.name}"
-    AWS_ACCOUNT_ID = "${data.aws_caller_identity.current.account_id}"
-  }
-}
-
-
-resource "aws_iam_policy" "cloudwatch-role-policy" {
-  name   = "cloudwatch-assume-role-policy"
-  policy = "${data.template_file.cloudwatch-pipeline-policy.rendered}"
-}
-
-data "aws_region" "current" {}
