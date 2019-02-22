@@ -4,7 +4,7 @@
     {
       "Effect": "Allow",
       "Principal": {
-        "Service": "codepipeline.amazonaws.com"
+        "Service": "events.amazonaws.com"
       },
       "Action": "sts:AssumeRole"
     }
