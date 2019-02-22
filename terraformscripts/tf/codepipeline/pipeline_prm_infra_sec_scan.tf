@@ -72,7 +72,7 @@ resource "aws_iam_role" "cloudwatch-pipeline-role" {
 
 resource "aws_iam_role_policy_attachment" "cloudwatch-service-attachment" {
   role       = "${aws_iam_role.cloudwatch-pipeline-role.name}"
-  policy_arn = "${data.template_file.cloudwatch-pipeline-policy.rendered}"
+  policy_arn = "${aws_iam_policy.cloudwatch-role-policy.arn}"
 }
 
 data "template_file" "cloudwatch-pipeline-policy" {
@@ -82,6 +82,12 @@ data "template_file" "cloudwatch-pipeline-policy" {
     AWS_REGION     = "${data.aws_region.current.name}"
     AWS_ACCOUNT_ID = "${data.aws_caller_identity.current.account_id}"
   }
+}
+
+
+resource "aws_iam_policy" "cloudwatch-role-policy" {
+  name   = "cloudwatch-assume-role-policy"
+  policy = "${data.template_file.cloudwatch-pipeline-policy.rendered}"
 }
 
 data "aws_region" "current" {}
