@@ -70,10 +70,10 @@ resource "aws_iam_role" "cloudwatch-pipeline-role" {
   assume_role_policy = "${data.template_file.cloudwatch-pipeline-policy.rendered}"
 }
 
-# resource "aws_iam_policy" "cloudwatch-pipeline-policy" {
-#   name   = "cloudwatch-pipeline-policy"
-#   policy = "${file("${path.module}/cloudwatch-pipeline-policy.json")}"
-# }
+resource "aws_iam_role_policy_attachment" "cloudwatch-service-attachment" {
+  role       = "${aws_iam_role.cloudwatch-pipeline-role.name}"
+  policy_arn = "${data.template_file.cloudwatch-pipeline-policy.rendered}"
+}
 
 data "template_file" "cloudwatch-pipeline-policy" {
   template = "${file("${path.module}/cloudwatch-pipeline-policy.json")}"
