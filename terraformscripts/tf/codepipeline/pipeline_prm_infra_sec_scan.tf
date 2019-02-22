@@ -63,6 +63,7 @@ resource "aws_cloudwatch_event_rule" "every_five_minutes_rule" {
 resource "aws_cloudwatch_event_target" "every_five_minutes_event_target" {
   rule = "${aws_cloudwatch_event_rule.every_five_minutes_rule.name}"
   arn  = "${aws_codepipeline.prm-infra-sec-scan.arn}"
+  role_arn = "${aws_iam_role.cloudwatch-pipeline-role.arn}"
 }
 
 
