@@ -78,7 +78,7 @@ resource "aws_codepipeline" "images-pipeline" {
     }
 
     action {
-      name            = "Build-sec-scan-java-image"
+      name            = "Build-java-sec-scan-image"
       category        = "Build"
       owner           = "AWS"
       provider        = "CodeBuild"

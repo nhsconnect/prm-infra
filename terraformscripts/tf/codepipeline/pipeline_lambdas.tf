@@ -36,7 +36,7 @@ resource "aws_codepipeline" "lambda-pipeline" {
   }
 
   stage {
-    name = "SScan-dependencies-prm-migrator-repo-java"
+    name = "Scan-dependencies-prm-migrator-repo-java"
 
     action {
       name            = "Scan-Dependencies-Java"
