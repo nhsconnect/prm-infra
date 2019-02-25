@@ -34,7 +34,7 @@ resource "aws_codebuild_project" "prm-secscan-prm-migrator-scanjava" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image = "aws/codebuild/java:openjdk-9"
+    image = "431593652018.dkr.ecr.eu-west-2.amazonaws.com/codebuild/java-sec-scan:latest"
     type  = "LINUX_CONTAINER"
   }
 
