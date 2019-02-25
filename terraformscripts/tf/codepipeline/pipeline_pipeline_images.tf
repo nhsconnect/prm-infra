@@ -1,8 +1,8 @@
 resource "aws_codepipeline" "images-pipeline" {
   lifecycle {
     ignore_changes = [
-      "stage.0.action.0.configuration.OAuthToken",
-      "stage.0.action.0.configuration.%",
+      # "stage.0.action.0.configuration.OAuthToken",
+      # "stage.0.action.0.configuration.%",
     ]
   }
 
