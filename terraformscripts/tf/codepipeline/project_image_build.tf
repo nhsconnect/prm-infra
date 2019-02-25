@@ -412,7 +412,7 @@ resource "aws_codebuild_project" "prm-build-java-sec-scan-image" {
 
     environment_variable {
       name  = "IMAGE_DIR"
-      value = "terraform"
+      value = "java-sec-scan"
     }
   }
 
