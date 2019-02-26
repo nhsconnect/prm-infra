@@ -78,7 +78,7 @@ resource "aws_codepipeline" "images-pipeline" {
     }
 
     action {
-      name            = "Build-java-sec-scan-image"
+      name            = "Build-dep-check-image"
       category        = "Build"
       owner           = "AWS"
       provider        = "CodeBuild"
@@ -86,7 +86,7 @@ resource "aws_codepipeline" "images-pipeline" {
       input_artifacts = ["source"]
 
       configuration {
-        ProjectName = "${aws_codebuild_project.prm-build-java-sec-scan-image.name}"
+        ProjectName = "${aws_codebuild_project.prm-build-dep-check-image.name}"
       }
     }
   }

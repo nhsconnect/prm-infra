@@ -36,10 +36,10 @@ resource "aws_codepipeline" "lambda-pipeline" {
   }
 
   stage {
-    name = "Scan-dependencies-prm-migrator-repo-java"
+    name = "Scan-dependencies-prm-migrator-repo"
 
     action {
-      name            = "Scan-Dependencies-Java"
+      name            = "Scan-Dependencies"
       category        = "Test"
       owner           = "AWS"
       provider        = "CodeBuild"
@@ -49,7 +49,7 @@ resource "aws_codepipeline" "lambda-pipeline" {
       #run_order       = 1
 
       configuration {
-        ProjectName = "${aws_codebuild_project.prm-secscan-prm-migrator-scanjava.name}"
+        ProjectName = "${aws_codebuild_project.prm-dep-check-prm-migrator.name}"
       }
     }
   }

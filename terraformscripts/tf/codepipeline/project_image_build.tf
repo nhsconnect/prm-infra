@@ -316,12 +316,12 @@ resource "aws_codebuild_project" "prm-build-sec-scan-image" {
   }
 }
 
-resource "aws_ecr_repository" "java-sec-scan-image" {
-    name = "codebuild/java-sec-scan"
+resource "aws_ecr_repository" "dep-check-image" {
+    name = "codebuild/dep-check"
 }
 
-resource "aws_ecr_lifecycle_policy" "java-sec-scan-image" {
-  repository = "${aws_ecr_repository.java-sec-scan-image.name}"
+resource "aws_ecr_lifecycle_policy" "dep-check-image" {
+  repository = "${aws_ecr_repository.dep-check-image.name}"
 
   policy = <<EOF
 {
@@ -344,8 +344,8 @@ resource "aws_ecr_lifecycle_policy" "java-sec-scan-image" {
 EOF
 }
 
-resource "aws_ecr_repository_policy" "java-sec-scan-image" {
-    repository = "${aws_ecr_repository.java-sec-scan-image.name}"
+resource "aws_ecr_repository_policy" "dep-check-image" {
+    repository = "${aws_ecr_repository.dep-check-image.name}"
 
     policy = <<EOF
 {
@@ -373,9 +373,9 @@ resource "aws_ecr_repository_policy" "java-sec-scan-image" {
 EOF
 }
 
-resource "aws_codebuild_project" "prm-build-java-sec-scan-image" {
-  name          = "prm-build-java-sec-scan-image"
-  description   = "Builds java-sec-scan image"
+resource "aws_codebuild_project" "prm-build-dep-check-image" {
+  name          = "prm-build-dep-check-image"
+  description   = "Builds dependency check image"
   build_timeout = "5"
 
   service_role = "${aws_iam_role.codebuild-project-generic-role.arn}"
@@ -402,7 +402,7 @@ resource "aws_codebuild_project" "prm-build-java-sec-scan-image" {
 
     environment_variable {
       name  = "IMAGE_REPO_NAME"
-      value = "${aws_ecr_repository.java-sec-scan-image.name}"
+      value = "${aws_ecr_repository.dep-check-image.name}"
     }
 
     environment_variable {
@@ -412,7 +412,7 @@ resource "aws_codebuild_project" "prm-build-java-sec-scan-image" {
 
     environment_variable {
       name  = "IMAGE_DIR"
-      value = "java-sec-scan"
+      value = "dep-check"
     }
   }
 
