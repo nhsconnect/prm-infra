@@ -11,35 +11,16 @@ terragrunt = {
     source = "../..//tf/codepipeline"
   }
 
-  iam_role = "arn:aws:iam::431593652018:role/PASTASLOTHVULGAR"
+  iam_role = "arn:aws:iam::327778747031:role/NHSDAdminRole"
 
   dependencies {
     paths = ["../assume_role"]
   }
 
-  # Include all settings from the root terraform.tfvars.old.old file
-  #include = {
-  #  path = "${find_in_parent_folders()}"
-  # }
-
-  extra_arguments "conditional_vars" {
-
-    commands = [
-      "validate",
-      "plan",
-      "apply"
-    ]
-
-  #  arguments = [
-  #    "-var",
-  #    "prm-application-source-bucket=prm-application-source"
-  #  ]
-  }
-
   remote_state {
     backend = "s3"
     config {
-      bucket = "prm-431593652018-terraform-states"
+      bucket = "prm-327778747031-terraform-states"
       key = "codepipeline/terraform.tfstate"
       region = "eu-west-2"
       encrypt = true
@@ -54,7 +35,6 @@ terragrunt = {
 
 aws_region = "eu-west-2"
 environment = "dev"
-codebuild-cache-bucket-name = "prm-431593652018-codebuild-cache"
-
-prm-application-source-bucket = "prm-application-source"
-assume_role = 1
+codebuild-cache-bucket-name = "prm-327778747031-codebuild-cache"
+prm-application-source-bucket = "prm-327778747031-application-source"
+assume_role = 0

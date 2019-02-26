@@ -1,6 +1,8 @@
 # Assume-role projects
 
 resource "aws_codebuild_project" "prm-codebuild-assume-role-apply" {
+
+  count = "${var.assume_role}"
   name          = "prm-assume-role-apply"
   description   = "Applies the infrastructure"
   build_timeout = "5"

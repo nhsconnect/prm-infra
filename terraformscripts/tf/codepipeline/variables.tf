@@ -11,3 +11,6 @@ variable "github_token" {
 }
 
 variable "codebuild-cache-bucket-name" {}
+variable "assume_role" {
+  description = "whether or not to create user role in pipeline. Either 1 or 0"
+}

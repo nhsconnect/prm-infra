@@ -1,4 +1,3 @@
-# ---------------------------------------------------------------------------------------------------------------------
 # TERRAGRUNT CONFIGURATION
 # This is the configuration for Terragrunt, a thin wrapper for Terraform that supports locking and enforces best
 # practices: https://github.com/gruntwork-io/terragrunt
@@ -8,39 +7,20 @@ terragrunt = {
   # Terragrunt will copy the Terraform configurations specified by the source parameter, along with any files in the
   # working directory, into a temporary folder, and execute your Terraform commands in that folder.
   terraform {
-    source = "../..//tf/codepipeline"
+    source = "../..//tf/network"
   }
 
-  iam_role = "arn:aws:iam::431593652018:role/PASTASLOTHVULGAR"
+  iam_role = "arn:aws:iam::327778747031:role/NHSDAdminRole"
 
   dependencies {
-    paths = ["../assume_role"]
-  }
-
-  # Include all settings from the root terraform.tfvars.old.old file
-  #include = {
-  #  path = "${find_in_parent_folders()}"
-  # }
-
-  extra_arguments "conditional_vars" {
-
-    commands = [
-      "validate",
-      "plan",
-      "apply"
-    ]
-
-  #  arguments = [
-  #    "-var",
-  #    "prm-application-source-bucket=prm-application-source"
-  #  ]
+    paths = []
   }
 
   remote_state {
     backend = "s3"
     config {
-      bucket = "prm-431593652018-terraform-states"
-      key = "codepipeline/terraform.tfstate"
+      bucket = "prm-327778747031-terraform-states"
+      key = "dev/network/terraform.tfstate"
       region = "eu-west-2"
       encrypt = true
     }
@@ -54,7 +34,4 @@ terragrunt = {
 
 aws_region = "eu-west-2"
 environment = "dev"
-codebuild-cache-bucket-name = "prm-431593652018-codebuild-cache"
-
-prm-application-source-bucket = "prm-application-source"
-assume_role = 1
+availability_zones = ["eu-west-2a"]
