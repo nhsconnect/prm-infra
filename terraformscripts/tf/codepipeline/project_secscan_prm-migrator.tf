@@ -38,7 +38,8 @@ resource "aws_codebuild_project" "prm-dep-check-prm-migrator" {
     type  = "LINUX_CONTAINER"
 
     environment_variable {
-      "REPORT_S3_BUCKET"  = "${aws_s3_bucket.dep-scan-report-bucket.bucket}"
+      name = "REPORT_S3_BUCKET"
+      value  = "${aws_s3_bucket.dep-scan-report-bucket.bucket}"
     }
   }
 
