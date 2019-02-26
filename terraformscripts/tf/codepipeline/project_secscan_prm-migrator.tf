@@ -66,7 +66,8 @@ resource "aws_s3_bucket" "dep-scan-report-bucket" {
   }
 
   lifecycle_rule {
-    enabled = true
+    enabled   = true
+
     noncurrent_version_expiration {
       days    = 90
     }
