@@ -39,7 +39,7 @@ resource "aws_codebuild_project" "prm-servinginfra-lambdas-destroy" {
       
     environment_variable {
       name  = "ASSUME_ROLE_NAME"
-      value = "${data.aws_caller_identity.current.arn}"
+      value = "${local.role}"
     }
 
     environment_variable {
@@ -77,7 +77,7 @@ resource "aws_codebuild_project" "prm-servinginfra-network-destroy" {
           
     environment_variable {
       name  = "ASSUME_ROLE_NAME"
-      value = "${data.aws_caller_identity.current.arn}"
+      value = "${local.role}"
     }
 
     environment_variable {
