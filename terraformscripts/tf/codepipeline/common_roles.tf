@@ -5,9 +5,17 @@ resource "aws_iam_role" "codebuild-project-generic-role" {
 }
 
 # Assume-role policy for generic project role
+data "template_file" "codebuild-project-generic-assume-role-policy" {
+  template = "${file("${path.module}/codebuild-project-generic-assume-role-policy.json")}"
+
+  vars {
+    ROLE = "${local.role}"
+  }
+}
+
 resource "aws_iam_policy" "codebuild-project-generic-assume-role-policy" {
   name   = "codebuild-project-generic-assume-role-policy"
-  policy = "${file("${path.module}/codebuild-project-generic-assume-role-policy.json")}"
+  policy = "${data.template_file.codebuild-project-generic-assume-role-policy.rendered}"
 }
 
 resource "aws_iam_role_policy_attachment" "codebuild-project-generic-assume-role-attachment" {

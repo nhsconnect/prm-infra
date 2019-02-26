@@ -2,6 +2,32 @@ resource "aws_ecr_repository" "terraform-image" {
     name = "codebuild/terraform"
 }
 
+data "aws_iam_policy_document" "code_build_access" {
+  statement {
+    effect = "Allow"
+
+    principals {
+      type = "AWS"
+      identifiers = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"]
+    }
+
+    principals {
+      type = "Service"
+      identifiers = ["codebuild.amazonaws.com"]
+    }
+
+    actions = [
+      "ecr:BatchCheckLayerAvailability",
+      "ecr:BatchGetImage",
+      "ecr:DescribeImages",
+      "ecr:DescribeRepositories",
+      "ecr:GetDownloadUrlForLayer",
+      "ecr:GetRepositoryPolicy",
+      "ecr:ListImages"
+    ]
+  }
+}
+
 resource "aws_ecr_lifecycle_policy" "terraform-image" {
   repository = "${aws_ecr_repository.terraform-image.name}"
 
@@ -29,30 +55,7 @@ EOF
 resource "aws_ecr_repository_policy" "terraform-image" {
     repository = "${aws_ecr_repository.terraform-image.name}"
 
-    policy = <<EOF
-{
-  "Version": "2008-10-17",
-  "Statement": [
-    {
-      "Sid": "CodeBuildAccess",
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::431593652018:root",
-        "Service": "codebuild.amazonaws.com"
-      },
-      "Action": [
-        "ecr:BatchCheckLayerAvailability",
-        "ecr:BatchGetImage",
-        "ecr:DescribeImages",
-        "ecr:DescribeRepositories",
-        "ecr:GetDownloadUrlForLayer",
-        "ecr:GetRepositoryPolicy",
-        "ecr:ListImages"
-      ]
-    }
-  ]
-}    
-EOF
+    policy = "${data.aws_iam_policy_document.code_build_access.json}"
 }
 
 resource "aws_codebuild_project" "prm-build-terraform-image" {
@@ -135,30 +138,7 @@ EOF
 resource "aws_ecr_repository_policy" "node-image" {
     repository = "${aws_ecr_repository.node-image.name}"
 
-    policy = <<EOF
-{
-  "Version": "2008-10-17",
-  "Statement": [
-    {
-      "Sid": "CodeBuildAccess",
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::431593652018:root",
-        "Service": "codebuild.amazonaws.com"
-      },
-      "Action": [
-        "ecr:BatchCheckLayerAvailability",
-        "ecr:BatchGetImage",
-        "ecr:DescribeImages",
-        "ecr:DescribeRepositories",
-        "ecr:GetDownloadUrlForLayer",
-        "ecr:GetRepositoryPolicy",
-        "ecr:ListImages"
-      ]
-    }
-  ]
-}    
-EOF
+    policy = "${data.aws_iam_policy_document.code_build_access.json}"
 }
 
 resource "aws_codebuild_project" "prm-build-node-image" {
@@ -241,30 +221,7 @@ EOF
 resource "aws_ecr_repository_policy" "sec-scan-image" {
     repository = "${aws_ecr_repository.sec-scan-image.name}"
 
-    policy = <<EOF
-{
-  "Version": "2008-10-17",
-  "Statement": [
-    {
-      "Sid": "CodeBuildAccess",
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::431593652018:root",
-        "Service": "codebuild.amazonaws.com"
-      },
-      "Action": [
-        "ecr:BatchCheckLayerAvailability",
-        "ecr:BatchGetImage",
-        "ecr:DescribeImages",
-        "ecr:DescribeRepositories",
-        "ecr:GetDownloadUrlForLayer",
-        "ecr:GetRepositoryPolicy",
-        "ecr:ListImages"
-      ]
-    }
-  ]
-}    
-EOF
+    policy = "${data.aws_iam_policy_document.code_build_access.json}"
 }
 
 resource "aws_codebuild_project" "prm-build-sec-scan-image" {
@@ -347,30 +304,7 @@ EOF
 resource "aws_ecr_repository_policy" "dep-check-image" {
     repository = "${aws_ecr_repository.dep-check-image.name}"
 
-    policy = <<EOF
-{
-  "Version": "2008-10-17",
-  "Statement": [
-    {
-      "Sid": "CodeBuildAccess",
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::431593652018:root",
-        "Service": "codebuild.amazonaws.com"
-      },
-      "Action": [
-        "ecr:BatchCheckLayerAvailability",
-        "ecr:BatchGetImage",
-        "ecr:DescribeImages",
-        "ecr:DescribeRepositories",
-        "ecr:GetDownloadUrlForLayer",
-        "ecr:GetRepositoryPolicy",
-        "ecr:ListImages"
-      ]
-    }
-  ]
-}    
-EOF
+    policy = "${data.aws_iam_policy_document.code_build_access.json}"
 }
 
 resource "aws_codebuild_project" "prm-build-dep-check-image" {
