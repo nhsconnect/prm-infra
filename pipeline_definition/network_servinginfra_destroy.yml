@@ -3,13 +3,12 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - export ASSUME_ROLE_NAME=arn:aws:iam::431593652018:role/PASTASLOTHVULGAR
       - chmod a+x ./utils/*
       - eval $(./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_NAME)
       - export TF_WARN_OUTPUT_ERRORS=true
   build:
     commands:
-      - cd ./terraformscripts/dev-431593652018/network 
+      - cd ./terraformscripts/${ENVIRONMENT}-${ACCOUNT_ID}/network 
       - terragrunt init --terragrunt-source-update
       - terragrunt validate
       - terragrunt destroy -auto-approve
