@@ -3,12 +3,11 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - export ASSUME_ROLE_NAME=arn:aws:iam::431593652018:role/PASTASLOTHVULGAR
       - chmod a+x ./utils/*
       - eval $(./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_NAME)
   build:
     commands:
-      - export PRIVATE_KEY_DATA="$(aws ssm get-parameter --with-decryption --name  /NHS/dev-431593652018/tf/codepipeline/client_private_key | jq -r '.Parameter.Value')"
+      - export PRIVATE_KEY_DATA="$(aws ssm get-parameter --with-decryption --name  /NHS/${ENVIRONMENT}-${ACCOUNT_ID}/tf/codepipeline/client_private_key | jq -r '.Parameter.Value')"
       - cd ./e2e/
       - npm install
       - npm test

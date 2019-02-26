@@ -3,14 +3,13 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - export ASSUME_ROLE_NAME=arn:aws:iam::431593652018:role/PASTASLOTHVULGAR
       - chmod a+x ./utils/*
       - eval $(./utils/aws-cli-assumerole.sh -r $ASSUME_ROLE_NAME)
       - export TF_WARN_OUTPUT_ERRORS=true
   build:
     commands:
-      - export TF_VAR_github_token="$(aws ssm get-parameter --with-decryption --name  /NHS/dev-431593652018/tf/codepipeline/github-token | jq -r '.Parameter.Value')"
-      - cd ./terraformscripts/dev-431593652018/codepipeline
+      - export TF_VAR_github_token="$(aws ssm get-parameter --with-decryption --name  /NHS/${ENVIRONMENT}-${ACCOUNT_ID}/tf/codepipeline/github-token | jq -r '.Parameter.Value')"
+      - cd ./terraformscripts/${ENVIRONMENT}-${ACCOUNT_ID}/codepipeline
       - terragrunt init --terragrunt-source-update
       - terragrunt validate
       - terragrunt apply -auto-approve
