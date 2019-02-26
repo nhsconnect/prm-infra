@@ -16,6 +16,21 @@ resource "aws_codebuild_project" "prm-codebuild-assume-role-apply" {
     compute_type = "BUILD_GENERAL1_SMALL"
     image        = "431593652018.dkr.ecr.eu-west-2.amazonaws.com/codebuild/terraform:latest"
     type         = "LINUX_CONTAINER"
+
+    environment_variable {
+      name  = "ASSUME_ROLE_NAME"
+      value = "${data.aws_caller_identity.current.arn}"
+    }
+
+    environment_variable {
+      name = "ENVIRONMENT"
+      value = "${var.environment}"
+    }
+
+    environment_variable {
+      name = "ACCOUNT_ID"
+      value = "${data.aws_caller_identity.current.account_id}"
+    }
   }
 
   source {
