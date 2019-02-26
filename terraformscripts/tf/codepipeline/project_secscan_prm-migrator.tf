@@ -39,7 +39,7 @@ resource "aws_codebuild_project" "prm-dep-check-prm-migrator" {
 
     environment_variable {
       name = "REPORT_S3_BUCKET"
-      value  = "${aws_s3_bucket.dep-scan-report-bucket.bucket}"
+      value = "${aws_s3_bucket.dep-scan-report-bucket.bucket}"
     }
   }
 
@@ -65,7 +65,10 @@ resource "aws_s3_bucket" "dep-scan-report-bucket" {
     enabled = true
   }
 
-  noncurrent_version_expiration {
-    days    = 90
+  lifecycle_rule {
+    enabled = true
+    noncurrent_version_expiration {
+      days    = 90
+    }
   }
 }
