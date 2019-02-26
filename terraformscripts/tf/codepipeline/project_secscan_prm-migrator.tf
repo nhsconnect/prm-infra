@@ -45,6 +45,11 @@ resource "aws_codebuild_project" "prm-dep-check-prm-migrator" {
 
   cache {
     type      = "S3"
-    location  = "${var.codebuild-cache-bucket-name}"
+    location  = "${aws_s3_bucket.codebuild-cache-bucket.bucket}"
   }
 }
+
+resource "aws_s3_bucket" "codebuild-cache-bucket" {
+  bucket      = "${var.codebuild-cache-bucket-name}"
+}
+
