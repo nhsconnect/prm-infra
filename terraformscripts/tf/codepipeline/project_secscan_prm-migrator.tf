@@ -36,11 +36,6 @@ resource "aws_codebuild_project" "prm-dep-check-prm-migrator" {
     compute_type = "BUILD_GENERAL1_SMALL"
     image = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/codebuild/dep-check:latest"
     type  = "LINUX_CONTAINER"
-
-    environment_variable {
-      name = "REPORT_S3_BUCKET"
-      value = "${aws_s3_bucket.dep-scan-report-bucket.bucket}"
-    }
   }
 
   source {
@@ -56,20 +51,4 @@ resource "aws_codebuild_project" "prm-dep-check-prm-migrator" {
 
 resource "aws_s3_bucket" "codebuild-cache-bucket" {
   bucket      = "${var.codebuild-cache-bucket-name}"
-}
-
-resource "aws_s3_bucket" "dep-scan-report-bucket" {
-  bucket      = "${var.codebuild-dep-scan-report-bucket-name}"
-
-  versioning {
-    enabled = true
-  }
-
-  lifecycle_rule {
-    enabled   = true
-
-    noncurrent_version_expiration {
-      days    = 90
-    }
-  }
 }
