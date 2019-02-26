@@ -11,8 +11,23 @@ resource "aws_codebuild_project" "prm-build-uptime-monitor-lambda" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL" 
-    image        = "431593652018.dkr.ecr.eu-west-2.amazonaws.com/codebuild/node:latest"
+    image        = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/codebuild/node:latest"
     type         = "LINUX_CONTAINER"
+
+    environment_variable {
+      name  = "ASSUME_ROLE_NAME"
+      value = "${data.aws_caller_identity.current.arn}"
+    }
+
+    environment_variable {
+      name = "ENVIRONMENT"
+      value = "${var.environment}"
+    }
+
+    environment_variable {
+      name = "ACCOUNT_ID"
+      value = "${data.aws_caller_identity.current.account_id}"
+    }
   }
 
   source {
@@ -33,8 +48,23 @@ resource "aws_codebuild_project" "prm-test-ehr-extract-lambda" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image        = "431593652018.dkr.ecr.eu-west-2.amazonaws.com/codebuild/node:latest"
+    image        = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/codebuild/node:latest"
     type         = "LINUX_CONTAINER"
+
+    environment_variable {
+      name  = "ASSUME_ROLE_NAME"
+      value = "${data.aws_caller_identity.current.arn}"
+    }
+
+    environment_variable {
+      name = "ENVIRONMENT"
+      value = "${var.environment}"
+    }
+
+    environment_variable {
+      name = "ACCOUNT_ID"
+      value = "${data.aws_caller_identity.current.account_id}"
+    }
   }
 
   source {
@@ -55,8 +85,23 @@ resource "aws_codebuild_project" "prm-test-retrieve-status-lambda" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image        = "431593652018.dkr.ecr.eu-west-2.amazonaws.com/codebuild/node:latest"
+    image        = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/codebuild/node:latest"
     type         = "LINUX_CONTAINER"
+
+    environment_variable {
+      name  = "ASSUME_ROLE_NAME"
+      value = "${data.aws_caller_identity.current.arn}"
+    }
+
+    environment_variable {
+      name = "ENVIRONMENT"
+      value = "${var.environment}"
+    }
+
+    environment_variable {
+      name = "ACCOUNT_ID"
+      value = "${data.aws_caller_identity.current.account_id}"
+    }
   }
 
   source {
@@ -77,8 +122,23 @@ resource "aws_codebuild_project" "prm-test-retrieve-processed-ehr-extract-lambda
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image        = "431593652018.dkr.ecr.eu-west-2.amazonaws.com/codebuild/node:latest"
+    image        = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/codebuild/node:latest"
     type         = "LINUX_CONTAINER"
+
+    environment_variable {
+      name  = "ASSUME_ROLE_NAME"
+      value = "${data.aws_caller_identity.current.arn}"
+    }
+
+    environment_variable {
+      name = "ENVIRONMENT"
+      value = "${var.environment}"
+    }
+
+    environment_variable {
+      name = "ACCOUNT_ID"
+      value = "${data.aws_caller_identity.current.account_id}"
+    }
   }
 
   source {
@@ -99,8 +159,23 @@ resource "aws_codebuild_project" "prm-test-translator-lambda" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image        = "431593652018.dkr.ecr.eu-west-2.amazonaws.com/codebuild/node:latest"
+    image        = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/codebuild/node:latest"
     type         = "LINUX_CONTAINER"
+
+    environment_variable {
+      name  = "ASSUME_ROLE_NAME"
+      value = "${data.aws_caller_identity.current.arn}"
+    }
+
+    environment_variable {
+      name = "ENVIRONMENT"
+      value = "${var.environment}"
+    }
+
+    environment_variable {
+      name = "ACCOUNT_ID"
+      value = "${data.aws_caller_identity.current.account_id}"
+    }
   }
 
   source {
@@ -122,8 +197,23 @@ resource "aws_codebuild_project" "prm-build-ehr-extract-lambda" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image        = "431593652018.dkr.ecr.eu-west-2.amazonaws.com/codebuild/node:latest"
+    image        = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/codebuild/node:latest"
     type         = "LINUX_CONTAINER"
+
+    environment_variable {
+      name  = "ASSUME_ROLE_NAME"
+      value = "${data.aws_caller_identity.current.arn}"
+    }
+
+    environment_variable {
+      name = "ENVIRONMENT"
+      value = "${var.environment}"
+    }
+
+    environment_variable {
+      name = "ACCOUNT_ID"
+      value = "${data.aws_caller_identity.current.account_id}"
+    }
   }
 
   source {
@@ -145,8 +235,23 @@ resource "aws_codebuild_project" "prm-build-retrieve-status-lambda" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image        = "431593652018.dkr.ecr.eu-west-2.amazonaws.com/codebuild/node:latest"
+    image        = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/codebuild/node:latest"
     type         = "LINUX_CONTAINER"
+
+    environment_variable {
+      name  = "ASSUME_ROLE_NAME"
+      value = "${data.aws_caller_identity.current.arn}"
+    }
+
+    environment_variable {
+      name = "ENVIRONMENT"
+      value = "${var.environment}"
+    }
+
+    environment_variable {
+      name = "ACCOUNT_ID"
+      value = "${data.aws_caller_identity.current.account_id}"
+    }
   }
 
   source {
@@ -168,8 +273,23 @@ resource "aws_codebuild_project" "prm-build-retrieve-processed-ehr-extract-lambd
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image        = "431593652018.dkr.ecr.eu-west-2.amazonaws.com/codebuild/node:latest"
+    image        = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/codebuild/node:latest"
     type         = "LINUX_CONTAINER"
+
+    environment_variable {
+      name  = "ASSUME_ROLE_NAME"
+      value = "${data.aws_caller_identity.current.arn}"
+    }
+
+    environment_variable {
+      name = "ENVIRONMENT"
+      value = "${var.environment}"
+    }
+
+    environment_variable {
+      name = "ACCOUNT_ID"
+      value = "${data.aws_caller_identity.current.account_id}"
+    }
   }
 
   source {
@@ -191,8 +311,23 @@ resource "aws_codebuild_project" "prm-build-translator-lambda" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image        = "431593652018.dkr.ecr.eu-west-2.amazonaws.com/codebuild/node:latest"
+    image        = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/codebuild/node:latest"
     type         = "LINUX_CONTAINER"
+
+    environment_variable {
+      name  = "ASSUME_ROLE_NAME"
+      value = "${data.aws_caller_identity.current.arn}"
+    }
+
+    environment_variable {
+      name = "ENVIRONMENT"
+      value = "${var.environment}"
+    }
+
+    environment_variable {
+      name = "ACCOUNT_ID"
+      value = "${data.aws_caller_identity.current.account_id}"
+    }
   }
 
   source {
@@ -212,8 +347,23 @@ resource "aws_codebuild_project" "prm-test-e2e-lambda" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image        = "431593652018.dkr.ecr.eu-west-2.amazonaws.com/codebuild/node:latest"
+    image        = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/codebuild/node:latest"
     type         = "LINUX_CONTAINER"
+
+    environment_variable {
+      name  = "ASSUME_ROLE_NAME"
+      value = "${data.aws_caller_identity.current.arn}"
+    }
+
+    environment_variable {
+      name = "ENVIRONMENT"
+      value = "${var.environment}"
+    }
+
+    environment_variable {
+      name = "ACCOUNT_ID"
+      value = "${data.aws_caller_identity.current.account_id}"
+    }
   }
 
   source {
