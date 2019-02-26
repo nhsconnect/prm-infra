@@ -42,4 +42,9 @@ resource "aws_codebuild_project" "prm-dep-check-prm-migrator" {
     type      = "CODEPIPELINE"
     buildspec = "./pipeline_definition/dep-check.yml"
   }
+
+  cache {
+    type      = "S3"
+    location  = "${var.codebuild-cache-bucket-name}"
+  }
 }

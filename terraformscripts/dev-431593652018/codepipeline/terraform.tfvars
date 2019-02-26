@@ -54,5 +54,6 @@ terragrunt = {
 
 aws_region = "eu-west-2"
 environment = "dev"
+codebuild-cache-bucket-name = "prm-431593652018-codebuild-cache"
 
 prm-application-source-bucket = "prm-application-source"

@@ -9,3 +9,5 @@ variable "prm-application-source-bucket" {
 variable "github_token" {
   default = "dummy_token_value"
 }
+
+variable "codebuild-cache-bucket-name" {}
