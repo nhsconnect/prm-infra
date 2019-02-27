@@ -36,6 +36,11 @@ resource "aws_codebuild_project" "prm-dep-check-prm-migrator" {
     compute_type = "BUILD_GENERAL1_SMALL"
     image = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/codebuild/dep-check:latest"
     type  = "LINUX_CONTAINER"
+    
+    environment_variable {
+      name  = "FAIL_ON_CVSS"
+      value = "1.0"
+    }
   }
 
   source {
