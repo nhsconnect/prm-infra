@@ -11,36 +11,12 @@ terragrunt = {
     source = "../..//tf/assume_role"
   }
 
-  iam_role = "arn:aws:iam::431593652018:role/PASTASLOTHVULGAR"
-
-  dependencies {
-    paths = ["../network"]
-  }
-
-
-  # Include all settings from the root terraform.tfvars.old.old file
-  #include = {
-  #  path = "${find_in_parent_folders()}"
-  # }
-
-  extra_arguments "conditional_vars" {
-
-    commands = [
-      "validate",
-      "plan",
-      "apply"
-    ]
-
-  #  arguments = [
-  #    "-var",
-  #    "prm-application-source-bucket=prm-application-source"
-  #  ]
-  }
+  iam_role = "arn:aws:iam::327778747031:role/NHSDAdminRole"
 
   remote_state {
     backend = "s3"
     config {
-      bucket = "prm-431593652018-terraform-states"
+      bucket = "prm-327778747031-terraform-states"
       key = "assume_role/terraform.tfstate"
       region = "eu-west-2"
       encrypt = true
@@ -55,5 +31,5 @@ terragrunt = {
 
 aws_region = "eu-west-2"
 environment = "dev"
-role = "PASTASLOTHVULGAR"
-assume_only = 0
+role = "codebuild"
+assume_only = 1
