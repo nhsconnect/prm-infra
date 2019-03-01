@@ -10,7 +10,7 @@ terragrunt = {
     source = "../..//tf/infratest"
   }
 
-  iam_role = "arn:aws:iam::327778747031:role/NHSDAdminRole"
+  iam_role = "arn:aws:iam::327778747031:role/codebuild"
 
   dependencies {
     paths = []
