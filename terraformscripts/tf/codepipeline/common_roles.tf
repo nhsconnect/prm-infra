@@ -9,7 +9,7 @@ data "template_file" "codebuild-project-generic-assume-role-policy" {
   template = "${file("${path.module}/codebuild-project-generic-assume-role-policy.json")}"
 
   vars {
-    ROLE = "${local.role}"
+    ROLE = "${var.role_arn}"
   }
 }
 

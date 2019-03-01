@@ -20,7 +20,7 @@ resource "aws_iam_role" "codebuild-role" {
     {
       "Action": "sts:AssumeRole",
       "Principal": {
-        "Service": "codebuild.amazonaws.com"
+        "AWS": "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/codebuild-project-generic-role"
       },
       "Effect": "Allow"
     }

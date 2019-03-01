@@ -58,3 +58,4 @@ codebuild-cache-bucket-name = "prm-431593652018-codebuild-cache"
 
 prm-application-source-bucket = "prm-application-source"
 assume_role = 1
+role_arn = "arn:aws:iam::431593652018:role/PASTASLOTHVULGAR"
