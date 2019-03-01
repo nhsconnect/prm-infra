@@ -11,3 +11,6 @@ variable "vpc_id" {}
 variable "vpc_subnet_private_ids" {}
 
 variable "vpc_egress_all_security_group" {}
+
+variable "role_arn" {
+}

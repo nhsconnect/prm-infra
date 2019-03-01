@@ -17,7 +17,7 @@ resource "aws_codebuild_project" "prm-servinginfra-lambdas-apply" {
 
     environment_variable {
       name  = "ASSUME_ROLE_NAME"
-      value = "${local.role}"
+      value = "${var.role_arn}"
     }
 
     environment_variable {
@@ -53,7 +53,7 @@ resource "aws_codebuild_project" "prm-servinginfra-update-test-project" {
     type         = "LINUX_CONTAINER"
     environment_variable {
       name  = "ASSUME_ROLE_NAME"
-      value = "${local.role}"
+      value = "${var.role_arn}"
     }
 
     environment_variable {
@@ -90,7 +90,7 @@ resource "aws_codebuild_project" "prm-servinginfra-lambdas-test" {
 
     environment_variable {
       name  = "ASSUME_ROLE_NAME"
-      value = "${local.role}"
+      value = "${var.role_arn}"
     }
 
     environment_variable {

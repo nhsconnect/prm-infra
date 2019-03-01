@@ -54,3 +54,4 @@ terragrunt = {
 
 aws_region = "eu-west-2"
 environment = "dev"
+role_arn = "arn:aws:iam::431593652018:role/PASTASLOTHVULGAR"

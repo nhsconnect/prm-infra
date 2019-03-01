@@ -16,7 +16,7 @@ resource "aws_codebuild_project" "prm-build-uptime-monitor-lambda" {
 
     environment_variable {
       name  = "ASSUME_ROLE_NAME"
-      value = "${local.role}"
+      value = "${var.role_arn}"
     }
 
     environment_variable {
@@ -53,7 +53,7 @@ resource "aws_codebuild_project" "prm-test-ehr-extract-lambda" {
 
     environment_variable {
       name  = "ASSUME_ROLE_NAME"
-      value = "${local.role}"
+      value = "${var.role_arn}"
     }
 
     environment_variable {
@@ -90,7 +90,7 @@ resource "aws_codebuild_project" "prm-test-retrieve-status-lambda" {
 
     environment_variable {
       name  = "ASSUME_ROLE_NAME"
-      value = "${local.role}"
+      value = "${var.role_arn}"
     }
 
     environment_variable {
@@ -127,7 +127,7 @@ resource "aws_codebuild_project" "prm-test-retrieve-processed-ehr-extract-lambda
 
     environment_variable {
       name  = "ASSUME_ROLE_NAME"
-      value = "${local.role}"
+      value = "${var.role_arn}"
     }
 
     environment_variable {
@@ -164,7 +164,7 @@ resource "aws_codebuild_project" "prm-test-translator-lambda" {
 
     environment_variable {
       name  = "ASSUME_ROLE_NAME"
-      value = "${local.role}"
+      value = "${var.role_arn}"
     }
 
     environment_variable {
@@ -202,7 +202,7 @@ resource "aws_codebuild_project" "prm-build-ehr-extract-lambda" {
 
     environment_variable {
       name  = "ASSUME_ROLE_NAME"
-      value = "${local.role}"
+      value = "${var.role_arn}"
     }
 
     environment_variable {
@@ -240,7 +240,7 @@ resource "aws_codebuild_project" "prm-build-retrieve-status-lambda" {
 
     environment_variable {
       name  = "ASSUME_ROLE_NAME"
-      value = "${local.role}"
+      value = "${var.role_arn}"
     }
 
     environment_variable {
@@ -278,7 +278,7 @@ resource "aws_codebuild_project" "prm-build-retrieve-processed-ehr-extract-lambd
 
     environment_variable {
       name  = "ASSUME_ROLE_NAME"
-      value = "${local.role}"
+      value = "${var.role_arn}"
     }
 
     environment_variable {
@@ -316,7 +316,7 @@ resource "aws_codebuild_project" "prm-build-translator-lambda" {
 
     environment_variable {
       name  = "ASSUME_ROLE_NAME"
-      value = "${local.role}"
+      value = "${var.role_arn}"
     }
 
     environment_variable {
@@ -352,7 +352,7 @@ resource "aws_codebuild_project" "prm-test-e2e-lambda" {
 
     environment_variable {
       name  = "ASSUME_ROLE_NAME"
-      value = "${local.role}"
+      value = "${var.role_arn}"
     }
 
     environment_variable {

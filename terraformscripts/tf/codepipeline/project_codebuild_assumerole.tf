@@ -19,7 +19,7 @@ resource "aws_codebuild_project" "prm-codebuild-assume-role-apply" {
 
     environment_variable {
       name  = "ASSUME_ROLE_NAME"
-      value = "${local.role}"
+      value = "${var.role_arn}"
     }
 
     environment_variable {
