@@ -1,10 +1,10 @@
 resource "aws_codepipeline" "images-pipeline" {
-  lifecycle {
-    ignore_changes = [
-      "stage.0.action.0.configuration.OAuthToken",
-      "stage.0.action.0.configuration.%",
-    ]
-  }
+  # lifecycle {
+  #   ignore_changes = [
+  #     "stage.0.action.0.configuration.OAuthToken",
+  #     "stage.0.action.0.configuration.%",
+  #   ]
+  # }
 
   name     = "prm-images-pipeline"
   role_arn = "${aws_iam_role.codepipeline-generic-role.arn}"
@@ -87,6 +87,19 @@ resource "aws_codepipeline" "images-pipeline" {
 
       configuration {
         ProjectName = "${aws_codebuild_project.prm-build-dep-check-image.name}"
+      }
+    }
+  
+    action {
+      name            = "Build-terratest-image"
+      category        = "Build"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      version         = "1"
+      input_artifacts = ["source"]
+
+      configuration {
+        ProjectName = "${aws_codebuild_project.prm-build-terratest-image.name}"
       }
     }
   }

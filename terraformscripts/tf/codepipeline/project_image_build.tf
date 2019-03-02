@@ -355,3 +355,86 @@ resource "aws_codebuild_project" "prm-build-dep-check-image" {
     buildspec = "./pipeline_definition/build_image.yml"
   }
 }
+
+resource "aws_ecr_repository" "terratest-image" {
+    name = "codebuild/terratest"
+}
+
+resource "aws_ecr_lifecycle_policy" "terratest-image" {
+  repository = "${aws_ecr_repository.terratest-image.name}"
+
+  policy = <<EOF
+{
+    "rules": [
+        {
+            "rulePriority": 1,
+            "description": "Expire images older than 1 days",
+            "selection": {
+                "tagStatus": "untagged",
+                "countType": "sinceImagePushed",
+                "countUnit": "days",
+                "countNumber": 1
+            },
+            "action": {
+                "type": "expire"
+            }
+        }
+    ]
+}
+EOF
+}
+
+resource "aws_ecr_repository_policy" "terratest-image" {
+    repository = "${aws_ecr_repository.terratest-image.name}"
+
+    policy = "${data.aws_iam_policy_document.code_build_access.json}"
+}
+
+resource "aws_codebuild_project" "prm-build-terratest-image" {
+  name          = "prm-build-terratest-image"
+  description   = "Builds terratest image"
+  build_timeout = "5"
+
+  service_role = "${aws_iam_role.codebuild-project-generic-role.arn}"
+
+  artifacts {
+    type = "CODEPIPELINE"
+  }
+
+  environment {
+    compute_type    = "BUILD_GENERAL1_SMALL"
+    image           = "aws/codebuild/docker:17.09.0"
+    type            = "LINUX_CONTAINER"
+    privileged_mode = true
+
+    environment_variable {
+      name  = "AWS_DEFAULT_REGION"
+      value = "${var.aws_region}"
+    }
+
+    environment_variable {
+      name  = "AWS_ACCOUNT_ID"
+      value = "${data.aws_caller_identity.current.account_id}"
+    }
+
+    environment_variable {
+      name  = "IMAGE_REPO_NAME"
+      value = "${aws_ecr_repository.terratest-image.name}"
+    }
+
+    environment_variable {
+      name  = "IMAGE_TAG"
+      value = "latest"
+    }
+
+    environment_variable {
+      name  = "IMAGE_DIR"
+      value = "terratest"
+    }
+  }
+
+  source {
+    type      = "CODEPIPELINE"
+    buildspec = "./pipeline_definition/build_image.yml"
+  }
+}
