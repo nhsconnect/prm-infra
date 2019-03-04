@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$CODEBUILD_BUILD_SUCCEEDING" == "1" ]; then 
+if [ "$CODEBUILD_BUILD_SUCCEEDING" == "0" ]; then 
   PREVIOUS_BUILD=$(aws codebuild list-builds-for-project --project-name prm-secscan-prm-infra-plan --query 'ids[0]' --output text)
   PREVIOUS_STATUS=$(aws codebuild batch-get-builds --ids $PREVIOUS_BUILD --query 'builds[0].buildStatus' --output text)
   if [ "$PREVIOUS_STATUS" == "SUCCEEDED" ]; then

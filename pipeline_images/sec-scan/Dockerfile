@@ -9,4 +9,5 @@ RUN apt-get update && apt-get install -y curl git python3 && \
   tar zxf git-secrets.tgz && \
   cp git-secrets-1.3.0/git-secrets /usr/local/bin && \
   chmod +x /usr/local/bin/git-secrets && \
+  pip3 install awscli && \
   rm -rf git-secrets-1.3.0 git-secrets.tgz get-pip.py
