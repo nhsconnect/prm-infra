@@ -4,6 +4,7 @@ resource "aws_lambda_function" "handler" {
   handler       = "${var.lambda_handler}"
   runtime       = "${var.lambda_runtime}"
   role          = "${aws_iam_role.handler_role.arn}"
+  timeout       = 5
 
   vpc_config {
     subnet_ids  = ["${split(",", var.private_subnet_ids)}"]
