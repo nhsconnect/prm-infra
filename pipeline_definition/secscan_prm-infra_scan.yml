@@ -14,3 +14,5 @@ phases:
       - git secrets --scan -r
       # Running Yelp detect-secrets
       - detect-secrets scan --no-keyword-scan $CODEBUILD_SRC_DIR
+    finally:
+      - bash ./utils/send-alert.sh

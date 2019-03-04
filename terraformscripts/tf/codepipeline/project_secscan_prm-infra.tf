@@ -14,6 +14,16 @@ resource "aws_codebuild_project" "prm-secscan-prm-infra-scan" {
     compute_type = "BUILD_GENERAL1_SMALL"
     image        = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/codebuild/sec-scan:latest"
     type         = "LINUX_CONTAINER"
+
+    environment_variable {
+      name = "ENVIRONMENT"
+      value = "${var.environment}"
+    }
+
+    environment_variable {
+      name = "ACCOUNT_ID"
+      value = "${data.aws_caller_identity.current.account_id}"
+    }
   }
 
   source {
