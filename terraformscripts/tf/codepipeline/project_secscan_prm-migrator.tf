@@ -66,4 +66,5 @@ resource "aws_codebuild_project" "prm-dep-check-prm-migrator" {
 
 resource "aws_s3_bucket" "codebuild-cache-bucket" {
   bucket      = "${var.codebuild-cache-bucket-name}"
+  force_destroy = true
 }
