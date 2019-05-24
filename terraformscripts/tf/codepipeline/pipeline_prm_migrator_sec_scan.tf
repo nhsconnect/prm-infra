@@ -1,11 +1,4 @@
 resource "aws_codepipeline" "prm-migrator-sec-scan" {
-    lifecycle {
-    ignore_changes = [
-      "stage.0.action.0.configuration.OAuthToken",
-      "stage.0.action.0.configuration.%",
-    ]
-  }
-
   name     = "prm-migrator-sec-scan"
   role_arn = "${aws_iam_role.codepipeline-generic-role.arn}"
 

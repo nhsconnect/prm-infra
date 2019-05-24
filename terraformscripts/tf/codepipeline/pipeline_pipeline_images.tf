@@ -1,11 +1,4 @@
 resource "aws_codepipeline" "images-pipeline" {
-  lifecycle {
-    ignore_changes = [
-      "stage.0.action.0.configuration.OAuthToken",
-      "stage.0.action.0.configuration.%",
-    ]
-  }
-
   name     = "prm-images-pipeline"
   role_arn = "${aws_iam_role.codepipeline-generic-role.arn}"
 
