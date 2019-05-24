@@ -1,7 +1,15 @@
 # Role for generic Project
+data "template_file" "codebuild-project-generic-role" {
+  template = "${file("${path.module}/codebuild-project-generic-role.json")}"
+
+  vars {
+    AWS_ACCOUNT_ID = "${data.aws_caller_identity.current.account_id}"
+  }
+}
+
 resource "aws_iam_role" "codebuild-project-generic-role" {
   name               = "codebuild-project-generic-role"
-  assume_role_policy = "${file("${path.module}/codebuild-project-generic-role.json")}"
+  assume_role_policy = "${data.template_file.codebuild-project-generic-role.rendered}"
 }
 
 # Assume-role policy for generic project role
