@@ -36,6 +36,5 @@ terragrunt = {
 aws_region = "eu-west-2"
 environment = "dev"
 codebuild-cache-bucket-name = "prm-327778747031-codebuild-cache"
-prm-application-source-bucket = "prm-327778747031-application-source"
 assume_role = 0
 role_arn = "arn:aws:iam::327778747031:role/codebuild"

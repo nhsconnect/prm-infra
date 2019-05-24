@@ -11,9 +11,6 @@
         "${PRM_CODEBUILD_ARTIFACT_BUCKET}/*",
         "${PRM_CODEBUILD_LAMBDA_ARTIFACT_BUCKET}",
         "${PRM_CODEBUILD_LAMBDA_ARTIFACT_BUCKET}/*",
-        "${PRM_APPLICATION_SOURCE_BUCKET}",
-        "${PRM_APPLICATION_SOURCE_BUCKET}/*"
-      ]
     },
     {
       "Effect": "Allow",
