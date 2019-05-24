@@ -10,7 +10,8 @@
         "${PRM_CODEBUILD_ARTIFACT_BUCKET}",
         "${PRM_CODEBUILD_ARTIFACT_BUCKET}/*",
         "${PRM_CODEBUILD_LAMBDA_ARTIFACT_BUCKET}",
-        "${PRM_CODEBUILD_LAMBDA_ARTIFACT_BUCKET}/*",
+        "${PRM_CODEBUILD_LAMBDA_ARTIFACT_BUCKET}/*"
+      ]
     },
     {
       "Effect": "Allow",
