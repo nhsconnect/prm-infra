@@ -49,8 +49,13 @@ resource "aws_codebuild_project" "prm-servinginfra-update-test-project" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image        = "aws/codebuild/python:3.6.5"
+    image        = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/codebuild/terraform:latest"
     type         = "LINUX_CONTAINER"
+
+    environment_variable {
+      name  = "ASSUME_ROLE_NAME"
+      value = "${var.role_arn}"
+    }
 
     environment_variable {
       name = "ENVIRONMENT"

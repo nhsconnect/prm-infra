@@ -4,7 +4,7 @@
     {
       "Effect": "Allow",
       "Principal": {
-        "AWS": "${AWS_ACCOUNT_ID}"
+        "Service": "codebuild.amazonaws.com"
       },
       "Action": "sts:AssumeRole"
     }

@@ -1,4 +1,6 @@
 resource "aws_codepipeline" "images-pipeline" {
+  depends_on = ["aws_iam_role_policy_attachment.codepipeline-generic-role-attachment"]
+
   name     = "prm-images-pipeline"
   role_arn = "${aws_iam_role.codepipeline-generic-role.arn}"
 
