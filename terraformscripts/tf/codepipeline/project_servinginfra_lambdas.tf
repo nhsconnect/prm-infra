@@ -39,7 +39,7 @@ resource "aws_codebuild_project" "prm-servinginfra-lambdas-apply" {
 
 resource "aws_codebuild_project" "prm-servinginfra-update-test-project" {
   name          = "prm-servinginfra-update-test-project"
-  description   = "Hack to update the codebuild definition for the test with the VPC info"
+  description   = "Update the codebuild definition for the test with the VPC info"
   build_timeout = "5"
   service_role  = "${aws_iam_role.codebuild-project-generic-role.arn}"
 
@@ -49,27 +49,18 @@ resource "aws_codebuild_project" "prm-servinginfra-update-test-project" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image        = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/codebuild/terraform:latest"
+    image        = "aws/codebuild/python:3.6.5"
     type         = "LINUX_CONTAINER"
-    environment_variable {
-      name  = "ASSUME_ROLE_NAME"
-      value = "${var.role_arn}"
-    }
 
     environment_variable {
       name = "ENVIRONMENT"
       value = "${var.environment}"
     }
-
-    environment_variable {
-      name = "ACCOUNT_ID"
-      value = "${data.aws_caller_identity.current.account_id}"
-    }
   }
 
   source {
     type      = "CODEPIPELINE"
-    buildspec = "./pipeline_definition/opentest_update_test_project.yml"
+    buildspec = "./pipeline_definition/opentest_servinginfra_update_test.yml"
   }
 }
 

@@ -10,3 +10,5 @@ destroy :
 	terragrunt destroy --terragrunt-non-interactive -no-color -auto-approve
 	rm -rf output.json
 
+init :
+	terragrunt init --terragrunt-source-update
