@@ -7,6 +7,7 @@ locals {
 
 module "network" {
   source = "terraform-aws-modules/vpc/aws"
+  version = "1.66.0"
 
   name = "${var.environment}-network"
   cidr = "10.0.0.0/16"
