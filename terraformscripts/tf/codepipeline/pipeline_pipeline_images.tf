@@ -24,7 +24,7 @@ resource "aws_codepipeline" "images-pipeline" {
         Owner                = "nhsconnect"
         Repo                 = "prm-infra"
         Branch               = "master"
-        OAuthToken           = "${data.aws_ssm_parameter.github_token}"
+        OAuthToken           = "${data.aws_ssm_parameter.github_token.value}"
         PollForSourceChanges = "true"
       }
     }

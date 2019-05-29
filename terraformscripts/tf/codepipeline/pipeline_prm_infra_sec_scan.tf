@@ -22,7 +22,7 @@ resource "aws_codepipeline" "prm-infra-sec-scan" {
         Owner                = "nhsconnect"
         Repo                 = "prm-infra"
         Branch               = "master"
-        OAuthToken           = "${data.aws_ssm_parameter.github_token}"
+        OAuthToken           = "${data.aws_ssm_parameter.github.value}"
         PollForSourceChanges = "true"
       }
     }
