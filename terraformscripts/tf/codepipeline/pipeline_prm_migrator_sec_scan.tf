@@ -22,7 +22,7 @@ resource "aws_codepipeline" "prm-migrator-sec-scan" {
         Owner                = "nhsconnect"
         Repo                 = "prm-migrator"
         Branch               = "master"
-        OAuthToken           = "${var.github_token}"
+        OAuthToken           = "${data.aws_ssm_parameter.github_token}"
         PollForSourceChanges = "true"
       }
     }

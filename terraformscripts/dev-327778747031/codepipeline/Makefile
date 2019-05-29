@@ -3,7 +3,7 @@
 deploy : output.json
 
 output.json : terraform.tfvars ../../tf/codepipeline/* | .terragrunt-cache
-	terragrunt apply --terragrunt-non-interactive -no-color -auto-approve -var github_token=$$(MSYS_NO_PATHCONV=1 aws ssm get-parameter --name "/NHS/dev-327778747031/tf/github_token" --query Parameter.Value --output text --with-decryption)
+	terragrunt apply --terragrunt-non-interactive -no-color -auto-approve 
 	terragrunt output -no-color -json > output.json
 
 destroy :

@@ -10,10 +10,6 @@ variable "prm-application-source-bucket" {
   default = "dummy_bucket_value"
 }
 
-variable "github_token" {
-  default = "dummy_token_value"
-}
-
 variable "codebuild-cache-bucket-name" {
   description = "Name of the S3 bucket that is supposed to hold cache information for CodeBuild"
 }
