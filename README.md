@@ -8,7 +8,7 @@ Install and ensure available on path
 - [terraform](https://www.terraform.io/) v0.11.11
 - [terragrunt](https://github.com/gruntwork-io/terragrunt#install-terragrunt) v0.17.4
 - bash [on windows](https://gitforwindows.org/)
-- make [on windows](make-4.2.1-without-guile-w32-bin.zip)
+- make [on windows](https://sourceforge.net/projects/ezwinports/files/make-4.2.1-without-guile-w32-bin.zip/download)
 - [aws cli](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
 
 ## Pre-requisites
