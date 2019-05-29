@@ -11,7 +11,7 @@ terragrunt = {
     source = "../..//tf/codepipeline"
   }
 
-  iam_role = "arn:aws:iam::327778747031:role/NHSDAdminRole"
+  # iam_role = "arn:aws:iam::327778747031:role/NHSDAdminRole"
 
   dependencies {
     paths = ["../assume_role"]

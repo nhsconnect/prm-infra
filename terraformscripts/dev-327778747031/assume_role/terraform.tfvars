@@ -11,7 +11,7 @@ terragrunt = {
     source = "../..//tf/assume_role"
   }
 
-  iam_role = "arn:aws:iam::327778747031:role/NHSDAdminRole"
+  # iam_role = "arn:aws:iam::327778747031:role/NHSDAdminRole"
 
   remote_state {
     backend = "s3"
