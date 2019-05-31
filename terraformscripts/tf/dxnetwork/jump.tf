@@ -13,6 +13,10 @@ data "aws_ami" "amazon-linux-2" {
   }
 }
 
+data "external" "whatismyip" {
+ program = ["${path.module}/whatsmyip.sh"]
+}
+
 resource "aws_instance" "jump" {
   count = "${var.provision_jump}"
 
@@ -38,7 +42,7 @@ resource "aws_security_group" "jump" {
     to_port   = 22
     protocol  = "tcp"
 
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["${data.external.whatismyip.result["internet_ip"]}/32"]
   }
 
   egress {
