@@ -40,3 +40,12 @@ module "vpc_label_resolver" {
   attributes = ["hscn"]
   tags       = "${map("Target", "hscn")}"
 }
+
+module "jump_label" {
+  source     = "git::https://github.com/cloudposse/terraform-terraform-label.git?ref=master"
+  namespace  = "${module.vpc_label.namespace}"
+  stage      = "${module.vpc_label.stage}"
+  name       = "${module.vpc_label.name}"
+  attributes = ["jump"]
+  tags       = "${map("Network", "public")}"
+}
