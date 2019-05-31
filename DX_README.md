@@ -9,6 +9,8 @@ Install and ensure available on path
 - bash [on windows](https://gitforwindows.org/)
 - make [on windows](https://sourceforge.net/projects/ezwinports/files/make-4.2.1-without-guile-w32-bin.zip/download)
 - [aws cli](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
+- dig [on windows see](https://support.pdq.com/knowledge-base/1757-install-binds-dig-domain-information-groper-program)
+- jq [on windows](https://github.com/stedolan/jq/releases/download/jq-1.6/jq-win64.exe)
 
 ## Pre-requisites
 Locate secrets in SSM Parameter Store for:
