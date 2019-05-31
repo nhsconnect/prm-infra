@@ -51,13 +51,11 @@ resource "aws_security_group" "jump" {
   tags = "${module.jump_label.tags}"
 }
 
-resource "aws_key_pair" "jump" {
-  public_key = "${data.aws_ssm_parameter.jump.value}"
-  key_name   = "jump"
-}
-
 data "aws_ssm_parameter" "jump" {
   name = "/NHS/${var.stage}-${data.aws_caller_identity.current.account_id}/tf/opentest/ec2_keypair"
 }
 
-data "aws_caller_identity" "current" {}
+resource "aws_key_pair" "jump" {
+  public_key = "${data.aws_ssm_parameter.jump.value}"
+  key_name   = "jump"
+}

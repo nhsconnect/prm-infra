@@ -38,4 +38,4 @@ vpn_gateway_amazon_side_asn = "64512"
 dx_gateway_owner_account_id = "128228465374"
 dx_gateway_id               = "5a60ce93-0147-47b3-91a5-00d863678f02"
 dns_server_ip_addresses     = ["194.72.7.137", "194.72.7.142"]
-provision_jump              = "1"
+provision_jump              = "0"
