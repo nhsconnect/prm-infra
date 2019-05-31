@@ -37,9 +37,9 @@ resource "aws_route53_resolver_endpoint" "hscn" {
   }
 }
 
-resource "aws_route53_resolver_rule" "nhs_uk" {
-  domain_name          = "nhs.uk"
-  name                 = "nhs_uk"
+resource "aws_route53_resolver_rule" "ncrs_nhs_uk" {
+  domain_name          = "ncrs.nhs.uk"
+  name                 = "ncrs_nhs_uk"
   rule_type            = "FORWARD"
   resolver_endpoint_id = "${aws_route53_resolver_endpoint.hscn.id}"
   tags                 = "${module.vpc_label_resolver.tags}"
@@ -51,4 +51,9 @@ resource "aws_route53_resolver_rule" "nhs_uk" {
   target_ip {
     ip = "${element(var.dns_server_ip_addresses, 1)}"
   }
+}
+
+resource "aws_route53_resolver_rule_association" "ncrs_nhs_uk" {
+  resolver_rule_id = "${aws_route53_resolver_rule.ncrs_nhs_uk.id}"
+  vpc_id           = "${module.vpc.vpc_id}"
 }
