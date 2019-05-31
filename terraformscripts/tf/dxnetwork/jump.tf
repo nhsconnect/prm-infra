@@ -1,6 +1,6 @@
 data "aws_ami" "amazon-linux-2" {
   most_recent = true
-  owners = ["amazon"]
+  owners      = ["amazon"]
 
   filter {
     name   = "name"
@@ -8,13 +8,13 @@ data "aws_ami" "amazon-linux-2" {
   }
 
   filter {
-    name = "state"
+    name   = "state"
     values = ["available"]
   }
 }
 
 resource "aws_instance" "jump" {
-  count         = "${var.provision_jump}"
+  count = "${var.provision_jump}"
 
   ami           = "${data.aws_ami.amazon-linux-2.id}"
   instance_type = "t3.micro"
@@ -50,7 +50,6 @@ resource "aws_security_group" "jump" {
 
   tags = "${module.jump_label.tags}"
 }
-
 
 resource "aws_key_pair" "jump" {
   public_key = "${data.aws_ssm_parameter.jump.value}"

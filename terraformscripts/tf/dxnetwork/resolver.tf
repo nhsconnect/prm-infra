@@ -19,21 +19,24 @@ resource "aws_security_group" "resolver" {
 }
 
 resource "aws_route53_resolver_endpoint" "hscn" {
-  direction = "OUTBOUND"
-  name      = "${module.vpc_label_resolver.id}"
-  tags      = "${module.vpc_label_resolver.tags}"
+  direction          = "OUTBOUND"
+  name               = "${module.vpc_label_resolver.id}"
+  tags               = "${module.vpc_label_resolver.tags}"
   security_group_ids = ["${aws_security_group.resolver.id}"]
 
   ip_address {
     subnet_id = "${element(module.vpc.private_subnets, 0)}"
   }
+
   ip_address {
     subnet_id = "${element(module.vpc.private_subnets, 1)}"
   }
+
   ip_address {
     subnet_id = "${element(module.vpc.private_subnets, 2)}"
   }
 }
+
 resource "aws_route53_resolver_rule" "nhs_uk" {
   domain_name          = "nhs.uk"
   name                 = "nhs_uk"
@@ -42,11 +45,10 @@ resource "aws_route53_resolver_rule" "nhs_uk" {
   tags                 = "${module.vpc_label_resolver.tags}"
 
   target_ip {
-      ip = "${element(var.dns_server_ip_addresses, 0)}"
+    ip = "${element(var.dns_server_ip_addresses, 0)}"
   }
 
   target_ip {
-      ip = "${element(var.dns_server_ip_addresses, 1)}"
+    ip = "${element(var.dns_server_ip_addresses, 1)}"
   }
 }
-
