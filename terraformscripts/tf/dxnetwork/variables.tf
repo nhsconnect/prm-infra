@@ -27,6 +27,11 @@ variable "dx_gateway_id" {
   description = "The id of the DX gateway to associate with (must be provisioned in the dx_gateway_account_id)"
 }
 
+variable "dns_server_ip_addresses" {
+  description = "The set of IP addresses to use for DNS servers"
+  type        = "list"
+}
+
 variable "provision_jump" {
   description = "Whether or not to provision a jump box: 1 to provision, 0 to deprovision"
 }
