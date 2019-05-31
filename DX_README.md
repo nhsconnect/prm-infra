@@ -47,7 +47,7 @@ $ terragrunt output -json | jq -r '.jump_ip_address.value[]'
 - Extract the SSH private key from the SSM parameter store
 
 ```
-$ aws-vault exec nhsd -- aws ssm get-parameter --name /NHS/dev-327778747031/tf/opentest/ec2_keypair_private --query Parameter.Value --with-decryption --output text > ~/.ssh/jump
+$ aws ssm get-parameter --name /NHS/dev-327778747031/tf/opentest/ec2_keypair_private --query Parameter.Value --with-decryption --output text > ~/.ssh/jump
 
 $ chmod 0600 ~/.ssh/jump
 ```
