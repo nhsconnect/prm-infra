@@ -37,6 +37,7 @@ Configuration is in the file: `terraformscripts/dev-327778747031/dxnetwork/terra
 ## Access Jump Box
 A jump box can be provisioned in the public subnet of the VPC:
 - Ensure that the configuration variable `provision_jump` is set to `1` and update the AWS resources using terraform
+- The security group of the Jump Box will be updated to allow your IP (and only your IP) address access
 - Extract the IP address for the jump box
 
 ```
@@ -55,4 +56,12 @@ $ chmod 0600 ~/.ssh/jump
 
 ```
 ssh -i ~/.ssh/jump ec2-user@<ip-address>
+```
+
+## Checking status of DX Gateway Proposal
+
+Ensure AWS CLI is at least: `v1.16.169`
+
+```
+aws directconnect describe-direct-connect-gateway-association-proposals --query directConnectGatewayAssociationProposals[].proposalState --output text
 ```
