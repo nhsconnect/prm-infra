@@ -17,3 +17,6 @@ init : .terragrunt-cache
 
 reinit :
 	terragrunt init --terragrunt-source-update
+
+plan : terraform.tfvars ../../tf/dxnetwork/* | .terragrunt-cache
+	terragrunt plan
