@@ -10,8 +10,8 @@
   "license": "ISC",
   "private": true,
   "devDependencies": {
-    "jest": "^23.6.0",
-    "jest-cli": "^23.6.0",
+    "jest": "^24.8.0",
+    "jest-cli": "^24.8.0",
     "request-promise-native": "^1.0.5"
   }
 }
