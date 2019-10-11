@@ -21,7 +21,8 @@ resource "aws_api_gateway_rest_api" "api_endpoint" {
                 "NotIpAddress": {
                     "aws:SourceIp": [
                         "194.101.83.23/32",
-                        "35.176.92.32/29"
+                        "35.176.92.32/29",
+                        "185.205.172.82"
                     ]
                 }
             }
