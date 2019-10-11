@@ -19,7 +19,10 @@ resource "aws_api_gateway_rest_api" "api_endpoint" {
             "Resource": "arn:aws:execute-api:eu-west-2:327778747031:aa826k16a9/*/*/*",
             "Condition": {
                 "NotIpAddress": {
-                    "aws:SourceIp": "194.101.83.23/32"
+                    "aws:SourceIp": [
+                        "194.101.83.23/32",
+                        "35.176.92.32/29"
+                    ]
                 }
             }
         }
